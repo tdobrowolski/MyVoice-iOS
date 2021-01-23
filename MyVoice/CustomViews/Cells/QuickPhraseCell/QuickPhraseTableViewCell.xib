@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="quickPhraseTableViewCell" id="KGk-i7-Jjw" customClass="QuickPhraseTableViewCell" customModule="MyVoice" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="343" height="93"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="343" height="93"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Cn-UW-Okx">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="93"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e0I-oO-slD">
+                        <rect key="frame" x="289" y="26.5" width="40" height="40"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="waveform" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cYr-3p-85D">
+                                <rect key="frame" x="8" y="9" width="24" height="21.5"/>
+                                <color key="tintColor" name="Blue (Dark)"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="919-yY-OJ2"/>
+                                    <constraint firstAttribute="height" constant="24" id="al8-Po-0zz"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" name="Blue (Light)"/>
+                        <constraints>
+                            <constraint firstItem="cYr-3p-85D" firstAttribute="centerY" secondItem="e0I-oO-slD" secondAttribute="centerY" id="AlF-IW-BYm"/>
+                            <constraint firstAttribute="width" constant="40" id="MaK-Lv-d5H"/>
+                            <constraint firstItem="cYr-3p-85D" firstAttribute="centerX" secondItem="e0I-oO-slD" secondAttribute="centerX" id="bnl-UG-ZS1"/>
+                            <constraint firstAttribute="height" constant="40" id="u2f-DB-TcD"/>
+                        </constraints>
+                    </view>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="e7b-VP-Svh">
+                        <rect key="frame" x="14" y="12" width="261" height="69"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Phrase" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nc-Zz-iaP" userLabel="Phrase Label">
+                                <rect key="frame" x="0.0" y="0.0" width="261" height="44.5"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                <color key="textColor" name="Black"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="_Tip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJS-Yu-l1P" userLabel="Tip Label">
+                                <rect key="frame" x="0.0" y="52.5" width="261" height="16.5"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                <color key="textColor" name="Blue (Dark)"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gTx-qY-cLR">
+                        <rect key="frame" x="0.0" y="92" width="343" height="1"/>
+                        <color key="backgroundColor" name="Blue (Light)"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="ivS-3x-Az1"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="gTx-qY-cLR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1kA-Vh-hRm"/>
+                    <constraint firstItem="6Cn-UW-Okx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6Lf-Or-cFx"/>
+                    <constraint firstAttribute="trailing" secondItem="e0I-oO-slD" secondAttribute="trailing" constant="14" id="J7x-iY-Ljl"/>
+                    <constraint firstItem="e0I-oO-slD" firstAttribute="leading" secondItem="e7b-VP-Svh" secondAttribute="trailing" constant="14" id="JLJ-81-KMm"/>
+                    <constraint firstAttribute="bottom" secondItem="e7b-VP-Svh" secondAttribute="bottom" constant="12" id="KiN-xT-wa9"/>
+                    <constraint firstItem="6Cn-UW-Okx" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Rud-jI-OFJ"/>
+                    <constraint firstItem="e7b-VP-Svh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="UlJ-d8-Gl1"/>
+                    <constraint firstItem="e0I-oO-slD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XSm-fv-YdB"/>
+                    <constraint firstAttribute="trailing" secondItem="gTx-qY-cLR" secondAttribute="trailing" id="cgW-TY-sgV"/>
+                    <constraint firstAttribute="bottom" secondItem="6Cn-UW-Okx" secondAttribute="bottom" id="kIL-nM-3zd"/>
+                    <constraint firstAttribute="trailing" secondItem="6Cn-UW-Okx" secondAttribute="trailing" id="o7J-Ow-3K2"/>
+                    <constraint firstItem="e7b-VP-Svh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="uZO-Dt-Mx6"/>
+                    <constraint firstAttribute="bottom" secondItem="gTx-qY-cLR" secondAttribute="bottom" id="xPH-Bm-W3G"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="backgroundContainerView" destination="6Cn-UW-Okx" id="xjS-2c-HRi"/>
+                <outlet property="iconContainerView" destination="e0I-oO-slD" id="DXS-DL-M8b"/>
+                <outlet property="iconImageView" destination="cYr-3p-85D" id="gSO-TA-rTC"/>
+                <outlet property="phraseLabel" destination="0nc-Zz-iaP" id="oBs-Ir-OY7"/>
+                <outlet property="tipLabel" destination="BJS-Yu-l1P" id="HQp-HJ-MEJ"/>
+            </connections>
+            <point key="canvasLocation" x="133" y="132"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="waveform" catalog="system" width="128" height="128"/>
+        <namedColor name="Black">
+            <color red="0.090000003576278687" green="0.090000003576278687" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Blue (Dark)">
+            <color red="0.53700000047683716" green="0.61599999666213989" blue="0.67500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Blue (Light)">
+            <color red="0.93300002813339233" green="0.9570000171661377" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
