@@ -10,6 +10,8 @@ import RxCocoa
 
 class MainViewController: BaseViewController<MainViewModel> {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var mainTextView: MainTextView!
     @IBOutlet weak var placeholderLabel: UILabel!
     
@@ -33,6 +35,7 @@ class MainViewController: BaseViewController<MainViewModel> {
         self.setupPlaceholderLabel()
         self.setupHeader()
         self.hideKeyboardWhenTappedAround()
+        self.listenForActiveStateChange()
     }
         
     override func bindViewModel(viewModel: MainViewModel) {
@@ -40,6 +43,16 @@ class MainViewController: BaseViewController<MainViewModel> {
         
         self.quickAccessTableView.register(UINib(nibName: "QuickPhraseTableViewCell", bundle: nil), forCellReuseIdentifier: "quickPhraseTableViewCell")
         
+        quickAccessTableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
+            let cell = self?.quickAccessTableView.cellForRow(at: indexPath) as? QuickPhraseTableViewCell
+            cell?.setupIcon(isSpeaking: true)
+        }).disposed(by: disposeBag)
+        
+        quickAccessTableView.rx.modelSelected(QuickPhraseModel.self).subscribe(onNext: { model in
+            viewModel.startSpeaking(model.phrase)
+        }).disposed(by: disposeBag)
+        
+        // TODO: Remove subscribing to isSpeaking, store currently active phrase/cell in this view
         viewModel.quickPhraseItems.bind(to: quickAccessTableView.rx.items(cellIdentifier: "quickPhraseTableViewCell", cellType: QuickPhraseTableViewCell.self)) { [weak self] (row, item, cell) in
             do {
                 let numberOfItems = try viewModel.quickPhraseItems.value().count
@@ -52,6 +65,7 @@ class MainViewController: BaseViewController<MainViewModel> {
                 } else {
                     cell.setupCell(phrase: item.phrase, type: .defaultCell)
                 }
+                cell.isSpeaking.subscribe(viewModel.isSpeaking).disposed(by: cell.disposeBag)
             } catch {
                 self?.logError(with: error)
             }
@@ -65,6 +79,8 @@ class MainViewController: BaseViewController<MainViewModel> {
             self?.placeholderLabel.isHidden = text?.isEmpty == false
         }).disposed(by: disposeBag)
     }
+    
+    // MARK: Setting up
     
     private func setupLargeButtons() {
         self.speakButton.setupLayout(forTitle: "Speak", actionType: .speak)
@@ -81,6 +97,15 @@ class MainViewController: BaseViewController<MainViewModel> {
     private func setupHeader() {
         self.headerTitleLabel.text = "Quick access"
         self.editButton.setTitle("Edit", for: .normal)
+    }
+    
+    private func listenForActiveStateChange() {
+        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+    }
+    
+    @objc
+    func appMovedToBackground() {
+        self.viewModel.stopSpeaking()
     }
     
     // MARK: Navigation Bar items methods
@@ -145,6 +170,17 @@ class MainViewController: BaseViewController<MainViewModel> {
 }
 
 extension MainViewController: UITableViewDelegate {
+    
+    
+    // FIXME: Touch not working properly
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        logSuccess(with: "woohoo")
+        guard let items = try? self.viewModel.quickPhraseItems.value() else { return }
+        let phrase = items[indexPath.row].phrase
+        let cell = self.quickAccessTableView.cellForRow(at: indexPath) as? QuickPhraseTableViewCell
+        cell?.setupIcon(isSpeaking: true)
+        self.viewModel.startSpeaking(phrase)
+    }
     
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        <#code#>

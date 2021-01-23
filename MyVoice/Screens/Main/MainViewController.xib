@@ -27,6 +27,7 @@
                 <outlet property="placeholderLabel" destination="Btb-UM-1dv" id="00j-FR-mHS"/>
                 <outlet property="quickAccessTableView" destination="Phl-JM-7vZ" id="x1L-sP-caI"/>
                 <outlet property="saveButton" destination="AWa-dJ-pYF" id="Jb0-E1-hLA"/>
+                <outlet property="scrollView" destination="rVh-g5-XuI" id="sID-U1-lDy"/>
                 <outlet property="speakButton" destination="514-y1-hZT" id="FdW-yz-xMC"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -36,7 +37,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rVh-g5-XuI">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVh-g5-XuI">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQl-5I-Ypw">
@@ -119,7 +120,7 @@
                                         <constraint firstAttribute="height" constant="30" id="ulv-UA-yYc"/>
                                     </constraints>
                                 </view>
-                                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-JM-7vZ" customClass="ContentSizedTableView" customModule="MyVoice" customModuleProvider="target">
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-JM-7vZ" customClass="ContentSizedTableView" customModule="MyVoice" customModuleProvider="target">
                                     <rect key="frame" x="16" y="396" width="382" height="406"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </tableView>
