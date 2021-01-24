@@ -24,6 +24,8 @@ class MainViewController: BaseViewController<MainViewModel> {
     
     @IBOutlet weak var quickAccessTableView: ContentSizedTableView!
     
+    var currentSpeakingCellRow: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,41 +45,51 @@ class MainViewController: BaseViewController<MainViewModel> {
         
         self.quickAccessTableView.register(UINib(nibName: "QuickPhraseTableViewCell", bundle: nil), forCellReuseIdentifier: "quickPhraseTableViewCell")
         
-        quickAccessTableView.rx.itemSelected.subscribe(onNext: { [weak self] indexPath in
-            let cell = self?.quickAccessTableView.cellForRow(at: indexPath) as? QuickPhraseTableViewCell
-            cell?.setupIcon(isSpeaking: true)
-        }).disposed(by: disposeBag)
-        
-        quickAccessTableView.rx.modelSelected(QuickPhraseModel.self).subscribe(onNext: { model in
-            viewModel.startSpeaking(model.phrase)
-        }).disposed(by: disposeBag)
-        
         // TODO: Remove subscribing to isSpeaking, store currently active phrase/cell in this view
         viewModel.quickPhraseItems.bind(to: quickAccessTableView.rx.items(cellIdentifier: "quickPhraseTableViewCell", cellType: QuickPhraseTableViewCell.self)) { [weak self] (row, item, cell) in
-            do {
-                let numberOfItems = try viewModel.quickPhraseItems.value().count
-                if numberOfItems == 1 {
-                    cell.setupCell(phrase: item.phrase, type: .onlyCell)
-                } else if row == 0 {
-                    cell.setupCell(phrase: item.phrase, type: .firstCell)
-                } else if row == numberOfItems - 1 {
-                    cell.setupCell(phrase: item.phrase, type: .lastCell)
-                } else {
-                    cell.setupCell(phrase: item.phrase, type: .defaultCell)
-                }
-                cell.isSpeaking.subscribe(viewModel.isSpeaking).disposed(by: cell.disposeBag)
-            } catch {
-                self?.logError(with: error)
+            guard let self = self, let numberOfItems = try? viewModel.quickPhraseItems.value().count else { return }
+            if numberOfItems == 1 {
+                cell.setupCell(phrase: item.phrase, type: .onlyCell)
+            } else if row == 0 {
+                cell.setupCell(phrase: item.phrase, type: .firstCell)
+            } else if row == numberOfItems - 1 {
+                cell.setupCell(phrase: item.phrase, type: .lastCell)
+            } else {
+                cell.setupCell(phrase: item.phrase, type: .defaultCell)
             }
+            
+            cell.tapHandlerButton.tag = row
+            cell.tapHandlerButton.addTarget(self, action: #selector(self.quickPhraseCellSelected(sender:)), for: .touchUpInside)
         }.disposed(by: disposeBag)
         
-        viewModel.isSpeaking.skip(1).subscribe { [weak self] isSpeaking in
+        viewModel.isSpeaking.skip(1).subscribe(onNext: { [weak self] isSpeaking in
             self?.speakButton.isSpeaking.onNext(isSpeaking)
-        }.disposed(by: disposeBag)
+            if let speakingCellRow = self?.currentSpeakingCellRow, isSpeaking == false {
+                let cell = self?.quickAccessTableView.cellForRow(at: IndexPath(row: speakingCellRow, section: 0)) as? QuickPhraseTableViewCell
+                cell?.setupIcon(isSpeaking: false)
+                self?.currentSpeakingCellRow = nil
+            }
+        }).disposed(by: disposeBag)
         
         self.mainTextView.rx.text.subscribe(onNext: { [weak self] text in
             self?.placeholderLabel.isHidden = text?.isEmpty == false
         }).disposed(by: disposeBag)
+    }
+    
+    // MARK: Handling speaking action for cell
+    
+    @objc
+    private func quickPhraseCellSelected(sender: UIButton) {
+        self.speakPhraseFromCell(with: sender.tag)
+    }
+    
+    private func speakPhraseFromCell(with row: Int) {
+        guard let items = try? viewModel.quickPhraseItems.value(), items.indices.contains(row) else { return }
+        let phrase = items[row].phrase
+        let cell = self.quickAccessTableView.cellForRow(at: IndexPath(row: row, section: 0)) as? QuickPhraseTableViewCell
+        cell?.setupIcon(isSpeaking: true)
+        self.currentSpeakingCellRow = row
+        self.viewModel.startSpeaking(phrase)
     }
     
     // MARK: Setting up
@@ -169,20 +181,4 @@ class MainViewController: BaseViewController<MainViewModel> {
     }
 }
 
-extension MainViewController: UITableViewDelegate {
-    
-    
-    // FIXME: Touch not working properly
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        logSuccess(with: "woohoo")
-        guard let items = try? self.viewModel.quickPhraseItems.value() else { return }
-        let phrase = items[indexPath.row].phrase
-        let cell = self.quickAccessTableView.cellForRow(at: indexPath) as? QuickPhraseTableViewCell
-        cell?.setupIcon(isSpeaking: true)
-        self.viewModel.startSpeaking(phrase)
-    }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        <#code#>
-//    }
-}
+extension MainViewController: UITableViewDelegate { }

@@ -18,6 +18,7 @@ class QuickPhraseTableViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var backgroundContainerView: UIView!
+    @IBOutlet weak var tapHandlerButton: UIButton!
     
     @IBOutlet weak var iconContainerView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!
@@ -25,17 +26,12 @@ class QuickPhraseTableViewCell: UITableViewCell {
     @IBOutlet weak var phraseLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
     
-    let isSpeaking = PublishSubject<Bool>()
-    
-    var disposeBag = DisposeBag()
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 63).isActive = true
     }
     
     func setupCell(phrase: String, type: CellOrderType) {
-        self.bindObservables()
         self.setupIcon()
         self.phraseLabel.text = phrase
         self.selectionStyle = .none
@@ -62,21 +58,6 @@ class QuickPhraseTableViewCell: UITableViewCell {
         }
     }
     
-    private func bindObservables() {
-        
-        self.isSpeaking.subscribe { [weak self] isSpeaking in
-            print("Cell - isSpeaking \(isSpeaking)")
-            if isSpeaking == true { return }
-            self?.setupIcon(isSpeaking: false)
-        } onError: { error in
-            print("Cell - isSpeaking - error: \(error.localizedDescription)")
-        } onCompleted: {
-            print("Cell - isSpeaking - Completed")
-        } onDisposed: {
-            print("Cell - isSpeaking - Completed")
-        }.disposed(by: disposeBag)
-    }
-    
     // MARK: Setuping layout
     
     func setupIcon(isSpeaking: Bool = false) {
@@ -89,7 +70,7 @@ class QuickPhraseTableViewCell: UITableViewCell {
             self.iconImageView.tintColor = UIColor(named: "Blue (Dark)")
             self.iconContainerView.backgroundColor = UIColor(named: "Blue (Light)")
         }
-    }
+    }    
     
     override func prepareForReuse() {
         self.phraseLabel.text = nil
@@ -97,6 +78,6 @@ class QuickPhraseTableViewCell: UITableViewCell {
         self.tipLabel.isHidden = true
         self.backgroundContainerView.layer.cornerRadius = 0
         self.backgroundContainerView.layer.maskedCorners = []
-        self.disposeBag = DisposeBag()
+        self.tapHandlerButton.tag = 0
     }
 }

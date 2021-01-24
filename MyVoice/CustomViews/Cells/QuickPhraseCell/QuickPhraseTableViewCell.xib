@@ -75,10 +75,19 @@
                             <constraint firstAttribute="height" constant="1" id="ivS-3x-Az1"/>
                         </constraints>
                     </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IzX-8r-P14">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="93"/>
+                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <state key="normal">
+                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="gTx-qY-cLR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="1kA-Vh-hRm"/>
+                    <constraint firstAttribute="bottom" secondItem="IzX-8r-P14" secondAttribute="bottom" id="3eO-bf-JKo"/>
                     <constraint firstItem="6Cn-UW-Okx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="6Lf-Or-cFx"/>
+                    <constraint firstItem="IzX-8r-P14" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="8an-Z9-5Zn"/>
                     <constraint firstAttribute="trailing" secondItem="e0I-oO-slD" secondAttribute="trailing" constant="14" id="J7x-iY-Ljl"/>
                     <constraint firstItem="e0I-oO-slD" firstAttribute="leading" secondItem="e7b-VP-Svh" secondAttribute="trailing" constant="14" id="JLJ-81-KMm"/>
                     <constraint firstAttribute="bottom" secondItem="e7b-VP-Svh" secondAttribute="bottom" constant="12" id="KiN-xT-wa9"/>
@@ -86,6 +95,8 @@
                     <constraint firstItem="e7b-VP-Svh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="UlJ-d8-Gl1"/>
                     <constraint firstItem="e0I-oO-slD" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XSm-fv-YdB"/>
                     <constraint firstAttribute="trailing" secondItem="gTx-qY-cLR" secondAttribute="trailing" id="cgW-TY-sgV"/>
+                    <constraint firstAttribute="trailing" secondItem="IzX-8r-P14" secondAttribute="trailing" id="fdV-ZN-yzN"/>
+                    <constraint firstItem="IzX-8r-P14" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="iU2-mP-aeg"/>
                     <constraint firstAttribute="bottom" secondItem="6Cn-UW-Okx" secondAttribute="bottom" id="kIL-nM-3zd"/>
                     <constraint firstAttribute="trailing" secondItem="6Cn-UW-Okx" secondAttribute="trailing" id="o7J-Ow-3K2"/>
                     <constraint firstItem="e7b-VP-Svh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="uZO-Dt-Mx6"/>
@@ -98,6 +109,7 @@
                 <outlet property="iconContainerView" destination="e0I-oO-slD" id="DXS-DL-M8b"/>
                 <outlet property="iconImageView" destination="cYr-3p-85D" id="gSO-TA-rTC"/>
                 <outlet property="phraseLabel" destination="0nc-Zz-iaP" id="oBs-Ir-OY7"/>
+                <outlet property="tapHandlerButton" destination="IzX-8r-P14" id="zOs-Ag-vwT"/>
                 <outlet property="tipLabel" destination="BJS-Yu-l1P" id="HQp-HJ-MEJ"/>
             </connections>
             <point key="canvasLocation" x="133" y="132"/>
