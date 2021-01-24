@@ -28,33 +28,21 @@ class QuickPhraseTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 63).isActive = true
+        contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 62).isActive = true
     }
     
-    func setupCell(phrase: String, type: CellOrderType) {
+    func setupCell(phrase: String, isFirstCell: Bool) {
         self.setupIcon()
         self.phraseLabel.text = phrase
         self.selectionStyle = .none
         self.backgroundColor = .clear
         self.backgroundContainerView.clipsToBounds = true
         self.backgroundContainerView.layer.masksToBounds = true
-        switch type {
-        case .onlyCell:
+        if isFirstCell {
             self.tipLabel.text = "Tip: Select text to say it loud."
             self.tipLabel.isHidden = false
-            self.backgroundContainerView.layer.cornerRadius = 16
-            self.backgroundContainerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner, .layerMinXMaxYCorner]
-        case .firstCell:
-            self.tipLabel.text = "Tip: Select text to say it loud."
-            self.tipLabel.isHidden = false
-            self.backgroundContainerView.layer.cornerRadius = 16
-            self.backgroundContainerView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        case .defaultCell:
+        } else {
             self.tipLabel.isHidden = true
-        case .lastCell:
-            self.tipLabel.isHidden = true
-            self.backgroundContainerView.layer.cornerRadius = 16
-            self.backgroundContainerView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         }
     }
     
@@ -70,14 +58,16 @@ class QuickPhraseTableViewCell: UITableViewCell {
             self.iconImageView.tintColor = UIColor(named: "Blue (Dark)")
             self.iconContainerView.backgroundColor = UIColor(named: "Blue (Light)")
         }
-    }    
+    }
+    
+    func setTipVisibility(isHidden: Bool) {
+        self.tipLabel.text = isHidden ? nil : "Tip: Select text to say it loud."
+        self.tipLabel.isHidden = isHidden
+    }
     
     override func prepareForReuse() {
         self.phraseLabel.text = nil
-        self.tipLabel.text = nil
-        self.tipLabel.isHidden = true
-        self.backgroundContainerView.layer.cornerRadius = 0
-        self.backgroundContainerView.layer.maskedCorners = []
+        self.setTipVisibility(isHidden: true)
         self.tapHandlerButton.tag = 0
     }
 }

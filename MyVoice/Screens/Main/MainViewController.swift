@@ -7,6 +7,7 @@
 
 import UIKit
 import RxCocoa
+import RxDataSources
 
 class MainViewController: BaseViewController<MainViewModel> {
     
@@ -24,6 +25,7 @@ class MainViewController: BaseViewController<MainViewModel> {
     
     @IBOutlet weak var quickAccessTableView: ContentSizedTableView!
     
+    var dataSource: RxTableViewSectionedAnimatedDataSource<QuickPhraseSection>!
     var currentSpeakingCellRow: Int?
     
     override func viewDidLoad() {
@@ -32,6 +34,7 @@ class MainViewController: BaseViewController<MainViewModel> {
         self.title = "MyVoice"
         self.view.backgroundColor = UIColor(named: "Blue (Light)")
         self.quickAccessTableView.delegate = self
+        self.quickAccessTableView.layer.cornerRadius = 16
         self.addNavigationBarButtons()
         self.setupLargeButtons()
         self.setupPlaceholderLabel()
@@ -45,23 +48,23 @@ class MainViewController: BaseViewController<MainViewModel> {
         
         self.quickAccessTableView.register(UINib(nibName: "QuickPhraseTableViewCell", bundle: nil), forCellReuseIdentifier: "quickPhraseTableViewCell")
         
-        // TODO: Remove subscribing to isSpeaking, store currently active phrase/cell in this view
-        viewModel.quickPhraseItems.bind(to: quickAccessTableView.rx.items(cellIdentifier: "quickPhraseTableViewCell", cellType: QuickPhraseTableViewCell.self)) { [weak self] (row, item, cell) in
-            guard let self = self, let numberOfItems = try? viewModel.quickPhraseItems.value().count else { return }
-            if numberOfItems == 1 {
-                cell.setupCell(phrase: item.phrase, type: .onlyCell)
-            } else if row == 0 {
-                cell.setupCell(phrase: item.phrase, type: .firstCell)
-            } else if row == numberOfItems - 1 {
-                cell.setupCell(phrase: item.phrase, type: .lastCell)
-            } else {
-                cell.setupCell(phrase: item.phrase, type: .defaultCell)
-            }
-            
-            cell.tapHandlerButton.tag = row
-            cell.tapHandlerButton.addTarget(self, action: #selector(self.quickPhraseCellSelected(sender:)), for: .touchUpInside)
-        }.disposed(by: disposeBag)
+        self.dataSource = self.getDataSourceForQuickPhrase()
         
+        viewModel.sections.bind(to: quickAccessTableView.rx.items(dataSource: dataSource))
+            .disposed(by: disposeBag)
+        
+        quickAccessTableView.rx.setDelegate(self)
+            .disposed(by: disposeBag)
+        
+        viewModel.sections.subscribe(onNext: { [weak self] sections in
+            let quickPhraseItems = sections[0].items
+            if quickPhraseItems.isEmpty {
+                // TODO: Show placeholder
+            } else {
+                // TODO: Hide placeholder
+            }
+        }).disposed(by: disposeBag)
+
         viewModel.isSpeaking.skip(1).subscribe(onNext: { [weak self] isSpeaking in
             self?.speakButton.isSpeaking.onNext(isSpeaking)
             if let speakingCellRow = self?.currentSpeakingCellRow, isSpeaking == false {
@@ -76,16 +79,37 @@ class MainViewController: BaseViewController<MainViewModel> {
         }).disposed(by: disposeBag)
     }
     
+    func getDataSourceForQuickPhrase() -> RxTableViewSectionedAnimatedDataSource<QuickPhraseSection> {
+        return RxTableViewSectionedAnimatedDataSource<QuickPhraseSection> (
+            configureCell: { [weak self] (dataSource, tableView, indexPath, item) in
+                guard let self = self else { return UITableViewCell() }
+                if let cell = tableView.dequeueReusableCell(withIdentifier: "quickPhraseTableViewCell") as? QuickPhraseTableViewCell {
+                    cell.setupCell(phrase: item.phrase, isFirstCell: indexPath.row == 0)
+                    cell.tapHandlerButton.tag = indexPath.row
+                    cell.tapHandlerButton.addTarget(self, action: #selector(self.quickPhraseCellSelected(sender:)), for: .touchUpInside)
+                    return cell
+                } else {
+                    return UITableViewCell()
+                }
+            },
+            canEditRowAtIndexPath: { _, _ in
+                return true
+            }
+        )
+    }
+    
     // MARK: Handling speaking action for cell
     
+    // FIXME: Can't store information in tag, after removing cell it's no longer valid
+    // TODO: Stop speaking when tapping on other cell or tapping on current speaking cell
     @objc
     private func quickPhraseCellSelected(sender: UIButton) {
         self.speakPhraseFromCell(with: sender.tag)
     }
     
     private func speakPhraseFromCell(with row: Int) {
-        guard let items = try? viewModel.quickPhraseItems.value(), items.indices.contains(row) else { return }
-        let phrase = items[row].phrase
+        guard let sections = try? viewModel.sections.value(), sections[0].items.indices.contains(row) else { return }
+        let phrase = sections[0].items[row].phrase
         let cell = self.quickAccessTableView.cellForRow(at: IndexPath(row: row, section: 0)) as? QuickPhraseTableViewCell
         cell?.setupIcon(isSpeaking: true)
         self.currentSpeakingCellRow = row
@@ -172,7 +196,11 @@ class MainViewController: BaseViewController<MainViewModel> {
     
     @IBAction
     func saveButtonDidTouch(_ sender: Any) {
-        logSuccess(with: "Save")
+        guard let phrase = mainTextView.text, phrase.isEmpty == false else { return }
+        if let currentFirstCell = self.quickAccessTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? QuickPhraseTableViewCell {
+            currentFirstCell.setTipVisibility(isHidden: true)
+        }
+        self.viewModel.addQuickPhraseItem(phrase: phrase)
     }
     
     @IBAction
@@ -181,4 +209,17 @@ class MainViewController: BaseViewController<MainViewModel> {
     }
 }
 
-extension MainViewController: UITableViewDelegate { }
+extension MainViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let delete = UIContextualAction(style: .destructive, title: "Remove") { [weak self] (action, view, completion) in
+            if indexPath.row == 0, let nextFirstCell = self?.quickAccessTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? QuickPhraseTableViewCell {
+                completion(true)
+                nextFirstCell.setTipVisibility(isHidden: false)
+            }
+            self?.viewModel.removeQuickPhraseItem(at: indexPath.row)
+        }
+        delete.backgroundColor = UIColor(named: "Red (Main)")
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+}

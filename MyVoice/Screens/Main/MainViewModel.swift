@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import RxDataSources
 
 final class MainViewModel: BaseViewModel {
     
@@ -14,13 +15,13 @@ final class MainViewModel: BaseViewModel {
     
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     
-    let quickPhraseItems = BehaviorSubject<[QuickPhraseModel]>(value: [])
+    let sections = BehaviorSubject<[QuickPhraseSection]>(value: [])
     
     override init() {
         self.textToSpeechService = TextToSpeechService()
         super.init()
         self.bindService()
-        self.quickPhraseItems.onNext(self.getQuickPhrasesForDebug())
+        self.sections.onNext(self.getQuickPhrasesForDebug())
     }
     
     private func bindService() {
@@ -37,8 +38,31 @@ final class MainViewModel: BaseViewModel {
         self.textToSpeechService.stopSpeaking()
     }
     
+    // TODO: Adding/removing items to sections
+    
+    func addQuickPhraseItem(phrase: String) {
+        do {
+            let item = QuickPhraseModel(phrase: phrase, createdAt: Date(), prefferedLanguage: Locale.preferredLanguages[0])
+            var sections = try self.sections.value()
+            sections[0].items.insert(item, at: 0)
+            self.sections.onNext(sections)
+        } catch {
+            logError(with: error)
+        }
+    }
+    
+    func removeQuickPhraseItem(at row: Int) {
+        do {
+            var sections = try self.sections.value()
+            sections[0].items.remove(at: row)
+            self.sections.onNext(sections)
+        } catch {
+            logError(with: error)
+        }
+    }
+    
     /// Generates quick phrases for testing purposes
-    private func getQuickPhrasesForDebug() -> [QuickPhraseModel] {
+    private func getQuickPhrasesForDebug() -> [QuickPhraseSection] {
         let language = Locale.preferredLanguages[0]
         let date = Date()
         let quickPhrase1 = QuickPhraseModel(phrase: "Where is the nearest train station? I can't find it on the map.", createdAt: date, prefferedLanguage: language)
@@ -48,6 +72,6 @@ final class MainViewModel: BaseViewModel {
         let quickPhrase5 = QuickPhraseModel(phrase: "Sorry, do you know where is the bathroom?", createdAt: date, prefferedLanguage: language)
         let quickPhrase6 = QuickPhraseModel(phrase: "I lost my wallet. Can you help me find it?", createdAt: date, prefferedLanguage: language)
         let quickPhrase7 = QuickPhraseModel(phrase: "I'm still waiting for my Android TV 11 update.", createdAt: date, prefferedLanguage: language)
-        return [quickPhrase1, quickPhrase2, quickPhrase3, quickPhrase4, quickPhrase5, quickPhrase6, quickPhrase7]
+        return [QuickPhraseSection(items: [quickPhrase1, quickPhrase2, quickPhrase3, quickPhrase4, quickPhrase5, quickPhrase6, quickPhrase7])]
     }
 }

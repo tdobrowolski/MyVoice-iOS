@@ -8,5 +8,6 @@ target 'MyVoice' do
   # Pods for MyVoice
   pod 'RxSwift'
   pod 'RxCocoa'
+  pod 'RxDataSources'
 
 end
