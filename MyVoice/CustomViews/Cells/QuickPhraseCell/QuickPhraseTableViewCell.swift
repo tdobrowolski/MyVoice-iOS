@@ -9,13 +9,6 @@ import UIKit
 import RxSwift
 
 class QuickPhraseTableViewCell: UITableViewCell {
-
-    enum CellOrderType {
-        case onlyCell
-        case firstCell
-        case defaultCell
-        case lastCell
-    }
     
     @IBOutlet weak var backgroundContainerView: UIView!
     @IBOutlet weak var tapHandlerButton: UIButton!
@@ -26,12 +19,16 @@ class QuickPhraseTableViewCell: UITableViewCell {
     @IBOutlet weak var phraseLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
     
+    let isSpeaking = BehaviorSubject<Bool>(value: false)
+    lazy var disposeBag = DisposeBag()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 62).isActive = true
     }
     
     func setupCell(phrase: String, isFirstCell: Bool) {
+        self.bind()
         self.setupIcon()
         self.phraseLabel.text = phrase
         self.selectionStyle = .none
@@ -44,6 +41,14 @@ class QuickPhraseTableViewCell: UITableViewCell {
         } else {
             self.tipLabel.isHidden = true
         }
+    }
+    
+    private func bind() {
+        self.isSpeaking.subscribe(onNext: { [weak self] isSpeaking in
+            if isSpeaking == false {
+                self?.setupIcon(isSpeaking: false)
+            }
+        }).disposed(by: disposeBag)
     }
     
     // MARK: Setuping layout
@@ -68,6 +73,6 @@ class QuickPhraseTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         self.phraseLabel.text = nil
         self.setTipVisibility(isHidden: true)
-        self.tapHandlerButton.tag = 0
+        self.disposeBag = DisposeBag()
     }
 }

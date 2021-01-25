@@ -26,7 +26,6 @@ class MainViewController: BaseViewController<MainViewModel> {
     @IBOutlet weak var quickAccessTableView: ContentSizedTableView!
     
     var dataSource: RxTableViewSectionedAnimatedDataSource<QuickPhraseSection>!
-    var currentSpeakingCellRow: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +41,7 @@ class MainViewController: BaseViewController<MainViewModel> {
         self.hideKeyboardWhenTappedAround()
         self.listenForActiveStateChange()
     }
-        
+    
     override func bindViewModel(viewModel: MainViewModel) {
         super.bindViewModel(viewModel: viewModel)
         
@@ -67,11 +66,6 @@ class MainViewController: BaseViewController<MainViewModel> {
 
         viewModel.isSpeaking.skip(1).subscribe(onNext: { [weak self] isSpeaking in
             self?.speakButton.isSpeaking.onNext(isSpeaking)
-            if let speakingCellRow = self?.currentSpeakingCellRow, isSpeaking == false {
-                let cell = self?.quickAccessTableView.cellForRow(at: IndexPath(row: speakingCellRow, section: 0)) as? QuickPhraseTableViewCell
-                cell?.setupIcon(isSpeaking: false)
-                self?.currentSpeakingCellRow = nil
-            }
         }).disposed(by: disposeBag)
         
         self.mainTextView.rx.text.subscribe(onNext: { [weak self] text in
@@ -79,14 +73,21 @@ class MainViewController: BaseViewController<MainViewModel> {
         }).disposed(by: disposeBag)
     }
     
+    
+    // FIXME: Check why some phrases are said two times
+    // FIXME: Fix memory leak, cells are not deinitialised
     func getDataSourceForQuickPhrase() -> RxTableViewSectionedAnimatedDataSource<QuickPhraseSection> {
         return RxTableViewSectionedAnimatedDataSource<QuickPhraseSection> (
             configureCell: { [weak self] (dataSource, tableView, indexPath, item) in
                 guard let self = self else { return UITableViewCell() }
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "quickPhraseTableViewCell") as? QuickPhraseTableViewCell {
                     cell.setupCell(phrase: item.phrase, isFirstCell: indexPath.row == 0)
-                    cell.tapHandlerButton.tag = indexPath.row
-                    cell.tapHandlerButton.addTarget(self, action: #selector(self.quickPhraseCellSelected(sender:)), for: .touchUpInside)
+                    self.viewModel.isSpeaking.subscribe(cell.isSpeaking).disposed(by: cell.disposeBag)
+                    cell.tapHandlerButton.rx.tap.subscribe { [weak self] _ in
+                        guard let text = cell.phraseLabel?.text, text.isEmpty == false else { return }
+                        self?.viewModel.startSpeaking(text)
+                        cell.setupIcon(isSpeaking: true)
+                    }.disposed(by: cell.disposeBag)
                     return cell
                 } else {
                     return UITableViewCell()
@@ -96,24 +97,6 @@ class MainViewController: BaseViewController<MainViewModel> {
                 return true
             }
         )
-    }
-    
-    // MARK: Handling speaking action for cell
-    
-    // FIXME: Can't store information in tag, after removing cell it's no longer valid
-    // TODO: Stop speaking when tapping on other cell or tapping on current speaking cell
-    @objc
-    private func quickPhraseCellSelected(sender: UIButton) {
-        self.speakPhraseFromCell(with: sender.tag)
-    }
-    
-    private func speakPhraseFromCell(with row: Int) {
-        guard let sections = try? viewModel.sections.value(), sections[0].items.indices.contains(row) else { return }
-        let phrase = sections[0].items[row].phrase
-        let cell = self.quickAccessTableView.cellForRow(at: IndexPath(row: row, section: 0)) as? QuickPhraseTableViewCell
-        cell?.setupIcon(isSpeaking: true)
-        self.currentSpeakingCellRow = row
-        self.viewModel.startSpeaking(phrase)
     }
     
     // MARK: Setting up
