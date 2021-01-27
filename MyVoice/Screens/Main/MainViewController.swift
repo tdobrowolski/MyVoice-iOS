@@ -155,7 +155,11 @@ class MainViewController: BaseViewController<MainViewModel> {
     
     @objc
     private func settingsDidTouch() {
-        
+        self.viewModel.stopSpeaking()
+        let settingsViewModel = SettingsViewModel()
+        let settingsViewController = SettingsViewController(viewModel: settingsViewModel, nibName: "SettingsViewController")
+        let settingsNavigationController = DefaultNavigationController(rootViewController: settingsViewController)
+        self.present(settingsNavigationController, animated: true, completion: nil)
     }
     
     @IBAction
@@ -164,7 +168,10 @@ class MainViewController: BaseViewController<MainViewModel> {
             if try viewModel.isSpeaking.value() == true {
                 self.viewModel.stopSpeaking()
             } else {
-                guard let text = self.mainTextView.text, text.isEmpty == false else { return }
+                guard let text = self.mainTextView.text, text.isEmpty == false else {
+                    self.placeholderLabel.flashWithColor(UIColor(named: "Orange (Main)") ?? .orange)
+                    return
+                }
                 self.viewModel.startSpeaking(text)
             }
         } catch {
@@ -179,7 +186,10 @@ class MainViewController: BaseViewController<MainViewModel> {
     
     @IBAction
     func saveButtonDidTouch(_ sender: Any) {
-        guard let phrase = mainTextView.text, phrase.isEmpty == false else { return }
+        guard let phrase = mainTextView.text, phrase.isEmpty == false else {
+            self.placeholderLabel.flashWithColor(UIColor(named: "Orange (Main)") ?? .orange)
+            return
+        }
         if let currentFirstCell = self.quickAccessTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? QuickPhraseTableViewCell {
             currentFirstCell.setTipVisibility(isHidden: true)
         }

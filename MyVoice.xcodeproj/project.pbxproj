@@ -22,6 +22,10 @@
 		E115577725B4C93C0093851B /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E115577325B4C93C0093851B /* Poppins-Regular.ttf */; };
 		E115577E25B4CA0E0093851B /* LargeIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115577D25B4CA0E0093851B /* LargeIconButton.swift */; };
 		E115578325B4CA350093851B /* LargeIconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E115578225B4CA350093851B /* LargeIconButton.xib */; };
+		E1771A8025C21523003FE247 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */; };
+		E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A8B25C21680003FE247 /* SettingsViewController.swift */; };
+		E1771A8E25C21680003FE247 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1771A8C25C21680003FE247 /* SettingsViewController.xib */; };
+		E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A9025C2168F003FE247 /* SettingsViewModel.swift */; };
 		E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */; };
 		E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */; };
 		E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */; };
@@ -54,6 +58,10 @@
 		E115577325B4C93C0093851B /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		E115577D25B4CA0E0093851B /* LargeIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeIconButton.swift; sourceTree = "<group>"; };
 		E115578225B4CA350093851B /* LargeIconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeIconButton.xib; sourceTree = "<group>"; };
+		E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		E1771A8B25C21680003FE247 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		E1771A8C25C21680003FE247 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
+		E1771A9025C2168F003FE247 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseModel.swift; sourceTree = "<group>"; };
 		E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseTableViewCell.swift; sourceTree = "<group>"; };
 		E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickPhraseTableViewCell.xib; sourceTree = "<group>"; };
@@ -137,6 +145,7 @@
 		E115575925B4C51A0093851B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E1771A8225C21605003FE247 /* Settings */,
 				E115575D25B4C5390093851B /* Main */,
 			);
 			path = Screens;
@@ -145,8 +154,8 @@
 		E115575D25B4C5390093851B /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				E115575F25B4C56A0093851B /* MainViewController.swift */,
 				E115576025B4C56A0093851B /* MainViewController.xib */,
+				E115575F25B4C56A0093851B /* MainViewController.swift */,
 				E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */,
 			);
 			path = Main;
@@ -166,6 +175,7 @@
 			children = (
 				E115576925B4C5C20093851B /* ViewController+Extensions.swift */,
 				E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */,
+				E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -217,6 +227,16 @@
 				E115578225B4CA350093851B /* LargeIconButton.xib */,
 			);
 			path = LargeIconButton;
+			sourceTree = "<group>";
+		};
+		E1771A8225C21605003FE247 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E1771A8C25C21680003FE247 /* SettingsViewController.xib */,
+				E1771A8B25C21680003FE247 /* SettingsViewController.swift */,
+				E1771A9025C2168F003FE247 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		E197348F25B8CFA900F3A78B /* Cells */ = {
@@ -337,6 +357,7 @@
 			files = (
 				E115577525B4C93C0093851B /* Poppins-SemiBold.ttf in Resources */,
 				E115577625B4C93C0093851B /* Poppins-Bold.ttf in Resources */,
+				E1771A8E25C21680003FE247 /* SettingsViewController.xib in Resources */,
 				E115577725B4C93C0093851B /* Poppins-Regular.ttf in Resources */,
 				E115574F25B4C42B0093851B /* LaunchScreen.storyboard in Resources */,
 				E115577425B4C93C0093851B /* Poppins-Medium.ttf in Resources */,
@@ -409,9 +430,12 @@
 				E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */,
 				E115576A25B4C5C20093851B /* ViewController+Extensions.swift in Sources */,
 				E115576125B4C56A0093851B /* MainViewController.swift in Sources */,
+				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
+				E1771A8025C21523003FE247 /* UILabel+Extensions.swift in Sources */,
 				E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */,
 				E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */,
 				E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */,
+				E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
