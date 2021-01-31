@@ -8,7 +8,7 @@
 import UIKit
 import RxSwift
 
-class QuickPhraseTableViewCell: UITableViewCell {
+final class QuickPhraseTableViewCell: UITableViewCell {
     
     @IBOutlet weak var backgroundContainerView: UIView!
     @IBOutlet weak var tapHandlerButton: UIButton!

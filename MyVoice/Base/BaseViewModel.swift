@@ -29,4 +29,7 @@ class BaseViewModel: NSObject {
         print("🔴 Error: \(error.localizedDescription)")
     }
     
+    deinit {
+        print("deinit: \(self)")
+    }
 }

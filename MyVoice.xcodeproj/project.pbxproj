@@ -22,6 +22,8 @@
 		E115577725B4C93C0093851B /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E115577325B4C93C0093851B /* Poppins-Regular.ttf */; };
 		E115577E25B4CA0E0093851B /* LargeIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115577D25B4CA0E0093851B /* LargeIconButton.swift */; };
 		E115578325B4CA350093851B /* LargeIconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E115578225B4CA350093851B /* LargeIconButton.xib */; };
+		E127353925C617BE007993EA /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127353825C617BE007993EA /* SettingModel.swift */; };
+		E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127353B25C61DEB007993EA /* UserDefaultsService.swift */; };
 		E1771A8025C21523003FE247 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */; };
 		E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A8B25C21680003FE247 /* SettingsViewController.swift */; };
 		E1771A8E25C21680003FE247 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1771A8C25C21680003FE247 /* SettingsViewController.xib */; };
@@ -35,6 +37,8 @@
 		E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */; };
 		E1E6C2CB25B4D24800774B17 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */; };
 		E1E6C2CE25B4D30300774B17 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1E6C2CD25B4D30300774B17 /* Colors.xcassets */; };
+		E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */; };
+		E1E98A8325C6C77200F531BD /* SliderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E98A8125C6C77200F531BD /* SliderTableViewCell.xib */; };
 		E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */; };
 		E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +62,8 @@
 		E115577325B4C93C0093851B /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		E115577D25B4CA0E0093851B /* LargeIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeIconButton.swift; sourceTree = "<group>"; };
 		E115578225B4CA350093851B /* LargeIconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeIconButton.xib; sourceTree = "<group>"; };
+		E127353825C617BE007993EA /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		E127353B25C61DEB007993EA /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		E1771A8B25C21680003FE247 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1771A8C25C21680003FE247 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -71,6 +77,8 @@
 		E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E1E6C2CD25B4D30300774B17 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = MyVoice/Colors.xcassets; sourceTree = SOURCE_ROOT; };
+		E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
+		E1E98A8125C6C77200F531BD /* SliderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderTableViewCell.xib; sourceTree = "<group>"; };
 		E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
 		E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		FC90D1488A315B7CCEC8090F /* Pods_MyVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +250,7 @@
 		E197348F25B8CFA900F3A78B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				E1E98A7F25C6C73B00F531BD /* SliderCell */,
 				E197349025B8CFAF00F3A78B /* QuickPhraseCell */,
 			);
 			path = Cells;
@@ -260,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */,
+				E127353825C617BE007993EA /* SettingModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -288,10 +298,20 @@
 			path = TableViews;
 			sourceTree = "<group>";
 		};
+		E1E98A7F25C6C73B00F531BD /* SliderCell */ = {
+			isa = PBXGroup;
+			children = (
+				E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */,
+				E1E98A8125C6C77200F531BD /* SliderTableViewCell.xib */,
+			);
+			path = SliderCell;
+			sourceTree = "<group>";
+		};
 		E1FFC29225B625DD00E8F1C0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */,
+				E127353B25C61DEB007993EA /* UserDefaultsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -308,6 +328,7 @@
 				E115573C25B4C4290093851B /* Frameworks */,
 				E115573D25B4C4290093851B /* Resources */,
 				962F8BF629A34BFE7CE393D4 /* [CP] Embed Pods Frameworks */,
+				E127353325C60B3E007993EA /* Auto-increment build number */,
 			);
 			buildRules = (
 			);
@@ -357,6 +378,7 @@
 			files = (
 				E115577525B4C93C0093851B /* Poppins-SemiBold.ttf in Resources */,
 				E115577625B4C93C0093851B /* Poppins-Bold.ttf in Resources */,
+				E1E98A8325C6C77200F531BD /* SliderTableViewCell.xib in Resources */,
 				E1771A8E25C21680003FE247 /* SettingsViewController.xib in Resources */,
 				E115577725B4C93C0093851B /* Poppins-Regular.ttf in Resources */,
 				E115574F25B4C42B0093851B /* LaunchScreen.storyboard in Resources */,
@@ -411,6 +433,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E127353325C60B3E007993EA /* Auto-increment build number */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Auto-increment build number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PLIST=\"${INFOPLIST_FILE}\"\nPLB=/usr/libexec/PlistBuddy\nLAST_NUMBER=$($PLB -c \"Print CFBundleVersion\" \"$PLIST\")\nNEW_VERSION=$(($LAST_NUMBER + 1))\n$PLB -c \"Set :CFBundleVersion $NEW_VERSION\" \"$PLIST\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -422,13 +462,16 @@
 				E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */,
 				E115576625B4C5A10093851B /* BaseViewController.swift in Sources */,
 				E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */,
+				E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */,
 				E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */,
 				E115574325B4C4290093851B /* AppDelegate.swift in Sources */,
 				E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */,
 				E115577E25B4CA0E0093851B /* LargeIconButton.swift in Sources */,
+				E127353925C617BE007993EA /* SettingModel.swift in Sources */,
 				E115574525B4C4290093851B /* SceneDelegate.swift in Sources */,
 				E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */,
 				E115576A25B4C5C20093851B /* ViewController+Extensions.swift in Sources */,
+				E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */,
 				E115576125B4C56A0093851B /* MainViewController.swift in Sources */,
 				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
 				E1771A8025C21523003FE247 /* UILabel+Extensions.swift in Sources */,

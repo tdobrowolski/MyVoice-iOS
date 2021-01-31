@@ -41,4 +41,8 @@ class BaseViewController<BaseViewModel>: UIViewController {
     func dismissKeyboard() {
         self.view.endEditing(true)
     }
+    
+    deinit {
+        print("deinit: \(self)")
+    }
 }
