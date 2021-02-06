@@ -6,22 +6,25 @@
 //
 
 import RxSwift
+import AVFoundation
 
 final class SettingsViewModel: BaseViewModel {
     
     private let userDefaultsService: UserDefaultsService
+    private let textToSpeechService: TextToSpeechService
     
     let sections = BehaviorSubject<[SettingsSection]>(value: [])
     
     override init() {
         self.userDefaultsService = UserDefaultsService()
+        self.textToSpeechService = TextToSpeechService() // TODO: Refactor to pass existing service
         super.init()
         self.sections.onNext(self.getAvailableSettings())
     }
     
     private func getAvailableSettings() -> [SettingsSection] {
         // Section 1
-        let languageSetting = SettingModel(primaryText: "Speech language", secondaryText: "Default") // TODO: Get real language which is set
+        let languageSetting = SettingModel(primaryText: "Speech voice", secondaryText: "Default") // TODO: Get real voice which is set
         
         // Section 2
         let rateSetting = SettingModel(primaryText: "", secondaryText: nil)
@@ -32,10 +35,10 @@ final class SettingsViewModel: BaseViewModel {
         // Section 4
         let rateAppSetting = SettingModel(primaryText: "Rate this app", secondaryText: nil)
         let feedbackSetting = SettingModel(primaryText: "Send feedback", secondaryText: nil)
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] ?? "Unknown"
         
-        // TODO: Set info about Infinity and app version/build number
-        return [SettingsSection(type: .speechLanguage,
-                                footer: "Language, which is used for speaking phrases. This will not affect your system language.",
+        return [SettingsSection(type: .speechVoice,
+                                footer: "Language and voice, which is used for speaking phrases. This will not affect your system language.",
                                 items: [languageSetting]),
                 SettingsSection(type: .speechRate,
                                 footer: "Set how fast your phrases should be spoken.",
@@ -44,6 +47,7 @@ final class SettingsViewModel: BaseViewModel {
                                 footer: "Voice pitch, used for speaking phrases.",
                                 items: [pitchSetting]),
                 SettingsSection(type: .other,
+                                footer: "Version: \(appVersion)",
                                 items: [rateAppSetting, feedbackSetting])]
     }
 }

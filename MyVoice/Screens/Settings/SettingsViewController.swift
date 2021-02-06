@@ -8,6 +8,7 @@
 import UIKit
 import RxCocoa
 import RxDataSources
+import MessageUI
 
 final class SettingsViewController: BaseViewController<SettingsViewModel> {
     
@@ -58,7 +59,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         let sectionType = sections[indexPath.section].type
         
         switch sectionType {
-        case .speechLanguage, .other:
+        case .speechVoice, .other:
             let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell") ?? UITableViewCell(style: .value1, reuseIdentifier: "defaultCell")
             cell.textLabel?.text = sections[indexPath.section].items[indexPath.row].primaryText
             cell.textLabel?.font = UIFont(name: "Poppins-Medium", size: 15) ?? UIFont.systemFont(ofSize: 15)
@@ -92,7 +93,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     // MARK: Navigation Bar items methods
     
     private func addNavigationBarButtons() {
-        let font = UIFont(name: "Poppins-Medium", size: 17) ?? UIFont.systemFont(ofSize: 17)
+        let font = UIFont(name: "Poppins-SemiBold", size: 17) ?? UIFont.systemFont(ofSize: 17)
         let color = UIColor(named: "Orange (Main)") ?? .orange
         
         let rightItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDidTouch))
@@ -113,9 +114,74 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     private func setupTableView() {
         
     }
+    
+    // MARK: Handle settings actions
+    
+    private func showLanguagePicker() {
+        let languagePickerViewModel = LanguagePickerViewModel()
+        let languagePickerViewController = LanguagePickerViewController(viewModel: languagePickerViewModel, nibName: "LanguagePickerViewController")
+        let languagePickerNavigationController = DefaultNavigationController(rootViewController: languagePickerViewController)
+        self.present(languagePickerNavigationController, animated: true, completion: nil)
+    }
+    
+    private func openAppStoreForReview() {
+        guard let writeReviewURL = URL(string: "") else { return }
+        UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
+    }
+    
+    private func composeFeedbackMail() {
+        let mailViewController = MFMailComposeViewController()
+        mailViewController.mailComposeDelegate = self
+        mailViewController.setToRecipients(["mail@gmail.com"]) // TODO: Add mail
+        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] {
+            mailViewController.setSubject("MyVoice App (\(appVersion)) - Feedback")
+        } else {
+            mailViewController.setSubject("MyVoice App - Feedback")
+        }
+        self.present(mailViewController, animated: true)
+    }
 }
 
 extension SettingsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        guard let sections = try? self.viewModel.sections.value() else { return nil }
+        let sectionType = sections[indexPath.section].type
+        
+        switch sectionType {
+        case .speechVoice, .other:
+            return indexPath
+        case .speechRate, .speechPitch:
+            return nil
+        }
+    }
+        
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let sections = try? self.viewModel.sections.value() else { return }
+        let sectionType = sections[indexPath.section].type
+        
+        switch sectionType {
+        case .speechVoice:
+            self.showLanguagePicker()
+        case .speechRate, .speechPitch:
+            return
+        case .other:
+            switch indexPath.row {
+            case 0:
+                self.openAppStoreForReview()
+            case 1:
+                if MFMailComposeViewController.canSendMail() {
+                    self.composeFeedbackMail()
+                } else {
+                    // TODO: Show mail error alert
+                }
+            default:
+                return
+            }
+        }
+        
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
@@ -131,5 +197,12 @@ extension SettingsViewController: UITableViewDelegate {
         guard let footer = view as? UITableViewHeaderFooterView else { return }
         footer.textLabel?.font = UIFont.init(name: "Poppins-Regular", size: 12)
         footer.textLabel?.textColor = UIColor(named: "Blue (Dark)")
+    }
+}
+
+extension SettingsViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }

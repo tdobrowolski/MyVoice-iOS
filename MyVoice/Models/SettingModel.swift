@@ -10,7 +10,7 @@ import RxDataSources
 struct SettingsSection {
     
     enum SectionType: String {
-        case speechLanguage = "Speech settings"
+        case speechVoice = "Speech settings"
         case speechRate = "Speech rate"
         case speechPitch = "Speech pitch"
         case other = "Other"
