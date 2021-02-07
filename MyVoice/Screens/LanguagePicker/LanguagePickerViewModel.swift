@@ -8,15 +8,20 @@
 import AVFoundation
 import RxSwift
 
+protocol VoiceSelectedDelegate: class {
+    func userSelectedVoice()
+}
+
 final class LanguagePickerViewModel: BaseViewModel {
     
     private let userDefaultsService: UserDefaultsService
+    weak var delegate: VoiceSelectedDelegate?
     
     let availableVoices = BehaviorSubject<[AVSpeechSynthesisVoice]>(value: [])
     
-    override init() {
+    init(delegate: VoiceSelectedDelegate?) {
         self.userDefaultsService = UserDefaultsService()
-        super.init()
+        self.delegate = delegate
         self.availableVoices.onNext(AVSpeechSynthesisVoice.speechVoices())
     }
     
@@ -40,6 +45,7 @@ final class LanguagePickerViewModel: BaseViewModel {
         guard let voices = try? self.availableVoices.value() else { return }
         let selectedVoice = voices[indexPath.row]
         self.userDefaultsService.setSpeechVoice(for: selectedVoice.identifier)
+        self.delegate?.userSelectedVoice()
     }
 }
 

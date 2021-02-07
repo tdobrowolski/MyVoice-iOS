@@ -19,12 +19,12 @@ final class SettingsViewModel: BaseViewModel {
         self.userDefaultsService = UserDefaultsService()
         self.textToSpeechService = TextToSpeechService() // TODO: Refactor to pass existing service
         super.init()
-        self.sections.onNext(self.getAvailableSettings())
+        self.refreshSelectedVoiceLabel()
     }
     
     private func getAvailableSettings() -> [SettingsSection] {
         // Section 1
-        let languageSetting = SettingModel(primaryText: "Speech voice", secondaryText: "Default") // TODO: Get real voice which is set
+        let languageSetting = SettingModel(primaryText: "Speech voice", secondaryText: self.getSelectedVoiceName())
         
         // Section 2
         let rateSetting = SettingModel(primaryText: "", secondaryText: nil)
@@ -49,5 +49,24 @@ final class SettingsViewModel: BaseViewModel {
                 SettingsSection(type: .other,
                                 footer: "Version: \(appVersion)",
                                 items: [rateAppSetting, feedbackSetting])]
+    }
+    
+    func getSelectedVoiceName() -> String {
+        if let selectedVoiceIdentifier = userDefaultsService.getSpeechVoiceIdentifier(), let selectedVoice = AVSpeechSynthesisVoice(identifier: selectedVoiceIdentifier) {
+            let fullLanguage = NSLocale(localeIdentifier: NSLocale.current.identifier).localizedString(forLanguageCode: selectedVoice.language) ?? "Default"
+            return "\(fullLanguage) - \(selectedVoice.name)"
+        } else {
+            let defaultLanguageIdentifier = AVSpeechSynthesisVoice.currentLanguageCode()
+            if let defaultVoice = AVSpeechSynthesisVoice(language: defaultLanguageIdentifier) {
+                let fullLanguage = NSLocale(localeIdentifier: NSLocale.current.identifier).localizedString(forLanguageCode: defaultVoice.language) ?? "Default"
+                return "\(fullLanguage) - \(defaultVoice.name)"
+            } else {
+                return "Default"
+            }
+        }
+    }
+    
+    func refreshSelectedVoiceLabel() {
+        self.sections.onNext(self.getAvailableSettings())
     }
 }

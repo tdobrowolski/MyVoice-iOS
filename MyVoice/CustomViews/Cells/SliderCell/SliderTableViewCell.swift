@@ -14,10 +14,9 @@ final class SliderTableViewCell: UITableViewCell {
         case speechPitch(currentValue: Float)
     }
     
-    var defaultSlider: UISlider!
+    @IBOutlet weak var defaultSlider: UISlider!
     
     func setupSlider(for dataType: SliderDataType) {
-        self.setSliderConstraints()
         self.defaultSlider.tintColor = UIColor(named: "Orange (Main)")
         self.defaultSlider.minimumTrackTintColor = UIColor(named: "Orange (Main)")
         self.defaultSlider.maximumTrackTintColor = UIColor(named: "Blue (Light)")
@@ -42,18 +41,6 @@ final class SliderTableViewCell: UITableViewCell {
             self.defaultSlider.maximumValueImage = UIImage(systemName: "plus.circle.fill",
                                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .bold, scale: .large))
             self.defaultSlider.value = currentValue
-        }
-    }
-    
-    private func setSliderConstraints() {
-        if self.defaultSlider == nil {
-            self.defaultSlider = UISlider(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
-            self.contentView.addSubview(self.defaultSlider)
-            self.contentView.addConstraint(NSLayoutConstraint(item: self.defaultSlider!, attribute: .leading, relatedBy: .equal, toItem: self.contentView, attribute: .leading, multiplier: 1, constant: 16))
-            self.contentView.addConstraint(NSLayoutConstraint(item: self.defaultSlider!, attribute: .trailing, relatedBy: .equal, toItem: self.contentView, attribute: .trailing, multiplier: 1, constant: -16))
-            self.contentView.addConstraint(NSLayoutConstraint(item: self.defaultSlider!, attribute: .top, relatedBy: .equal, toItem: self.contentView, attribute: .top, multiplier: 1, constant: 6))
-            self.contentView.addConstraint(NSLayoutConstraint(item: self.defaultSlider!, attribute: .bottom, relatedBy: .equal, toItem: self.contentView, attribute: .bottom, multiplier: 1, constant: -6))
-            self.defaultSlider.translatesAutoresizingMaskIntoConstraints = false
         }
     }
 }

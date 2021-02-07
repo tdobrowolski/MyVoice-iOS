@@ -20,10 +20,10 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         super.viewDidLoad()
         
         self.title = "Settings"
-        self.view.backgroundColor = UIColor(named: "Blue (Light)")
+        self.view.backgroundColor = UIColor(named: "Background")
         self.addNavigationBarButtons()
         
-        self.tableView.register(SliderTableViewCell.self, forCellReuseIdentifier: "sliderCell")
+        self.tableView.register(UINib(nibName: "SliderTableViewCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
         self.tableView.delaysContentTouches = false
     }
     
@@ -61,9 +61,10 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         switch sectionType {
         case .speechVoice, .other:
             let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell") ?? UITableViewCell(style: .value1, reuseIdentifier: "defaultCell")
+            cell.backgroundColor = UIColor(named: "White")
             cell.textLabel?.text = sections[indexPath.section].items[indexPath.row].primaryText
             cell.textLabel?.font = UIFont(name: "Poppins-Medium", size: 15) ?? UIFont.systemFont(ofSize: 15)
-            cell.textLabel?.textColor = UIColor(named: "Black)") ?? .black
+            cell.textLabel?.textColor = UIColor(named: "Black") ?? .black
             cell.detailTextLabel?.text = sections[indexPath.section].items[indexPath.row].secondaryText
             cell.detailTextLabel?.font = UIFont(name: "Poppins-Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
             cell.detailTextLabel?.textColor = UIColor(named: "Blue (Dark)") ?? .gray
@@ -71,10 +72,12 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             return cell
         case .speechRate:
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell") as! SliderTableViewCell
+            cell.backgroundColor = UIColor(named: "White")
             cell.setupSlider(for: .speechRate(currentValue: 1, minValue: 0, maxValue: 2)) // TODO: Pass real values
             return cell
         case .speechPitch:
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell") as! SliderTableViewCell
+            cell.backgroundColor = UIColor(named: "White")
             cell.setupSlider(for: .speechPitch(currentValue: 1)) // TODO: Pass real value
             return cell
         }
@@ -118,7 +121,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     // MARK: Handle settings actions
     
     private func showLanguagePicker() {
-        let languagePickerViewModel = LanguagePickerViewModel()
+        let languagePickerViewModel = LanguagePickerViewModel(delegate: self)
         let languagePickerViewController = LanguagePickerViewController(viewModel: languagePickerViewModel, nibName: "LanguagePickerViewController")
         let languagePickerNavigationController = DefaultNavigationController(rootViewController: languagePickerViewController)
         self.present(languagePickerNavigationController, animated: true, completion: nil)
@@ -204,5 +207,12 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
     
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension SettingsViewController: VoiceSelectedDelegate {
+    
+    func userSelectedVoice() {
+        self.viewModel.refreshSelectedVoiceLabel()
     }
 }

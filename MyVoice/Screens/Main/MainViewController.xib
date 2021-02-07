@@ -54,7 +54,7 @@
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-UM-1dv">
-                                    <rect key="frame" x="33" y="21" width="379" height="20.5"/>
+                                    <rect key="frame" x="34" y="21" width="378" height="20.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
@@ -122,7 +122,7 @@
                                 </view>
                                 <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Phl-JM-7vZ" customClass="ContentSizedTableView" customModule="MyVoice" customModuleProvider="target">
                                     <rect key="frame" x="16" y="396" width="382" height="406"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="White"/>
                                 </tableView>
                             </subviews>
                             <constraints>
@@ -134,7 +134,7 @@
                                 <constraint firstItem="Phl-JM-7vZ" firstAttribute="top" secondItem="czT-nz-l6l" secondAttribute="bottom" constant="16" id="IdA-EP-wnL"/>
                                 <constraint firstItem="czT-nz-l6l" firstAttribute="leading" secondItem="eQl-5I-Ypw" secondAttribute="leading" constant="16" id="QMM-tE-i93"/>
                                 <constraint firstItem="bL3-7m-SfT" firstAttribute="leading" secondItem="eQl-5I-Ypw" secondAttribute="leading" constant="16" id="Vsb-KN-DKI"/>
-                                <constraint firstItem="Btb-UM-1dv" firstAttribute="leading" secondItem="bL3-7m-SfT" secondAttribute="leading" constant="17" id="Yrf-Rc-R6h"/>
+                                <constraint firstItem="Btb-UM-1dv" firstAttribute="leading" secondItem="bL3-7m-SfT" secondAttribute="leading" constant="18" id="Yrf-Rc-R6h"/>
                                 <constraint firstAttribute="trailing" secondItem="rFk-io-9ZK" secondAttribute="trailing" constant="16" id="YuX-Au-wuL"/>
                                 <constraint firstAttribute="trailing" secondItem="czT-nz-l6l" secondAttribute="trailing" constant="16" id="aH4-dq-CPB"/>
                                 <constraint firstAttribute="trailing" secondItem="Phl-JM-7vZ" secondAttribute="trailing" constant="16" id="gID-z4-iMj"/>
@@ -160,7 +160,7 @@
                 <constraint firstAttribute="trailing" secondItem="rVh-g5-XuI" secondAttribute="trailing" id="7zH-ww-Esn"/>
                 <constraint firstItem="rVh-g5-XuI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="D8L-5z-ezl"/>
                 <constraint firstItem="rVh-g5-XuI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="l8S-Tm-SUf"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="rVh-g5-XuI" secondAttribute="bottom" id="pym-Dg-M0u"/>
+                <constraint firstAttribute="bottom" secondItem="rVh-g5-XuI" secondAttribute="bottom" id="pym-Dg-M0u"/>
             </constraints>
             <point key="canvasLocation" x="-397" y="132"/>
         </view>
@@ -171,6 +171,9 @@
         </namedColor>
         <namedColor name="Orange (Main)">
             <color red="1" green="0.47499999403953552" blue="0.18000000715255737" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

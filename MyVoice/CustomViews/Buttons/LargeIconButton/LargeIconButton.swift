@@ -50,14 +50,19 @@ final class LargeIconButton: UIButton {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
+        switch traitCollection.userInterfaceStyle {
+        case .light:
+            self.addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
+        default:
+            self.addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
+        }
     }
     
     private func addShadow(color: UIColor = .black, alpha: Float = 0.2, x: CGFloat = 0, y: CGFloat = 2, blur: CGFloat = 4, spread: CGFloat = 0) {
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
             shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
-            shadowLayer.fillColor = UIColor.white.cgColor
+            shadowLayer.fillColor = UIColor(named: "White")?.cgColor
             
             shadowLayer.shadowColor = color.cgColor
             shadowLayer.shadowOffset = CGSize(width: x, height: y)
@@ -72,6 +77,9 @@ final class LargeIconButton: UIButton {
             }
             
             layer.insertSublayer(shadowLayer, at: 0)
+        } else {
+            self.shadowLayer.fillColor = UIColor(named: "White")?.cgColor
+            self.shadowLayer.shadowOpacity = alpha
         }
     }
     

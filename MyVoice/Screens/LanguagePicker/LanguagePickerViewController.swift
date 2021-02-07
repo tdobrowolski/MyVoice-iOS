@@ -20,7 +20,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         super.viewDidLoad()
 
         self.title = "Select voice"
-        self.view.backgroundColor = UIColor(named: "Blue (Light)")
+        self.view.backgroundColor = UIColor(named: "Background")
         self.addNavigationBarButton()
         self.tableView.register(UINib(nibName: "VoiceCellTableViewCell", bundle: nil), forCellReuseIdentifier: "voiceCell")
     }

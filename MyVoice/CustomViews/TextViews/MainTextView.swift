@@ -15,7 +15,12 @@ final class MainTextView: UITextView {
         super.layoutSubviews()
         
         self.setupLayout()
-        self.addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
+        switch traitCollection.userInterfaceStyle {
+        case .light:
+            self.addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
+        default:
+            self.addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
+        }
     }
 
     private func setupLayout() {
@@ -31,7 +36,7 @@ final class MainTextView: UITextView {
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
             shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
-            shadowLayer.fillColor = UIColor.white.cgColor
+            shadowLayer.fillColor = UIColor(named: "White")?.cgColor
             
             shadowLayer.shadowColor = color.cgColor
             shadowLayer.shadowOffset = CGSize(width: x, height: y)
@@ -46,6 +51,9 @@ final class MainTextView: UITextView {
             }
             
             layer.insertSublayer(shadowLayer, at: 0)
+        } else {
+            self.shadowLayer.fillColor = UIColor(named: "White")?.cgColor
+            shadowLayer.shadowOpacity = alpha
         }
     }
 }

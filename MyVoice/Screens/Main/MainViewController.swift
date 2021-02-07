@@ -11,6 +11,8 @@ import RxDataSources
 
 class MainViewController: BaseViewController<MainViewModel> {
     
+    // TODO: Fix dark mode for LaunchScreen
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var mainTextView: MainTextView!
@@ -31,7 +33,7 @@ class MainViewController: BaseViewController<MainViewModel> {
         super.viewDidLoad()
 
         self.title = "MyVoice"
-        self.view.backgroundColor = UIColor(named: "Blue (Light)")
+        self.view.backgroundColor = UIColor(named: "Background")
         self.quickAccessTableView.delegate = self
         self.quickAccessTableView.layer.cornerRadius = 16
         self.addNavigationBarButtons()
