@@ -35,11 +35,11 @@ final class UserDefaultsService {
         return defaults.float(forKey: Keys.speechPitch.rawValue)
     }
     
-    func setSpeechLanguage(for pitch: Float) {
-        defaults.setValue(pitch, forKey: Keys.speechLanguage.rawValue)
+    func setSpeechVoice(for identifier: String) {
+        defaults.setValue(identifier, forKey: Keys.speechLanguage.rawValue)
     }
     
-    func getSpeechLanguage() -> Float? {
-        return defaults.float(forKey: Keys.speechLanguage.rawValue)
+    func getSpeechVoiceIdentifier() -> String? {
+        return defaults.string(forKey: Keys.speechLanguage.rawValue)
     }
 }

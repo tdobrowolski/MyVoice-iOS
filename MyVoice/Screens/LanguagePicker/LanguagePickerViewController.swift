@@ -31,9 +31,15 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         self.tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
-        viewModel.availableLanguages.bind(to: tableView.rx.items(cellIdentifier: "voiceCell", cellType: VoiceCellTableViewCell.self)) { [weak self] (row, item, cell) in
+        viewModel.availableVoices.bind(to: tableView.rx.items(cellIdentifier: "voiceCell", cellType: VoiceCellTableViewCell.self)) { [weak self] (row, item, cell) in
             let fullLanguage = NSLocale(localeIdentifier: NSLocale.current.identifier).displayName(forKey: NSLocale.Key.identifier, value: item.language)
             cell.setupCell(languageName: fullLanguage ?? "Unknown", voiceName: item.name, voiceQuality: item.quality, voiceGender: item.gender, isSelected: row == self?.selectedLanguageIndex)
+        }.disposed(by: disposeBag)
+        
+        viewModel.availableVoices.subscribe { [weak self] languages in
+            if languages.element?.count ?? 0 == 0 { return }
+            let indexToSelect = viewModel.getIndexForCurrentVoice()
+            self?.selectedLanguageIndex = indexToSelect
         }.disposed(by: disposeBag)
     }
     
@@ -67,6 +73,7 @@ extension LanguagePickerViewController: UITableViewDelegate {
         self.selectedLanguageIndex = indexPath.row
         let cell = self.tableView.cellForRow(at: indexPath) as? VoiceCellTableViewCell
         cell?.checkmarkImageView.isHidden = false
+        self.viewModel.selectVoiceForIndexPath(indexPath)
         self.tableView.deselectRow(at: indexPath, animated: true)
     }
 }
