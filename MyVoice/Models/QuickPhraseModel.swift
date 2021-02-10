@@ -34,7 +34,7 @@ struct QuickPhraseModel: IdentifiableType, Equatable {
     let id = UUID()
     let phrase: String
     let createdAt: Date
-    let prefferedLanguage: String
+    let prefferedLanguage: String?
 }
 
 func ==(lhs: QuickPhraseModel, rhs: QuickPhraseModel) -> Bool {

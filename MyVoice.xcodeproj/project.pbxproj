@@ -24,6 +24,8 @@
 		E115578325B4CA350093851B /* LargeIconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E115578225B4CA350093851B /* LargeIconButton.xib */; };
 		E127353925C617BE007993EA /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127353825C617BE007993EA /* SettingModel.swift */; };
 		E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127353B25C61DEB007993EA /* UserDefaultsService.swift */; };
+		E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E137882225D47B0A007E2DD8 /* Model.xcdatamodeld */; };
+		E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137884B25D47E72007E2DD8 /* DatabaseService.swift */; };
 		E15B839525CF17CB00C8BFA5 /* LanguagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839325CF17CB00C8BFA5 /* LanguagePickerViewController.swift */; };
 		E15B839625CF17CB00C8BFA5 /* LanguagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B839425CF17CB00C8BFA5 /* LanguagePickerViewController.xib */; };
 		E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */; };
@@ -69,6 +71,10 @@
 		E115578225B4CA350093851B /* LargeIconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeIconButton.xib; sourceTree = "<group>"; };
 		E127353825C617BE007993EA /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		E127353B25C61DEB007993EA /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
+		E137882325D47B0A007E2DD8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		E137884B25D47E72007E2DD8 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		E137885725D48BC6007E2DD8 /* Phrase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Phrase+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		E137885825D48BC6007E2DD8 /* Phrase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Phrase+CoreDataClass.swift"; sourceTree = "<group>"; };
 		E15B839325CF17CB00C8BFA5 /* LanguagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewController.swift; sourceTree = "<group>"; };
 		E15B839425CF17CB00C8BFA5 /* LanguagePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagePickerViewController.xib; sourceTree = "<group>"; };
 		E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewModel.swift; sourceTree = "<group>"; };
@@ -150,6 +156,7 @@
 				E115576825B4C5AC0093851B /* Extensions */,
 				E115576425B4C5950093851B /* Base */,
 				E115575925B4C51A0093851B /* Screens */,
+				E137885325D48B40007E2DD8 /* CoreData */,
 				E115576E25B4C9000093851B /* SupportingFiles */,
 				E115574225B4C4290093851B /* AppDelegate.swift */,
 				E115574425B4C4290093851B /* SceneDelegate.swift */,
@@ -248,6 +255,16 @@
 			path = LargeIconButton;
 			sourceTree = "<group>";
 		};
+		E137885325D48B40007E2DD8 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E137885725D48BC6007E2DD8 /* Phrase+CoreDataProperties.swift */,
+				E137885825D48BC6007E2DD8 /* Phrase+CoreDataClass.swift */,
+				E137882225D47B0A007E2DD8 /* Model.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		E15B839225CF17AD00C8BFA5 /* LanguagePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -343,6 +360,7 @@
 			children = (
 				E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */,
 				E127353B25C61DEB007993EA /* UserDefaultsService.swift */,
+				E137884B25D47E72007E2DD8 /* DatabaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -513,6 +531,8 @@
 				E1771A8025C21523003FE247 /* UILabel+Extensions.swift in Sources */,
 				E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */,
 				E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */,
+				E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */,
+				E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */,
 				E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */,
 				E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */,
 			);
@@ -712,6 +732,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E137882225D47B0A007E2DD8 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E137882325D47B0A007E2DD8 /* Model.xcdatamodel */,
+			);
+			currentVersion = E137882325D47B0A007E2DD8 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = E115573725B4C4290093851B /* Project object */;
 }
