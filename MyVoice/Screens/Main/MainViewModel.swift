@@ -12,6 +12,7 @@ import RxDataSources
 final class MainViewModel: BaseViewModel {
     
     private let textToSpeechService: TextToSpeechService
+    private let databaseService: DatabaseService
     
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     
@@ -19,6 +20,7 @@ final class MainViewModel: BaseViewModel {
     
     override init() {
         self.textToSpeechService = TextToSpeechService()
+        self.databaseService = DatabaseService()
         super.init()
         self.bindService()
         self.sections.onNext(self.getQuickPhrasesForDebug())
@@ -43,6 +45,7 @@ final class MainViewModel: BaseViewModel {
     func addQuickPhraseItem(phrase: String) {
         do {
             let item = QuickPhraseModel(phrase: phrase, createdAt: Date(), prefferedLanguage: Locale.preferredLanguages[0])
+            self.databaseService.insertPhrase(item)
             var sections = try self.sections.value()
             sections[0].items.insert(item, at: 0)
             self.sections.onNext(sections)
@@ -72,6 +75,6 @@ final class MainViewModel: BaseViewModel {
         let quickPhrase5 = QuickPhraseModel(phrase: "Sorry, do you know where is the bathroom?", createdAt: date, prefferedLanguage: language)
         let quickPhrase6 = QuickPhraseModel(phrase: "I lost my wallet. Can you help me find it?", createdAt: date, prefferedLanguage: language)
         let quickPhrase7 = QuickPhraseModel(phrase: "I'm still waiting for my Android TV 11 update.", createdAt: date, prefferedLanguage: language)
-        return [QuickPhraseSection(items: [quickPhrase1, quickPhrase2, quickPhrase3, quickPhrase4, quickPhrase5, quickPhrase6, quickPhrase7])]
+        return [QuickPhraseSection(items: self.databaseService.fetchAllPhrases())]
     }
 }

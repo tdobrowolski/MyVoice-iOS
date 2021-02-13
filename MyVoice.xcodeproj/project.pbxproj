@@ -22,6 +22,8 @@
 		E115577725B4C93C0093851B /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E115577325B4C93C0093851B /* Poppins-Regular.ttf */; };
 		E115577E25B4CA0E0093851B /* LargeIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115577D25B4CA0E0093851B /* LargeIconButton.swift */; };
 		E115578325B4CA350093851B /* LargeIconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E115578225B4CA350093851B /* LargeIconButton.xib */; };
+		E11C1ACF25D83CFA001FE05E /* Phrase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137885825D48BC6007E2DD8 /* Phrase+CoreDataClass.swift */; };
+		E11C1AD125D83CFF001FE05E /* Phrase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137885725D48BC6007E2DD8 /* Phrase+CoreDataProperties.swift */; };
 		E127353925C617BE007993EA /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127353825C617BE007993EA /* SettingModel.swift */; };
 		E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127353B25C61DEB007993EA /* UserDefaultsService.swift */; };
 		E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E137882225D47B0A007E2DD8 /* Model.xcdatamodeld */; };
@@ -525,6 +527,7 @@
 				E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */,
 				E115576A25B4C5C20093851B /* ViewController+Extensions.swift in Sources */,
 				E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */,
+				E11C1AD125D83CFF001FE05E /* Phrase+CoreDataProperties.swift in Sources */,
 				E15B839F25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.swift in Sources */,
 				E115576125B4C56A0093851B /* MainViewController.swift in Sources */,
 				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
@@ -535,6 +538,7 @@
 				E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */,
 				E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */,
 				E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */,
+				E11C1ACF25D83CFA001FE05E /* Phrase+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
