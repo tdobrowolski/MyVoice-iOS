@@ -12,7 +12,7 @@ import RxDataSources
 final class MainViewModel: BaseViewModel {
     
     private let textToSpeechService: TextToSpeechService
-    private let databaseService: DatabaseService
+    private let phraseDatabaseService: PhraseDatabaseService
     
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     
@@ -20,10 +20,10 @@ final class MainViewModel: BaseViewModel {
     
     override init() {
         self.textToSpeechService = TextToSpeechService()
-        self.databaseService = DatabaseService()
+        self.phraseDatabaseService = PhraseDatabaseService()
         super.init()
         self.bindService()
-        self.sections.onNext(self.getQuickPhrasesForDebug())
+        self.getQuickPhrases()
     }
     
     private func bindService() {
@@ -44,8 +44,9 @@ final class MainViewModel: BaseViewModel {
     
     func addQuickPhraseItem(phrase: String) {
         do {
-            let item = QuickPhraseModel(phrase: phrase, createdAt: Date(), prefferedLanguage: Locale.preferredLanguages[0])
-            self.databaseService.insertPhrase(item)
+            let selectedLanguageIdentifier = textToSpeechService.getCurrentLanguageIdentifier()
+            let item = QuickPhraseModel(phrase: phrase, createdAt: Date(), prefferedLanguage: selectedLanguageIdentifier)
+            self.phraseDatabaseService.insertPhrase(item)
             var sections = try self.sections.value()
             sections[0].items.insert(item, at: 0)
             self.sections.onNext(sections)
@@ -57,6 +58,8 @@ final class MainViewModel: BaseViewModel {
     func removeQuickPhraseItem(at row: Int) {
         do {
             var sections = try self.sections.value()
+            let item = sections[0].items[row]
+            self.phraseDatabaseService.removePhrase(item)
             sections[0].items.remove(at: row)
             self.sections.onNext(sections)
         } catch {
@@ -64,17 +67,8 @@ final class MainViewModel: BaseViewModel {
         }
     }
     
-    /// Generates quick phrases for testing purposes
-    private func getQuickPhrasesForDebug() -> [QuickPhraseSection] {
-        let language = Locale.preferredLanguages[0]
-        let date = Date()
-        let quickPhrase1 = QuickPhraseModel(phrase: "Where is the nearest train station? I can't find it on the map.", createdAt: date, prefferedLanguage: language)
-        let quickPhrase2 = QuickPhraseModel(phrase: "Sorry, do you know where can I buy ticket for this train?", createdAt: date, prefferedLanguage: language)
-        let quickPhrase3 = QuickPhraseModel(phrase: "I need one train ticket to Warsaw for today.", createdAt: date, prefferedLanguage: language)
-        let quickPhrase4 = QuickPhraseModel(phrase: "I want a refund for my ticket. The train is runnig late.", createdAt: date, prefferedLanguage: language)
-        let quickPhrase5 = QuickPhraseModel(phrase: "Sorry, do you know where is the bathroom?", createdAt: date, prefferedLanguage: language)
-        let quickPhrase6 = QuickPhraseModel(phrase: "I lost my wallet. Can you help me find it?", createdAt: date, prefferedLanguage: language)
-        let quickPhrase7 = QuickPhraseModel(phrase: "I'm still waiting for my Android TV 11 update.", createdAt: date, prefferedLanguage: language)
-        return [QuickPhraseSection(items: self.databaseService.fetchAllPhrases())]
+    private func getQuickPhrases() {
+        let sections = [QuickPhraseSection(items: self.phraseDatabaseService.fetchAllPhrases())]
+        self.sections.onNext(sections)
     }
 }

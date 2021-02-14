@@ -24,7 +24,7 @@ final class TextToSpeechService: NSObject, AVSpeechSynthesizerDelegate {
     
     func startSpeaking(text: String) {
         let speechUtterance = AVSpeechUtterance(string: text)
-        if let selectedVoiceIdentifier = userDefaultsService.getSpeechVoiceIdentifier(), let voice = AVSpeechSynthesisVoice(identifier: selectedVoiceIdentifier) {
+        if let voice = self.getSelectedVoice() {
             speechUtterance.voice = voice
         }
 //        if let selectedPitch = userDefaultsService.getSpeechPitch() {
@@ -41,20 +41,30 @@ final class TextToSpeechService: NSObject, AVSpeechSynthesizerDelegate {
         self.speechSynthesizer.stopSpeaking(at: speechBoundary)
     }
     
+    func getSelectedVoice() -> AVSpeechSynthesisVoice? {
+        guard let selectedVoiceIdentifier = userDefaultsService.getSpeechVoiceIdentifier() else { return nil }
+        return AVSpeechSynthesisVoice(identifier: selectedVoiceIdentifier)
+    }
+    
+    func getCurrentLanguageIdentifier() -> String {
+        let selectedVoice = self.getSelectedVoice()
+        return selectedVoice?.language ?? AVSpeechSynthesisVoice.currentLanguageCode()
+    }
+    
     // MARK: Delegate methods
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         self.isSpeaking.onNext(true)
-        print("didStart")
+        print("🗣 didStart")
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         self.isSpeaking.onNext(false)
-        print("didFinish")
+        print("🗣 didFinish")
     }
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         self.isSpeaking.onNext(false)
-        print("didCancel")
+        print("🗣 didCancel")
     }
 }

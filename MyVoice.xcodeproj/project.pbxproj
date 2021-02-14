@@ -44,6 +44,7 @@
 		E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5225B4E97F00339B9A /* MainTextView.swift */; };
 		E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */; };
 		E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */; };
+		E1E5FECA25D9879800FEB6E2 /* PhraseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */; };
 		E1E6C2CB25B4D24800774B17 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */; };
 		E1E6C2CE25B4D30300774B17 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1E6C2CD25B4D30300774B17 /* Colors.xcassets */; };
 		E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */; };
@@ -93,6 +94,7 @@
 		E1C3EF5225B4E97F00339B9A /* MainTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextView.swift; sourceTree = "<group>"; };
 		E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationController.swift; sourceTree = "<group>"; };
 		E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
+		E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDatabaseService.swift; sourceTree = "<group>"; };
 		E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E1E6C2CD25B4D30300774B17 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = MyVoice/Colors.xcassets; sourceTree = SOURCE_ROOT; };
 		E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
@@ -363,6 +365,7 @@
 				E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */,
 				E127353B25C61DEB007993EA /* UserDefaultsService.swift */,
 				E137884B25D47E72007E2DD8 /* DatabaseService.swift */,
+				E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */,
 				E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */,
 				E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */,
+				E1E5FECA25D9879800FEB6E2 /* PhraseDatabaseService.swift in Sources */,
 				E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */,
 				E11C1ACF25D83CFA001FE05E /* Phrase+CoreDataClass.swift in Sources */,
 			);

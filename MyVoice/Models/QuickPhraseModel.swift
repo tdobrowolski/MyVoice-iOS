@@ -31,10 +31,17 @@ struct QuickPhraseModel: IdentifiableType, Equatable {
     
     var identity: Identity { return id }
         
-    let id = UUID()
+    let id: UUID
     let phrase: String
     let createdAt: Date
     let prefferedLanguage: String?
+    
+    init(id: UUID = UUID(), phrase: String, createdAt: Date, prefferedLanguage: String? = nil) {
+        self.id = id
+        self.phrase = phrase
+        self.createdAt = createdAt
+        self.prefferedLanguage = prefferedLanguage
+    }
 }
 
 func ==(lhs: QuickPhraseModel, rhs: QuickPhraseModel) -> Bool {
