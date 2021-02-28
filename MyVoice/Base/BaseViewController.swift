@@ -42,6 +42,15 @@ class BaseViewController<BaseViewModel>: UIViewController {
         self.view.endEditing(true)
     }
     
+    func showAlert(title: String?, message: String?, actions: [UIAlertAction]) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        for action in actions {
+            alert.addAction(action)
+        }
+        alert.preferredAction = alert.actions.last
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     deinit {
         print("deinit: \(self)")
     }

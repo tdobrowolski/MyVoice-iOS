@@ -19,7 +19,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "Select voice"
+        self.title = NSLocalizedString("Select voice", comment: "Select voice")
         self.view.backgroundColor = UIColor(named: "Background")
         self.addNavigationBarButton()
         self.tableView.register(UINib(nibName: "VoiceCellTableViewCell", bundle: nil), forCellReuseIdentifier: "voiceCell")
@@ -33,7 +33,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         
         viewModel.availableVoices.bind(to: tableView.rx.items(cellIdentifier: "voiceCell", cellType: VoiceCellTableViewCell.self)) { [weak self] (row, item, cell) in
             let fullLanguage = NSLocale(localeIdentifier: NSLocale.current.identifier).displayName(forKey: NSLocale.Key.identifier, value: item.language)
-            cell.setupCell(languageName: fullLanguage ?? "Unknown", voiceName: item.name, voiceQuality: item.quality, voiceGender: item.gender, isSelected: row == self?.selectedLanguageIndex)
+            cell.setupCell(languageName: fullLanguage ?? NSLocalizedString("Unknown", comment: "Unknown"), voiceName: item.name, voiceQuality: item.quality, voiceGender: item.gender, isSelected: row == self?.selectedLanguageIndex)
         }.disposed(by: disposeBag)
         
         viewModel.availableVoices.subscribe { [weak self] languages in
@@ -49,7 +49,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         let font = UIFont(name: "Poppins-SemiBold", size: 17) ?? UIFont.systemFont(ofSize: 17)
         let color = UIColor(named: "Orange (Main)") ?? .orange
         
-        let rightItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDidTouch))
+        let rightItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: "Done"), style: .plain, target: self, action: #selector(doneDidTouch))
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                           NSAttributedString.Key.foregroundColor: color], for: .normal)
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,

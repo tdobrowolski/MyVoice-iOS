@@ -35,7 +35,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = "MyVoice"
+        self.title = NSLocalizedString("MyVoice", comment: "MyVoice")
         self.view.backgroundColor = UIColor(named: "Background")
         self.quickAccessTableView.delegate = self
         self.quickAccessTableView.layer.cornerRadius = 16
@@ -123,25 +123,25 @@ final class MainViewController: BaseViewController<MainViewModel> {
     // MARK: Setting up
     
     private func setupLargeButtons() {
-        self.speakButton.setupLayout(forTitle: "Speak", actionType: .speak)
-        self.clearButton.setupLayout(forTitle: "Clear", actionType: .clear)
-        self.saveButton.setupLayout(forTitle: "Save", actionType: .save)
+        self.speakButton.setupLayout(forTitle: NSLocalizedString("Speak", comment: "Speak"), actionType: .speak)
+        self.clearButton.setupLayout(forTitle: NSLocalizedString("Clear", comment: "Clear"), actionType: .clear)
+        self.saveButton.setupLayout(forTitle: NSLocalizedString("Save", comment: "Save"), actionType: .save)
     }
     
     private func setupPlaceholderLabel() {
-        self.placeholderLabel.text = "What do you want to say?"
+        self.placeholderLabel.text = NSLocalizedString("What do you want to say?", comment: "What do you want to say?")
         self.placeholderLabel.textColor = UIColor(named: "Blue (Dark)")
         self.placeholderLabel.font = UIFont(name: "Poppins-Bold", size: 20)
     }
     
     private func setupHeader() {
-        self.headerTitleLabel.text = "Quick access"
-        self.editButton.setTitle("Edit", for: .normal)
+        self.headerTitleLabel.text = NSLocalizedString("Quick access", comment: "Quick access")
+        self.editButton.setTitle(NSLocalizedString("Edit", comment: "Edit"), for: .normal)
     }
     
     private func setupQuickAccessPlaceholder() {
-        self.quickAccessPlaceholderMainLabel.text = "You have no phrases yet!"
-        self.quickAccessPlaceholderSecondaryLabel.text = "To add your first phrase tap on \n„Save” button."
+        self.quickAccessPlaceholderMainLabel.text = NSLocalizedString("You have no phrases yet!", comment: "You have no phrases yet!")
+        self.quickAccessPlaceholderSecondaryLabel.text = NSLocalizedString("To add your first phrase tap on \n„Save” button.", comment: "Placeholder text with line break")
     }
     
     private func listenForActiveStateChange() {
@@ -159,14 +159,14 @@ final class MainViewController: BaseViewController<MainViewModel> {
         let font = UIFont(name: "Poppins-Medium", size: 17) ?? UIFont.systemFont(ofSize: 17)
         let color = UIColor(named: "Orange (Main)") ?? .orange
         
-        let leftItem = UIBarButtonItem(title: "Help", style: .plain, target: self, action: #selector(helpDidTouch))
+        let leftItem = UIBarButtonItem(title: NSLocalizedString("Help", comment: "Help"), style: .plain, target: self, action: #selector(helpDidTouch))
         leftItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                          NSAttributedString.Key.foregroundColor: color], for: .normal)
         leftItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                           NSAttributedString.Key.foregroundColor: color], for: .selected)
         self.navigationItem.leftBarButtonItem = leftItem
         
-        let rightItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(settingsDidTouch))
+        let rightItem = UIBarButtonItem(title: NSLocalizedString("Settings", comment: "Settings"), style: .plain, target: self, action: #selector(settingsDidTouch))
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                           NSAttributedString.Key.foregroundColor: color], for: .normal)
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
@@ -231,7 +231,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: "Remove") { [weak self] (action, view, completion) in
+        let delete = UIContextualAction(style: .destructive, title: NSLocalizedString("Remove", comment: "Remove")) { [weak self] (action, view, completion) in
             if indexPath.row == 0, let nextFirstCell = self?.quickAccessTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? QuickPhraseTableViewCell {
                 completion(true)
                 nextFirstCell.setTipVisibility(isHidden: false)

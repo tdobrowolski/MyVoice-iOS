@@ -19,7 +19,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Settings"
+        self.title = NSLocalizedString("Settings", comment: "Settings")
         self.view.backgroundColor = UIColor(named: "Background")
         self.addNavigationBarButtons()
         
@@ -105,7 +105,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         let font = UIFont(name: "Poppins-SemiBold", size: 17) ?? UIFont.systemFont(ofSize: 17)
         let color = UIColor(named: "Orange (Main)") ?? .orange
         
-        let rightItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneDidTouch))
+        let rightItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: "Done"), style: .plain, target: self, action: #selector(doneDidTouch))
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                           NSAttributedString.Key.foregroundColor: color], for: .normal)
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
@@ -182,7 +182,10 @@ extension SettingsViewController: UITableViewDelegate {
                 if MFMailComposeViewController.canSendMail() {
                     self.composeFeedbackMail()
                 } else {
-                    // TODO: Show mail error alert
+                    self.showAlert(title: NSLocalizedString("No mail account", comment: "No mail account"),
+                                   message: NSLocalizedString("It looks like there's no mail account, that the system can use to send feedback.",
+                                                              comment: "It looks like there's no mail account, that the system can use to send feedback."),
+                                   actions: [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)])
                 }
             default:
                 return

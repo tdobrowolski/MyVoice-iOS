@@ -9,6 +9,7 @@ import RxDataSources
 
 struct SettingsSection {
     
+    // FIXME: Needs workaround for NSLocalizedString
     enum SectionType: String {
         case speechVoice = "Speech settings"
         case speechRate = "Speech rate"

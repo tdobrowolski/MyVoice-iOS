@@ -1,0 +1,98 @@
+/* Clear */
+"Clear" = "Wyczyść";
+
+/* No comment provided by engineer. */
+"Default" = "Domyślny";
+
+/* Default quality */
+"Default quality" = "Domyślna jakość";
+
+/* Done */
+"Done" = "Gotowe";
+
+/* Edit */
+"Edit" = "Edytuj";
+
+/* Enhanced quality */
+"Enhanced quality" = "Rozszerzona jakość";
+
+/* Female */
+"Female" = "Kobieta";
+
+/* Help */
+"Help" = "Samouczek";
+
+/* It looks like there's no mail account, that the system can use to send feedback. */
+"It looks like there's no mail account, that the system can use to send feedback." = "Wygląda na to, że system nie może znaleźć odpowiedniego konta mailowego, który posłużyłby do wysłania feedbacku.";
+
+/* No comment provided by engineer. */
+"Language and voice, which is used for speaking phrases. This will not affect your system language." = "Język i głos, używany do wymawiania tekstu. Twój wybór nie wpłynie na ustawienia języku systemu.";
+
+/* Male */
+"Male" = "Mężczyzna";
+
+/* MyVoice */
+"MyVoice" = "MyVoice";
+
+/* No mail account */
+"No mail account" = "Brak konta mailowego";
+
+/* OK */
+"OK" = "OK";
+
+/* Quick access */
+"Quick access" = "Szybki dostęp";
+
+/* No comment provided by engineer. */
+"Rate this app" = "Oceń aplikację";
+
+/* Remove */
+"Remove" = "Usuń";
+
+/* Save */
+"Save" = "Zapisz";
+
+/* Select voice */
+"Select voice" = "Wybierz głos";
+
+/* No comment provided by engineer. */
+"Send feedback" = "Wyślij feedback";
+
+/* No comment provided by engineer. */
+"Set how fast your phrases should be spoken." = "Ustaw jak szybko tekst powinien być wypowiadany.";
+
+/* Settings */
+"Settings" = "Ustawienia";
+
+/* Speak */
+"Speak" = "Powiedz";
+
+/* Speech voice */
+"Speech voice" = "Głos";
+
+/* No comment provided by engineer. */
+"Tip: Select text to say it loud." = "Porada: Wybierz tekst aby go wypowiedzieć";
+
+/* Placeholder text with line break */
+"To add your first phrase tap on \n„Save” button." = "Dodaj swoją pierwszą frazę \nprzyciskiem „Zapisz”";
+
+/* Unknown */
+"Unknown" = "Brak";
+
+/* Unknown quality */
+"Unknown quality" = "Nieznana jakość";
+
+/* Unspecified */
+"Unspecified" = "Nieokreślono";
+
+/* No comment provided by engineer. */
+"Version:" = "Wersja:";
+
+/* No comment provided by engineer. */
+"Voice pitch, used for speaking phrases." = "Wysokość głosu, używana do wymawiania tekstu.";
+
+/* What do you want to say? */
+"What do you want to say?" = "Co chcesz powiedzieć?";
+
+/* You have no phrases yet! */
+"You have no phrases yet!" = "Nie masz zapisanych fraz!";

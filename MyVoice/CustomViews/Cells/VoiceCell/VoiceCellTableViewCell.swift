@@ -18,23 +18,23 @@ final class VoiceCellTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = .clear
         self.backgroundColor = .clear
         self.voiceLabel.text = "\(languageName) - \(voiceName)"
-        var voiceGenderText = NSMutableAttributedString(string: "Unspecified", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black])
+        var voiceGenderText = NSMutableAttributedString(string: NSLocalizedString("Unspecified", comment: "Unspecified"), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black])
         switch voiceGender {
         case .male:
-            voiceGenderText = NSMutableAttributedString(string: "Male", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black])
+            voiceGenderText = NSMutableAttributedString(string: NSLocalizedString("Male", comment: "Male"), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black])
         case .female:
-            voiceGenderText = NSMutableAttributedString(string: "Female", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black])
+            voiceGenderText = NSMutableAttributedString(string: NSLocalizedString("Female", comment: "Female"), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black])
         default:
             break
         }
         let voiceQualityText = NSMutableAttributedString(string: " • ", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black])
         switch voiceQuality {
         case .default:
-            voiceQualityText.append(NSMutableAttributedString(string: "Default quality", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]))
+            voiceQualityText.append(NSMutableAttributedString(string: NSLocalizedString("Default quality", comment: "Default quality"), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]))
         case .enhanced:
-            voiceQualityText.append(NSMutableAttributedString(string: "Enhanced quality", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Orange (Main)") ?? .orange]))
+            voiceQualityText.append(NSMutableAttributedString(string: NSLocalizedString("Enhanced quality", comment: "Enhanced quality"), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Orange (Main)") ?? .orange]))
         default:
-            voiceQualityText.append(NSMutableAttributedString(string: "Unknown quality", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]))
+            voiceQualityText.append(NSMutableAttributedString(string: NSLocalizedString("Unknown quality", comment: "Unknown quality"), attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]))
         }
         voiceGenderText.append(voiceQualityText)
         self.additionalInfoLabel.attributedText = voiceGenderText

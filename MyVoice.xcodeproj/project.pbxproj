@@ -40,6 +40,8 @@
 		E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */; };
 		E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */; };
 		E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */; };
+		E1B148A125EC4326003C1401 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1B148A325EC4326003C1401 /* Localizable.strings */; };
+		E1B148A525EC432A003C1401 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1B148A725EC432A003C1401 /* Localizable.strings */; };
 		E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3E4C25B6308E00DB87E1 /* BaseViewModel.swift */; };
 		E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5225B4E97F00339B9A /* MainTextView.swift */; };
 		E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */; };
@@ -90,6 +92,9 @@
 		E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseModel.swift; sourceTree = "<group>"; };
 		E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseTableViewCell.swift; sourceTree = "<group>"; };
 		E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickPhraseTableViewCell.xib; sourceTree = "<group>"; };
+		E1B1489025EC41B0003C1401 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E1B148A225EC4326003C1401 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E1B148A625EC432A003C1401 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E1BD3E4C25B6308E00DB87E1 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		E1C3EF5225B4E97F00339B9A /* MainTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextView.swift; sourceTree = "<group>"; };
 		E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationController.swift; sourceTree = "<group>"; };
@@ -225,6 +230,7 @@
 		E115576E25B4C9000093851B /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				E1B1489225EC4288003C1401 /* Translations */,
 				E115575025B4C42B0093851B /* Info.plist */,
 				E115576F25B4C9130093851B /* Fonts */,
 			);
@@ -326,6 +332,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E1B1489225EC4288003C1401 /* Translations */ = {
+			isa = PBXGroup;
+			children = (
+				E1B148A725EC432A003C1401 /* Localizable.strings */,
+				E1B148A325EC4326003C1401 /* Localizable.strings */,
+			);
+			path = Translations;
+			sourceTree = "<group>";
+		};
 		E1C3EF5125B4E96200339B9A /* TextViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -378,6 +393,7 @@
 			buildConfigurationList = E115575325B4C42B0093851B /* Build configuration list for PBXNativeTarget "MyVoice" */;
 			buildPhases = (
 				DE7E8DE3C8DE38BC5A42ABAA /* [CP] Check Pods Manifest.lock */,
+				E1B1488D25EC4056003C1401 /* Bartycrouch script */,
 				E115573B25B4C4290093851B /* Sources */,
 				E115573C25B4C4290093851B /* Frameworks */,
 				E115573D25B4C4290093851B /* Resources */,
@@ -414,6 +430,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = E115573625B4C4290093851B;
 			productRefGroup = E115574025B4C4290093851B /* Products */;
@@ -436,10 +453,12 @@
 				E1771A8E25C21680003FE247 /* SettingsViewController.xib in Resources */,
 				E115577725B4C93C0093851B /* Poppins-Regular.ttf in Resources */,
 				E115574F25B4C42B0093851B /* LaunchScreen.storyboard in Resources */,
+				E1B148A125EC4326003C1401 /* Localizable.strings in Resources */,
 				E15B83A025CF3D3F00C8BFA5 /* VoiceCellTableViewCell.xib in Resources */,
 				E115577425B4C93C0093851B /* Poppins-Medium.ttf in Resources */,
 				E115576225B4C56A0093851B /* MainViewController.xib in Resources */,
 				E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */,
+				E1B148A525EC432A003C1401 /* Localizable.strings in Resources */,
 				E115574C25B4C42B0093851B /* Assets.xcassets in Resources */,
 				E1E6C2CE25B4D30300774B17 /* Colors.xcassets in Resources */,
 				E15B839625CF17CB00C8BFA5 /* LanguagePickerViewController.xib in Resources */,
@@ -507,6 +526,24 @@
 			shellPath = /bin/sh;
 			shellScript = "PLIST=\"${INFOPLIST_FILE}\"\nPLB=/usr/libexec/PlistBuddy\nLAST_NUMBER=$($PLB -c \"Print CFBundleVersion\" \"$PLIST\")\nNEW_VERSION=$(($LAST_NUMBER + 1))\n$PLB -c \"Set :CFBundleVersion $NEW_VERSION\" \"$PLIST\"\n";
 		};
+		E1B1488D25EC4056003C1401 /* Bartycrouch script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Bartycrouch script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/Flinesoft/BartyCrouch\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -553,8 +590,25 @@
 			isa = PBXVariantGroup;
 			children = (
 				E115574E25B4C42B0093851B /* Base */,
+				E1B1489025EC41B0003C1401 /* pl */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E1B148A325EC4326003C1401 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1B148A225EC4326003C1401 /* pl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		E1B148A725EC432A003C1401 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E1B148A625EC432A003C1401 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -564,6 +618,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -625,6 +680,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -693,7 +749,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.infinity.MyVoice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -714,7 +770,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.infinity.MyVoice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

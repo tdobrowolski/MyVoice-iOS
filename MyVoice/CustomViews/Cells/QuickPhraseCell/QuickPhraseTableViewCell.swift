@@ -38,7 +38,7 @@ final class QuickPhraseTableViewCell: UITableViewCell {
         self.backgroundContainerView.clipsToBounds = true
         self.backgroundContainerView.layer.masksToBounds = true
         if isFirstCell {
-            self.tipLabel.text = "Tip: Select text to say it loud."
+            self.tipLabel.text = NSLocalizedString("Tip: Select text to say it loud.", comment: "")
             self.tipLabel.isHidden = false
         } else {
             self.tipLabel.isHidden = true
@@ -69,7 +69,7 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     }
     
     func setTipVisibility(isHidden: Bool) {
-        self.tipLabel.text = isHidden ? nil : "Tip: Select text to say it loud."
+        self.tipLabel.text = isHidden ? nil : NSLocalizedString("Tip: Select text to say it loud.", comment: "")
         self.tipLabel.isHidden = isHidden
     }
     
