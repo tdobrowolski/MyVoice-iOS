@@ -19,6 +19,8 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     @IBOutlet weak var phraseLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
     
+    @IBOutlet weak var separator: UIView!
+    
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     lazy var disposeBag = DisposeBag()
     
@@ -27,7 +29,7 @@ final class QuickPhraseTableViewCell: UITableViewCell {
         contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 62).isActive = true
     }
     
-    func setupCell(phrase: String, isFirstCell: Bool) {
+    func setupCell(phrase: String, isFirstCell: Bool, isLastCell: Bool) {
         self.bind()
         self.setupIcon()
         self.phraseLabel.text = phrase
@@ -41,6 +43,7 @@ final class QuickPhraseTableViewCell: UITableViewCell {
         } else {
             self.tipLabel.isHidden = true
         }
+        self.separator.isHidden = isLastCell
     }
     
     private func bind() {

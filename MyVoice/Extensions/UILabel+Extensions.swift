@@ -9,9 +9,9 @@ import UIKit
 
 extension UILabel {
     
-    // TODO: Check if it's smooth on the device
     func flashWithColor(_ flashColor: UIColor) {
 
+        if self.tag == 1 { return }
         let defaultColor: UIColor = self.textColor ?? .black
 
         let changeColor = CATransition()
@@ -19,10 +19,11 @@ extension UILabel {
         changeColor.duration = 0.5
 
         CATransaction.begin()
-
+        self.tag = 1
         CATransaction.setCompletionBlock { [weak self] in
             self?.layer.add(changeColor, forKey: nil)
             self?.textColor = defaultColor
+            self?.tag = 0
         }
         self.layer.add(changeColor, forKey: nil)
         self.textColor = flashColor

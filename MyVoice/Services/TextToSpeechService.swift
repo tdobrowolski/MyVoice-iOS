@@ -11,28 +11,39 @@ import RxSwift
 
 final class TextToSpeechService: NSObject, AVSpeechSynthesizerDelegate {
     
-    let speechSynthesizer = AVSpeechSynthesizer()
+    private let speechSynthesizer: AVSpeechSynthesizer
     private let userDefaultsService: UserDefaultsService
     
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     
     override init() {
+        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
+        self.speechSynthesizer = AVSpeechSynthesizer()
         self.userDefaultsService = UserDefaultsService()
         super.init()
         self.speechSynthesizer.delegate = self
     }
-    
+        
     func startSpeaking(text: String) {
         let speechUtterance = AVSpeechUtterance(string: text)
         if let voice = self.getSelectedVoice() {
             speechUtterance.voice = voice
         }
-//        if let selectedPitch = userDefaultsService.getSpeechPitch() {
-//            speechUtterance.pitchMultiplier = selectedPitch
-//        }
-//        if let selectedRate = userDefaultsService.getSpeechRate() {
-//            speechUtterance.rate = selectedRate
-//        }
+        
+        var selectedPitch = userDefaultsService.getSpeechPitch()
+        selectedPitch = max(selectedPitch, 0.5)
+        if selectedPitch > 2.0 {
+            selectedPitch = 1.0
+        }
+        speechUtterance.pitchMultiplier = selectedPitch
+        
+        var selectedRate = userDefaultsService.getSpeechRate()
+        if selectedRate < AVSpeechUtteranceMinimumSpeechRate || selectedRate > AVSpeechUtteranceMaximumSpeechRate {
+            selectedRate = AVSpeechUtteranceDefaultSpeechRate
+        }
+        speechUtterance.rate = selectedRate
+        
+        print("\nSpeaking with values:\nRate: \(selectedRate)\nPitch: \(selectedPitch)\n")
         self.speechSynthesizer.speak(speechUtterance)
     }
     

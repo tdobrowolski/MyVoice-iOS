@@ -10,10 +10,22 @@ import UIKit
 final class MainTextView: UITextView {
     
     private var shadowLayer: CAShapeLayer!
+    
+    lazy var toolbar: UIToolbar = {
+        let toolbar = UIToolbar(frame: CGRect.zero)
+        toolbar.tintColor = UIColor(named: "Orange (Main)")
+        toolbar.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneButtonDidTap))
+        doneButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Poppins-SemiBold", size: 17) ?? UIFont.systemFont(ofSize: 17)], for: .normal)
+        toolbar.items = [leftSpace, doneButton]
+        
+        return toolbar
+    }()
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         self.setupLayout()
         switch traitCollection.userInterfaceStyle {
         case .light:
@@ -29,7 +41,8 @@ final class MainTextView: UITextView {
         self.textColor = UIColor(named: "Black") ?? .black
         self.clipsToBounds = false
         self.returnKeyType = .done
-        self.tintColor = UIColor(named: "Orange (Main)") // FIXME: Tint not working
+        self.tintColor = UIColor(named: "Orange (Main)")
+        self.inputAccessoryView = toolbar
     }
     
     private func addShadow(color: UIColor = .black, alpha: Float = 0.2, x: CGFloat = 0, y: CGFloat = 2, blur: CGFloat = 4, spread: CGFloat = 0) {
@@ -55,5 +68,10 @@ final class MainTextView: UITextView {
             self.shadowLayer.fillColor = UIColor(named: "White")?.cgColor
             shadowLayer.shadowOpacity = alpha
         }
+    }
+    
+    @objc
+    private func doneButtonDidTap() {
+        self.resignFirstResponder()
     }
 }

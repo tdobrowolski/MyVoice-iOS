@@ -9,10 +9,8 @@ import UIKit
 import RxCocoa
 import RxDataSources
 
-class MainViewController: BaseViewController<MainViewModel> {
-    
-    // TODO: Fix dark mode for LaunchScreen
-    
+final class MainViewController: BaseViewController<MainViewModel> {
+        
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var mainTextView: MainTextView!
@@ -27,6 +25,11 @@ class MainViewController: BaseViewController<MainViewModel> {
     
     @IBOutlet weak var quickAccessTableView: ContentSizedTableView!
     
+    @IBOutlet weak var quickAccessPlaceholderView: UIView!
+    @IBOutlet weak var quickAccessPlaceholderImageView: UIImageView!
+    @IBOutlet weak var quickAccessPlaceholderMainLabel: UILabel!
+    @IBOutlet weak var quickAccessPlaceholderSecondaryLabel: UILabel!
+    
     var dataSource: RxTableViewSectionedAnimatedDataSource<QuickPhraseSection>!
     
     override func viewDidLoad() {
@@ -39,6 +42,7 @@ class MainViewController: BaseViewController<MainViewModel> {
         self.addNavigationBarButtons()
         self.setupLargeButtons()
         self.setupPlaceholderLabel()
+        self.setupQuickAccessPlaceholder()
         self.setupHeader()
         self.hideKeyboardWhenTappedAround()
         self.listenForActiveStateChange()
@@ -60,9 +64,21 @@ class MainViewController: BaseViewController<MainViewModel> {
         viewModel.sections.subscribe(onNext: { [weak self] sections in
             let quickPhraseItems = sections[0].items
             if quickPhraseItems.isEmpty {
-                // TODO: Show placeholder
+                UIView.animate(withDuration: 0.3, delay: 0.1, options: .curveLinear) { [weak self] in
+                    self?.quickAccessPlaceholderView.isHidden = false
+                    self?.quickAccessPlaceholderView.alpha = 1
+                    self?.quickAccessTableView.alpha = 0
+                } completion: { [weak self] _ in
+                    self?.quickAccessTableView.isHidden = true
+                }
             } else {
-                // TODO: Hide placeholder
+                UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveLinear) { [weak self] in
+                    self?.quickAccessTableView.isHidden = false
+                    self?.quickAccessTableView.alpha = 1
+                    self?.quickAccessPlaceholderView.alpha = 0
+                } completion: { [weak self] _ in
+                    self?.quickAccessPlaceholderView.isHidden = true
+                }
             }
         }).disposed(by: disposeBag)
 
@@ -73,8 +89,9 @@ class MainViewController: BaseViewController<MainViewModel> {
         self.mainTextView.rx.text.subscribe(onNext: { [weak self] text in
             self?.placeholderLabel.isHidden = text?.isEmpty == false
         }).disposed(by: disposeBag)
+        
+        // TODO: Subscribe to volume change
     }
-    
     
     // FIXME: Check why some phrases are said two times
     // FIXME: Fix memory leak, cells are not deinitialised
@@ -83,10 +100,12 @@ class MainViewController: BaseViewController<MainViewModel> {
             configureCell: { [weak self] (dataSource, tableView, indexPath, item) in
                 guard let self = self else { return UITableViewCell() }
                 if let cell = tableView.dequeueReusableCell(withIdentifier: "quickPhraseTableViewCell") as? QuickPhraseTableViewCell {
-                    cell.setupCell(phrase: item.phrase, isFirstCell: indexPath.row == 0)
+                    let itemsEndIndex = (try? self.viewModel.sections.value().first?.items.endIndex) ?? 1
+                    cell.setupCell(phrase: item.phrase, isFirstCell: indexPath.row == 0, isLastCell: indexPath.row == itemsEndIndex - 1)
                     self.viewModel.isSpeaking.subscribe(cell.isSpeaking).disposed(by: cell.disposeBag)
                     cell.tapHandlerButton.rx.tap.subscribe { [weak self] _ in
-                        guard let text = cell.phraseLabel?.text, text.isEmpty == false else { return }
+                        let isSpeaking = try? self?.viewModel.isSpeaking.value()
+                        guard let text = cell.phraseLabel?.text, text.isEmpty == false, isSpeaking == false else { return }
                         self?.viewModel.startSpeaking(text)
                         cell.setupIcon(isSpeaking: true)
                     }.disposed(by: cell.disposeBag)
@@ -118,6 +137,11 @@ class MainViewController: BaseViewController<MainViewModel> {
     private func setupHeader() {
         self.headerTitleLabel.text = "Quick access"
         self.editButton.setTitle("Edit", for: .normal)
+    }
+    
+    private func setupQuickAccessPlaceholder() {
+        self.quickAccessPlaceholderMainLabel.text = "You have no phrases yet!"
+        self.quickAccessPlaceholderSecondaryLabel.text = "To add your first phrase tap on \n„Save” button."
     }
     
     private func listenForActiveStateChange() {
@@ -174,7 +198,7 @@ class MainViewController: BaseViewController<MainViewModel> {
                     self.placeholderLabel.flashWithColor(UIColor(named: "Orange (Main)") ?? .orange)
                     return
                 }
-                self.viewModel.startSpeaking(text)
+                self.viewModel.startSpeaking(text.trimmingCharacters(in: .whitespacesAndNewlines))
             }
         } catch {
             logError(with: error)
@@ -195,7 +219,7 @@ class MainViewController: BaseViewController<MainViewModel> {
         if let currentFirstCell = self.quickAccessTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? QuickPhraseTableViewCell {
             currentFirstCell.setTipVisibility(isHidden: true)
         }
-        self.viewModel.addQuickPhraseItem(phrase: phrase)
+        self.viewModel.addQuickPhraseItem(phrase: phrase.trimmingCharacters(in: .whitespacesAndNewlines))
     }
     
     @IBAction

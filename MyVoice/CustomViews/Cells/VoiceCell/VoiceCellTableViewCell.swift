@@ -18,25 +18,26 @@ final class VoiceCellTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = .clear
         self.backgroundColor = .clear
         self.voiceLabel.text = "\(languageName) - \(voiceName)"
-        var voiceGenderText = "Unspecified"
+        var voiceGenderText = NSMutableAttributedString(string: "Unspecified", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black])
         switch voiceGender {
         case .male:
-            voiceGenderText = "Male"
+            voiceGenderText = NSMutableAttributedString(string: "Male", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black])
         case .female:
-            voiceGenderText = "Female"
+            voiceGenderText = NSMutableAttributedString(string: "Female", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black])
         default:
             break
         }
-        var voiceQualityText = " • "
+        let voiceQualityText = NSMutableAttributedString(string: " • ", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black])
         switch voiceQuality {
         case .default:
-            voiceQualityText.append("Default quality")
+            voiceQualityText.append(NSMutableAttributedString(string: "Default quality", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]))
         case .enhanced:
-            voiceQualityText.append("Enhanced quality")
+            voiceQualityText.append(NSMutableAttributedString(string: "Enhanced quality", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Orange (Main)") ?? .orange]))
         default:
-            voiceQualityText.append("Unknown quality")
+            voiceQualityText.append(NSMutableAttributedString(string: "Unknown quality", attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]))
         }
-        self.additionalInfoLabel.text = voiceGenderText.appending(voiceQualityText)
+        voiceGenderText.append(voiceQualityText)
+        self.additionalInfoLabel.attributedText = voiceGenderText
         self.checkmarkImageView.isHidden = isSelected == false
         self.checkmarkImageView.image = UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
     }

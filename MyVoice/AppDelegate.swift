@@ -7,14 +7,21 @@
 
 import UIKit
 import CoreData
+import AVKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // Allow AVSpeechUtterance to be heard while in silent mode
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
+            try AVAudioSession.sharedInstance().setActive(true)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
         return true
     }
 

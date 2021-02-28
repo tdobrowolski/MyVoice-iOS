@@ -69,4 +69,32 @@ final class SettingsViewModel: BaseViewModel {
     func refreshSelectedVoiceLabel() {
         self.sections.onNext(self.getAvailableSettings())
     }
+    
+    func getDataTypeForSpeechRate() -> SliderTableViewCell.SliderDataType {
+        let minValue = AVSpeechUtteranceMinimumSpeechRate
+        let maxValue = AVSpeechUtteranceMaximumSpeechRate
+        var currentValue = userDefaultsService.getSpeechRate()
+        if currentValue < minValue || currentValue > maxValue {
+            currentValue = AVSpeechUtteranceDefaultSpeechRate
+        }
+        return SliderTableViewCell.SliderDataType.speechRate(currentValue: currentValue, minValue: minValue, maxValue: maxValue)
+    }
+    
+    func getDataTypeForSpeechPitch() -> SliderTableViewCell.SliderDataType {
+        let minValue: Float = 0.0
+        let maxValue: Float = 2.0
+        var currentValue = userDefaultsService.getSpeechPitch()
+        if currentValue < minValue || currentValue > maxValue {
+            currentValue = 1.0
+        }
+        return SliderTableViewCell.SliderDataType.speechPitch(currentValue: currentValue, minValue: minValue, maxValue: maxValue)
+    }
+    
+    func setSpeechRate(_ value: Float) {
+        self.userDefaultsService.setSpeechRate(for: value)
+    }
+    
+    func setSpeechPitch(_ value: Float) {
+        self.userDefaultsService.setSpeechPitch(for: value)
+    }
 }

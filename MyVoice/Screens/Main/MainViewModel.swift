@@ -8,13 +8,24 @@
 import Foundation
 import RxSwift
 import RxDataSources
+import AVKit
 
 final class MainViewModel: BaseViewModel {
+    
+    enum SystemVolumeState {
+        case noVolume
+        case lowVolume
+        case mediumVolume
+        case highVolume
+    }
     
     private let textToSpeechService: TextToSpeechService
     private let phraseDatabaseService: PhraseDatabaseService
     
+    var systemValueObserver: NSKeyValueObservation?
+    
     let isSpeaking = BehaviorSubject<Bool>(value: false)
+    let systemVolumeState = BehaviorSubject<SystemVolumeState>(value: .lowVolume)
     
     let sections = BehaviorSubject<[QuickPhraseSection]>(value: [])
     
@@ -24,6 +35,7 @@ final class MainViewModel: BaseViewModel {
         super.init()
         self.bindService()
         self.getQuickPhrases()
+        self.observeSystemVolumeChange()
     }
     
     private func bindService() {
@@ -71,4 +83,27 @@ final class MainViewModel: BaseViewModel {
         let sections = [QuickPhraseSection(items: self.phraseDatabaseService.fetchAllPhrases())]
         self.sections.onNext(sections)
     }
+    
+    // MARK: Listen to system volume change
+    
+    private func observeSystemVolumeChange() {
+        self.systemValueObserver = AVAudioSession.sharedInstance().observe(\.outputVolume) { [weak self] audioSession, observedChange in
+            let currentVolume = Double(audioSession.outputVolume)
+            let noVolume = 0.0
+            let lowVolume = 0.01...0.25
+            let mediumVolume = 0.26...0.75
+//            let highVolume = 0.76...1.0
+            print("Volume changed observed: \(currentVolume)")
+            if currentVolume == noVolume {
+                self?.systemVolumeState.onNext(.noVolume)
+            } else if lowVolume.contains(currentVolume) {
+                self?.systemVolumeState.onNext(.lowVolume)
+            } else if mediumVolume.contains(currentVolume) {
+                self?.systemVolumeState.onNext(.mediumVolume)
+            } else {
+                self?.systemVolumeState.onNext(.highVolume)
+            }
+        }
+    }
+    
 }

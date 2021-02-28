@@ -44,7 +44,7 @@ final class PhraseDatabaseService: DatabaseService {
     func fetchAllPhrases() -> [QuickPhraseModel] {
         do {
             let phrases = try self.context.fetch(Phrase.fetchRequest() as NSFetchRequest<Phrase>)
-            return self.convertPhrasesToQuickPhrases(phrases: phrases)
+            return self.convertPhrasesToQuickPhrases(phrases: phrases).reversed()
         } catch {
             print(error.localizedDescription)
         }

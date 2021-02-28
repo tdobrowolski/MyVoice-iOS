@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import AVKit
 
 final class UserDefaultsService {
     
@@ -23,16 +24,24 @@ final class UserDefaultsService {
         defaults.setValue(rate, forKey: Keys.speechRate.rawValue)
     }
     
-    func getSpeechRate() -> Float? {
-        return defaults.float(forKey: Keys.speechRate.rawValue)
+    func getSpeechRate() -> Float {
+        if defaults.object(forKey: Keys.speechRate.rawValue) != nil {
+            return defaults.float(forKey: Keys.speechRate.rawValue)
+        } else {
+            return AVSpeechUtteranceDefaultSpeechRate
+        }
     }
     
     func setSpeechPitch(for pitch: Float) {
         defaults.setValue(pitch, forKey: Keys.speechPitch.rawValue)
     }
     
-    func getSpeechPitch() -> Float? {
-        return defaults.float(forKey: Keys.speechPitch.rawValue)
+    func getSpeechPitch() -> Float {
+        if defaults.object(forKey: Keys.speechPitch.rawValue) != nil {
+            return defaults.float(forKey: Keys.speechPitch.rawValue)
+        } else {
+            return 1.0
+        }
     }
     
     func setSpeechVoice(for identifier: String) {

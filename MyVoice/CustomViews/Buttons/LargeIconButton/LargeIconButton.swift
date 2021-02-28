@@ -44,6 +44,7 @@ final class LargeIconButton: UIButton {
         self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.addTarget(self, action: #selector(buttonPressed), for: .touchDown)
         self.addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
+        self.addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
         self.bindRxValues()
     }
     

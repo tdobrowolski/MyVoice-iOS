@@ -73,12 +73,18 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         case .speechRate:
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell") as! SliderTableViewCell
             cell.backgroundColor = UIColor(named: "White")
-            cell.setupSlider(for: .speechRate(currentValue: 1, minValue: 0, maxValue: 2)) // TODO: Pass real values
+            cell.setupSlider(for: self.viewModel.getDataTypeForSpeechRate())
+            cell.defaultSlider.rx.value.skip(1).subscribe { [weak self] value in
+                self?.viewModel.setSpeechRate(value)
+            }.disposed(by: cell.disposeBag)
             return cell
         case .speechPitch:
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell") as! SliderTableViewCell
             cell.backgroundColor = UIColor(named: "White")
-            cell.setupSlider(for: .speechPitch(currentValue: 1)) // TODO: Pass real value
+            cell.setupSlider(for: self.viewModel.getDataTypeForSpeechPitch())
+            cell.defaultSlider.rx.value.skip(1).subscribe { [weak self] value in
+                self?.viewModel.setSpeechPitch(value)
+            }.disposed(by: cell.disposeBag)
             return cell
         }
     }
