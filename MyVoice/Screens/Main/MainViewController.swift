@@ -11,10 +11,11 @@ import RxDataSources
 
 final class MainViewController: BaseViewController<MainViewModel> {
         
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: CustomScrollView!
     
     @IBOutlet weak var mainTextView: MainTextView!
     @IBOutlet weak var placeholderLabel: UILabel!
+    @IBOutlet weak var backgroundShadowView: BackgroundShadowView!
     
     @IBOutlet weak var speakButton: LargeIconButton!
     @IBOutlet weak var clearButton: LargeIconButton!
@@ -39,6 +40,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
         self.view.backgroundColor = UIColor(named: "Background")
         self.quickAccessTableView.delegate = self
         self.quickAccessTableView.layer.cornerRadius = 16
+        self.quickAccessTableView.isScrollEnabled = false
         self.addNavigationBarButtons()
         self.setupLargeButtons()
         self.setupPlaceholderLabel()
@@ -95,7 +97,6 @@ final class MainViewController: BaseViewController<MainViewModel> {
         }.disposed(by: disposeBag)
     }
     
-    // FIXME: Check why some phrases are said two times
     // FIXME: Fix memory leak, cells are not deinitialised
     func getDataSourceForQuickPhrase() -> RxTableViewSectionedAnimatedDataSource<QuickPhraseSection> {
         return RxTableViewSectionedAnimatedDataSource<QuickPhraseSection> (

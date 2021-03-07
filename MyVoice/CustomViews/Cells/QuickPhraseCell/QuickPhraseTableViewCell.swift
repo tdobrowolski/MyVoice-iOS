@@ -11,7 +11,7 @@ import RxSwift
 final class QuickPhraseTableViewCell: UITableViewCell {
     
     @IBOutlet weak var backgroundContainerView: UIView!
-    @IBOutlet weak var tapHandlerButton: UIButton!
+    @IBOutlet weak var tapHandlerButton: TouchHandlerButton!
     
     @IBOutlet weak var iconContainerView: UIView!
     @IBOutlet weak var iconImageView: UIImageView!

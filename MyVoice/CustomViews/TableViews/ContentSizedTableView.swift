@@ -19,8 +19,4 @@ final class ContentSizedTableView: UITableView {
         self.layoutIfNeeded()
         return CGSize(width: UIView.noIntrinsicMetric, height: self.contentSize.height)
     }
-    
-    override func touchesShouldCancel(in view: UIView) -> Bool {
-        return true
-    }
 }

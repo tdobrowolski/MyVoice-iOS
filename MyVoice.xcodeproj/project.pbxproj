@@ -28,6 +28,7 @@
 		E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127353B25C61DEB007993EA /* UserDefaultsService.swift */; };
 		E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E137882225D47B0A007E2DD8 /* Model.xcdatamodeld */; };
 		E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137884B25D47E72007E2DD8 /* DatabaseService.swift */; };
+		E141AD4425F58B9000C61408 /* BackgroundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141AD4325F58B9000C61408 /* BackgroundShadowView.swift */; };
 		E15B839525CF17CB00C8BFA5 /* LanguagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839325CF17CB00C8BFA5 /* LanguagePickerViewController.swift */; };
 		E15B839625CF17CB00C8BFA5 /* LanguagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B839425CF17CB00C8BFA5 /* LanguagePickerViewController.xib */; };
 		E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */; };
@@ -37,6 +38,8 @@
 		E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A8B25C21680003FE247 /* SettingsViewController.swift */; };
 		E1771A8E25C21680003FE247 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1771A8C25C21680003FE247 /* SettingsViewController.xib */; };
 		E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A9025C2168F003FE247 /* SettingsViewModel.swift */; };
+		E18AF60825F57A27008CFA5D /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AF60725F57A27008CFA5D /* CustomScrollView.swift */; };
+		E18AF60D25F57BDF008CFA5D /* TouchHandlerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AF60C25F57BDF008CFA5D /* TouchHandlerButton.swift */; };
 		E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */; };
 		E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */; };
 		E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */; };
@@ -80,6 +83,7 @@
 		E137884B25D47E72007E2DD8 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		E137885725D48BC6007E2DD8 /* Phrase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Phrase+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E137885825D48BC6007E2DD8 /* Phrase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Phrase+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E141AD4325F58B9000C61408 /* BackgroundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundShadowView.swift; sourceTree = "<group>"; };
 		E15B839325CF17CB00C8BFA5 /* LanguagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewController.swift; sourceTree = "<group>"; };
 		E15B839425CF17CB00C8BFA5 /* LanguagePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagePickerViewController.xib; sourceTree = "<group>"; };
 		E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewModel.swift; sourceTree = "<group>"; };
@@ -89,6 +93,8 @@
 		E1771A8B25C21680003FE247 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1771A8C25C21680003FE247 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		E1771A9025C2168F003FE247 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		E18AF60725F57A27008CFA5D /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
+		E18AF60C25F57BDF008CFA5D /* TouchHandlerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchHandlerButton.swift; sourceTree = "<group>"; };
 		E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseModel.swift; sourceTree = "<group>"; };
 		E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseTableViewCell.swift; sourceTree = "<group>"; };
 		E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickPhraseTableViewCell.xib; sourceTree = "<group>"; };
@@ -218,6 +224,8 @@
 		E115576C25B4C7810093851B /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				E141AD4225F58B6700C61408 /* Views */,
+				E18AF60625F57A07008CFA5D /* ScrollViews */,
 				E1DF158725BCCC1300810C0D /* TableViews */,
 				E197348F25B8CFA900F3A78B /* Cells */,
 				E1C3EF5725B4EF5700339B9A /* NavigationControllers */,
@@ -251,6 +259,7 @@
 		E115577C25B4C9E40093851B /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				E18AF60B25F57BC7008CFA5D /* TouchHandlerButton */,
 				E115578125B4CA230093851B /* LargeIconButton */,
 			);
 			path = Buttons;
@@ -273,6 +282,14 @@
 				E137882225D47B0A007E2DD8 /* Model.xcdatamodeld */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		E141AD4225F58B6700C61408 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E141AD4325F58B9000C61408 /* BackgroundShadowView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E15B839225CF17AD00C8BFA5 /* LanguagePicker */ = {
@@ -302,6 +319,22 @@
 				E1771A9025C2168F003FE247 /* SettingsViewModel.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		E18AF60625F57A07008CFA5D /* ScrollViews */ = {
+			isa = PBXGroup;
+			children = (
+				E18AF60725F57A27008CFA5D /* CustomScrollView.swift */,
+			);
+			path = ScrollViews;
+			sourceTree = "<group>";
+		};
+		E18AF60B25F57BC7008CFA5D /* TouchHandlerButton */ = {
+			isa = PBXGroup;
+			children = (
+				E18AF60C25F57BDF008CFA5D /* TouchHandlerButton.swift */,
+			);
+			path = TouchHandlerButton;
 			sourceTree = "<group>";
 		};
 		E197348F25B8CFA900F3A78B /* Cells */ = {
@@ -559,18 +592,21 @@
 				E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */,
 				E15B839525CF17CB00C8BFA5 /* LanguagePickerViewController.swift in Sources */,
 				E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */,
+				E18AF60D25F57BDF008CFA5D /* TouchHandlerButton.swift in Sources */,
 				E115574325B4C4290093851B /* AppDelegate.swift in Sources */,
 				E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */,
 				E115577E25B4CA0E0093851B /* LargeIconButton.swift in Sources */,
 				E127353925C617BE007993EA /* SettingModel.swift in Sources */,
 				E115574525B4C4290093851B /* SceneDelegate.swift in Sources */,
 				E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */,
+				E18AF60825F57A27008CFA5D /* CustomScrollView.swift in Sources */,
 				E115576A25B4C5C20093851B /* ViewController+Extensions.swift in Sources */,
 				E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */,
 				E11C1AD125D83CFF001FE05E /* Phrase+CoreDataProperties.swift in Sources */,
 				E15B839F25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.swift in Sources */,
 				E115576125B4C56A0093851B /* MainViewController.swift in Sources */,
 				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
+				E141AD4425F58B9000C61408 /* BackgroundShadowView.swift in Sources */,
 				E1771A8025C21523003FE247 /* UILabel+Extensions.swift in Sources */,
 				E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */,
 				E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */,

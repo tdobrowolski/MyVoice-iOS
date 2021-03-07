@@ -160,7 +160,6 @@ final class LargeIconButton: UIButton {
         }.disposed(by: disposeBag)
     }
     
-    // TODO: Debug and test if it's working
     private func getSystemVolumeIcon(for volumeState: SystemVolumeState? = nil) -> UIImage? {
         switch volumeState ?? SystemVolumeState.getState(from: nil) {
         case .noVolume:
@@ -183,7 +182,7 @@ final class LargeIconButton: UIButton {
         } else {
             self.iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
             self.iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
-            self.iconImageView.image = UIImage(systemName: "speaker.wave.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            self.iconImageView.image = self.getSystemVolumeIcon()
             self.setupTitleLabel(title: "Speak")
         }
     }

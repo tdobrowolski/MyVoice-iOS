@@ -83,7 +83,7 @@
 "Speech voice" = "Głos";
 
 /* No comment provided by engineer. */
-"Tip: Select text to say it loud." = "Porada: Wybierz tekst aby go wypowiedzieć";
+"Tip: Select text to say it loud." = "Porada: Wybierz frazę aby ją wypowiedzieć.";
 
 /* Placeholder text with line break */
 "To add your first phrase tap on \n„Save” button." = "Dodaj swoją pierwszą frazę \nprzyciskiem „Zapisz”";

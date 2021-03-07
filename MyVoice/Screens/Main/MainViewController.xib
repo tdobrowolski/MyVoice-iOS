@@ -23,6 +23,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="MyVoice" customModuleProvider="target">
             <connections>
+                <outlet property="backgroundShadowView" destination="tui-a2-3yS" id="guy-NQ-Fu3"/>
                 <outlet property="clearButton" destination="Dya-US-nHO" id="CMJ-Zk-dJw"/>
                 <outlet property="editButton" destination="S1N-az-PYR" id="4wv-70-GBD"/>
                 <outlet property="headerTitleLabel" destination="emE-tE-bFV" id="JjD-ds-MhV"/>
@@ -44,12 +45,16 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVh-g5-XuI">
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVh-g5-XuI" customClass="CustomScrollView" customModule="MyVoice" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                     <subviews>
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQl-5I-Ypw">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="587.5"/>
                             <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tui-a2-3yS" customClass="BackgroundShadowView" customModule="MyVoice" customModuleProvider="target">
+                                    <rect key="frame" x="16" y="8" width="382" height="200"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="interactive" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="bL3-7m-SfT" customClass="MainTextView" customModule="MyVoice" customModuleProvider="target">
                                     <rect key="frame" x="16" y="8" width="382" height="200"/>
                                     <color key="tintColor" name="Orange (Main)"/>
@@ -169,12 +174,16 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="rFk-io-9ZK" firstAttribute="top" secondItem="bL3-7m-SfT" secondAttribute="bottom" constant="16" id="0ME-Nv-UJ9"/>
+                                <constraint firstItem="tui-a2-3yS" firstAttribute="trailing" secondItem="bL3-7m-SfT" secondAttribute="trailing" id="4od-y7-slc"/>
                                 <constraint firstItem="Phl-JM-7vZ" firstAttribute="leading" secondItem="eQl-5I-Ypw" secondAttribute="leading" constant="16" id="9FT-n4-jFE"/>
                                 <constraint firstItem="Btb-UM-1dv" firstAttribute="trailing" secondItem="bL3-7m-SfT" secondAttribute="trailing" constant="14" id="AZh-wq-1kM"/>
+                                <constraint firstItem="tui-a2-3yS" firstAttribute="leading" secondItem="bL3-7m-SfT" secondAttribute="leading" id="Bd6-ee-6td"/>
+                                <constraint firstItem="tui-a2-3yS" firstAttribute="bottom" secondItem="bL3-7m-SfT" secondAttribute="bottom" id="FEd-Yu-g3w"/>
                                 <constraint firstItem="Btb-UM-1dv" firstAttribute="top" secondItem="bL3-7m-SfT" secondAttribute="top" constant="13" id="HpH-yY-e9N"/>
                                 <constraint firstItem="9QN-YU-QVx" firstAttribute="top" secondItem="Phl-JM-7vZ" secondAttribute="top" id="Hzb-F8-SKB"/>
                                 <constraint firstItem="bL3-7m-SfT" firstAttribute="top" secondItem="eQl-5I-Ypw" secondAttribute="top" constant="8" id="Ibx-Au-iLT"/>
                                 <constraint firstItem="Phl-JM-7vZ" firstAttribute="top" secondItem="czT-nz-l6l" secondAttribute="bottom" constant="16" id="IdA-EP-wnL"/>
+                                <constraint firstItem="tui-a2-3yS" firstAttribute="top" secondItem="bL3-7m-SfT" secondAttribute="top" id="Lib-6t-KQP"/>
                                 <constraint firstItem="czT-nz-l6l" firstAttribute="leading" secondItem="eQl-5I-Ypw" secondAttribute="leading" constant="16" id="QMM-tE-i93"/>
                                 <constraint firstItem="bL3-7m-SfT" firstAttribute="leading" secondItem="eQl-5I-Ypw" secondAttribute="leading" constant="16" id="Vsb-KN-DKI"/>
                                 <constraint firstItem="Btb-UM-1dv" firstAttribute="leading" secondItem="bL3-7m-SfT" secondAttribute="leading" constant="18" id="Yrf-Rc-R6h"/>
