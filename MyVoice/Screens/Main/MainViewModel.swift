@@ -12,15 +12,9 @@ import AVKit
 
 final class MainViewModel: BaseViewModel {
     
-    enum SystemVolumeState {
-        case noVolume
-        case lowVolume
-        case mediumVolume
-        case highVolume
-    }
-    
     private let textToSpeechService: TextToSpeechService
     private let phraseDatabaseService: PhraseDatabaseService
+    private var feedbackGenerator: UIImpactFeedbackGenerator?
     
     var systemValueObserver: NSKeyValueObservation?
     
@@ -32,6 +26,7 @@ final class MainViewModel: BaseViewModel {
     override init() {
         self.textToSpeechService = TextToSpeechService()
         self.phraseDatabaseService = PhraseDatabaseService()
+        self.feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         super.init()
         self.bindService()
         self.getQuickPhrases()
@@ -45,6 +40,7 @@ final class MainViewModel: BaseViewModel {
     }
     
     func startSpeaking(_ text: String) {
+        self.feedbackGenerator?.impactOccurred()
         self.textToSpeechService.startSpeaking(text: text)
     }
     
@@ -89,20 +85,8 @@ final class MainViewModel: BaseViewModel {
     private func observeSystemVolumeChange() {
         self.systemValueObserver = AVAudioSession.sharedInstance().observe(\.outputVolume) { [weak self] audioSession, observedChange in
             let currentVolume = Double(audioSession.outputVolume)
-            let noVolume = 0.0
-            let lowVolume = 0.01...0.25
-            let mediumVolume = 0.26...0.75
-//            let highVolume = 0.76...1.0
             print("Volume changed observed: \(currentVolume)")
-            if currentVolume == noVolume {
-                self?.systemVolumeState.onNext(.noVolume)
-            } else if lowVolume.contains(currentVolume) {
-                self?.systemVolumeState.onNext(.lowVolume)
-            } else if mediumVolume.contains(currentVolume) {
-                self?.systemVolumeState.onNext(.mediumVolume)
-            } else {
-                self?.systemVolumeState.onNext(.highVolume)
-            }
+            self?.systemVolumeState.onNext(SystemVolumeState.getState(from: currentVolume))
         }
     }
     

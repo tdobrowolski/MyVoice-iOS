@@ -90,7 +90,9 @@ final class MainViewController: BaseViewController<MainViewModel> {
             self?.placeholderLabel.isHidden = text?.isEmpty == false
         }).disposed(by: disposeBag)
         
-        // TODO: Subscribe to volume change
+        viewModel.systemVolumeState.skip(1).subscribe { [weak self] volumeState in
+            self?.speakButton.systemVolumeState.onNext(volumeState)
+        }.disposed(by: disposeBag)
     }
     
     // FIXME: Check why some phrases are said two times

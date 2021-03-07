@@ -7,6 +7,31 @@
 
 import UIKit
 import RxSwift
+import AVFoundation
+
+enum SystemVolumeState {
+    case noVolume
+    case lowVolume
+    case mediumVolume
+    case highVolume
+    
+    static func getState(from value: Double?) -> Self {
+        let currentVolume = value ?? Double(AVAudioSession.sharedInstance().outputVolume)
+        let noVolume = 0.0
+        let lowVolume = 0.01...0.25
+        let mediumVolume = 0.26...0.75
+//        let highVolume = 0.76...1.0
+        if currentVolume == noVolume {
+            return .noVolume
+        } else if lowVolume.contains(currentVolume) {
+            return .lowVolume
+        } else if mediumVolume.contains(currentVolume) {
+            return .mediumVolume
+        } else {
+            return .highVolume
+        }
+    }
+}
 
 final class LargeIconButton: UIButton {
     
@@ -25,6 +50,7 @@ final class LargeIconButton: UIButton {
     private var shadowLayer: CAShapeLayer!
     
     let isSpeaking = BehaviorSubject<Bool>(value: false)
+    let systemVolumeState = BehaviorSubject<SystemVolumeState>(value: .lowVolume)
     let disposeBag = DisposeBag()
     
     override init(frame: CGRect) {
@@ -109,7 +135,7 @@ final class LargeIconButton: UIButton {
         case .speak:
             self.iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
             self.iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
-            self.iconImageView.image = UIImage(systemName: "speaker.wave.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            self.iconImageView.image = self.getSystemVolumeIcon()
         case .clear:
             self.iconContainerView.backgroundColor = UIColor(named: "Red (Light)") ?? .white
             self.iconImageView.tintColor = UIColor(named: "Red (Main)") ?? .red
@@ -127,6 +153,25 @@ final class LargeIconButton: UIButton {
         self.isSpeaking.skip(1).subscribe { [weak self] isSpeaking in
             self?.setupForSpeakButton(isSpeaking: isSpeaking)
         }.disposed(by: disposeBag)
+        
+        self.systemVolumeState.skip(1).subscribe { [weak self] volumeState in
+            guard let state = volumeState.element, let isSpeaking = try? self?.isSpeaking.value(), isSpeaking == false else { return }
+            self?.iconImageView.image = self?.getSystemVolumeIcon(for: state)
+        }.disposed(by: disposeBag)
+    }
+    
+    // TODO: Debug and test if it's working
+    private func getSystemVolumeIcon(for volumeState: SystemVolumeState? = nil) -> UIImage? {
+        switch volumeState ?? SystemVolumeState.getState(from: nil) {
+        case .noVolume:
+            return UIImage(systemName: "speaker.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        case .lowVolume:
+            return UIImage(systemName: "speaker.wave.1.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        case .mediumVolume:
+            return UIImage(systemName: "speaker.wave.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        case .highVolume:
+            return UIImage(systemName: "speaker.wave.3.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        }
     }
     
     private func setupForSpeakButton(isSpeaking: Bool = false) {

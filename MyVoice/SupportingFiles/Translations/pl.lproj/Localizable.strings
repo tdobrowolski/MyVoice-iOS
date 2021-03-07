@@ -40,6 +40,9 @@
 /* OK */
 "OK" = "OK";
 
+/* Other */
+"Other" = "Inne";
+
 /* Quick access */
 "Quick access" = "Szybki dostęp";
 
@@ -66,6 +69,15 @@
 
 /* Speak */
 "Speak" = "Powiedz";
+
+/* Speech pitch */
+"Speech pitch" = "Ton mowy";
+
+/* Speech rate */
+"Speech rate" = "Tempo mowy";
+
+/* Speech settings */
+"Speech settings" = "Ustawienia mowy";
 
 /* Speech voice */
 "Speech voice" = "Głos";

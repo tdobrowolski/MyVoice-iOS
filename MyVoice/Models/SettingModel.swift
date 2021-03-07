@@ -9,17 +9,29 @@ import RxDataSources
 
 struct SettingsSection {
     
-    // FIXME: Needs workaround for NSLocalizedString
     enum SectionType: String {
-        case speechVoice = "Speech settings"
-        case speechRate = "Speech rate"
-        case speechPitch = "Speech pitch"
-        case other = "Other"
+        case speechVoice = "speechVoice"
+        case speechRate = "speechRate"
+        case speechPitch = "speechPitch"
+        case other = "other"
     }
     
     var type: SectionType
     var footer: String? = nil
     var items: [Item]
+    
+    func getLocalizedString() -> String {
+        switch type {
+        case .speechVoice:
+            return NSLocalizedString("Speech settings", comment: "Speech settings")
+        case .speechRate:
+            return NSLocalizedString("Speech rate", comment: "Speech rate")
+        case .speechPitch:
+            return NSLocalizedString("Speech pitch", comment: "Speech pitch")
+        case .other:
+            return NSLocalizedString("Other", comment: "Other")
+        }
+    }
 }
 
 extension SettingsSection: AnimatableSectionModelType {

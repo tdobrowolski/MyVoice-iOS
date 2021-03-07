@@ -30,7 +30,6 @@ class BaseViewController<BaseViewModel>: UIViewController {
     
     func bindViewModel(viewModel: BaseViewModel) { }
     
-    
     /// Adds gesture recognizer for dismissing keyboard on the view
     func hideKeyboardWhenTappedAround() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
