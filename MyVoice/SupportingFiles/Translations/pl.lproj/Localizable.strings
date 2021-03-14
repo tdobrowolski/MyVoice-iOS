@@ -108,3 +108,63 @@
 
 /* You have no phrases yet! */
 "You have no phrases yet!" = "Nie masz zapisanych fraz!";
+
+/* First part of bigger text */
+"1. Open the system" = "";
+
+/* First part of bigger text */
+"2. Navigate to" = "";
+
+/* No comment provided by engineer. */
+"3. Tap on Add New Language and select the language/dialect that you want to add." = "";
+
+/* No comment provided by engineer. */
+"4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice." = "";
+
+/* Second part of bigger text */
+"Accessibility > VoiceOver > Speech" = "";
+
+/* Name for Settings app button */
+"Add New Language" = "";
+
+/* No comment provided by engineer. */
+"Enter the text, that you want to be spoken, into the main, upper text field on the MyVoice screen. When you are ready to hear your phrase, tap Speak button under the text field. If you don’t hear your text, try to change the volume of your device. You can always have a quick look at your volume level on Speak button. The speaker icon shows your current volume setting." = "";
+
+/* No comment provided by engineer. */
+"Go to the official Apple tutorial." = "";
+
+/* No comment provided by engineer. */
+"How to change speaking voice and its language?" = "";
+
+/* No comment provided by engineer. */
+"How to customize the way my phrases are spoken?" = "";
+
+/* No comment provided by engineer. */
+"How to download more voices?" = "";
+
+/* No comment provided by engineer. */
+"How to make my phrases be spoken out loud?" = "";
+
+/* No comment provided by engineer. */
+"On the Settings screen, you can customize some options, that will affect how your text is spoken. With Speech rate slider, you choose how fast your phrases will be said out loud. Speech pitch slider will change voice pitch. Try to experiment with it in Settings and find the best options that will suit you. You can also change the voice with its language that will be responsible for speaking all texts." = "";
+
+/* No comment provided by engineer. */
+"Quick access list helps you reach your saved phrases very fast, so you don’t need to always type them when you want to speak them. Enter the phrase into the text field and tap Save button. The text will appear on the Quick access list. To say it loud, just touch it. If you want to remove it, swipe your finger on the phrase to the left." = "";
+
+/* Second part of bigger text */
+"Settings app" = "";
+
+/* No comment provided by engineer. */
+"Still lost? Go to the official Apple tutorial." = "";
+
+/* No comment provided by engineer. */
+"That’s it. If you go to MyVoice’s Select voice screen, you will see added voice on the list. You can now select it and all your phrases will be spoken with that voice." = "";
+
+/* No comment provided by engineer. */
+"To change the voice that will speak your phrases, go to the Settings screen. Select the Speech voice setting. You will see a new screen with a list of all voices available on your device. Each voice has its properties with its language. Some voices are also available in Enhanced mode - that means your phrases will sound more natural and with better pronunciation." = "";
+
+/* No comment provided by engineer. */
+"What is Quick access?" = "";
+
+/* No comment provided by engineer. */
+"You can always download a bunch of new voices with support for more languages. You can’t do that from the MyVoice app. To do that:" = "";

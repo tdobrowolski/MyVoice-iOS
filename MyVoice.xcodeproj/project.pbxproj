@@ -54,6 +54,9 @@
 		E1E6C2CE25B4D30300774B17 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1E6C2CD25B4D30300774B17 /* Colors.xcassets */; };
 		E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */; };
 		E1E98A8325C6C77200F531BD /* SliderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E98A8125C6C77200F531BD /* SliderTableViewCell.xib */; };
+		E1F246F825FE82A90077EE4F /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F246F625FE82A90077EE4F /* HelpViewController.swift */; };
+		E1F246F925FE82A90077EE4F /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F246F725FE82A90077EE4F /* HelpViewController.xib */; };
+		E1F246FC25FE82B30077EE4F /* HelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */; };
 		E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */; };
 		E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -110,6 +113,9 @@
 		E1E6C2CD25B4D30300774B17 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = MyVoice/Colors.xcassets; sourceTree = SOURCE_ROOT; };
 		E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
 		E1E98A8125C6C77200F531BD /* SliderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderTableViewCell.xib; sourceTree = "<group>"; };
+		E1F246F625FE82A90077EE4F /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
+		E1F246F725FE82A90077EE4F /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
+		E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewModel.swift; sourceTree = "<group>"; };
 		E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
 		E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		FC90D1488A315B7CCEC8090F /* Pods_MyVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				E15B839225CF17AD00C8BFA5 /* LanguagePicker */,
+				E1F246F525FE82960077EE4F /* Help */,
 				E1771A8225C21605003FE247 /* Settings */,
 				E115575D25B4C5390093851B /* Main */,
 			);
@@ -407,6 +414,16 @@
 			path = SliderCell;
 			sourceTree = "<group>";
 		};
+		E1F246F525FE82960077EE4F /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				E1F246F625FE82A90077EE4F /* HelpViewController.swift */,
+				E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */,
+				E1F246F725FE82A90077EE4F /* HelpViewController.xib */,
+			);
+			path = Help;
+			sourceTree = "<group>";
+		};
 		E1FFC29225B625DD00E8F1C0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +504,7 @@
 				E115577725B4C93C0093851B /* Poppins-Regular.ttf in Resources */,
 				E115574F25B4C42B0093851B /* LaunchScreen.storyboard in Resources */,
 				E1B148A125EC4326003C1401 /* Localizable.strings in Resources */,
+				E1F246F925FE82A90077EE4F /* HelpViewController.xib in Resources */,
 				E15B83A025CF3D3F00C8BFA5 /* VoiceCellTableViewCell.xib in Resources */,
 				E115577425B4C93C0093851B /* Poppins-Medium.ttf in Resources */,
 				E115576225B4C56A0093851B /* MainViewController.xib in Resources */,
@@ -606,6 +624,7 @@
 				E15B839F25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.swift in Sources */,
 				E115576125B4C56A0093851B /* MainViewController.swift in Sources */,
 				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
+				E1F246F825FE82A90077EE4F /* HelpViewController.swift in Sources */,
 				E141AD4425F58B9000C61408 /* BackgroundShadowView.swift in Sources */,
 				E1771A8025C21523003FE247 /* UILabel+Extensions.swift in Sources */,
 				E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */,
@@ -616,6 +635,7 @@
 				E1E5FECA25D9879800FEB6E2 /* PhraseDatabaseService.swift in Sources */,
 				E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */,
 				E11C1ACF25D83CFA001FE05E /* Phrase+CoreDataClass.swift in Sources */,
+				E1F246FC25FE82B30077EE4F /* HelpViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

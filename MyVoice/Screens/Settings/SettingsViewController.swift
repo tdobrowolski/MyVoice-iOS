@@ -91,7 +91,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     
     private func getHeaderTitle(for section: Int) -> String? {
         guard let sections = try? viewModel.sections.value() else { return nil }
-        return sections[section].type.rawValue
+        return sections[section].getLocalizedHeaderString()
     }
     
     private func getFooterTitle(for section: Int) -> String? {

@@ -179,7 +179,11 @@ final class MainViewController: BaseViewController<MainViewModel> {
     
     @objc
     private func helpDidTouch() {
-        
+        self.viewModel.stopSpeaking()
+        let helpViewModel = HelpViewModel()
+        let helpViewController = HelpViewController(viewModel: helpViewModel, nibName: "HelpViewController")
+        let helpNavigationController = DefaultNavigationController(rootViewController: helpViewController)
+        self.present(helpNavigationController, animated: true, completion: nil)
     }
     
     @objc

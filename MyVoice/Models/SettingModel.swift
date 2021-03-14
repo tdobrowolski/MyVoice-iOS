@@ -20,7 +20,7 @@ struct SettingsSection {
     var footer: String? = nil
     var items: [Item]
     
-    func getLocalizedString() -> String {
+    func getLocalizedHeaderString() -> String {
         switch type {
         case .speechVoice:
             return NSLocalizedString("Speech settings", comment: "Speech settings")
