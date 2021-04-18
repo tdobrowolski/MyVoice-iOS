@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,19 +18,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InfinityLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Ix2-rx-OlM">
-                                <rect key="frame" x="112.66666666666669" y="628" width="150" height="50"/>
+                                <rect key="frame" x="112.66666666666669" y="648" width="150" height="50"/>
                                 <color key="tintColor" name="Black"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GNT-7Y-ZQM"/>
                                     <constraint firstAttribute="width" constant="150" id="rCz-vI-GUT"/>
                                 </constraints>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Ph0-mn-eSx">
+                                <rect key="frame" x="42" y="199.66666666666666" width="291" height="332.66666666666674"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ph0-mn-eSx" secondAttribute="height" multiplier="35:40" id="Q5w-Cy-fhe"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="lWZ-vy-3wI"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>
+                            <constraint firstItem="Ph0-mn-eSx" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="3iU-6E-p7i"/>
+                            <constraint firstItem="Ph0-mn-eSx" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="42" id="Mmm-mw-tVN"/>
                             <constraint firstItem="Ix2-rx-OlM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="nFI-f2-ckt"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ix2-rx-OlM" secondAttribute="bottom" constant="100" id="wLz-T1-LYn"/>
+                            <constraint firstItem="Ph0-mn-eSx" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-40" id="uRP-Xb-gTB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Ix2-rx-OlM" secondAttribute="bottom" constant="80" id="wLz-T1-LYn"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Ph0-mn-eSx" secondAttribute="trailing" constant="42" id="yD7-78-J2i"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -41,8 +52,9 @@
     </scenes>
     <resources>
         <image name="InfinityLogo" width="443" height="136"/>
+        <image name="LaunchScreenLogo" width="353" height="409"/>
         <namedColor name="Background">
-            <color red="0.93333333333333335" green="0.95686274509803915" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.93300002813339233" green="0.9570000171661377" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Black">
             <color red="0.090000003576278687" green="0.090000003576278687" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
