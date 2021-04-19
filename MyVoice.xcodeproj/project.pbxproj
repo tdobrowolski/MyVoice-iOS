@@ -171,12 +171,12 @@
 		E115574125B4C4290093851B /* MyVoice */ = {
 			isa = PBXGroup;
 			children = (
+				E115575925B4C51A0093851B /* Screens */,
 				E197349725B8D4D600F3A78B /* Models */,
 				E1FFC29225B625DD00E8F1C0 /* Services */,
 				E115576C25B4C7810093851B /* CustomViews */,
 				E115576825B4C5AC0093851B /* Extensions */,
 				E115576425B4C5950093851B /* Base */,
-				E115575925B4C51A0093851B /* Screens */,
 				E137885325D48B40007E2DD8 /* CoreData */,
 				E115576E25B4C9000093851B /* SupportingFiles */,
 				E115574225B4C4290093851B /* AppDelegate.swift */,
@@ -191,10 +191,10 @@
 		E115575925B4C51A0093851B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				E15B839225CF17AD00C8BFA5 /* LanguagePicker */,
-				E1F246F525FE82960077EE4F /* Help */,
-				E1771A8225C21605003FE247 /* Settings */,
 				E115575D25B4C5390093851B /* Main */,
+				E1771A8225C21605003FE247 /* Settings */,
+				E1F246F525FE82960077EE4F /* Help */,
+				E15B839225CF17AD00C8BFA5 /* LanguagePicker */,
 			);
 			path = Screens;
 			sourceTree = "<group>";

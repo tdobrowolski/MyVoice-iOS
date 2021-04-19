@@ -1,3 +1,21 @@
+/* First part of bigger text */
+"1. Open the system" = "1. Otwórz";
+
+/* First part of bigger text */
+"2. Navigate to" = "2. Przejdź do";
+
+/* No comment provided by engineer. */
+"3. Tap on Add New Language and select the language/dialect that you want to add." = "3. Naciśnij Dodaj nowy język… i zaznacz język, który cię interesuje.";
+
+/* No comment provided by engineer. */
+"4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice." = "4. Wróć do ekranu Mowa i kliknij w nowo dodany język. Wybierz interesujący cię głos i jego jakość.";
+
+/* Second part of bigger text */
+"Accessibility > VoiceOver > Speech" = "Dostępność > VoiceOver > Mowa";
+
+/* Name for Settings app button */
+"Add New Language" = "Dodaj nowy język…";
+
 /* Clear */
 "Clear" = "Wyczyść";
 
@@ -16,11 +34,29 @@
 /* Enhanced quality */
 "Enhanced quality" = "Rozszerzona jakość";
 
+/* No comment provided by engineer. */
+"Enter the text, that you want to be spoken, into the main, upper text field on the MyVoice screen. When you are ready to hear your phrase, tap Speak button under the text field. If you don’t hear your text, try to change the volume of your device. You can always have a quick look at your volume level on Speak button. The speaker icon shows your current volume setting." = "Wpisz tekst, który ma zostać wypowiedziany w główne pole tekstowe na widoku MyVoice. Aby wypowiedzieć wpisaną frazę, naciśnij przycisk Powiedz. Jeśli nie usłyszysz wypowiadanego tekstu, spróbuj podgłośnić swoje urządzenie. Pamiętaj, że zawsze możesz sprawdzić poziom głośności na przycisku Powiedz. Ikona głośnika zmienia się w zależności od ustawień głośności.";
+
 /* Female */
 "Female" = "Kobieta";
 
+/* No comment provided by engineer. */
+"Go to the official Apple tutorial." = "Przejdź do poradnika Apple.";
+
 /* Help */
 "Help" = "Samouczek";
+
+/* No comment provided by engineer. */
+"How to change speaking voice and its language?" = "Jak zmienić głos i jego język?";
+
+/* No comment provided by engineer. */
+"How to customize the way my phrases are spoken?" = "Jak spersonalizować wypowiadane kwestie?";
+
+/* No comment provided by engineer. */
+"How to download more voices?" = "Jak pobrać więcej głosów?";
+
+/* No comment provided by engineer. */
+"How to make my phrases be spoken out loud?" = "Jak wypowiedzieć moje frazy na głos?";
 
 /* It looks like there's no mail account, that the system can use to send feedback. */
 "It looks like there's no mail account, that the system can use to send feedback." = "Wygląda na to, że system nie może znaleźć odpowiedniego konta mailowego, który posłużyłby do wysłania feedbacku.";
@@ -40,11 +76,17 @@
 /* OK */
 "OK" = "OK";
 
+/* No comment provided by engineer. */
+"On the Settings screen, you can customize some options, that will affect how your text is spoken. With Speech rate slider, you choose how fast your phrases will be said out loud. Speech pitch slider will change voice pitch. Try to experiment with it in Settings and find the best options that will suit you. You can also change the voice with its language that will be responsible for speaking all texts." = "Na widoku Ustawienia, możesz wybrać dodatkowe opcje, wpływające na sposób w jaki frazy są wypowiadane. Suwak Tempo mowy pozwala dostosować szybkość wypowiadanego tekstu. Ton mowy zmienia ton głosu. Spróbuj poeksperymentować z ustawieniami i znaleźć najlepszą dla siebie opcję. Możesz też zmienić głos i język, którym frazy są wypowiadane.";
+
 /* Other */
 "Other" = "Inne";
 
 /* Quick access */
 "Quick access" = "Szybki dostęp";
+
+/* No comment provided by engineer. */
+"Quick access list helps you reach your saved phrases very fast, so you don’t need to always type them when you want to speak them. Enter the phrase into the text field and tap Save button. The text will appear on the Quick access list. To say it loud, just touch it. If you want to remove it, swipe your finger on the phrase to the left." = "Lista Szybkiego dostępu pozwala na błyskawiczne wybranie zapisanego tekstu, dzięki czemu nie musisz wpisywać często używanych zwrótów za każdym razem, gdy chcesz je wypowiedzieć. Wpisz frazę w pole tekstowe i naciśnij „Zapisz”. Tekst pojawi się w sekcji Szybkiego dostępu. Aby wypowiedzieć zapisany tekst na głos, po prostu go dotknij. Aby go usunąć, przesuń tekst w lewą stronę.";
 
 /* No comment provided by engineer. */
 "Rate this app" = "Oceń aplikację";
@@ -67,6 +109,9 @@
 /* Settings */
 "Settings" = "Ustawienia";
 
+/* Second part of bigger text */
+"Settings app" = "systemową aplikację Ustawienia";
+
 /* Speak */
 "Speak" = "Powiedz";
 
@@ -83,10 +128,19 @@
 "Speech voice" = "Głos";
 
 /* No comment provided by engineer. */
+"Still lost? Go to the official Apple tutorial." = "Instrukcje niejasne? Przejdź do poradnika Apple.";
+
+/* No comment provided by engineer. */
+"That’s it. If you go to MyVoice’s Select voice screen, you will see added voice on the list. You can now select it and all your phrases will be spoken with that voice." = "To wszystko. Jeśli otworzysz ekran wyboru głosu wewnątrz aplikacji MyVoice, zobaczysz dodany głos na liście. Możesz go teraz zaznaczyć. Tekst będzie teraz czytany wybranym głosem.";
+
+/* No comment provided by engineer. */
 "Tip: Select text to say it loud." = "Porada: Wybierz frazę aby ją wypowiedzieć.";
 
 /* Placeholder text with line break */
 "To add your first phrase tap on \n„Save” button." = "Dodaj swoją pierwszą frazę \nprzyciskiem „Zapisz”";
+
+/* No comment provided by engineer. */
+"To change the voice that will speak your phrases, go to the Settings screen. Select the Speech voice setting. You will see a new screen with a list of all voices available on your device. Each voice has its properties with its language. Some voices are also available in Enhanced mode - that means your phrases will sound more natural and with better pronunciation." = "Aby zmienić głos odpowiedzialny za wypowiadanie fraz, przejdź do widoku Ustawienia. Wybierz Ustawienia mowy. Zobaczysz nowy widok z listą wszystkich dostępnych głosów na twoim urządzeniu. Każdy głos ma swoje właściwości wraz z obsługiwanym językiem. Niektóre głosy mają dostępną rozszerzoną jakość - oznacza to, że frazy będą wypowiadane w sposób bardziej naturalny i z lepsza dykcją.";
 
 /* Unknown */
 "Unknown" = "Brak";
@@ -106,65 +160,11 @@
 /* What do you want to say? */
 "What do you want to say?" = "Co chcesz powiedzieć?";
 
+/* No comment provided by engineer. */
+"What is Quick access?" = "Czym jest Szybki dostęp?";
+
+/* No comment provided by engineer. */
+"You can always download a bunch of new voices with support for more languages. You can’t do that from the MyVoice app. To do that:" = "W każdej chwili możesz pobrać więcej głosów ze wsparciem dla nowych języków. Nie możesz tego zrobić wprost z aplikacji MyVoice. Aby pobrać dodatkowe głosy:";
+
 /* You have no phrases yet! */
 "You have no phrases yet!" = "Nie masz zapisanych fraz!";
-
-/* First part of bigger text */
-"1. Open the system" = "";
-
-/* First part of bigger text */
-"2. Navigate to" = "";
-
-/* No comment provided by engineer. */
-"3. Tap on Add New Language and select the language/dialect that you want to add." = "";
-
-/* No comment provided by engineer. */
-"4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice." = "";
-
-/* Second part of bigger text */
-"Accessibility > VoiceOver > Speech" = "";
-
-/* Name for Settings app button */
-"Add New Language" = "";
-
-/* No comment provided by engineer. */
-"Enter the text, that you want to be spoken, into the main, upper text field on the MyVoice screen. When you are ready to hear your phrase, tap Speak button under the text field. If you don’t hear your text, try to change the volume of your device. You can always have a quick look at your volume level on Speak button. The speaker icon shows your current volume setting." = "";
-
-/* No comment provided by engineer. */
-"Go to the official Apple tutorial." = "";
-
-/* No comment provided by engineer. */
-"How to change speaking voice and its language?" = "";
-
-/* No comment provided by engineer. */
-"How to customize the way my phrases are spoken?" = "";
-
-/* No comment provided by engineer. */
-"How to download more voices?" = "";
-
-/* No comment provided by engineer. */
-"How to make my phrases be spoken out loud?" = "";
-
-/* No comment provided by engineer. */
-"On the Settings screen, you can customize some options, that will affect how your text is spoken. With Speech rate slider, you choose how fast your phrases will be said out loud. Speech pitch slider will change voice pitch. Try to experiment with it in Settings and find the best options that will suit you. You can also change the voice with its language that will be responsible for speaking all texts." = "";
-
-/* No comment provided by engineer. */
-"Quick access list helps you reach your saved phrases very fast, so you don’t need to always type them when you want to speak them. Enter the phrase into the text field and tap Save button. The text will appear on the Quick access list. To say it loud, just touch it. If you want to remove it, swipe your finger on the phrase to the left." = "";
-
-/* Second part of bigger text */
-"Settings app" = "";
-
-/* No comment provided by engineer. */
-"Still lost? Go to the official Apple tutorial." = "";
-
-/* No comment provided by engineer. */
-"That’s it. If you go to MyVoice’s Select voice screen, you will see added voice on the list. You can now select it and all your phrases will be spoken with that voice." = "";
-
-/* No comment provided by engineer. */
-"To change the voice that will speak your phrases, go to the Settings screen. Select the Speech voice setting. You will see a new screen with a list of all voices available on your device. Each voice has its properties with its language. Some voices are also available in Enhanced mode - that means your phrases will sound more natural and with better pronunciation." = "";
-
-/* No comment provided by engineer. */
-"What is Quick access?" = "";
-
-/* No comment provided by engineer. */
-"You can always download a bunch of new voices with support for more languages. You can’t do that from the MyVoice app. To do that:" = "";
