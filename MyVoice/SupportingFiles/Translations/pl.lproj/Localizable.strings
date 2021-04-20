@@ -130,6 +130,9 @@
 /* No comment provided by engineer. */
 "Still lost? Go to the official Apple tutorial." = "Instrukcje niejasne? Przejdź do poradnika Apple.";
 
+/* Stop */
+"Stop" = "Stop";
+
 /* No comment provided by engineer. */
 "That’s it. If you go to MyVoice’s Select voice screen, you will see added voice on the list. You can now select it and all your phrases will be spoken with that voice." = "To wszystko. Jeśli otworzysz ekran wyboru głosu wewnątrz aplikacji MyVoice, zobaczysz dodany głos na liście. Możesz go teraz zaznaczyć. Tekst będzie teraz czytany wybranym głosem.";
 

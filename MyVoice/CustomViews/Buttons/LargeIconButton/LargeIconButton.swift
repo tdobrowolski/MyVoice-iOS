@@ -178,12 +178,12 @@ final class LargeIconButton: UIButton {
             self.iconContainerView.backgroundColor = UIColor(named: "Red (Light)") ?? .white
             self.iconImageView.tintColor = UIColor(named: "Red (Main)") ?? .red
             self.iconImageView.image = UIImage(systemName: "stop.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            self.setupTitleLabel(title: "Stop")
+            self.setupTitleLabel(title: NSLocalizedString("Stop", comment: "Stop"))
         } else {
             self.iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
             self.iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
             self.iconImageView.image = self.getSystemVolumeIcon()
-            self.setupTitleLabel(title: "Speak")
+            self.setupTitleLabel(title: NSLocalizedString("Speak", comment: "Speak"))
         }
     }
     

@@ -203,6 +203,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
             } else {
                 guard let text = self.mainTextView.text, text.isEmpty == false else {
                     self.placeholderLabel.flashWithColor(UIColor(named: "Orange (Main)") ?? .orange)
+                    self.viewModel.warnUserWithFeedback()
                     return
                 }
                 self.viewModel.startSpeaking(text.trimmingCharacters(in: .whitespacesAndNewlines))
@@ -214,18 +215,21 @@ final class MainViewController: BaseViewController<MainViewModel> {
     
     @IBAction
     func clearButtonDidTouch(_ sender: Any) {
+        self.viewModel.impactUserWithFeedback()
         self.mainTextView.text = nil
     }
     
     @IBAction
     func saveButtonDidTouch(_ sender: Any) {
         guard let phrase = mainTextView.text, phrase.isEmpty == false else {
+            self.viewModel.warnUserWithFeedback()
             self.placeholderLabel.flashWithColor(UIColor(named: "Orange (Main)") ?? .orange)
             return
         }
         if let currentFirstCell = self.quickAccessTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? QuickPhraseTableViewCell {
             currentFirstCell.setTipVisibility(isHidden: true)
         }
+        self.viewModel.impactUserWithFeedback()
         self.viewModel.addQuickPhraseItem(phrase: phrase.trimmingCharacters(in: .whitespacesAndNewlines))
     }
     

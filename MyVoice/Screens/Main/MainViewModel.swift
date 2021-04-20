@@ -15,6 +15,7 @@ final class MainViewModel: BaseViewModel {
     private let textToSpeechService: TextToSpeechService
     private let phraseDatabaseService: PhraseDatabaseService
     private var feedbackGenerator: UIImpactFeedbackGenerator?
+    private var notificationFeedbackGenerator: UINotificationFeedbackGenerator?
     
     var systemValueObserver: NSKeyValueObservation?
     
@@ -27,6 +28,7 @@ final class MainViewModel: BaseViewModel {
         self.textToSpeechService = TextToSpeechService()
         self.phraseDatabaseService = PhraseDatabaseService()
         self.feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+        self.notificationFeedbackGenerator = UINotificationFeedbackGenerator()
         super.init()
         self.bindService()
         self.getQuickPhrases()
@@ -34,18 +36,25 @@ final class MainViewModel: BaseViewModel {
     }
     
     private func bindService() {
-        
         self.textToSpeechService.isSpeaking.subscribe(self.isSpeaking)
             .disposed(by: disposeBag)
     }
     
     func startSpeaking(_ text: String) {
-        self.feedbackGenerator?.impactOccurred()
+        self.impactUserWithFeedback()
         self.textToSpeechService.startSpeaking(text: text)
     }
     
     func stopSpeaking() {
         self.textToSpeechService.stopSpeaking()
+    }
+    
+    func impactUserWithFeedback() {
+        self.feedbackGenerator?.impactOccurred()
+    }
+    
+    func warnUserWithFeedback() {
+        self.notificationFeedbackGenerator?.notificationOccurred(.error)
     }
     
     // TODO: Adding/removing items to sections
