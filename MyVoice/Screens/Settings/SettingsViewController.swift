@@ -141,7 +141,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     private func composeFeedbackMail() {
         let mailViewController = MFMailComposeViewController()
         mailViewController.mailComposeDelegate = self
-        mailViewController.setToRecipients(["mail@gmail.com"]) // TODO: Add mail
+        mailViewController.setToRecipients(["infinity.tobiasz.dobrowolski@gmail.com"])
         if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] {
             mailViewController.setSubject("MyVoice App (\(appVersion)) - Feedback")
         } else {
@@ -177,7 +177,9 @@ extension SettingsViewController: UITableViewDelegate {
         case .other:
             switch indexPath.row {
             case 0:
-                self.openAppStoreForReview()
+//                self.openAppStoreForReview()
+                fallthrough
+                // TODO: If review available, remove fallthrough
             case 1:
                 if MFMailComposeViewController.canSendMail() {
                     self.composeFeedbackMail()

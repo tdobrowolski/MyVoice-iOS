@@ -48,7 +48,7 @@ final class SettingsViewModel: BaseViewModel {
                                 items: [pitchSetting]),
                 SettingsSection(type: .other,
                                 footer: NSLocalizedString("Version:", comment: "").appending(" \(appVersion)"),
-                                items: [rateAppSetting, feedbackSetting])]
+                                items: [feedbackSetting])] // TODO: Add rateAppSetting if AppStore URL available
     }
     
     func getSelectedVoiceName() -> String {

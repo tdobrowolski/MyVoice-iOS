@@ -165,11 +165,23 @@ final class LargeIconButton: UIButton {
         case .noVolume:
             return UIImage(systemName: "speaker.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         case .lowVolume:
-            return UIImage(systemName: "speaker.wave.1.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            if #available(iOS 14, *) {
+                return UIImage(systemName: "speaker.wave.1.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            } else {
+                return UIImage(systemName: "speaker.1.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            }
         case .mediumVolume:
-            return UIImage(systemName: "speaker.wave.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            if #available(iOS 14, *) {
+                return UIImage(systemName: "speaker.wave.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            } else {
+                return UIImage(systemName: "speaker.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            }
         case .highVolume:
-            return UIImage(systemName: "speaker.wave.3.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            if #available(iOS 14, *) {
+                return UIImage(systemName: "speaker.wave.3.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            } else {
+                return UIImage(systemName: "speaker.3.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            }
         }
     }
     
