@@ -3,11 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		90CA6ECA7442468C35DAEB4B /* Pods_MyVoice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC90D1488A315B7CCEC8090F /* Pods_MyVoice.framework */; };
+		567705142A1AA57E002FF02F /* CompositionRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567705132A1AA57E002FF02F /* CompositionRoot.swift */; };
+		567705162A1AA5C4002FF02F /* MainBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567705152A1AA5C4002FF02F /* MainBuilder.swift */; };
+		567705182A1AA655002FF02F /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567705172A1AA655002FF02F /* View+Extensions.swift */; };
+		5677051A2A1AA6B4002FF02F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567705192A1AA6B4002FF02F /* ViewController.swift */; };
+		5677051C2A1AA7DF002FF02F /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677051B2A1AA7DF002FF02F /* AppRouter.swift */; };
+		5677051E2A1AA82E002FF02F /* AppBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677051D2A1AA82E002FF02F /* AppBuilder.swift */; };
+		567705202A1AA8D0002FF02F /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5677051F2A1AA8D0002FF02F /* NavigationController.swift */; };
+		567705222A1AAF27002FF02F /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 567705212A1AAF27002FF02F /* MainView.swift */; };
 		E115574325B4C4290093851B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115574225B4C4290093851B /* AppDelegate.swift */; };
 		E115574525B4C4290093851B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115574425B4C4290093851B /* SceneDelegate.swift */; };
 		E115574C25B4C42B0093851B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E115574B25B4C42B0093851B /* Assets.xcassets */; };
@@ -62,8 +69,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		75CC27E1644FA1B184136EFE /* Pods-MyVoice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVoice.debug.xcconfig"; path = "Target Support Files/Pods-MyVoice/Pods-MyVoice.debug.xcconfig"; sourceTree = "<group>"; };
-		D437C7E729AC576FCBAB0A39 /* Pods-MyVoice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVoice.release.xcconfig"; path = "Target Support Files/Pods-MyVoice/Pods-MyVoice.release.xcconfig"; sourceTree = "<group>"; };
+		567705132A1AA57E002FF02F /* CompositionRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionRoot.swift; sourceTree = "<group>"; };
+		567705152A1AA5C4002FF02F /* MainBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainBuilder.swift; sourceTree = "<group>"; };
+		567705172A1AA655002FF02F /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		567705192A1AA6B4002FF02F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5677051B2A1AA7DF002FF02F /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		5677051D2A1AA82E002FF02F /* AppBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBuilder.swift; sourceTree = "<group>"; };
+		5677051F2A1AA8D0002FF02F /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		567705212A1AAF27002FF02F /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		E115573F25B4C4290093851B /* MyVoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E115574225B4C4290093851B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E115574425B4C4290093851B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,7 +123,7 @@
 		E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDatabaseService.swift; sourceTree = "<group>"; };
 		E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		E1E6C2CD25B4D30300774B17 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = MyVoice/Colors.xcassets; sourceTree = SOURCE_ROOT; };
+		E1E6C2CD25B4D30300774B17 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = MyVoice/Resources/Colors.xcassets; sourceTree = SOURCE_ROOT; };
 		E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
 		E1E98A8125C6C77200F531BD /* SliderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderTableViewCell.xib; sourceTree = "<group>"; };
 		E1F246F625FE82A90077EE4F /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +131,6 @@
 		E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewModel.swift; sourceTree = "<group>"; };
 		E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
 		E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		FC90D1488A315B7CCEC8090F /* Pods_MyVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,28 +138,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90CA6ECA7442468C35DAEB4B /* Pods_MyVoice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5DD28FE72419B1A46AD2C89F /* Pods */ = {
+		567705112A1AA173002FF02F /* LaunchScreen */ = {
 			isa = PBXGroup;
 			children = (
-				75CC27E1644FA1B184136EFE /* Pods-MyVoice.debug.xcconfig */,
-				D437C7E729AC576FCBAB0A39 /* Pods-MyVoice.release.xcconfig */,
+				E115574D25B4C42B0093851B /* LaunchScreen.storyboard */,
 			);
-			path = Pods;
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
-		68301C9CEE443000570586E6 /* Frameworks */ = {
+		567705122A1AA1AD002FF02F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FC90D1488A315B7CCEC8090F /* Pods_MyVoice.framework */,
+				E1E6C2CD25B4D30300774B17 /* Colors.xcassets */,
+				E115574B25B4C42B0093851B /* Assets.xcassets */,
 			);
-			name = Frameworks;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		E115573625B4C4290093851B = {
@@ -155,8 +166,6 @@
 			children = (
 				E115574125B4C4290093851B /* MyVoice */,
 				E115574025B4C4290093851B /* Products */,
-				5DD28FE72419B1A46AD2C89F /* Pods */,
-				68301C9CEE443000570586E6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -171,32 +180,37 @@
 		E115574125B4C4290093851B /* MyVoice */ = {
 			isa = PBXGroup;
 			children = (
-				E115575925B4C51A0093851B /* Screens */,
+				E115575925B4C51A0093851B /* Views */,
 				E197349725B8D4D600F3A78B /* Models */,
 				E1FFC29225B625DD00E8F1C0 /* Services */,
 				E115576C25B4C7810093851B /* CustomViews */,
 				E115576825B4C5AC0093851B /* Extensions */,
 				E115576425B4C5950093851B /* Base */,
 				E137885325D48B40007E2DD8 /* CoreData */,
+				567705122A1AA1AD002FF02F /* Resources */,
 				E115576E25B4C9000093851B /* SupportingFiles */,
 				E115574225B4C4290093851B /* AppDelegate.swift */,
 				E115574425B4C4290093851B /* SceneDelegate.swift */,
-				E115574D25B4C42B0093851B /* LaunchScreen.storyboard */,
-				E1E6C2CD25B4D30300774B17 /* Colors.xcassets */,
-				E115574B25B4C42B0093851B /* Assets.xcassets */,
+				567705132A1AA57E002FF02F /* CompositionRoot.swift */,
+				567705152A1AA5C4002FF02F /* MainBuilder.swift */,
+				567705192A1AA6B4002FF02F /* ViewController.swift */,
+				5677051B2A1AA7DF002FF02F /* AppRouter.swift */,
+				5677051D2A1AA82E002FF02F /* AppBuilder.swift */,
+				5677051F2A1AA8D0002FF02F /* NavigationController.swift */,
 			);
 			path = MyVoice;
 			sourceTree = "<group>";
 		};
-		E115575925B4C51A0093851B /* Screens */ = {
+		E115575925B4C51A0093851B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				567705112A1AA173002FF02F /* LaunchScreen */,
 				E115575D25B4C5390093851B /* Main */,
 				E1771A8225C21605003FE247 /* Settings */,
 				E1F246F525FE82960077EE4F /* Help */,
 				E15B839225CF17AD00C8BFA5 /* LanguagePicker */,
 			);
-			path = Screens;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E115575D25B4C5390093851B /* Main */ = {
@@ -205,6 +219,7 @@
 				E115576025B4C56A0093851B /* MainViewController.xib */,
 				E115575F25B4C56A0093851B /* MainViewController.swift */,
 				E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */,
+				567705212A1AAF27002FF02F /* MainView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -224,6 +239,7 @@
 				E115576925B4C5C20093851B /* ViewController+Extensions.swift */,
 				E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */,
 				E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */,
+				567705172A1AA655002FF02F /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -246,8 +262,8 @@
 			isa = PBXGroup;
 			children = (
 				E1B1489225EC4288003C1401 /* Translations */,
-				E115575025B4C42B0093851B /* Info.plist */,
 				E115576F25B4C9130093851B /* Fonts */,
+				E115575025B4C42B0093851B /* Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -442,12 +458,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E115575325B4C42B0093851B /* Build configuration list for PBXNativeTarget "MyVoice" */;
 			buildPhases = (
-				DE7E8DE3C8DE38BC5A42ABAA /* [CP] Check Pods Manifest.lock */,
 				E1B1488D25EC4056003C1401 /* Bartycrouch script */,
 				E115573B25B4C4290093851B /* Sources */,
 				E115573C25B4C4290093851B /* Frameworks */,
 				E115573D25B4C4290093851B /* Resources */,
-				962F8BF629A34BFE7CE393D4 /* [CP] Embed Pods Frameworks */,
 				E127353325C60B3E007993EA /* Auto-increment build number */,
 			);
 			buildRules = (
@@ -520,45 +534,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		962F8BF629A34BFE7CE393D4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyVoice/Pods-MyVoice-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MyVoice/Pods-MyVoice-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVoice/Pods-MyVoice-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DE7E8DE3C8DE38BC5A42ABAA /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MyVoice-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E127353325C60B3E007993EA /* Auto-increment build number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -603,8 +578,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1E6C2CB25B4D24800774B17 /* UIView+Extensions.swift in Sources */,
+				567705222A1AAF27002FF02F /* MainView.swift in Sources */,
 				E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */,
+				567705202A1AA8D0002FF02F /* NavigationController.swift in Sources */,
 				E115576625B4C5A10093851B /* BaseViewController.swift in Sources */,
+				5677051E2A1AA82E002FF02F /* AppBuilder.swift in Sources */,
 				E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */,
 				E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */,
 				E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */,
@@ -622,13 +600,18 @@
 				E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */,
 				E11C1AD125D83CFF001FE05E /* Phrase+CoreDataProperties.swift in Sources */,
 				E15B839F25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.swift in Sources */,
+				5677051A2A1AA6B4002FF02F /* ViewController.swift in Sources */,
 				E115576125B4C56A0093851B /* MainViewController.swift in Sources */,
 				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
+				5677051C2A1AA7DF002FF02F /* AppRouter.swift in Sources */,
+				567705142A1AA57E002FF02F /* CompositionRoot.swift in Sources */,
 				E1F246F825FE82A90077EE4F /* HelpViewController.swift in Sources */,
+				567705162A1AA5C4002FF02F /* MainBuilder.swift in Sources */,
 				E141AD4425F58B9000C61408 /* BackgroundShadowView.swift in Sources */,
 				E1771A8025C21523003FE247 /* UILabel+Extensions.swift in Sources */,
 				E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */,
 				E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */,
+				567705182A1AA655002FF02F /* View+Extensions.swift in Sources */,
 				E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */,
 				E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */,
 				E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */,
@@ -790,43 +773,49 @@
 		};
 		E115575425B4C42B0093851B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75CC27E1644FA1B184136EFE /* Pods-MyVoice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dark";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V9858W9DAL;
+				DEVELOPMENT_TEAM = K58D99BNTG;
 				INFOPLIST_FILE = "$(SRCROOT)/MyVoice/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.infinity.MyVoice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		E115575525B4C42B0093851B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D437C7E729AC576FCBAB0A39 /* Pods-MyVoice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dark";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = V9858W9DAL;
+				DEVELOPMENT_TEAM = K58D99BNTG;
 				INFOPLIST_FILE = "$(SRCROOT)/MyVoice/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.infinity.MyVoice;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

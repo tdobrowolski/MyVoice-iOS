@@ -11,7 +11,6 @@ import RxDataSources
 import AVKit
 
 final class MainViewModel: BaseViewModel {
-    
     private let textToSpeechService: TextToSpeechService
     private let phraseDatabaseService: PhraseDatabaseService
     private var feedbackGenerator: UIImpactFeedbackGenerator?
@@ -29,7 +28,9 @@ final class MainViewModel: BaseViewModel {
         self.phraseDatabaseService = PhraseDatabaseService()
         self.feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         self.notificationFeedbackGenerator = UINotificationFeedbackGenerator()
+
         super.init()
+        
         self.bindService()
         self.getQuickPhrases()
         self.observeSystemVolumeChange()

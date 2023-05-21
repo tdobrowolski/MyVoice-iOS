@@ -5,14 +5,7 @@
 //  Created by Tobiasz Dobrowolski on 18/01/2021.
 //
 
-import RxSwift
-
-class BaseViewModel: NSObject {
-    
-    let disposeBag = DisposeBag()
-    
-    // MARK: Debugging
-    
+class BaseViewModel: NSObject {    
     func logSuccess(with text: String) {
         print("🟢 Success: \(text)")
     }
