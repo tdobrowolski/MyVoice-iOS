@@ -8,17 +8,14 @@
 import RxDataSources
 
 struct QuickPhraseSection {
-    
-    var header: String = "Quick access"
+    var header = "Quick access"
     var items: [Item]
 }
 
 extension QuickPhraseSection: AnimatableSectionModelType {
     typealias Item = QuickPhraseModel
     
-    var identity: String {
-        return header
-    }
+    var identity: String { header }
     
     init(original: QuickPhraseSection, items: [Item]) {
         self = original
@@ -29,14 +26,19 @@ extension QuickPhraseSection: AnimatableSectionModelType {
 struct QuickPhraseModel: IdentifiableType, Equatable {
     typealias Identity = UUID
     
-    var identity: Identity { return id }
+    var identity: Identity { id }
         
     let id: UUID
     let phrase: String
     let createdAt: Date
     let prefferedLanguage: String?
     
-    init(id: UUID = UUID(), phrase: String, createdAt: Date, prefferedLanguage: String? = nil) {
+    init(
+        id: UUID = UUID(),
+        phrase: String,
+        createdAt: Date,
+        prefferedLanguage: String? = nil
+    ) {
         self.id = id
         self.phrase = phrase
         self.createdAt = createdAt

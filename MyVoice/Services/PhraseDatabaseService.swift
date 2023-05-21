@@ -8,7 +8,7 @@
 import CoreData
 
 final class PhraseDatabaseService: DatabaseService {
-    
+
     // MARK: Create
     
     func insertPhrase(_ quickPhrase: QuickPhraseModel) {
@@ -18,9 +18,9 @@ final class PhraseDatabaseService: DatabaseService {
         phraseEntity.createdAt = quickPhrase.createdAt
         phraseEntity.prefferedLanguage = quickPhrase.prefferedLanguage
         
-        self.context.insert(phraseEntity)
+        context.insert(phraseEntity)
         do {
-            try self.context.save()
+            try context.save()
         } catch {
             print(error.localizedDescription)
         }
@@ -33,29 +33,31 @@ final class PhraseDatabaseService: DatabaseService {
         request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
         
         do {
-            let phrases = try self.context.fetch(request)
-            return self.convertPhrasesToQuickPhrases(phrases: phrases)
+            let phrases = try context.fetch(request)
+
+            return convertPhrasesToQuickPhrases(phrases: phrases)
         } catch {
             print(error.localizedDescription)
         }
+
         return []
     }
     
     func fetchAllPhrases() -> [QuickPhraseModel] {
         do {
-            let phrases = try self.context.fetch(Phrase.fetchRequest() as NSFetchRequest<Phrase>)
-            return self.convertPhrasesToQuickPhrases(phrases: phrases).reversed()
+            let phrases = try context.fetch(Phrase.fetchRequest() as NSFetchRequest<Phrase>)
+
+            return convertPhrasesToQuickPhrases(phrases: phrases).reversed()
         } catch {
             print(error.localizedDescription)
         }
+
         return []
     }
     
     // MARK: Delete
     
-    func removePhrase(_ quickPhrase: QuickPhraseModel) {
-        self.deletePhrases(with: quickPhrase.id)
-    }
+    func removePhrase(_ quickPhrase: QuickPhraseModel) { deletePhrases(with: quickPhrase.id) }
     
     private func deletePhrases(with id: UUID) {
         let fetchRequest = Phrase.fetchRequest() as NSFetchRequest<NSFetchRequestResult>
@@ -63,8 +65,8 @@ final class PhraseDatabaseService: DatabaseService {
         
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
-            try self.context.execute(deleteRequest)
-            try self.context.save()
+            try context.execute(deleteRequest)
+            try context.save()
         } catch {
             print(error.localizedDescription)
         }
@@ -78,6 +80,7 @@ final class PhraseDatabaseService: DatabaseService {
             let quickPhrase = QuickPhraseModel(id: phrase.id, phrase: phrase.phrase, createdAt: phrase.createdAt, prefferedLanguage: phrase.prefferedLanguage)
             quickPhrases.append(quickPhrase)
         }
+        
         return quickPhrases
     }
 }

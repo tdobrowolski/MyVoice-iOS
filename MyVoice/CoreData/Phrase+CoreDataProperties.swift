@@ -9,9 +9,7 @@
 import Foundation
 import CoreData
 
-
 extension Phrase {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Phrase> {
         return NSFetchRequest<Phrase>(entityName: "Phrase")
     }
@@ -20,5 +18,4 @@ extension Phrase {
     @NSManaged public var phrase: String
     @NSManaged public var createdAt: Date
     @NSManaged public var prefferedLanguage: String?
-
 }

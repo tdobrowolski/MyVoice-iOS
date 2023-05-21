@@ -8,7 +8,6 @@
 import RxDataSources
 
 struct SettingsSection {
-    
     enum SectionType: String {
         case speechVoice = "speechVoice"
         case speechRate = "speechRate"
@@ -20,16 +19,12 @@ struct SettingsSection {
     var footer: String? = nil
     var items: [Item]
     
-    func getLocalizedHeaderString() -> String {
+    var localizedHeaderString: String {
         switch type {
-        case .speechVoice:
-            return NSLocalizedString("Speech settings", comment: "Speech settings")
-        case .speechRate:
-            return NSLocalizedString("Speech rate", comment: "Speech rate")
-        case .speechPitch:
-            return NSLocalizedString("Speech pitch", comment: "Speech pitch")
-        case .other:
-            return NSLocalizedString("Other", comment: "Other")
+        case .speechVoice: return NSLocalizedString("Speech settings", comment: "Speech settings")
+        case .speechRate: return NSLocalizedString("Speech rate", comment: "Speech rate")
+        case .speechPitch: return NSLocalizedString("Speech pitch", comment: "Speech pitch")
+        case .other: return NSLocalizedString("Other", comment: "Other")
         }
     }
 }
@@ -37,9 +32,7 @@ struct SettingsSection {
 extension SettingsSection: AnimatableSectionModelType {
     typealias Item = SettingModel
     
-    var identity: String {
-        return type.rawValue
-    }
+    var identity: String { type.rawValue }
     
     init(original: SettingsSection, items: [Item]) {
         self = original
@@ -50,7 +43,7 @@ extension SettingsSection: AnimatableSectionModelType {
 struct SettingModel: IdentifiableType, Equatable {
     typealias Identity = UUID
     
-    var identity: Identity { return id }
+    var identity: Identity { id }
         
     let id = UUID()
     let primaryText: String

@@ -21,6 +21,7 @@ enum SystemVolumeState {
         let lowVolume = 0.01...0.25
         let mediumVolume = 0.26...0.75
 //        let highVolume = 0.76...1.0
+
         if currentVolume == noVolume {
             return .noVolume
         } else if lowVolume.contains(currentVolume) {
@@ -34,7 +35,6 @@ enum SystemVolumeState {
 }
 
 final class LargeIconButton: UIButton {
-    
     enum ActionType {
         case speak
         case clear
@@ -55,23 +55,25 @@ final class LargeIconButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.customInit()
+
+        customInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.customInit()
+
+        customInit()
     }
     
     private func customInit() {
         Bundle.main.loadNibNamed("LargeIconButton", owner: self, options: nil)
-        self.addSubview(self.contentView)
-        self.contentView.frame = self.bounds
-        self.contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        self.addTarget(self, action: #selector(buttonPressed), for: .touchDown)
-        self.addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
-        self.addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
-        self.bindRxValues()
+        addSubview(self.contentView)
+        contentView.frame = self.bounds
+        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        addTarget(self, action: #selector(buttonPressed), for: .touchDown)
+        addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
+        addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
+        bindRxValues()
     }
     
     override func layoutSubviews() {
@@ -79,9 +81,10 @@ final class LargeIconButton: UIButton {
         
         switch traitCollection.userInterfaceStyle {
         case .light:
-            self.addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
+            addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
+
         default:
-            self.addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
+            addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
         }
     }
     
@@ -95,6 +98,7 @@ final class LargeIconButton: UIButton {
             shadowLayer.shadowOffset = CGSize(width: x, height: y)
             shadowLayer.shadowOpacity = alpha
             shadowLayer.shadowRadius = blur / 2
+
             if spread == 0 {
                 layer.shadowPath = nil
             } else {
@@ -105,17 +109,17 @@ final class LargeIconButton: UIButton {
             
             layer.insertSublayer(shadowLayer, at: 0)
         } else {
-            self.shadowLayer.fillColor = UIColor(named: "White")?.cgColor
-            self.shadowLayer.shadowOpacity = alpha
+            shadowLayer.fillColor = UIColor(named: "White")?.cgColor
+            shadowLayer.shadowOpacity = alpha
         }
     }
     
     func setupLayout(forTitle title: String, actionType: ActionType) {
-        self.setupIcon(actionType: actionType)
-        self.setupTitleLabel(title: title)
-        self.layer.backgroundColor = nil
-        self.contentView.backgroundColor = nil
-        self.contentView.isUserInteractionEnabled = false
+        setupIcon(actionType: actionType)
+        setupTitleLabel(title: title)
+        layer.backgroundColor = nil
+        contentView.backgroundColor = nil
+        contentView.isUserInteractionEnabled = false
     }
     
     private func setupTitleLabel(title: String) {
@@ -124,38 +128,42 @@ final class LargeIconButton: UIButton {
             attributedText.addAttribute(.font, value: customFont, range: NSMakeRange(0, attributedText.length))
         }
         attributedText.addAttribute(.foregroundColor, value: UIColor(named: "Black") ?? .black, range: NSMakeRange(0, attributedText.length))
-        self.setTitle(nil, for: .normal)
-        self.mainTitleLabel.text = nil
-        self.mainTitleLabel.attributedText = attributedText
+        setTitle(nil, for: .normal)
+        mainTitleLabel.text = nil
+        mainTitleLabel.attributedText = attributedText
     }
     
     private func setupIcon(actionType: ActionType) {
-        self.iconContainerView.layer.cornerRadius = self.iconContainerView.frame.width / 2
+        iconContainerView.layer.cornerRadius = self.iconContainerView.frame.width / 2
+
         switch actionType {
         case .speak:
-            self.iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
-            self.iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
-            self.iconImageView.image = self.getSystemVolumeIcon()
+            iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
+            iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
+            iconImageView.image = self.getSystemVolumeIcon()
+
         case .clear:
-            self.iconContainerView.backgroundColor = UIColor(named: "Red (Light)") ?? .white
-            self.iconImageView.tintColor = UIColor(named: "Red (Main)") ?? .red
-            self.iconImageView.image = UIImage(systemName: "pencil.slash", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
+            iconContainerView.backgroundColor = UIColor(named: "Red (Light)") ?? .white
+            iconImageView.tintColor = UIColor(named: "Red (Main)") ?? .red
+            iconImageView.image = UIImage(systemName: "pencil.slash", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
+
         case .save:
-            self.iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
-            self.iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
-            self.iconImageView.image = UIImage(systemName: "plus.bubble.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
+            iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
+            iconImageView.image = UIImage(systemName: "plus.bubble.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         }
     }
     
     // MARK: Methods for Speak button
     
     private func bindRxValues() {
-        self.isSpeaking.skip(1).subscribe { [weak self] isSpeaking in
+        isSpeaking.skip(1).subscribe { [weak self] isSpeaking in
             self?.setupForSpeakButton(isSpeaking: isSpeaking)
         }.disposed(by: disposeBag)
         
-        self.systemVolumeState.skip(1).subscribe { [weak self] volumeState in
+        systemVolumeState.skip(1).subscribe { [weak self] volumeState in
             guard let state = volumeState.element, let isSpeaking = try? self?.isSpeaking.value(), isSpeaking == false else { return }
+            
             self?.iconImageView.image = self?.getSystemVolumeIcon(for: state)
         }.disposed(by: disposeBag)
     }
@@ -164,18 +172,21 @@ final class LargeIconButton: UIButton {
         switch volumeState ?? SystemVolumeState.getState(from: nil) {
         case .noVolume:
             return UIImage(systemName: "speaker.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+
         case .lowVolume:
             if #available(iOS 14, *) {
                 return UIImage(systemName: "speaker.wave.1.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
             } else {
                 return UIImage(systemName: "speaker.1.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
             }
+
         case .mediumVolume:
             if #available(iOS 14, *) {
                 return UIImage(systemName: "speaker.wave.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
             } else {
                 return UIImage(systemName: "speaker.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
             }
+
         case .highVolume:
             if #available(iOS 14, *) {
                 return UIImage(systemName: "speaker.wave.3.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
@@ -187,15 +198,15 @@ final class LargeIconButton: UIButton {
     
     private func setupForSpeakButton(isSpeaking: Bool = false) {
         if isSpeaking {
-            self.iconContainerView.backgroundColor = UIColor(named: "Red (Light)") ?? .white
-            self.iconImageView.tintColor = UIColor(named: "Red (Main)") ?? .red
-            self.iconImageView.image = UIImage(systemName: "stop.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            self.setupTitleLabel(title: NSLocalizedString("Stop", comment: "Stop"))
+            iconContainerView.backgroundColor = UIColor(named: "Red (Light)") ?? .white
+            iconImageView.tintColor = UIColor(named: "Red (Main)") ?? .red
+            iconImageView.image = UIImage(systemName: "stop.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            setupTitleLabel(title: NSLocalizedString("Stop", comment: "Stop"))
         } else {
-            self.iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
-            self.iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
-            self.iconImageView.image = self.getSystemVolumeIcon()
-            self.setupTitleLabel(title: NSLocalizedString("Speak", comment: "Speak"))
+            iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
+            iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
+            iconImageView.image = self.getSystemVolumeIcon()
+            setupTitleLabel(title: NSLocalizedString("Speak", comment: "Speak"))
         }
     }
     

@@ -11,7 +11,6 @@ import RxDataSources
 import AVKit
 
 final class MainViewModel: BaseViewModel {
-    
     private let textToSpeechService: TextToSpeechService
     private let phraseDatabaseService: PhraseDatabaseService
     private var feedbackGenerator: UIImpactFeedbackGenerator?
@@ -29,32 +28,30 @@ final class MainViewModel: BaseViewModel {
         self.phraseDatabaseService = PhraseDatabaseService()
         self.feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         self.notificationFeedbackGenerator = UINotificationFeedbackGenerator()
+
         super.init()
-        self.bindService()
-        self.getQuickPhrases()
-        self.observeSystemVolumeChange()
+
+        bindService()
+        getQuickPhrases()
+        observeSystemVolumeChange()
     }
     
     private func bindService() {
-        self.textToSpeechService.isSpeaking.subscribe(self.isSpeaking)
+        textToSpeechService.isSpeaking.subscribe(self.isSpeaking)
             .disposed(by: disposeBag)
     }
     
     func startSpeaking(_ text: String) {
-        self.impactUserWithFeedback()
-        self.textToSpeechService.startSpeaking(text: text)
+        impactUserWithFeedback()
+        textToSpeechService.startSpeaking(text: text)
     }
     
-    func stopSpeaking() {
-        self.textToSpeechService.stopSpeaking()
-    }
+    func stopSpeaking() { textToSpeechService.stopSpeaking() }
     
-    func impactUserWithFeedback() {
-        self.feedbackGenerator?.impactOccurred()
-    }
+    func impactUserWithFeedback() { feedbackGenerator?.impactOccurred() }
     
     func warnUserWithFeedback() {
-        self.notificationFeedbackGenerator?.notificationOccurred(.error)
+        notificationFeedbackGenerator?.notificationOccurred(.error)
     }
     
     // TODO: Adding/removing items to sections
@@ -62,9 +59,14 @@ final class MainViewModel: BaseViewModel {
     func addQuickPhraseItem(phrase: String) {
         do {
             let selectedLanguageIdentifier = textToSpeechService.getCurrentLanguageIdentifier()
-            let item = QuickPhraseModel(phrase: phrase, createdAt: Date(), prefferedLanguage: selectedLanguageIdentifier)
-            self.phraseDatabaseService.insertPhrase(item)
-            var sections = try self.sections.value()
+            let item = QuickPhraseModel(
+                phrase: phrase,
+                createdAt: Date(),
+                prefferedLanguage: selectedLanguageIdentifier
+            )
+            phraseDatabaseService.insertPhrase(item)
+
+            var sections = try sections.value()
             sections[0].items.insert(item, at: 0)
             self.sections.onNext(sections)
         } catch {
@@ -92,11 +94,10 @@ final class MainViewModel: BaseViewModel {
     // MARK: Listen to system volume change
     
     private func observeSystemVolumeChange() {
-        self.systemValueObserver = AVAudioSession.sharedInstance().observe(\.outputVolume) { [weak self] audioSession, observedChange in
+        systemValueObserver = AVAudioSession.sharedInstance().observe(\.outputVolume) { [weak self] audioSession, observedChange in
             let currentVolume = Double(audioSession.outputVolume)
             print("Volume changed observed: \(currentVolume)")
             self?.systemVolumeState.onNext(SystemVolumeState.getState(from: currentVolume))
         }
     }
-    
 }

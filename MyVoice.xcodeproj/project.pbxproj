@@ -245,9 +245,9 @@
 		E115576E25B4C9000093851B /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				E115576F25B4C9130093851B /* Fonts */,
 				E1B1489225EC4288003C1401 /* Translations */,
 				E115575025B4C42B0093851B /* Info.plist */,
-				E115576F25B4C9130093851B /* Fonts */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";

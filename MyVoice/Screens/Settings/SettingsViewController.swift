@@ -11,23 +11,22 @@ import RxDataSources
 import MessageUI
 
 final class SettingsViewController: BaseViewController<SettingsViewModel> {
-    
     @IBOutlet weak var tableView: UITableView!
     
-    var dataSource: RxTableViewSectionedAnimatedDataSource<SettingsSection>!
+    private var dataSource: RxTableViewSectionedAnimatedDataSource<SettingsSection>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = NSLocalizedString("Settings", comment: "Settings")
-        self.view.backgroundColor = UIColor(named: "Background")
-        self.addNavigationBarButtons()
+        title = NSLocalizedString("Settings", comment: "Settings")
+        view.backgroundColor = UIColor(named: "Background")
+        addNavigationBarButtons()
         
-        self.tableView.register(UINib(nibName: "SliderTableViewCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
-        self.tableView.delaysContentTouches = false
+        tableView.register(UINib(nibName: "SliderTableViewCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
+        tableView.delaysContentTouches = false
     }
     
-    override func bindViewModel(viewModel: SettingsViewModel) {
+    override func bindViewModel(_ viewModel: SettingsViewModel) {
         
         self.dataSource = self.getDataSourceForSettings()
         
@@ -41,7 +40,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     // MARK: Setting data source
     
     func getDataSourceForSettings() -> RxTableViewSectionedAnimatedDataSource<SettingsSection> {
-        return RxTableViewSectionedAnimatedDataSource<SettingsSection> (
+        RxTableViewSectionedAnimatedDataSource<SettingsSection> (
             configureCell: { [weak self] (dataSource, tableView, indexPath, item) in
                 return self?.getCell(for: tableView, indexPath: indexPath, item: item) ?? UITableViewCell()
             },
@@ -55,7 +54,8 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     }
     
     private func getCell(for tableView: UITableView, indexPath: IndexPath, item: SettingModel) -> UITableViewCell {
-        guard let sections = try? self.viewModel.sections.value() else { return UITableViewCell() }
+        guard let sections = try? viewModel.sections.value() else { return UITableViewCell() }
+
         let sectionType = sections[indexPath.section].type
         
         switch sectionType {
@@ -69,7 +69,9 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             cell.detailTextLabel?.font = UIFont(name: "Poppins-Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
             cell.detailTextLabel?.textColor = UIColor(named: "Blue (Dark)") ?? .gray
             cell.accessoryType = .disclosureIndicator
+
             return cell
+
         case .speechRate:
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell") as! SliderTableViewCell
             cell.backgroundColor = UIColor(named: "White")
@@ -77,7 +79,9 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             cell.defaultSlider.rx.value.skip(1).subscribe { [weak self] value in
                 self?.viewModel.setSpeechRate(value)
             }.disposed(by: cell.disposeBag)
+
             return cell
+
         case .speechPitch:
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell") as! SliderTableViewCell
             cell.backgroundColor = UIColor(named: "White")
@@ -85,17 +89,20 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             cell.defaultSlider.rx.value.skip(1).subscribe { [weak self] value in
                 self?.viewModel.setSpeechPitch(value)
             }.disposed(by: cell.disposeBag)
+
             return cell
         }
     }
     
     private func getHeaderTitle(for section: Int) -> String? {
         guard let sections = try? viewModel.sections.value() else { return nil }
-        return sections[section].getLocalizedHeaderString()
+
+        return sections[section].localizedHeaderString
     }
     
     private func getFooterTitle(for section: Int) -> String? {
         guard let sections = try? viewModel.sections.value() else { return nil }
+
         return sections[section].footer
     }
     
@@ -110,18 +117,18 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
                                           NSAttributedString.Key.foregroundColor: color], for: .normal)
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                           NSAttributedString.Key.foregroundColor: color], for: .selected)
-        self.navigationItem.rightBarButtonItem = rightItem
+        navigationItem.rightBarButtonItem = rightItem
     }
     
     @objc
     private func doneDidTouch() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     // MARK: Setup layout
     
     private func setupTableView() {
-        
+        // TODO: Remove if not needed
     }
     
     // MARK: Handle settings actions
@@ -130,11 +137,13 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         let languagePickerViewModel = LanguagePickerViewModel(delegate: self)
         let languagePickerViewController = LanguagePickerViewController(viewModel: languagePickerViewModel, nibName: "LanguagePickerViewController")
         let languagePickerNavigationController = DefaultNavigationController(rootViewController: languagePickerViewController)
-        self.present(languagePickerNavigationController, animated: true, completion: nil)
+
+        present(languagePickerNavigationController, animated: true, completion: nil)
     }
     
     private func openAppStoreForReview() {
         guard let writeReviewURL = URL(string: "") else { return }
+
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
     }
     
@@ -142,88 +151,93 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         let mailViewController = MFMailComposeViewController()
         mailViewController.mailComposeDelegate = self
         mailViewController.setToRecipients(["infinity.tobiasz.dobrowolski@gmail.com"])
+
         if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] {
             mailViewController.setSubject("MyVoice App (\(appVersion)) - Feedback")
         } else {
             mailViewController.setSubject("MyVoice App - Feedback")
         }
-        self.present(mailViewController, animated: true)
+
+        present(mailViewController, animated: true)
     }
 }
 
 extension SettingsViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        guard let sections = try? self.viewModel.sections.value() else { return nil }
+        guard let sections = try? viewModel.sections.value() else { return nil }
+
         let sectionType = sections[indexPath.section].type
         
         switch sectionType {
-        case .speechVoice, .other:
-            return indexPath
-        case .speechRate, .speechPitch:
-            return nil
+        case .speechVoice, .other: return indexPath
+        case .speechRate, .speechPitch: return nil
         }
     }
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let sections = try? self.viewModel.sections.value() else { return }
+        guard let sections = try? viewModel.sections.value() else { return }
+
         let sectionType = sections[indexPath.section].type
         
         switch sectionType {
         case .speechVoice:
-            self.showLanguagePicker()
+            showLanguagePicker()
+
         case .speechRate, .speechPitch:
             return
+
         case .other:
             switch indexPath.row {
             case 0:
 //                self.openAppStoreForReview()
                 fallthrough
                 // TODO: If review available, remove fallthrough
+                
             case 1:
                 if MFMailComposeViewController.canSendMail() {
-                    self.composeFeedbackMail()
+                    composeFeedbackMail()
                 } else {
-                    self.showAlert(title: NSLocalizedString("No mail account", comment: "No mail account"),
-                                   message: NSLocalizedString("It looks like there's no mail account, that the system can use to send feedback.",
-                                                              comment: "It looks like there's no mail account, that the system can use to send feedback."),
-                                   actions: [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)])
+                    showAlert(title: NSLocalizedString("No mail account", comment: "No mail account"),
+                              message: NSLocalizedString("It looks like there's no mail account, that the system can use to send feedback.",
+                                                         comment: "It looks like there's no mail account, that the system can use to send feedback."),
+                              actions: [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)])
                 }
+
             default:
                 return
             }
         }
         
-        self.tableView.deselectRow(at: indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         guard let header = view as? UITableViewHeaderFooterView else { return }
+
         header.textLabel?.font = UIFont.init(name: "Poppins-Medium", size: 13)
         header.textLabel?.textColor = UIColor(named: "Blue (Dark)")
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 36
+        36
     }
     
     func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
         guard let footer = view as? UITableViewHeaderFooterView else { return }
+
         footer.textLabel?.font = UIFont.init(name: "Poppins-Regular", size: 12)
         footer.textLabel?.textColor = UIColor(named: "Blue (Dark)")
     }
 }
 
 extension SettingsViewController: MFMailComposeViewControllerDelegate {
-    
     func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
         controller.dismiss(animated: true, completion: nil)
     }
 }
 
 extension SettingsViewController: VoiceSelectedDelegate {
-    
     func userSelectedVoice() {
-        self.viewModel.refreshSelectedVoiceLabel()
+        viewModel.refreshSelectedVoiceLabel()
     }
 }

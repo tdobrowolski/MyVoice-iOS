@@ -9,32 +9,26 @@ import UIKit
 import CoreData
 
 class DatabaseService {
-        
-    let persistanceContainer = NSPersistentContainer(name: "Model")
+    private let persistanceContainer = NSPersistentContainer(name: "Model")
     
-    init() {
-        self.initializeStack()
-    }
+    init() { initializeStack() }
     
     func initializeStack() {
-        self.persistanceContainer.loadPersistentStores { description, error in
+        persistanceContainer.loadPersistentStores { description, error in
             if let error = error {
-                print(error.localizedDescription)
-                return
+                return print(error.localizedDescription)
             }
         }
     }
     
-    var context: NSManagedObjectContext {
-        return self.persistanceContainer.viewContext
-    }
+    var context: NSManagedObjectContext { persistanceContainer.viewContext }
     
     // MARK: CoreData methods
     
     func delete(object: NSManagedObject) {
-        self.context.delete(object)
+        context.delete(object)
         do {
-            try self.context.save()
+            try context.save()
         } catch {
             print(error.localizedDescription)
         }

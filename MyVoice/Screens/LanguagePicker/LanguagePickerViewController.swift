@@ -11,7 +11,6 @@ import RxCocoa
 import RxDataSources
 
 final class LanguagePickerViewController: BaseViewController<LanguagePickerViewModel> {
-    
     @IBOutlet weak var tableView: UITableView!
     
     var selectedLanguageIndex: Int?
@@ -19,16 +18,16 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = NSLocalizedString("Select voice", comment: "Select voice")
-        self.view.backgroundColor = UIColor(named: "Background")
-        self.addNavigationBarButton()
-        self.tableView.register(UINib(nibName: "VoiceCellTableViewCell", bundle: nil), forCellReuseIdentifier: "voiceCell")
+        title = NSLocalizedString("Select voice", comment: "Select voice")
+        view.backgroundColor = UIColor(named: "Background")
+        addNavigationBarButton()
+        tableView.register(UINib(nibName: "VoiceCellTableViewCell", bundle: nil), forCellReuseIdentifier: "voiceCell")
     }
     
-    override func bindViewModel(viewModel: LanguagePickerViewModel) {
-        super.bindViewModel(viewModel: viewModel)
+    override func bindViewModel(_ viewModel: LanguagePickerViewModel) {
+        super.bindViewModel(viewModel)
         
-        self.tableView.rx.setDelegate(self)
+        tableView.rx.setDelegate(self)
             .disposed(by: disposeBag)
         
         viewModel.availableVoices.bind(to: tableView.rx.items(cellIdentifier: "voiceCell", cellType: VoiceCellTableViewCell.self)) { [weak self] (row, item, cell) in
@@ -37,7 +36,8 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         }.disposed(by: disposeBag)
         
         viewModel.availableVoices.subscribe { [weak self] languages in
-            if languages.element?.count ?? 0 == 0 { return }
+            guard languages.element?.count ?? 0 != 0 else { return }
+
             let indexToSelect = viewModel.getIndexForCurrentVoice()
             self?.selectedLanguageIndex = indexToSelect
         }.disposed(by: disposeBag)
@@ -54,26 +54,27 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
                                           NSAttributedString.Key.foregroundColor: color], for: .normal)
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                           NSAttributedString.Key.foregroundColor: color], for: .selected)
-        self.navigationItem.rightBarButtonItem = rightItem
+        navigationItem.rightBarButtonItem = rightItem
     }
     
     @objc
-    private func doneDidTouch() {
-        self.dismiss(animated: true, completion: nil)
-    }
+    private func doneDidTouch() { dismiss(animated: true, completion: nil) }
 }
 
 extension LanguagePickerViewController: UITableViewDelegate {
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let previousSelectedIndex = self.selectedLanguageIndex, previousSelectedIndex != indexPath.row {
-            let previousSelectedCell = self.tableView.cellForRow(at: IndexPath(row: previousSelectedIndex, section: 0)) as? VoiceCellTableViewCell
+        if let previousSelectedIndex = selectedLanguageIndex, previousSelectedIndex != indexPath.row {
+            let previousSelectedCell = tableView.cellForRow(at: IndexPath(row: previousSelectedIndex, section: 0)) as? VoiceCellTableViewCell
             previousSelectedCell?.checkmarkImageView.isHidden = true
         }
-        self.selectedLanguageIndex = indexPath.row
-        let cell = self.tableView.cellForRow(at: indexPath) as? VoiceCellTableViewCell
+
+        selectedLanguageIndex = indexPath.row
+
+        let cell = tableView.cellForRow(at: indexPath) as? VoiceCellTableViewCell
         cell?.checkmarkImageView.isHidden = false
-        self.viewModel.selectVoiceForIndexPath(indexPath)
-        self.tableView.deselectRow(at: indexPath, animated: true)
+
+        viewModel.selectVoiceForIndexPath(indexPath)
+        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }

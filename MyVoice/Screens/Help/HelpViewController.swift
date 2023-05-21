@@ -8,7 +8,6 @@
 import UIKit
 
 final class HelpViewController: BaseViewController<HelpViewModel> {
-    
     @IBOutlet weak var speakPhrasesHelpView: UIView!
     @IBOutlet weak var speakPhrasesHelpTitleLabel: UILabel!
     @IBOutlet weak var speakPhrasesHelpContentLabel: UILabel!
@@ -38,72 +37,78 @@ final class HelpViewController: BaseViewController<HelpViewModel> {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = NSLocalizedString("Help", comment: "Help")
-        self.view.backgroundColor = UIColor(named: "Background")
-        self.setupHelpContent()
-        self.addNavigationBarButtons()
+        title = NSLocalizedString("Help", comment: "Help")
+        view.backgroundColor = UIColor(named: "Background")
+        setupHelpContent()
+        addNavigationBarButtons()
     }
     
     // MARK: Setting up content
     
     private func setupHelpContent() {
-        
         // First section
-        self.speakPhrasesHelpTitleLabel.text = NSLocalizedString("How to make my phrases be spoken out loud?", comment: "")
-        self.speakPhrasesHelpContentLabel.text = NSLocalizedString("Enter the text, that you want to be spoken, into the main, upper text field on the MyVoice screen. When you are ready to hear your phrase, tap Speak button under the text field. If you don’t hear your text, try to change the volume of your device. You can always have a quick look at your volume level on Speak button. The speaker icon shows your current volume setting.", comment: "")
+        speakPhrasesHelpTitleLabel.text = NSLocalizedString("How to make my phrases be spoken out loud?", comment: "")
+        speakPhrasesHelpContentLabel.text = NSLocalizedString("Enter the text, that you want to be spoken, into the main, upper text field on the MyVoice screen. When you are ready to hear your phrase, tap Speak button under the text field. If you don’t hear your text, try to change the volume of your device. You can always have a quick look at your volume level on Speak button. The speaker icon shows your current volume setting.", comment: "")
 
         // Second section
-        self.customizeSpeakHelpTitleLabel.text = NSLocalizedString("How to customize the way my phrases are spoken?", comment: "")
-        self.customizeSpeakHelpContentLabel.text = NSLocalizedString("On the Settings screen, you can customize some options, that will affect how your text is spoken. With Speech rate slider, you choose how fast your phrases will be said out loud. Speech pitch slider will change voice pitch. Try to experiment with it in Settings and find the best options that will suit you. You can also change the voice with its language that will be responsible for speaking all texts.", comment: "")
+        customizeSpeakHelpTitleLabel.text = NSLocalizedString("How to customize the way my phrases are spoken?", comment: "")
+        customizeSpeakHelpContentLabel.text = NSLocalizedString("On the Settings screen, you can customize some options, that will affect how your text is spoken. With Speech rate slider, you choose how fast your phrases will be said out loud. Speech pitch slider will change voice pitch. Try to experiment with it in Settings and find the best options that will suit you. You can also change the voice with its language that will be responsible for speaking all texts.", comment: "")
 
         // Third section
-        self.changeVoiceHelpTitleLabel.text = NSLocalizedString("How to change speaking voice and its language?", comment: "")
-        self.changeVoiceHelpContentLabel.text = NSLocalizedString("To change the voice that will speak your phrases, go to the Settings screen. Select the Speech voice setting. You will see a new screen with a list of all voices available on your device. Each voice has its properties with its language. Some voices are also available in Enhanced mode - that means your phrases will sound more natural and with better pronunciation.", comment: "")
+        changeVoiceHelpTitleLabel.text = NSLocalizedString("How to change speaking voice and its language?", comment: "")
+        changeVoiceHelpContentLabel.text = NSLocalizedString("To change the voice that will speak your phrases, go to the Settings screen. Select the Speech voice setting. You will see a new screen with a list of all voices available on your device. Each voice has its properties with its language. Some voices are also available in Enhanced mode - that means your phrases will sound more natural and with better pronunciation.", comment: "")
 
         // Fourth section
-        self.downloadVoiceHelpTitleLabel.text = NSLocalizedString("How to download more voices?", comment: "")
-        self.downloadVoiceHelpContentLabel.text = NSLocalizedString("You can always download a bunch of new voices with support for more languages. You can’t do that from the MyVoice app. To do that:", comment: "")
+        downloadVoiceHelpTitleLabel.text = NSLocalizedString("How to download more voices?", comment: "")
+        downloadVoiceHelpContentLabel.text = NSLocalizedString("You can always download a bunch of new voices with support for more languages. You can’t do that from the MyVoice app. To do that:", comment: "")
 
-        var attributedString = NSMutableAttributedString(string: NSLocalizedString("1. Open the system", comment: "First part of bigger text"), attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-Medium", size: 14.0) ?? .systemFont(ofSize: 14.0)])
-        var textToAttribute = NSMutableAttributedString(string: NSLocalizedString("Settings app", comment: "Second part of bigger text"), attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-SemiBold", size: 14.0) ?? .boldSystemFont(ofSize: 14.0)])
+        var attributedString = NSMutableAttributedString(
+            string: NSLocalizedString("1. Open the system", comment: "First part of bigger text"),
+            attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-Medium", size: 14.0) ?? .systemFont(ofSize: 14.0)]
+        )
+        var textToAttribute = NSMutableAttributedString(
+            string: NSLocalizedString("Settings app", comment: "Second part of bigger text"),
+            attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-SemiBold", size: 14.0) ?? .boldSystemFont(ofSize: 14.0)]
+        )
         attributedString.append(NSAttributedString(string: " "))
         attributedString.append(textToAttribute)
         attributedString.append(NSAttributedString(string: "."))
-        self.downloadVoiceHelp1stLabel.attributedText = attributedString
+        downloadVoiceHelp1stLabel.attributedText = attributedString
 
         attributedString = NSMutableAttributedString(string: NSLocalizedString("2. Navigate to", comment: "First part of bigger text"), attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-Medium", size: 14.0) ?? .systemFont(ofSize: 14.0)])
         textToAttribute = NSMutableAttributedString(string: NSLocalizedString("Accessibility > VoiceOver > Speech", comment: "Second part of bigger text"), attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-SemiBold", size: 14.0) ?? .boldSystemFont(ofSize: 14.0)])
         attributedString.append(NSAttributedString(string: " "))
         attributedString.append(textToAttribute)
         attributedString.append(NSAttributedString(string: "."))
-        self.downloadVoiceHelp2ndLabel.attributedText = attributedString
+        downloadVoiceHelp2ndLabel.attributedText = attributedString
 
         attributedString = NSMutableAttributedString(string: NSLocalizedString("3. Tap on Add New Language and select the language/dialect that you want to add.", comment: ""), attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-Medium", size: 14.0) ?? .systemFont(ofSize: 14.0)])
         var textRange = attributedString.mutableString.range(of: NSLocalizedString("Add New Language", comment: "Name for Settings app button"))
         attributedString.addAttribute(.font, value: UIFont(name: "Poppins-SemiBold", size: 14.0) ?? .boldSystemFont(ofSize: 14.0), range: textRange)
-        self.downloadVoiceHelp3rdLabel.attributedText = attributedString
+        downloadVoiceHelp3rdLabel.attributedText = attributedString
 
-        self.downloadVoiceHelp4thLabel.text = NSLocalizedString("4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice.", comment: "")
+        downloadVoiceHelp4thLabel.text = NSLocalizedString("4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice.", comment: "")
 
-        self.downloadVoiceHelpSummaryLabel.text = NSLocalizedString("That’s it. If you go to MyVoice’s Select voice screen, you will see added voice on the list. You can now select it and all your phrases will be spoken with that voice.", comment: "")
+        downloadVoiceHelpSummaryLabel.text = NSLocalizedString("That’s it. If you go to MyVoice’s Select voice screen, you will see added voice on the list. You can now select it and all your phrases will be spoken with that voice.", comment: "")
 
         attributedString = NSMutableAttributedString(string: NSLocalizedString("Still lost? Go to the official Apple tutorial.", comment: ""), attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-Medium", size: 14.0) ?? .systemFont(ofSize: 14.0)])
         textRange = attributedString.mutableString.range(of: NSLocalizedString("Go to the official Apple tutorial.", comment: ""))
         attributedString.addAttribute(.font, value: UIFont(name: "Poppins-SemiBold", size: 14.0) ?? .boldSystemFont(ofSize: 14.0), range: textRange)
         attributedString.addAttribute(.foregroundColor, value: UIColor(named: "Orange (Main)") ?? .orange, range: textRange)
-        self.downloadVoiceHelpLinkLabel.attributedText = attributedString
+        downloadVoiceHelpLinkLabel.attributedText = attributedString
 
         let tapLinkGesture = UITapGestureRecognizer(target: self, action: #selector(appleHelpLinkDidTap))
-        self.downloadVoiceHelpLinkLabel.addGestureRecognizer(tapLinkGesture)
+        downloadVoiceHelpLinkLabel.addGestureRecognizer(tapLinkGesture)
 
         // Fifth section
-        self.quickAccessHelpTitleLabel.text = NSLocalizedString("What is Quick access?", comment: "")
-        self.quickAccessHelpContentLabel.text = NSLocalizedString("Quick access list helps you reach your saved phrases very fast, so you don’t need to always type them when you want to speak them. Enter the phrase into the text field and tap Save button. The text will appear on the Quick access list. To say it loud, just touch it. If you want to remove it, swipe your finger on the phrase to the left.", comment: "")
+        quickAccessHelpTitleLabel.text = NSLocalizedString("What is Quick access?", comment: "")
+        quickAccessHelpContentLabel.text = NSLocalizedString("Quick access list helps you reach your saved phrases very fast, so you don’t need to always type them when you want to speak them. Enter the phrase into the text field and tap Save button. The text will appear on the Quick access list. To say it loud, just touch it. If you want to remove it, swipe your finger on the phrase to the left.", comment: "")
     }
     
     @objc
     func appleHelpLinkDidTap() {
-        guard let pageURL = self.viewModel.getVoiceOverHelpURL(prefferedLanguages: Bundle.main.preferredLocalizations) else { return }
+        guard let pageURL = viewModel.getVoiceOverHelpURL(prefferedLanguages: Bundle.main.preferredLocalizations) else { return }
+
         UIApplication.shared.open(pageURL)
     }
     
@@ -113,17 +118,22 @@ final class HelpViewController: BaseViewController<HelpViewModel> {
         let font = UIFont(name: "Poppins-SemiBold", size: 17) ?? UIFont.systemFont(ofSize: 17)
         let color = UIColor(named: "Orange (Main)") ?? .orange
         
-        let rightItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: "Done"), style: .plain, target: self, action: #selector(doneDidTouch))
+        let rightItem = UIBarButtonItem(
+            title: NSLocalizedString("Done", comment: "Done"),
+            style: .plain,
+            target: self,
+            action: #selector(doneDidTouch)
+        )
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                           NSAttributedString.Key.foregroundColor: color], for: .normal)
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                           NSAttributedString.Key.foregroundColor: color], for: .selected)
-        self.navigationItem.rightBarButtonItem = rightItem
+        navigationItem.rightBarButtonItem = rightItem
     }
     
     @objc
     private func doneDidTouch() {
-        self.navigationController?.dismiss(animated: true, completion: nil)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
 
 }

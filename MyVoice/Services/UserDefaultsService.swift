@@ -9,10 +9,9 @@ import Foundation
 import AVKit
 
 final class UserDefaultsService {
+    private let defaults = UserDefaults.standard
     
-    let defaults = UserDefaults.standard
-    
-    enum Keys: String {
+    private enum Keys: String {
         case speechRate = "SpeechRate"
         case speechPitch = "SpeechPitch"
         case speechLanguage = "SpeechLanguage"

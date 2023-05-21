@@ -9,7 +9,6 @@ import UIKit
 import RxSwift
 
 final class QuickPhraseTableViewCell: UITableViewCell {
-    
     @IBOutlet weak var backgroundContainerView: UIView!
     @IBOutlet weak var tapHandlerButton: TouchHandlerButton!
     
@@ -30,24 +29,29 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     }
     
     func setupCell(phrase: String, isFirstCell: Bool, isLastCell: Bool) {
-        self.bind()
-        self.setupIcon()
-        self.phraseLabel.text = phrase
-        self.selectionStyle = .none
-        self.backgroundColor = .clear
-        self.backgroundContainerView.clipsToBounds = true
-        self.backgroundContainerView.layer.masksToBounds = true
+        bind()
+        setupIcon()
+
+        phraseLabel.text = phrase
+
+        selectionStyle = .none
+        backgroundColor = .clear
+
+        backgroundContainerView.clipsToBounds = true
+        backgroundContainerView.layer.masksToBounds = true
+
         if isFirstCell {
-            self.tipLabel.text = NSLocalizedString("Tip: Select text to say it loud.", comment: "")
-            self.tipLabel.isHidden = false
+            tipLabel.text = NSLocalizedString("Tip: Select text to say it loud.", comment: "")
+            tipLabel.isHidden = false
         } else {
-            self.tipLabel.isHidden = true
+            tipLabel.isHidden = true
         }
-        self.separator.isHidden = isLastCell
+
+        separator.isHidden = isLastCell
     }
     
     private func bind() {
-        self.isSpeaking.subscribe(onNext: { [weak self] isSpeaking in
+        isSpeaking.subscribe(onNext: { [weak self] isSpeaking in
             if isSpeaking == false {
                 self?.setupIcon(isSpeaking: false)
             }
@@ -57,25 +61,26 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     // MARK: Setuping layout
     
     func setupIcon(isSpeaking: Bool = false) {
-        self.iconContainerView.layer.cornerRadius = self.iconContainerView.frame.width / 2
-        self.iconImageView.image = UIImage(systemName: "waveform", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
+        iconContainerView.layer.cornerRadius = self.iconContainerView.frame.width / 2
+        iconImageView.image = UIImage(systemName: "waveform", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
+
         if isSpeaking {
-            self.iconImageView.tintColor = UIColor(named: "Orange (Main)")
-            self.iconContainerView.backgroundColor = UIColor(named: "Orange (Light)")
+            iconImageView.tintColor = UIColor(named: "Orange (Main)")
+            iconContainerView.backgroundColor = UIColor(named: "Orange (Light)")
         } else {
-            self.iconImageView.tintColor = UIColor(named: "Blue (Dark)")
-            self.iconContainerView.backgroundColor = UIColor(named: "Blue (Light)")
+            iconImageView.tintColor = UIColor(named: "Blue (Dark)")
+            iconContainerView.backgroundColor = UIColor(named: "Blue (Light)")
         }
     }
     
     func setTipVisibility(isHidden: Bool) {
-        self.tipLabel.text = isHidden ? nil : NSLocalizedString("Tip: Select text to say it loud.", comment: "")
-        self.tipLabel.isHidden = isHidden
+        tipLabel.text = isHidden ? nil : NSLocalizedString("Tip: Select text to say it loud.", comment: "")
+        tipLabel.isHidden = isHidden
     }
     
     override func prepareForReuse() {
-        self.phraseLabel.text = nil
-        self.setTipVisibility(isHidden: true)
-        self.disposeBag = DisposeBag()
+        phraseLabel.text = nil
+        setTipVisibility(isHidden: true)
+        disposeBag = DisposeBag()
     }
 }

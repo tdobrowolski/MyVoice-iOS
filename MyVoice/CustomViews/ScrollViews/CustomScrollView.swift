@@ -8,10 +8,9 @@
 import UIKit
 
 final class CustomScrollView: UIScrollView {
-
     override func touchesShouldCancel(in view: UIView) -> Bool {
         if view.isKind(of: TouchHandlerButton.self) { return true }
+
         return super.touchesShouldCancel(in: view)
     }
-
 }

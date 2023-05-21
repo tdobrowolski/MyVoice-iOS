@@ -8,7 +8,6 @@
 import UIKit
 
 extension UIView {
-    
     /// Adds shadow with values from Sketch App 
     func applySketchShadow(
         color: UIColor = .black,

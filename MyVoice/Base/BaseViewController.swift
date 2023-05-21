@@ -9,13 +9,12 @@ import UIKit
 import RxSwift
 
 class BaseViewController<BaseViewModel>: UIViewController {
-    
     let viewModel: BaseViewModel
-    
     let disposeBag = DisposeBag()
     
     init(viewModel: BaseViewModel, nibName: String) {
         self.viewModel = viewModel
+
         super.init(nibName: nibName, bundle: nil)
     }
     
@@ -25,21 +24,20 @@ class BaseViewController<BaseViewModel>: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bindViewModel(viewModel: viewModel)
+
+        bindViewModel(viewModel)
     }
     
-    func bindViewModel(viewModel: BaseViewModel) { }
+    func bindViewModel(_ viewModel: BaseViewModel) { }
     
     /// Adds gesture recognizer for dismissing keyboard on the view
     func hideKeyboardWhenTappedAround() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
-        self.view.addGestureRecognizer(tapGesture)
+        view.addGestureRecognizer(tapGesture)
     }
     
     @objc
-    func dismissKeyboard() {
-        self.view.endEditing(true)
-    }
+    func dismissKeyboard() { view.endEditing(true) }
     
     func showAlert(title: String?, message: String?, actions: [UIAlertAction]) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -47,10 +45,9 @@ class BaseViewController<BaseViewModel>: UIViewController {
             alert.addAction(action)
         }
         alert.preferredAction = alert.actions.last
-        self.present(alert, animated: true, completion: nil)
+        
+        present(alert, animated: true, completion: nil)
     }
     
-    deinit {
-        print("deinit: \(self)")
-    }
+    deinit { print("deinit: \(self)") }
 }

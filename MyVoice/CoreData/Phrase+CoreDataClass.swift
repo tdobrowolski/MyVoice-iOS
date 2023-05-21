@@ -10,6 +10,4 @@ import Foundation
 import CoreData
 
 @objc(Phrase)
-public class Phrase: NSManagedObject {
-
-}
+public class Phrase: NSManagedObject { }
