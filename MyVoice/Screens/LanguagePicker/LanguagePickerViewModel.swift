@@ -8,7 +8,7 @@
 import AVFoundation
 import RxSwift
 
-protocol VoiceSelectedDelegate: class {
+protocol VoiceSelectedDelegate: AnyObject {
     func userSelectedVoice()
 }
 
