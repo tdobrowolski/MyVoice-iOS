@@ -36,7 +36,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
         super.viewDidLoad()
 
         title = NSLocalizedString("MyVoice", comment: "MyVoice")
-        view.backgroundColor = UIColor(named: "Background")
+        view.backgroundColor = .background
 
         quickAccessTableView.delegate = self
         quickAccessTableView.layer.cornerRadius = 16
@@ -92,7 +92,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
             self?.speakButton.isSpeaking.onNext(isSpeaking)
         }).disposed(by: disposeBag)
         
-        self.mainTextView.rx.text.subscribe(onNext: { [weak self] text in
+        mainTextView.rx.text.subscribe(onNext: { [weak self] text in
             self?.placeholderLabel.isHidden = text?.isEmpty == false
         }).disposed(by: disposeBag)
         
@@ -115,6 +115,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
                     cell.tapHandlerButton.rx.tap.subscribe { [weak self] _ in
                         let isSpeaking = try? self?.viewModel.isSpeaking.value()
                         guard let text = cell.phraseLabel?.text, text.isEmpty == false, isSpeaking == false else { return }
+                        
                         self?.viewModel.startSpeaking(text)
                         cell.setupIcon(isSpeaking: true)
                     }.disposed(by: cell.disposeBag)
@@ -138,7 +139,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     
     private func setupPlaceholderLabel() {
         placeholderLabel.text = NSLocalizedString("What do you want to say?", comment: "What do you want to say?")
-        placeholderLabel.textColor = UIColor(named: "Blue (Dark)")
+        placeholderLabel.textColor = .blueDark
         placeholderLabel.font = UIFont(name: "Poppins-Bold", size: 20)
     }
     
@@ -163,7 +164,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     
     private func addNavigationBarButtons() {
         let font = UIFont(name: "Poppins-Medium", size: 17) ?? UIFont.systemFont(ofSize: 17)
-        let color = UIColor(named: "Orange (Main)") ?? .orange
+        let color = UIColor.orangeMain ?? .orange
         
         let leftItem = UIBarButtonItem(title: NSLocalizedString("Help", comment: "Help"), style: .plain, target: self, action: #selector(helpDidTouch))
         leftItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
@@ -207,7 +208,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
                 viewModel.stopSpeaking()
             } else {
                 guard let text = mainTextView.text, text.isEmpty == false else {
-                    placeholderLabel.flashWithColor(UIColor(named: "Orange (Main)") ?? .orange)
+                    placeholderLabel.flashWithColor(.orangeMain ?? .orange)
                     viewModel.warnUserWithFeedback()
 
                     return
@@ -230,7 +231,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     func saveButtonDidTouch(_ sender: Any) {
         guard let phrase = mainTextView.text, phrase.isEmpty == false else {
             viewModel.warnUserWithFeedback()
-            placeholderLabel.flashWithColor(UIColor(named: "Orange (Main)") ?? .orange)
+            placeholderLabel.flashWithColor(.orangeMain ?? .orange)
 
             return
         }
@@ -259,7 +260,7 @@ extension MainViewController: UITableViewDelegate {
             }
             self?.viewModel.removeQuickPhraseItem(at: indexPath.row)
         }
-        delete.backgroundColor = UIColor(named: "Red (Main)")
+        delete.backgroundColor = .redMain
 
         return UISwipeActionsConfiguration(actions: [delete])
     }

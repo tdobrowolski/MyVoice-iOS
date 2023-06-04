@@ -65,11 +65,11 @@ final class QuickPhraseTableViewCell: UITableViewCell {
         iconImageView.image = UIImage(systemName: "waveform", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
 
         if isSpeaking {
-            iconImageView.tintColor = UIColor(named: "Orange (Main)")
-            iconContainerView.backgroundColor = UIColor(named: "Orange (Light)")
+            iconImageView.tintColor = .orangeMain
+            iconContainerView.backgroundColor = .orangeLight
         } else {
-            iconImageView.tintColor = UIColor(named: "Blue (Dark)")
-            iconContainerView.backgroundColor = UIColor(named: "Blue (Light)")
+            iconImageView.tintColor = .blueDark
+            iconContainerView.backgroundColor = .blueLight
         }
     }
     

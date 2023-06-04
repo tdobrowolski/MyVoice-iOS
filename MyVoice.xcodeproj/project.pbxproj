@@ -40,6 +40,8 @@
 		E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A9025C2168F003FE247 /* SettingsViewModel.swift */; };
 		E18AF60825F57A27008CFA5D /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AF60725F57A27008CFA5D /* CustomScrollView.swift */; };
 		E18AF60D25F57BDF008CFA5D /* TouchHandlerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AF60C25F57BDF008CFA5D /* TouchHandlerButton.swift */; };
+		E19392AB2A2C06DA00CA6238 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19392AA2A2C06DA00CA6238 /* Colors.swift */; };
+		E19392AD2A2C0AE400CA6238 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19392AC2A2C0AE400CA6238 /* UIColor+Extensions.swift */; };
 		E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */; };
 		E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */; };
 		E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */; };
@@ -98,6 +100,8 @@
 		E1771A9025C2168F003FE247 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E18AF60725F57A27008CFA5D /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		E18AF60C25F57BDF008CFA5D /* TouchHandlerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchHandlerButton.swift; sourceTree = "<group>"; };
+		E19392AA2A2C06DA00CA6238 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E19392AC2A2C0AE400CA6238 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseModel.swift; sourceTree = "<group>"; };
 		E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseTableViewCell.swift; sourceTree = "<group>"; };
 		E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickPhraseTableViewCell.xib; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 				E115576C25B4C7810093851B /* CustomViews */,
 				E115576825B4C5AC0093851B /* Extensions */,
 				E115576425B4C5950093851B /* Base */,
+				E19392AE2A2C0B4300CA6238 /* Enums */,
 				E137885325D48B40007E2DD8 /* CoreData */,
 				E115576E25B4C9000093851B /* SupportingFiles */,
 				E115574225B4C4290093851B /* AppDelegate.swift */,
@@ -224,6 +229,7 @@
 				E115576925B4C5C20093851B /* ViewController+Extensions.swift */,
 				E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */,
 				E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */,
+				E19392AC2A2C0AE400CA6238 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -342,6 +348,14 @@
 				E18AF60C25F57BDF008CFA5D /* TouchHandlerButton.swift */,
 			);
 			path = TouchHandlerButton;
+			sourceTree = "<group>";
+		};
+		E19392AE2A2C0B4300CA6238 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				E19392AA2A2C06DA00CA6238 /* Colors.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		E197348F25B8CFA900F3A78B /* Cells */ = {
@@ -609,6 +623,7 @@
 				E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */,
 				E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */,
 				E15B839525CF17CB00C8BFA5 /* LanguagePickerViewController.swift in Sources */,
+				E19392AD2A2C0AE400CA6238 /* UIColor+Extensions.swift in Sources */,
 				E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */,
 				E18AF60D25F57BDF008CFA5D /* TouchHandlerButton.swift in Sources */,
 				E115574325B4C4290093851B /* AppDelegate.swift in Sources */,
@@ -633,6 +648,7 @@
 				E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */,
 				E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */,
 				E1E5FECA25D9879800FEB6E2 /* PhraseDatabaseService.swift in Sources */,
+				E19392AB2A2C06DA00CA6238 /* Colors.swift in Sources */,
 				E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */,
 				E11C1ACF25D83CFA001FE05E /* Phrase+CoreDataClass.swift in Sources */,
 				E1F246FC25FE82B30077EE4F /* HelpViewModel.swift in Sources */,
@@ -802,7 +818,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.infinity.MyVoice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.infinity.MyVoiceApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -823,7 +839,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.infinity.MyVoice;
+				PRODUCT_BUNDLE_IDENTIFIER = com.infinity.MyVoiceApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

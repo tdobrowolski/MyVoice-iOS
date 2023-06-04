@@ -11,9 +11,9 @@ final class DefaultNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationBar.barTintColor = UIColor(named: "Blue (Light)") ?? .red
+        navigationBar.barTintColor = .blueLight ?? .red
         navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.foregroundColor: UIColor(named: "Black") ?? .black,
+            NSAttributedString.Key.foregroundColor: UIColor.blackCustom ?? .black,
             NSAttributedString.Key.font: UIFont(name: "Poppins-Bold", size: 17) ?? UIFont.systemFont(ofSize: 17)
         ]
         navigationBar.setBackgroundImage(UIImage(), for: .default)

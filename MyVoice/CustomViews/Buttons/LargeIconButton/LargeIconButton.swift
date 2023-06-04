@@ -81,10 +81,10 @@ final class LargeIconButton: UIButton {
         
         switch traitCollection.userInterfaceStyle {
         case .light:
-            addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
+            addShadow(color: .blueDark ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
 
         default:
-            addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
+            addShadow(color: .blueDark ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
         }
     }
     
@@ -92,7 +92,7 @@ final class LargeIconButton: UIButton {
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
             shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
-            shadowLayer.fillColor = UIColor(named: "White")?.cgColor
+            shadowLayer.fillColor = UIColor.whiteCustom?.cgColor
             
             shadowLayer.shadowColor = color.cgColor
             shadowLayer.shadowOffset = CGSize(width: x, height: y)
@@ -109,7 +109,7 @@ final class LargeIconButton: UIButton {
             
             layer.insertSublayer(shadowLayer, at: 0)
         } else {
-            shadowLayer.fillColor = UIColor(named: "White")?.cgColor
+            shadowLayer.fillColor = UIColor.whiteCustom?.cgColor
             shadowLayer.shadowOpacity = alpha
         }
     }
@@ -127,7 +127,7 @@ final class LargeIconButton: UIButton {
         if let customFont = UIFont(name: "Poppins-Bold", size: 15) {
             attributedText.addAttribute(.font, value: customFont, range: NSMakeRange(0, attributedText.length))
         }
-        attributedText.addAttribute(.foregroundColor, value: UIColor(named: "Black") ?? .black, range: NSMakeRange(0, attributedText.length))
+        attributedText.addAttribute(.foregroundColor, value: UIColor.blackCustom ?? .black, range: NSMakeRange(0, attributedText.length))
         setTitle(nil, for: .normal)
         mainTitleLabel.text = nil
         mainTitleLabel.attributedText = attributedText
@@ -138,18 +138,18 @@ final class LargeIconButton: UIButton {
 
         switch actionType {
         case .speak:
-            iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
-            iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
+            iconContainerView.backgroundColor = .orangeLight ?? .white
+            iconImageView.tintColor = .orangeMain ?? .orange
             iconImageView.image = self.getSystemVolumeIcon()
 
         case .clear:
-            iconContainerView.backgroundColor = UIColor(named: "Red (Light)") ?? .white
-            iconImageView.tintColor = UIColor(named: "Red (Main)") ?? .red
+            iconContainerView.backgroundColor = .redLight ?? .white
+            iconImageView.tintColor = .redMain ?? .red
             iconImageView.image = UIImage(systemName: "pencil.slash", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
 
         case .save:
-            iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
-            iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
+            iconContainerView.backgroundColor = .orangeLight ?? .white
+            iconImageView.tintColor = .orangeMain ?? .orange
             iconImageView.image = UIImage(systemName: "plus.bubble.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         }
     }
@@ -198,13 +198,13 @@ final class LargeIconButton: UIButton {
     
     private func setupForSpeakButton(isSpeaking: Bool = false) {
         if isSpeaking {
-            iconContainerView.backgroundColor = UIColor(named: "Red (Light)") ?? .white
-            iconImageView.tintColor = UIColor(named: "Red (Main)") ?? .red
+            iconContainerView.backgroundColor = .redLight ?? .white
+            iconImageView.tintColor = .redMain ?? .red
             iconImageView.image = UIImage(systemName: "stop.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
             setupTitleLabel(title: NSLocalizedString("Stop", comment: "Stop"))
         } else {
-            iconContainerView.backgroundColor = UIColor(named: "Orange (Light)") ?? .white
-            iconImageView.tintColor = UIColor(named: "Orange (Main)") ?? .orange
+            iconContainerView.backgroundColor = .orangeLight ?? .white
+            iconImageView.tintColor = .orangeMain ?? .orange
             iconImageView.image = self.getSystemVolumeIcon()
             setupTitleLabel(title: NSLocalizedString("Speak", comment: "Speak"))
         }

@@ -19,20 +19,20 @@ final class VoiceCellTableViewCell: UITableViewCell {
         voiceLabel.text = "\(languageName) - \(voiceName)"
         var voiceGenderText = NSMutableAttributedString(
             string: NSLocalizedString("Unspecified", comment: "Unspecified"),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
         )
 
         switch voiceGender {
         case .male:
             voiceGenderText = NSMutableAttributedString(
                 string: NSLocalizedString("Male", comment: "Male"),
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
             )
 
         case .female:
             voiceGenderText = NSMutableAttributedString(
                 string: NSLocalizedString("Female", comment: "Female"),
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
             )
 
         default:
@@ -41,7 +41,7 @@ final class VoiceCellTableViewCell: UITableViewCell {
 
         let voiceQualityText = NSMutableAttributedString(
             string: " • ",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
         )
 
         switch voiceQuality {
@@ -49,7 +49,7 @@ final class VoiceCellTableViewCell: UITableViewCell {
             voiceQualityText.append(
                 NSMutableAttributedString(
                     string: NSLocalizedString("Default quality", comment: "Default quality"),
-                    attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
                 )
             )
 
@@ -57,7 +57,7 @@ final class VoiceCellTableViewCell: UITableViewCell {
             voiceQualityText.append(
                 NSMutableAttributedString(
                     string: NSLocalizedString("Enhanced quality", comment: "Enhanced quality"),
-                    attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Orange (Main)") ?? .orange]
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.orangeMain ?? .orange]
                 )
             )
 
@@ -65,7 +65,7 @@ final class VoiceCellTableViewCell: UITableViewCell {
             voiceQualityText.append(
                 NSMutableAttributedString(
                     string: NSLocalizedString("Unknown quality", comment: "Unknown quality"),
-                    attributes: [NSAttributedString.Key.foregroundColor: UIColor(named: "Blue (Dark)") ?? .black]
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
                 )
             )
         }

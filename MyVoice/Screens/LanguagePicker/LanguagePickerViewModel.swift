@@ -25,7 +25,7 @@ final class LanguagePickerViewModel: BaseViewModel {
     }
     
     func getIndexForCurrentVoice() -> Int {
-        guard let languages = try? self.availableVoices.value() else { return 0 }
+        guard let languages = try? availableVoices.value() else { return 0 }
 
         if let currentVoiceIdentifier = userDefaultsService.getSpeechVoiceIdentifier(),
            let indexToSelect = languages.firstIndex(where: { $0.identifier == currentVoiceIdentifier }) {
@@ -44,7 +44,7 @@ final class LanguagePickerViewModel: BaseViewModel {
     }
     
     func selectVoiceForIndexPath(_ indexPath: IndexPath) {
-        guard let voices = try? self.availableVoices.value() else { return }
+        guard let voices = try? availableVoices.value() else { return }
         
         let selectedVoice = voices[indexPath.row]
         userDefaultsService.setSpeechVoice(for: selectedVoice.identifier)

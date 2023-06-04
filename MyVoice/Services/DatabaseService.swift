@@ -15,7 +15,7 @@ class DatabaseService {
     
     func initializeStack() {
         persistanceContainer.loadPersistentStores { description, error in
-            if let error = error {
+            if let error {
                 return print(error.localizedDescription)
             }
         }

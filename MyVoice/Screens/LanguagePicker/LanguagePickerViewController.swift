@@ -19,7 +19,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         super.viewDidLoad()
 
         title = NSLocalizedString("Select voice", comment: "Select voice")
-        view.backgroundColor = UIColor(named: "Background")
+        view.backgroundColor = .background
         addNavigationBarButton()
         tableView.register(UINib(nibName: "VoiceCellTableViewCell", bundle: nil), forCellReuseIdentifier: "voiceCell")
     }
@@ -47,7 +47,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
     
     private func addNavigationBarButton() {
         let font = UIFont(name: "Poppins-SemiBold", size: 17) ?? UIFont.systemFont(ofSize: 17)
-        let color = UIColor(named: "Orange (Main)") ?? .orange
+        let color = UIColor.orangeMain ?? .orange
         
         let rightItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: "Done"), style: .plain, target: self, action: #selector(doneDidTouch))
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,

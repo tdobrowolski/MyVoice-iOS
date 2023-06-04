@@ -48,6 +48,6 @@ final class UserDefaultsService {
     }
     
     func getSpeechVoiceIdentifier() -> String? {
-        return defaults.string(forKey: Keys.speechLanguage.rawValue)
+        defaults.string(forKey: Keys.speechLanguage.rawValue)
     }
 }

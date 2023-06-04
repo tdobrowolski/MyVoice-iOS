@@ -38,7 +38,7 @@ final class HelpViewController: BaseViewController<HelpViewModel> {
         super.viewDidLoad()
         
         title = NSLocalizedString("Help", comment: "Help")
-        view.backgroundColor = UIColor(named: "Background")
+        view.backgroundColor = .background
         setupHelpContent()
         addNavigationBarButtons()
     }
@@ -94,7 +94,7 @@ final class HelpViewController: BaseViewController<HelpViewModel> {
         attributedString = NSMutableAttributedString(string: NSLocalizedString("Still lost? Go to the official Apple tutorial.", comment: ""), attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-Medium", size: 14.0) ?? .systemFont(ofSize: 14.0)])
         textRange = attributedString.mutableString.range(of: NSLocalizedString("Go to the official Apple tutorial.", comment: ""))
         attributedString.addAttribute(.font, value: UIFont(name: "Poppins-SemiBold", size: 14.0) ?? .boldSystemFont(ofSize: 14.0), range: textRange)
-        attributedString.addAttribute(.foregroundColor, value: UIColor(named: "Orange (Main)") ?? .orange, range: textRange)
+        attributedString.addAttribute(.foregroundColor, value: UIColor.orangeMain ?? .orange, range: textRange)
         downloadVoiceHelpLinkLabel.attributedText = attributedString
 
         let tapLinkGesture = UITapGestureRecognizer(target: self, action: #selector(appleHelpLinkDidTap))
@@ -116,7 +116,7 @@ final class HelpViewController: BaseViewController<HelpViewModel> {
     
     private func addNavigationBarButtons() {
         let font = UIFont(name: "Poppins-SemiBold", size: 17) ?? UIFont.systemFont(ofSize: 17)
-        let color = UIColor(named: "Orange (Main)") ?? .orange
+        let color = UIColor.orangeMain ?? .orange
         
         let rightItem = UIBarButtonItem(
             title: NSLocalizedString("Done", comment: "Done"),

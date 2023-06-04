@@ -19,7 +19,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         super.viewDidLoad()
         
         title = NSLocalizedString("Settings", comment: "Settings")
-        view.backgroundColor = UIColor(named: "Background")
+        view.backgroundColor = .background
         addNavigationBarButtons()
         
         tableView.register(UINib(nibName: "SliderTableViewCell", bundle: nil), forCellReuseIdentifier: "sliderCell")
@@ -61,20 +61,20 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         switch sectionType {
         case .speechVoice, .other:
             let cell = tableView.dequeueReusableCell(withIdentifier: "defaultCell") ?? UITableViewCell(style: .value1, reuseIdentifier: "defaultCell")
-            cell.backgroundColor = UIColor(named: "White")
+            cell.backgroundColor = .whiteCustom
             cell.textLabel?.text = sections[indexPath.section].items[indexPath.row].primaryText
             cell.textLabel?.font = UIFont(name: "Poppins-Medium", size: 15) ?? UIFont.systemFont(ofSize: 15)
-            cell.textLabel?.textColor = UIColor(named: "Black") ?? .black
+            cell.textLabel?.textColor = .blackCustom ?? .black
             cell.detailTextLabel?.text = sections[indexPath.section].items[indexPath.row].secondaryText
             cell.detailTextLabel?.font = UIFont(name: "Poppins-Regular", size: 15) ?? UIFont.systemFont(ofSize: 15)
-            cell.detailTextLabel?.textColor = UIColor(named: "Blue (Dark)") ?? .gray
+            cell.detailTextLabel?.textColor = .blueDark ?? .gray
             cell.accessoryType = .disclosureIndicator
 
             return cell
 
         case .speechRate:
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell") as! SliderTableViewCell
-            cell.backgroundColor = UIColor(named: "White")
+            cell.backgroundColor = .whiteCustom
             cell.setupSlider(for: self.viewModel.getDataTypeForSpeechRate())
             cell.defaultSlider.rx.value.skip(1).subscribe { [weak self] value in
                 self?.viewModel.setSpeechRate(value)
@@ -84,7 +84,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
 
         case .speechPitch:
             let cell = tableView.dequeueReusableCell(withIdentifier: "sliderCell") as! SliderTableViewCell
-            cell.backgroundColor = UIColor(named: "White")
+            cell.backgroundColor = .whiteCustom
             cell.setupSlider(for: self.viewModel.getDataTypeForSpeechPitch())
             cell.defaultSlider.rx.value.skip(1).subscribe { [weak self] value in
                 self?.viewModel.setSpeechPitch(value)
@@ -110,7 +110,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     
     private func addNavigationBarButtons() {
         let font = UIFont(name: "Poppins-SemiBold", size: 17) ?? UIFont.systemFont(ofSize: 17)
-        let color = UIColor(named: "Orange (Main)") ?? .orange
+        let color = UIColor.orangeMain ?? .orange
         
         let rightItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: "Done"), style: .plain, target: self, action: #selector(doneDidTouch))
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
@@ -215,7 +215,7 @@ extension SettingsViewController: UITableViewDelegate {
         guard let header = view as? UITableViewHeaderFooterView else { return }
 
         header.textLabel?.font = UIFont.init(name: "Poppins-Medium", size: 13)
-        header.textLabel?.textColor = UIColor(named: "Blue (Dark)")
+        header.textLabel?.textColor = .blueDark
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -226,7 +226,7 @@ extension SettingsViewController: UITableViewDelegate {
         guard let footer = view as? UITableViewHeaderFooterView else { return }
 
         footer.textLabel?.font = UIFont.init(name: "Poppins-Regular", size: 12)
-        footer.textLabel?.textColor = UIColor(named: "Blue (Dark)")
+        footer.textLabel?.textColor = .blueDark
     }
 }
 

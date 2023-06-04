@@ -12,7 +12,7 @@ final class MainTextView: UITextView {
     
     lazy var toolbar: UIToolbar = {
         let toolbar = UIToolbar(frame: CGRect.zero)
-        toolbar.tintColor = UIColor(named: "Orange (Main)")
+        toolbar.tintColor = .orangeMain
         toolbar.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
@@ -34,21 +34,21 @@ final class MainTextView: UITextView {
         setupLayout()
 //        switch traitCollection.userInterfaceStyle {
 //        case .light:
-//            self.addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
+//            self.addShadow(color: .blueDark ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
 //        default:
-//            self.addShadow(color: UIColor(named: "Blue (Dark)") ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
+//            self.addShadow(color: .blueDark ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
 //        }
     }
 
     private func setupLayout() {
         layer.cornerRadius = 16
-        backgroundColor = UIColor(named: "White") ?? .white
+        backgroundColor = .whiteCustom ?? .white
         textContainerInset = UIEdgeInsets(top: 13, left: 14, bottom: 14, right: 13)
         font = UIFont(name: "Poppins-Bold", size: 20)
-        textColor = UIColor(named: "Black") ?? .black
+        textColor = .blackCustom ?? .black
         clipsToBounds = false
         returnKeyType = .done
-        tintColor = UIColor(named: "Orange (Main)")
+        tintColor = .orangeMain
         inputAccessoryView = toolbar
         layer.masksToBounds = true
     }
@@ -57,7 +57,7 @@ final class MainTextView: UITextView {
         shadowLayer?.removeFromSuperlayer()
         shadowLayer = CAShapeLayer()
         shadowLayer?.path = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
-        shadowLayer?.fillColor = UIColor(named: "White")?.cgColor
+        shadowLayer?.fillColor = UIColor.whiteCustom?.cgColor
         
         shadowLayer?.shadowColor = color.cgColor
         shadowLayer?.shadowOffset = CGSize(width: x, height: y)

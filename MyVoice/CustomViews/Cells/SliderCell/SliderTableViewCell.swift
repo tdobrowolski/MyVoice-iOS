@@ -18,9 +18,9 @@ final class SliderTableViewCell: UITableViewCell {
     lazy var disposeBag = DisposeBag()
     
     func setupSlider(for dataType: SliderDataType) {
-        defaultSlider.tintColor = UIColor(named: "Orange (Main)")
-        defaultSlider.minimumTrackTintColor = UIColor(named: "Orange (Main)")
-        defaultSlider.maximumTrackTintColor = UIColor(named: "Blue (Light)")
+        defaultSlider.tintColor = .orangeMain
+        defaultSlider.minimumTrackTintColor = .orangeMain
+        defaultSlider.maximumTrackTintColor = .blueLight
         defaultSlider.isContinuous = false
         selectionStyle = .none
 
