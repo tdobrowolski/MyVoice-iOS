@@ -79,24 +79,24 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         case .speechRate:
             let cell = tableView.dequeueReusableCell(withIdentifier: Nib.sliderTableViewCell.cellIdentifier) as! SliderTableViewCell
             cell.backgroundColor = .whiteCustom
-            cell.setupSlider(for: self.viewModel.getDataTypeForSpeechRate())
+            cell.setupSlider(for: viewModel.getDataTypeForSpeechRate())
             cell.defaultSlider.rx.value
                 .skip(1)
-                .subscribe { [weak self] value in
-                    self?.viewModel.setSpeechRate(value)
-                }.disposed(by: cell.disposeBag)
+//                .debounce(.seconds(1), scheduler: MainScheduler.instance)
+                .subscribe { [weak self] in self?.viewModel.setSpeechRate($0) }
+                .disposed(by: cell.disposeBag)
             
             return cell
             
         case .speechPitch:
             let cell = tableView.dequeueReusableCell(withIdentifier: Nib.sliderTableViewCell.cellIdentifier) as! SliderTableViewCell
             cell.backgroundColor = .whiteCustom
-            cell.setupSlider(for: self.viewModel.getDataTypeForSpeechPitch())
+            cell.setupSlider(for: viewModel.getDataTypeForSpeechPitch())
             cell.defaultSlider.rx.value
                 .skip(1)
-                .subscribe { [weak self] value in
-                    self?.viewModel.setSpeechPitch(value)
-                }.disposed(by: cell.disposeBag)
+//                .debounce(.seconds(1), scheduler: MainScheduler.instance)
+                .subscribe { [weak self] in self?.viewModel.setSpeechPitch($0) }
+                .disposed(by: cell.disposeBag)
             
             return cell
         }

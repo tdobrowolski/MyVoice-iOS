@@ -155,42 +155,36 @@ final class LargeIconButton: UIButton {
     // MARK: Methods for Speak button
     
     private func bindRxValues() {
-        isSpeaking.skip(1).subscribe { [weak self] isSpeaking in
-            self?.setupForSpeakButton(isSpeaking: isSpeaking)
-        }.disposed(by: disposeBag)
+        isSpeaking
+            .skip(1)
+            .subscribe { [weak self] isSpeaking in
+                self?.setupForSpeakButton(isSpeaking: isSpeaking)
+            }
+            .disposed(by: disposeBag)
         
-        systemVolumeState.skip(1).subscribe { [weak self] volumeState in
-            guard let state = volumeState.element, let isSpeaking = try? self?.isSpeaking.value(), isSpeaking == false else { return }
-            
-            self?.iconImageView.image = self?.getSystemVolumeIcon(for: state)
-        }.disposed(by: disposeBag)
+        systemVolumeState
+            .skip(1)
+            .subscribe { [weak self] volumeState in
+                guard let state = volumeState.element, let isSpeaking = try? self?.isSpeaking.value(), isSpeaking == false else { return }
+                
+                self?.iconImageView.image = self?.getSystemVolumeIcon(for: state)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func getSystemVolumeIcon(for volumeState: SystemVolumeState? = nil) -> UIImage? {
         switch volumeState ?? SystemVolumeState.getState(from: nil) {
         case .noVolume:
             return UIImage(systemName: "speaker.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-
+            
         case .lowVolume:
-            if #available(iOS 14, *) {
-                return UIImage(systemName: "speaker.wave.1.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            } else {
-                return UIImage(systemName: "speaker.1.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            }
-
+            return UIImage(systemName: "speaker.wave.1.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            
         case .mediumVolume:
-            if #available(iOS 14, *) {
-                return UIImage(systemName: "speaker.wave.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            } else {
-                return UIImage(systemName: "speaker.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            }
-
+            return UIImage(systemName: "speaker.wave.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+            
         case .highVolume:
-            if #available(iOS 14, *) {
-                return UIImage(systemName: "speaker.wave.3.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            } else {
-                return UIImage(systemName: "speaker.3.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            }
+            return UIImage(systemName: "speaker.wave.3.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         }
     }
     
