@@ -51,11 +51,13 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     }
     
     private func bind() {
-        isSpeaking.subscribe(onNext: { [weak self] isSpeaking in
+        isSpeaking
+            .subscribe(onNext: { [weak self] isSpeaking in
             if isSpeaking == false {
                 self?.setupIcon(isSpeaking: false)
             }
-        }).disposed(by: disposeBag)
+        })
+            .disposed(by: disposeBag)
     }
     
     // MARK: Setuping layout

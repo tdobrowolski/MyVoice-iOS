@@ -22,14 +22,12 @@ final class TextToSpeechService: NSObject, AVSpeechSynthesizerDelegate {
 
         super.init()
 
-        self.speechSynthesizer.delegate = self
+        speechSynthesizer.delegate = self
     }
         
     func startSpeaking(text: String) {
         let speechUtterance = AVSpeechUtterance(string: text)
-        if let voice = getSelectedVoice() {
-            speechUtterance.voice = voice
-        }
+        speechUtterance.voice = getSelectedVoice()
         
         var selectedPitch = userDefaultsService.getSpeechPitch()
         selectedPitch = max(selectedPitch, 0.5)
@@ -44,7 +42,6 @@ final class TextToSpeechService: NSObject, AVSpeechSynthesizerDelegate {
         }
         speechUtterance.rate = selectedRate
         
-        print("\nSpeaking with values:\nRate: \(selectedRate)\nPitch: \(selectedPitch)\n")
         speechSynthesizer.speak(speechUtterance)
     }
     

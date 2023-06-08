@@ -11,12 +11,14 @@ import AVFoundation
 final class SettingsViewModel: BaseViewModel {
     private let userDefaultsService: UserDefaultsService
     private let textToSpeechService: TextToSpeechService
+    private let feedbackGenerator: UIImpactFeedbackGenerator
     
     let sections = BehaviorSubject<[SettingsSection]>(value: [])
     
     override init() {
         self.userDefaultsService = UserDefaultsService()
         self.textToSpeechService = TextToSpeechService() // TODO: Refactor to pass existing service
+        self.feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
 
         super.init()
 
@@ -78,7 +80,7 @@ final class SettingsViewModel: BaseViewModel {
         sections.onNext(getAvailableSettings())
     }
     
-    func getDataTypeForSpeechRate() -> SliderTableViewCell.SliderDataType {
+    func getDataTypeForSpeechRate() -> SliderDataType {
         let minValue = AVSpeechUtteranceMinimumSpeechRate
         let maxValue = AVSpeechUtteranceMaximumSpeechRate
         var currentValue = userDefaultsService.getSpeechRate()
@@ -86,10 +88,14 @@ final class SettingsViewModel: BaseViewModel {
             currentValue = AVSpeechUtteranceDefaultSpeechRate
         }
 
-        return SliderTableViewCell.SliderDataType.speechRate(currentValue: currentValue, minValue: minValue, maxValue: maxValue)
+        return .speechRate(
+            currentValue: currentValue,
+            minValue: minValue,
+            maxValue: maxValue
+        )
     }
     
-    func getDataTypeForSpeechPitch() -> SliderTableViewCell.SliderDataType {
+    func getDataTypeForSpeechPitch() -> SliderDataType {
         let minValue: Float = 0.0
         let maxValue: Float = 2.0
         var currentValue = userDefaultsService.getSpeechPitch()
@@ -97,18 +103,33 @@ final class SettingsViewModel: BaseViewModel {
             currentValue = 1.0
         }
 
-        return SliderTableViewCell.SliderDataType.speechPitch(
+        return .speechPitch(
             currentValue: currentValue,
             minValue: minValue,
             maxValue: maxValue
         )
     }
     
+    // TODO: Cleanup
+    
     func setSpeechRate(_ value: Float) {
+        print("Speech rate value: \(value)")
+        print("Default speech rate value: \(SliderDataType.defaultSpeechRateValue)")
+        print("Difference: \(abs(value - SliderDataType.defaultSpeechRateValue))")
+        
         userDefaultsService.setSpeechRate(for: value)
     }
     
     func setSpeechPitch(_ value: Float) {
+        print("Speech pitch value: \(value)")
+        print("Default speech pitch value: \(SliderDataType.defaultSpeechPitchValue)")
+        print("Difference: \(abs(value - SliderDataType.defaultSpeechPitchValue))")
+        
         userDefaultsService.setSpeechPitch(for: value)
+    }
+    
+    // TODO: Fire feedback if automatically setting slider to default value
+    func didSetSliderToCenter() {
+        feedbackGenerator.impactOccurred()
     }
 }

@@ -61,6 +61,7 @@
 		E1F246F825FE82A90077EE4F /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F246F625FE82A90077EE4F /* HelpViewController.swift */; };
 		E1F246F925FE82A90077EE4F /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F246F725FE82A90077EE4F /* HelpViewController.xib */; };
 		E1F246FC25FE82B30077EE4F /* HelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */; };
+		E1F4CA6F2A326E1A00ADC747 /* SliderDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4CA6E2A326E1A00ADC747 /* SliderDataType.swift */; };
 		E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */; };
 		E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -124,6 +125,7 @@
 		E1F246F625FE82A90077EE4F /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		E1F246F725FE82A90077EE4F /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
 		E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewModel.swift; sourceTree = "<group>"; };
+		E1F4CA6E2A326E1A00ADC747 /* SliderDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderDataType.swift; sourceTree = "<group>"; };
 		E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
 		E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		FC90D1488A315B7CCEC8090F /* Pods_MyVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -360,6 +362,7 @@
 				E19392AA2A2C06DA00CA6238 /* Colors.swift */,
 				E1417F932A324A2B00B0A9DA /* Nib.swift */,
 				E1417F952A324E5D00B0A9DA /* Fonts.swift */,
+				E1F4CA6E2A326E1A00ADC747 /* SliderDataType.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1F4CA6F2A326E1A00ADC747 /* SliderDataType.swift in Sources */,
 				E1E6C2CB25B4D24800774B17 /* UIView+Extensions.swift in Sources */,
 				E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */,
 				E115576625B4C5A10093851B /* BaseViewController.swift in Sources */,

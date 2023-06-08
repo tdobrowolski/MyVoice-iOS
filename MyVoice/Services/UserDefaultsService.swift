@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import AVKit
 
 final class UserDefaultsService {
     private let defaults = UserDefaults.standard
@@ -27,7 +26,7 @@ final class UserDefaultsService {
         if defaults.object(forKey: Keys.speechRate.rawValue) != nil {
             return defaults.float(forKey: Keys.speechRate.rawValue)
         } else {
-            return AVSpeechUtteranceDefaultSpeechRate
+            return SliderDataType.defaultSpeechRateValue
         }
     }
     
@@ -39,7 +38,7 @@ final class UserDefaultsService {
         if defaults.object(forKey: Keys.speechPitch.rawValue) != nil {
             return defaults.float(forKey: Keys.speechPitch.rawValue)
         } else {
-            return 1.0
+            return SliderDataType.defaultSpeechPitchValue
         }
     }
     

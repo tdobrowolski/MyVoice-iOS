@@ -82,7 +82,6 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             cell.setupSlider(for: viewModel.getDataTypeForSpeechRate())
             cell.defaultSlider.rx.value
                 .skip(1)
-//                .debounce(.seconds(1), scheduler: MainScheduler.instance)
                 .subscribe { [weak self] in self?.viewModel.setSpeechRate($0) }
                 .disposed(by: cell.disposeBag)
             
@@ -94,9 +93,11 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             cell.setupSlider(for: viewModel.getDataTypeForSpeechPitch())
             cell.defaultSlider.rx.value
                 .skip(1)
-//                .debounce(.seconds(1), scheduler: MainScheduler.instance)
                 .subscribe { [weak self] in self?.viewModel.setSpeechPitch($0) }
                 .disposed(by: cell.disposeBag)
+            
+            // TODO: In both sliders tolerate 2% (0.02) of diff between users value and default value
+            // If difference is less than 2% set default value on slider
             
             return cell
         }

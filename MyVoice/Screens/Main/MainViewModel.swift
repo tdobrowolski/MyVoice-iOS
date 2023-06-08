@@ -13,8 +13,8 @@ import AVKit
 final class MainViewModel: BaseViewModel {
     private let textToSpeechService: TextToSpeechService
     private let phraseDatabaseService: PhraseDatabaseService
-    private var feedbackGenerator: UIImpactFeedbackGenerator?
-    private var notificationFeedbackGenerator: UINotificationFeedbackGenerator?
+    private var feedbackGenerator: UIImpactFeedbackGenerator
+    private var notificationFeedbackGenerator: UINotificationFeedbackGenerator
     
     var systemValueObserver: NSKeyValueObservation?
     
@@ -48,10 +48,10 @@ final class MainViewModel: BaseViewModel {
     
     func stopSpeaking() { textToSpeechService.stopSpeaking() }
     
-    func impactUserWithFeedback() { feedbackGenerator?.impactOccurred() }
+    func impactUserWithFeedback() { feedbackGenerator.impactOccurred() }
     
     func warnUserWithFeedback() {
-        notificationFeedbackGenerator?.notificationOccurred(.error)
+        notificationFeedbackGenerator.notificationOccurred(.error)
     }
     
     // TODO: Adding/removing items to sections

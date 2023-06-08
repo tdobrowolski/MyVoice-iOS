@@ -9,18 +9,16 @@ import UIKit
 import RxSwift
 
 final class SliderTableViewCell: UITableViewCell {
-    enum SliderDataType {
-        case speechRate(currentValue: Float, minValue: Float, maxValue: Float)
-        case speechPitch(currentValue: Float, minValue: Float, maxValue: Float)
-    }
-    
     @IBOutlet weak var defaultSlider: UISlider!
+    @IBOutlet weak var centerIndicator: UIView!
+    
     lazy var disposeBag = DisposeBag()
     
     func setupSlider(for dataType: SliderDataType) {
         defaultSlider.tintColor = .orangeMain
         defaultSlider.minimumTrackTintColor = .orangeMain
         defaultSlider.maximumTrackTintColor = .blueLight
+        centerIndicator.backgroundColor = .blueLight
         defaultSlider.isContinuous = false
         selectionStyle = .none
 
