@@ -22,7 +22,7 @@ final class MainTextView: UITextView {
             target: self,
             action: #selector(doneButtonDidTap)
         )
-        doneButton.setTitleTextAttributes([NSAttributedString.Key.font: UIFont(name: "Poppins-SemiBold", size: 17) ?? UIFont.systemFont(ofSize: 17)], for: .normal)
+        doneButton.setTitleTextAttributes([NSAttributedString.Key.font: Fonts.Poppins.semibold(17.0).font], for: .normal)
         toolbar.items = [leftSpace, doneButton]
         
         return toolbar
@@ -44,7 +44,7 @@ final class MainTextView: UITextView {
         layer.cornerRadius = 16
         backgroundColor = .whiteCustom ?? .white
         textContainerInset = UIEdgeInsets(top: 13, left: 14, bottom: 14, right: 13)
-        font = UIFont(name: "Poppins-Bold", size: 20)
+        font = Fonts.Poppins.bold(20.0).font
         textColor = .blackCustom ?? .black
         clipsToBounds = false
         returnKeyType = .done

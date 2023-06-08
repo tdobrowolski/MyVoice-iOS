@@ -14,7 +14,7 @@ final class DefaultNavigationController: UINavigationController {
         navigationBar.barTintColor = .blueLight ?? .red
         navigationBar.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.blackCustom ?? .black,
-            NSAttributedString.Key.font: UIFont(name: "Poppins-Bold", size: 17) ?? UIFont.systemFont(ofSize: 17)
+            NSAttributedString.Key.font: Fonts.Poppins.bold(17.0).font
         ]
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()

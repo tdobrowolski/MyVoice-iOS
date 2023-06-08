@@ -1,5 +1,5 @@
 //
-//  VoiceCellTableViewCell.swift
+//  VoiceTableViewCell.swift
 //  MyVoice
 //
 //  Created by Tobiasz Dobrowolski on 06/02/2021.
@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 
-final class VoiceCellTableViewCell: UITableViewCell {
+final class VoiceTableViewCell: UITableViewCell {
     @IBOutlet weak var voiceLabel: UILabel!
     @IBOutlet weak var additionalInfoLabel: UILabel!
     @IBOutlet weak var checkmarkImageView: UIImageView!

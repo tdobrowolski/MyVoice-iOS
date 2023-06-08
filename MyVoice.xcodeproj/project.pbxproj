@@ -28,12 +28,14 @@
 		E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127353B25C61DEB007993EA /* UserDefaultsService.swift */; };
 		E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E137882225D47B0A007E2DD8 /* Model.xcdatamodeld */; };
 		E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137884B25D47E72007E2DD8 /* DatabaseService.swift */; };
+		E1417F942A324A2B00B0A9DA /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1417F932A324A2B00B0A9DA /* Nib.swift */; };
+		E1417F962A324E5D00B0A9DA /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1417F952A324E5D00B0A9DA /* Fonts.swift */; };
 		E141AD4425F58B9000C61408 /* BackgroundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141AD4325F58B9000C61408 /* BackgroundShadowView.swift */; };
 		E15B839525CF17CB00C8BFA5 /* LanguagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839325CF17CB00C8BFA5 /* LanguagePickerViewController.swift */; };
 		E15B839625CF17CB00C8BFA5 /* LanguagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B839425CF17CB00C8BFA5 /* LanguagePickerViewController.xib */; };
 		E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */; };
-		E15B839F25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839D25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.swift */; };
-		E15B83A025CF3D3F00C8BFA5 /* VoiceCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B839E25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.xib */; };
+		E15B839F25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839D25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift */; };
+		E15B83A025CF3D3F00C8BFA5 /* VoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B839E25CF3D3F00C8BFA5 /* VoiceTableViewCell.xib */; };
 		E1771A8025C21523003FE247 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */; };
 		E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A8B25C21680003FE247 /* SettingsViewController.swift */; };
 		E1771A8E25C21680003FE247 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1771A8C25C21680003FE247 /* SettingsViewController.xib */; };
@@ -88,12 +90,14 @@
 		E137884B25D47E72007E2DD8 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		E137885725D48BC6007E2DD8 /* Phrase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Phrase+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		E137885825D48BC6007E2DD8 /* Phrase+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Phrase+CoreDataClass.swift"; sourceTree = "<group>"; };
+		E1417F932A324A2B00B0A9DA /* Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
+		E1417F952A324E5D00B0A9DA /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		E141AD4325F58B9000C61408 /* BackgroundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundShadowView.swift; sourceTree = "<group>"; };
 		E15B839325CF17CB00C8BFA5 /* LanguagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewController.swift; sourceTree = "<group>"; };
 		E15B839425CF17CB00C8BFA5 /* LanguagePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagePickerViewController.xib; sourceTree = "<group>"; };
 		E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewModel.swift; sourceTree = "<group>"; };
-		E15B839D25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceCellTableViewCell.swift; sourceTree = "<group>"; };
-		E15B839E25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoiceCellTableViewCell.xib; sourceTree = "<group>"; };
+		E15B839D25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceTableViewCell.swift; sourceTree = "<group>"; };
+		E15B839E25CF3D3F00C8BFA5 /* VoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoiceTableViewCell.xib; sourceTree = "<group>"; };
 		E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
 		E1771A8B25C21680003FE247 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1771A8C25C21680003FE247 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -318,8 +322,8 @@
 		E15B839C25CF3D2800C8BFA5 /* VoiceCell */ = {
 			isa = PBXGroup;
 			children = (
-				E15B839D25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.swift */,
-				E15B839E25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.xib */,
+				E15B839D25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift */,
+				E15B839E25CF3D3F00C8BFA5 /* VoiceTableViewCell.xib */,
 			);
 			path = VoiceCell;
 			sourceTree = "<group>";
@@ -354,6 +358,8 @@
 			isa = PBXGroup;
 			children = (
 				E19392AA2A2C06DA00CA6238 /* Colors.swift */,
+				E1417F932A324A2B00B0A9DA /* Nib.swift */,
+				E1417F952A324E5D00B0A9DA /* Fonts.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -519,7 +525,7 @@
 				E115574F25B4C42B0093851B /* LaunchScreen.storyboard in Resources */,
 				E1B148A125EC4326003C1401 /* Localizable.strings in Resources */,
 				E1F246F925FE82A90077EE4F /* HelpViewController.xib in Resources */,
-				E15B83A025CF3D3F00C8BFA5 /* VoiceCellTableViewCell.xib in Resources */,
+				E15B83A025CF3D3F00C8BFA5 /* VoiceTableViewCell.xib in Resources */,
 				E115577425B4C93C0093851B /* Poppins-Medium.ttf in Resources */,
 				E115576225B4C56A0093851B /* MainViewController.xib in Resources */,
 				E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */,
@@ -636,7 +642,7 @@
 				E115576A25B4C5C20093851B /* ViewController+Extensions.swift in Sources */,
 				E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */,
 				E11C1AD125D83CFF001FE05E /* Phrase+CoreDataProperties.swift in Sources */,
-				E15B839F25CF3D3F00C8BFA5 /* VoiceCellTableViewCell.swift in Sources */,
+				E15B839F25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift in Sources */,
 				E115576125B4C56A0093851B /* MainViewController.swift in Sources */,
 				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
 				E1F246F825FE82A90077EE4F /* HelpViewController.swift in Sources */,
@@ -647,10 +653,12 @@
 				E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */,
 				E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */,
 				E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */,
+				E1417F942A324A2B00B0A9DA /* Nib.swift in Sources */,
 				E1E5FECA25D9879800FEB6E2 /* PhraseDatabaseService.swift in Sources */,
 				E19392AB2A2C06DA00CA6238 /* Colors.swift in Sources */,
 				E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */,
 				E11C1ACF25D83CFA001FE05E /* Phrase+CoreDataClass.swift in Sources */,
+				E1417F962A324E5D00B0A9DA /* Fonts.swift in Sources */,
 				E1F246FC25FE82B30077EE4F /* HelpViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -124,9 +124,7 @@ final class LargeIconButton: UIButton {
     
     private func setupTitleLabel(title: String) {
         let attributedText = NSMutableAttributedString(string: title, attributes: [NSAttributedString.Key.kern: 0.6])
-        if let customFont = UIFont(name: "Poppins-Bold", size: 15) {
-            attributedText.addAttribute(.font, value: customFont, range: NSMakeRange(0, attributedText.length))
-        }
+        attributedText.addAttribute(.font, value: Fonts.Poppins.bold(15.0).font, range: NSMakeRange(0, attributedText.length))
         attributedText.addAttribute(.foregroundColor, value: UIColor.blackCustom ?? .black, range: NSMakeRange(0, attributedText.length))
         setTitle(nil, for: .normal)
         mainTitleLabel.text = nil

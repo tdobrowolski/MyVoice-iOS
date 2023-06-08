@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -50,7 +50,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kgk-jc-aVc">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="814"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="eAP-9e-ofX">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="1777.5"/>
@@ -59,16 +59,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="530.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_How to make my phrases be spoken out loud?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FkY-om-Gbs">
-                                            <rect key="frame" x="16" y="0.0" width="382" height="47"/>
+                                            <rect key="frame" x="16" y="0.0" width="382" height="56"/>
                                             <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="20"/>
                                             <color key="textColor" name="Black"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoJ-9n-MLa">
-                                            <rect key="frame" x="16" y="55" width="382" height="475.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoJ-9n-MLa">
+                                            <rect key="frame" x="16" y="64" width="382" height="466.5"/>
                                             <string key="text">_Enter the text, that you want to be spoken, into the main, upper text field on the MyVoice screen. When you are ready to hear your phrase, tap „Speak” button under the text field. If you don’t hear your text, try to change volume of your device. You can always have a quick look of your volume level on „Speak” button. The speaker icon shows your current volume setting.</string>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
-                                            <nil key="textColor"/>
+                                            <color key="textColor" name="Black"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -86,13 +86,13 @@
                                     <rect key="frame" x="0.0" y="546.5" width="414" height="271.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_How to customize the way my phrases are spoken?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFh-Ez-LNs">
-                                            <rect key="frame" x="16" y="0.0" width="382" height="47"/>
+                                            <rect key="frame" x="16" y="0.0" width="382" height="106.5"/>
                                             <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="20"/>
                                             <color key="textColor" name="Black"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrX-Sd-tN9">
-                                            <rect key="frame" x="16" y="55" width="382" height="216.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rrX-Sd-tN9">
+                                            <rect key="frame" x="16" y="114.5" width="382" height="157"/>
                                             <string key="text">_On the „Settings” screen, you can customize some options, that will affect how your text is spoken. With „Speech rate” slider, you choose how fast your phrases will be said out loud. „Speech pitch” slider will change voice pitch. Try to experiment with it in „Settings” and find the best options that will suit you. You can also change the voice with it’s language that will be responsible for speaking all texts.</string>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <nil key="textColor"/>
@@ -113,13 +113,13 @@
                                     <rect key="frame" x="0.0" y="834" width="414" height="271.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_How to change speaking voice and it’s language?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qs0-SG-fN3">
-                                            <rect key="frame" x="16" y="0.0" width="382" height="47"/>
+                                            <rect key="frame" x="16" y="0.0" width="382" height="56"/>
                                             <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="20"/>
                                             <color key="textColor" name="Black"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCh-NM-3xo">
-                                            <rect key="frame" x="16" y="55" width="382" height="216.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCh-NM-3xo">
+                                            <rect key="frame" x="16" y="64" width="382" height="207.5"/>
                                             <string key="text">_To change voice that will speak your phrases, go to „Settings screen”. Select the „Speech voice” setting. You will see new screen with a list of all voices available on your device. Each voice has it’s own properties with it’s language. Some voice are also available in „Enhanced” mode - that means your phrases will sound more natural and with better pronunciation.</string>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <nil key="textColor"/>
@@ -140,50 +140,50 @@
                                     <rect key="frame" x="0.0" y="1121.5" width="414" height="368.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_How to download more voices?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8X-rR-x4Q">
-                                            <rect key="frame" x="16" y="0.0" width="382" height="99"/>
+                                            <rect key="frame" x="16" y="0.0" width="382" height="36"/>
                                             <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="20"/>
                                             <color key="textColor" name="Black"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_You can always download a bunch of new voices with support for more languages. You can’t do that from MyVoice app. To do that:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARn-uK-8Ci">
-                                            <rect key="frame" x="16" y="107" width="382" height="49"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_You can always download a bunch of new voices with support for more languages. You can’t do that from MyVoice app. To do that:" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ARn-uK-8Ci">
+                                            <rect key="frame" x="16" y="44" width="382" height="59"/>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_1. Open system Settings app." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yAw-vh-V6a">
-                                            <rect key="frame" x="16" y="164" width="382" height="16.5"/>
+                                            <rect key="frame" x="16" y="111" width="382" height="20"/>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_2. Navigate to Accessibility &gt; VoiceOver &gt; Speech." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tMM-N1-Fdf">
-                                            <rect key="frame" x="16" y="188.5" width="382" height="16.5"/>
+                                            <rect key="frame" x="16" y="139" width="382" height="20"/>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_3. Tap on Add New Language and select the language/dialect that you want to add." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30n-pY-Cbx">
-                                            <rect key="frame" x="16" y="213" width="382" height="33"/>
+                                            <rect key="frame" x="16" y="167" width="382" height="39.5"/>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_4. Select added language from Speech screen and choose Default or Enhanced quality of your voice." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIk-cL-P6n">
-                                            <rect key="frame" x="16" y="254" width="382" height="33"/>
+                                            <rect key="frame" x="16" y="214.5" width="382" height="39.5"/>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dV-xK-e4x">
-                                            <rect key="frame" x="16" y="295" width="382" height="49"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6dV-xK-e4x">
+                                            <rect key="frame" x="16" y="262" width="382" height="78.5"/>
                                             <string key="text">_That’s it, if you go to MyVoice’s „Select voice” screen, you will see added voice on the list. You can now select it and all your phrases will be spoken with that voice.</string>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Still lost? Go to official Apple tutorial." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5v-f4-p5f">
-                                            <rect key="frame" x="16" y="352" width="382" height="16.5"/>
+                                            <rect key="frame" x="16" y="348.5" width="382" height="20"/>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -221,13 +221,13 @@
                                     <rect key="frame" x="0.0" y="1506" width="414" height="271.5"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_What is Quick access?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoj-wC-pMf">
-                                            <rect key="frame" x="16" y="0.0" width="382" height="23.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="382" height="28"/>
                                             <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="20"/>
                                             <color key="textColor" name="Black"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCg-eq-86a">
-                                            <rect key="frame" x="16" y="31.5" width="382" height="240"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lCg-eq-86a">
+                                            <rect key="frame" x="16" y="36" width="382" height="235.5"/>
                                             <string key="text">_Quick access list helps you reach your saved phrases very fast, so you don’t need to always type them when you want to speak them. Enter the phrase into the text field and tap „Save” button. Text will apear on Quick access list. To say it loud, just touch it. If you want to remove it, swipe your finger on the phrase to the left.</string>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <nil key="textColor"/>

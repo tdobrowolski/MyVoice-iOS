@@ -8,17 +8,17 @@
 import AVFoundation
 import RxSwift
 
-protocol VoiceSelectedDelegate: AnyObject {
-    func userSelectedVoice()
+protocol VoiceSelectionDelegate: AnyObject {
+    func didSelectVoice()
 }
 
 final class LanguagePickerViewModel: BaseViewModel {
     private let userDefaultsService: UserDefaultsService
-    weak var delegate: VoiceSelectedDelegate?
+    weak var delegate: VoiceSelectionDelegate?
     
     let availableVoices = BehaviorSubject<[AVSpeechSynthesisVoice]>(value: [])
     
-    init(delegate: VoiceSelectedDelegate?) {
+    init(delegate: VoiceSelectionDelegate?) {
         self.userDefaultsService = UserDefaultsService()
         self.delegate = delegate
         self.availableVoices.onNext(AVSpeechSynthesisVoice.speechVoices())
@@ -48,7 +48,7 @@ final class LanguagePickerViewModel: BaseViewModel {
         
         let selectedVoice = voices[indexPath.row]
         userDefaultsService.setSpeechVoice(for: selectedVoice.identifier)
-        delegate?.userSelectedVoice()
+        delegate?.didSelectVoice()
     }
 }
 

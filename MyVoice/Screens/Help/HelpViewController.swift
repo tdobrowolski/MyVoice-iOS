@@ -64,37 +64,37 @@ final class HelpViewController: BaseViewController<HelpViewModel> {
 
         var attributedString = NSMutableAttributedString(
             string: NSLocalizedString("1. Open the system", comment: "First part of bigger text"),
-            attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-Medium", size: 14.0) ?? .systemFont(ofSize: 14.0)]
+            attributes: [NSAttributedString.Key.font: Fonts.Poppins.medium(14.0).font]
         )
         var textToAttribute = NSMutableAttributedString(
             string: NSLocalizedString("Settings app", comment: "Second part of bigger text"),
-            attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-SemiBold", size: 14.0) ?? .boldSystemFont(ofSize: 14.0)]
+            attributes: [NSAttributedString.Key.font: Fonts.Poppins.semibold(14.0).font]
         )
         attributedString.append(NSAttributedString(string: " "))
         attributedString.append(textToAttribute)
         attributedString.append(NSAttributedString(string: "."))
         downloadVoiceHelp1stLabel.attributedText = attributedString
 
-        attributedString = NSMutableAttributedString(string: NSLocalizedString("2. Navigate to", comment: "First part of bigger text"), attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-Medium", size: 14.0) ?? .systemFont(ofSize: 14.0)])
-        textToAttribute = NSMutableAttributedString(string: NSLocalizedString("Accessibility > VoiceOver > Speech", comment: "Second part of bigger text"), attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-SemiBold", size: 14.0) ?? .boldSystemFont(ofSize: 14.0)])
+        attributedString = NSMutableAttributedString(string: NSLocalizedString("2. Navigate to", comment: "First part of bigger text"), attributes: [NSAttributedString.Key.font: Fonts.Poppins.medium(14.0).font])
+        textToAttribute = NSMutableAttributedString(string: NSLocalizedString("Accessibility > VoiceOver > Speech", comment: "Second part of bigger text"), attributes: [NSAttributedString.Key.font: Fonts.Poppins.semibold(14.0).font])
         attributedString.append(NSAttributedString(string: " "))
         attributedString.append(textToAttribute)
         attributedString.append(NSAttributedString(string: "."))
         downloadVoiceHelp2ndLabel.attributedText = attributedString
 
-        attributedString = NSMutableAttributedString(string: NSLocalizedString("3. Tap on Add New Language and select the language/dialect that you want to add.", comment: ""), attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-Medium", size: 14.0) ?? .systemFont(ofSize: 14.0)])
+        attributedString = NSMutableAttributedString(string: NSLocalizedString("3. Tap on Add New Language and select the language/dialect that you want to add.", comment: ""), attributes: [NSAttributedString.Key.font: Fonts.Poppins.medium(14.0).font])
         var textRange = attributedString.mutableString.range(of: NSLocalizedString("Add New Language", comment: "Name for Settings app button"))
-        attributedString.addAttribute(.font, value: UIFont(name: "Poppins-SemiBold", size: 14.0) ?? .boldSystemFont(ofSize: 14.0), range: textRange)
+        attributedString.addAttribute(NSAttributedString.Key.font, value: Fonts.Poppins.semibold(14.0).font, range: textRange)
         downloadVoiceHelp3rdLabel.attributedText = attributedString
 
         downloadVoiceHelp4thLabel.text = NSLocalizedString("4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice.", comment: "")
 
         downloadVoiceHelpSummaryLabel.text = NSLocalizedString("That’s it. If you go to MyVoice’s Select voice screen, you will see added voice on the list. You can now select it and all your phrases will be spoken with that voice.", comment: "")
 
-        attributedString = NSMutableAttributedString(string: NSLocalizedString("Still lost? Go to the official Apple tutorial.", comment: ""), attributes: [NSAttributedString.Key.font: UIFont(name: "Poppins-Medium", size: 14.0) ?? .systemFont(ofSize: 14.0)])
+        attributedString = NSMutableAttributedString(string: NSLocalizedString("Still lost? Go to the official Apple tutorial.", comment: ""), attributes: [NSAttributedString.Key.font: Fonts.Poppins.medium(14.0).font])
         textRange = attributedString.mutableString.range(of: NSLocalizedString("Go to the official Apple tutorial.", comment: ""))
-        attributedString.addAttribute(.font, value: UIFont(name: "Poppins-SemiBold", size: 14.0) ?? .boldSystemFont(ofSize: 14.0), range: textRange)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.orangeMain ?? .orange, range: textRange)
+        attributedString.addAttribute(NSAttributedString.Key.font, value: Fonts.Poppins.semibold(14.0).font, range: textRange)
+        attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.orangeMain ?? .orange, range: textRange)
         downloadVoiceHelpLinkLabel.attributedText = attributedString
 
         let tapLinkGesture = UITapGestureRecognizer(target: self, action: #selector(appleHelpLinkDidTap))
@@ -115,7 +115,7 @@ final class HelpViewController: BaseViewController<HelpViewModel> {
     // MARK: Navigation Bar items methods
     
     private func addNavigationBarButtons() {
-        let font = UIFont(name: "Poppins-SemiBold", size: 17) ?? UIFont.systemFont(ofSize: 17)
+        let font = Fonts.Poppins.semibold(17.0).font
         let color = UIColor.orangeMain ?? .orange
         
         let rightItem = UIBarButtonItem(
