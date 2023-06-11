@@ -61,8 +61,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
         
         dataSource = getDataSourceForQuickPhrase()
         
-        viewModel
-            .sections
+        viewModel.sections
             .bind(to: quickAccessTableView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
@@ -125,13 +124,15 @@ final class MainViewController: BaseViewController<MainViewModel> {
                     
                     cell.setupCell(phrase: item.phrase, isFirstCell: indexPath.row == 0, isLastCell: indexPath.row == itemsEndIndex - 1)
                     self.viewModel.isSpeaking.subscribe(cell.isSpeaking).disposed(by: cell.disposeBag)
-                    cell.tapHandlerButton.rx.tap.subscribe { [weak self] _ in
-                        let isSpeaking = try? self?.viewModel.isSpeaking.value()
-                        guard let text = cell.phraseLabel?.text, text.isEmpty == false, isSpeaking == false else { return }
-                        
-                        self?.viewModel.startSpeaking(text)
-                        cell.setupIcon(isSpeaking: true)
-                    }.disposed(by: cell.disposeBag)
+                    cell.tapHandlerButton.rx.tap
+                        .subscribe { [weak self] _ in
+                            let isSpeaking = try? self?.viewModel.isSpeaking.value()
+                            guard let text = cell.phraseLabel?.text, text.isEmpty == false, isSpeaking == false else { return }
+                            
+                            self?.viewModel.startSpeaking(text)
+                            cell.setupIcon(isSpeaking: true)
+                        }
+                        .disposed(by: cell.disposeBag)
                     
                     return cell
                 } else {
@@ -154,16 +155,20 @@ final class MainViewController: BaseViewController<MainViewModel> {
         placeholderLabel.text = NSLocalizedString("What do you want to say?", comment: "What do you want to say?")
         placeholderLabel.textColor = .blueDark
         placeholderLabel.font = Fonts.Poppins.bold(20.0).font
+        // FIXME: Fix centered label
     }
     
     private func setupHeader() {
         headerTitleLabel.text = NSLocalizedString("Quick access", comment: "Quick access")
+        headerTitleLabel.font = Fonts.Poppins.bold(20.0).font
         editButton.setTitle(NSLocalizedString("Edit", comment: "Edit"), for: .normal)
     }
     
     private func setupQuickAccessPlaceholder() {
         quickAccessPlaceholderMainLabel.text = NSLocalizedString("You have no phrases yet!", comment: "You have no hrases yet!")
+        quickAccessPlaceholderMainLabel.font = Fonts.Poppins.bold(18.0).font
         quickAccessPlaceholderSecondaryLabel.text = NSLocalizedString("To add your first phrase tap on \n„Save” button.", comment: "Placeholder text with line break")
+        quickAccessPlaceholderSecondaryLabel.font = Fonts.Poppins.semibold(14.0).font
     }
     
     private func listenForActiveStateChange() {
