@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		90CA6ECA7442468C35DAEB4B /* Pods_MyVoice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC90D1488A315B7CCEC8090F /* Pods_MyVoice.framework */; };
 		E115574325B4C4290093851B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115574225B4C4290093851B /* AppDelegate.swift */; };
 		E115574525B4C4290093851B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115574425B4C4290093851B /* SceneDelegate.swift */; };
 		E115574C25B4C42B0093851B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E115574B25B4C42B0093851B /* Assets.xcassets */; };
@@ -64,11 +63,13 @@
 		E1F4CA6F2A326E1A00ADC747 /* SliderDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4CA6E2A326E1A00ADC747 /* SliderDataType.swift */; };
 		E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */; };
 		E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */; };
+		F0E872B034A3527DFBE12358 /* Pods_MyVoice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61378B4DF55B36302E38E8BA /* Pods_MyVoice.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		75CC27E1644FA1B184136EFE /* Pods-MyVoice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVoice.debug.xcconfig"; path = "Target Support Files/Pods-MyVoice/Pods-MyVoice.debug.xcconfig"; sourceTree = "<group>"; };
-		D437C7E729AC576FCBAB0A39 /* Pods-MyVoice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVoice.release.xcconfig"; path = "Target Support Files/Pods-MyVoice/Pods-MyVoice.release.xcconfig"; sourceTree = "<group>"; };
+		00064B458A7017DF2720DD19 /* Pods-MyVoice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVoice.debug.xcconfig"; path = "Target Support Files/Pods-MyVoice/Pods-MyVoice.debug.xcconfig"; sourceTree = "<group>"; };
+		4A86AE1510816C7951487315 /* Pods-MyVoice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVoice.release.xcconfig"; path = "Target Support Files/Pods-MyVoice/Pods-MyVoice.release.xcconfig"; sourceTree = "<group>"; };
+		61378B4DF55B36302E38E8BA /* Pods_MyVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E115573F25B4C4290093851B /* MyVoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E115574225B4C4290093851B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E115574425B4C4290093851B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -128,7 +129,6 @@
 		E1F4CA6E2A326E1A00ADC747 /* SliderDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderDataType.swift; sourceTree = "<group>"; };
 		E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
 		E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		FC90D1488A315B7CCEC8090F /* Pods_MyVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,28 +136,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90CA6ECA7442468C35DAEB4B /* Pods_MyVoice.framework in Frameworks */,
+				F0E872B034A3527DFBE12358 /* Pods_MyVoice.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		503E9E29B9CB59805C435708 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				61378B4DF55B36302E38E8BA /* Pods_MyVoice.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5DD28FE72419B1A46AD2C89F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				75CC27E1644FA1B184136EFE /* Pods-MyVoice.debug.xcconfig */,
-				D437C7E729AC576FCBAB0A39 /* Pods-MyVoice.release.xcconfig */,
+				00064B458A7017DF2720DD19 /* Pods-MyVoice.debug.xcconfig */,
+				4A86AE1510816C7951487315 /* Pods-MyVoice.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		68301C9CEE443000570586E6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				FC90D1488A315B7CCEC8090F /* Pods_MyVoice.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E115573625B4C4290093851B = {
@@ -166,7 +166,7 @@
 				E115574125B4C4290093851B /* MyVoice */,
 				E115574025B4C4290093851B /* Products */,
 				5DD28FE72419B1A46AD2C89F /* Pods */,
-				68301C9CEE443000570586E6 /* Frameworks */,
+				503E9E29B9CB59805C435708 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -465,13 +465,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E115575325B4C42B0093851B /* Build configuration list for PBXNativeTarget "MyVoice" */;
 			buildPhases = (
-				DE7E8DE3C8DE38BC5A42ABAA /* [CP] Check Pods Manifest.lock */,
+				81BE8228A7AC25DEF06DEAF1 /* [CP] Check Pods Manifest.lock */,
 				E1B1488D25EC4056003C1401 /* Bartycrouch script */,
 				E115573B25B4C4290093851B /* Sources */,
 				E115573C25B4C4290093851B /* Frameworks */,
 				E115573D25B4C4290093851B /* Resources */,
-				962F8BF629A34BFE7CE393D4 /* [CP] Embed Pods Frameworks */,
 				E127353325C60B3E007993EA /* Auto-increment build number */,
+				6A0B6662A90718B42D98B369 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -543,7 +543,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		962F8BF629A34BFE7CE393D4 /* [CP] Embed Pods Frameworks */ = {
+		6A0B6662A90718B42D98B369 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -560,7 +560,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyVoice/Pods-MyVoice-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DE7E8DE3C8DE38BC5A42ABAA /* [CP] Check Pods Manifest.lock */ = {
+		81BE8228A7AC25DEF06DEAF1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -818,7 +818,7 @@
 		};
 		E115575425B4C42B0093851B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75CC27E1644FA1B184136EFE /* Pods-MyVoice.debug.xcconfig */;
+			baseConfigurationReference = 00064B458A7017DF2720DD19 /* Pods-MyVoice.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dark";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -839,7 +839,7 @@
 		};
 		E115575525B4C42B0093851B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D437C7E729AC576FCBAB0A39 /* Pods-MyVoice.release.xcconfig */;
+			baseConfigurationReference = 4A86AE1510816C7951487315 /* Pods-MyVoice.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dark";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
