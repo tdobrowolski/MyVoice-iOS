@@ -81,54 +81,35 @@ final class SettingsViewModel: BaseViewModel {
     }
     
     func getDataTypeForSpeechRate() -> SliderDataType {
-        let minValue = AVSpeechUtteranceMinimumSpeechRate
-        let maxValue = AVSpeechUtteranceMaximumSpeechRate
+        let minValue = SliderDataType.minSpeechRateValue
+        let maxValue = SliderDataType.maxSpeechRateValue
         var currentValue = userDefaultsService.getSpeechRate()
         if currentValue < minValue || currentValue > maxValue {
-            currentValue = AVSpeechUtteranceDefaultSpeechRate
+            currentValue = SliderDataType.defaultSpeechRateValue
         }
 
-        return .speechRate(
-            currentValue: currentValue,
-            minValue: minValue,
-            maxValue: maxValue
-        )
+        return .speechRate(currentValue: currentValue)
     }
     
     func getDataTypeForSpeechPitch() -> SliderDataType {
-        let minValue: Float = 0.0
-        let maxValue: Float = 2.0
+        let minValue = SliderDataType.minSpeechPitchValue
+        let maxValue = SliderDataType.maxSpeechPitchValue
         var currentValue = userDefaultsService.getSpeechPitch()
         if currentValue < minValue || currentValue > maxValue {
-            currentValue = 1.0
+            currentValue = SliderDataType.defaultSpeechPitchValue
         }
 
-        return .speechPitch(
-            currentValue: currentValue,
-            minValue: minValue,
-            maxValue: maxValue
-        )
+        return .speechPitch(currentValue: currentValue)
     }
-    
-    // TODO: Cleanup
-    
-    func setSpeechRate(_ value: Float) {
-        print("Speech rate value: \(value)")
-        print("Default speech rate value: \(SliderDataType.defaultSpeechRateValue)")
-        print("Difference: \(abs(value - SliderDataType.defaultSpeechRateValue))")
         
+    func setSpeechRate(_ value: Float) {
         userDefaultsService.setSpeechRate(for: value)
     }
     
     func setSpeechPitch(_ value: Float) {
-        print("Speech pitch value: \(value)")
-        print("Default speech pitch value: \(SliderDataType.defaultSpeechPitchValue)")
-        print("Difference: \(abs(value - SliderDataType.defaultSpeechPitchValue))")
-        
         userDefaultsService.setSpeechPitch(for: value)
     }
     
-    // TODO: Fire feedback if automatically setting slider to default value
     func didSetSliderToCenter() {
         feedbackGenerator.impactOccurred()
     }

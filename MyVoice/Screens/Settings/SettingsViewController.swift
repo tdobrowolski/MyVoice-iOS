@@ -82,7 +82,19 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             cell.setupSlider(for: viewModel.getDataTypeForSpeechRate())
             cell.defaultSlider.rx.value
                 .skip(1)
-                .subscribe { [weak self] in self?.viewModel.setSpeechRate($0) }
+                .subscribe { [weak self] value in
+                    var finalValue: Float
+                    
+                    if SliderDataType.defaultAdjustmentRateRange.contains(value) {
+                        finalValue = SliderDataType.defaultSpeechRateValue
+                        cell.adjustSlider(for: finalValue)
+                        self?.viewModel.didSetSliderToCenter()
+                    } else {
+                        finalValue = value
+                    }
+                    
+                    self?.viewModel.setSpeechRate(finalValue)
+                }
                 .disposed(by: cell.disposeBag)
             
             return cell
@@ -93,11 +105,20 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             cell.setupSlider(for: viewModel.getDataTypeForSpeechPitch())
             cell.defaultSlider.rx.value
                 .skip(1)
-                .subscribe { [weak self] in self?.viewModel.setSpeechPitch($0) }
+                .subscribe { [weak self] value in
+                    var finalValue: Float
+                    
+                    if SliderDataType.defaultAdjustmentPitchRange.contains(value) {
+                        finalValue = SliderDataType.defaultSpeechPitchValue
+                        cell.adjustSlider(for: finalValue)
+                        self?.viewModel.didSetSliderToCenter()
+                    } else {
+                        finalValue = value
+                    }
+                    
+                    self?.viewModel.setSpeechPitch(finalValue)
+                }
                 .disposed(by: cell.disposeBag)
-            
-            // TODO: In both sliders tolerate 2% (0.02) of diff between users value and default value
-            // If difference is less than 2% set default value on slider
             
             return cell
         }
