@@ -60,6 +60,14 @@ final class VoiceTableViewCell: UITableViewCell {
                     attributes: [NSAttributedString.Key.foregroundColor: UIColor.orangeMain ?? .orange]
                 )
             )
+            
+        case .premium:
+            voiceQualityText.append(
+                NSMutableAttributedString(
+                    string: NSLocalizedString("Premium quality", comment: "Premium quality"),
+                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.orangeMain ?? .orange]
+                )
+            )
 
         default:
             voiceQualityText.append(

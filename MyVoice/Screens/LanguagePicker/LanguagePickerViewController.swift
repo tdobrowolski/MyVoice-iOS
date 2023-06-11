@@ -13,7 +13,11 @@ import RxDataSources
 final class LanguagePickerViewController: BaseViewController<LanguagePickerViewModel> {
     @IBOutlet weak var tableView: UITableView!
     
-    var selectedLanguageIndex: Int?
+    private let selectedLanguageIndexSubject = BehaviorSubject<Int?>(value: nil)
+    private var selectedLanguageIndex: Int? {
+        get { try? selectedLanguageIndexSubject.value() }
+        set { selectedLanguageIndexSubject.onNext(newValue) }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +50,16 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
                     voiceGender: item.gender,
                     isSelected: row == self?.selectedLanguageIndex
                 )
+            }
+            .disposed(by: disposeBag)
+        
+        rx.methodInvoked(#selector(viewWillLayoutSubviews))
+            .take(1)
+            .withLatestFrom(selectedLanguageIndexSubject.compactMap { $0 })
+            .subscribe { [weak self] selectedLanguageIndex in
+                guard let row = selectedLanguageIndex.element else { return }
+                
+                self?.tableView.scrollToRow(at: .init(row: row, section: 0), at: .middle, animated: false)
             }
             .disposed(by: disposeBag)
         
