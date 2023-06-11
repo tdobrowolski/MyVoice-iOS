@@ -15,7 +15,7 @@ enum SliderDataType {
     static var minSpeechRateValue: Float { AVSpeechUtteranceMinimumSpeechRate }
     static var maxSpeechRateValue: Float { AVSpeechUtteranceMaximumSpeechRate }
     static var defaultAdjustmentRateRange: ClosedRange<Float> {
-        let allowedDisplacement = defaultSpeechRateValue * 0.02
+        let allowedDisplacement = defaultSpeechRateValue * 0.04
         
         return (defaultSpeechRateValue - allowedDisplacement)...(defaultSpeechRateValue + allowedDisplacement)
     }
@@ -24,32 +24,8 @@ enum SliderDataType {
     static var minSpeechPitchValue: Float { 0.0 }
     static var maxSpeechPitchValue: Float { 2.0 }
     static var defaultAdjustmentPitchRange: ClosedRange<Float> {
-        let allowedDisplacement = defaultSpeechPitchValue * 0.02
+        let allowedDisplacement = defaultSpeechPitchValue * 0.04
         
         return (defaultSpeechPitchValue - allowedDisplacement)...(defaultSpeechPitchValue + allowedDisplacement)
     }
 }
-
-// TODO: Move
-
-//extension Float {
-//    var adjustedForDefaultSpeechRateRange: Float {
-//        if SliderDataType.defaultAdjustmentRateRange.contains(self) {
-//            print("Speech rate is in 2% - adjusting to default.")
-//            return SliderDataType.defaultSpeechRateValue
-//        } else {
-//            print("Speech rate is ok, no need for adjusting.")
-//            return self
-//        }
-//    }
-//
-//    var adjustedForDefaultSpeechPitchRange: Float {
-//        if SliderDataType.defaultAdjustmentPitchRange.contains(self) {
-//            print("Speech pitch is in 2% - adjusting to default.")
-//            return SliderDataType.defaultSpeechPitchValue
-//        } else {
-//            print("Speech pitch is ok, no need for adjusting.")
-//            return self
-//        }
-//    }
-//}
