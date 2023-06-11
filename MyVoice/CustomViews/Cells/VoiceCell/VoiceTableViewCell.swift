@@ -17,10 +17,8 @@ final class VoiceTableViewCell: UITableViewCell {
         contentView.backgroundColor = .clear
         backgroundColor = .clear
         voiceLabel.text = "\(languageName) - \(voiceName)"
-        var voiceGenderText = NSMutableAttributedString(
-            string: NSLocalizedString("Unspecified", comment: "Unspecified"),
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
-        )
+        
+        var voiceGenderText: NSMutableAttributedString
 
         switch voiceGender {
         case .male:
@@ -34,9 +32,18 @@ final class VoiceTableViewCell: UITableViewCell {
                 string: NSLocalizedString("Female", comment: "Female"),
                 attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
             )
-
-        default:
-            break
+            
+        case .unspecified:
+            voiceGenderText = NSMutableAttributedString(
+                string: NSLocalizedString("Unspecified", comment: "Unspecified"),
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
+            )
+            
+        @unknown default:
+            voiceGenderText = NSMutableAttributedString(
+                string: NSLocalizedString("Unspecified", comment: "Unspecified"),
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
+            )
         }
 
         let voiceQualityText = NSMutableAttributedString(
@@ -69,7 +76,7 @@ final class VoiceTableViewCell: UITableViewCell {
                 )
             )
 
-        default:
+        @unknown default:
             voiceQualityText.append(
                 NSMutableAttributedString(
                     string: NSLocalizedString("Unknown quality", comment: "Unknown quality"),
@@ -77,6 +84,7 @@ final class VoiceTableViewCell: UITableViewCell {
                 )
             )
         }
+        
         voiceGenderText.append(voiceQualityText)
         additionalInfoLabel.attributedText = voiceGenderText
         checkmarkImageView.isHidden = isSelected == false
