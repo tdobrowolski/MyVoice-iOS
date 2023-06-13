@@ -43,12 +43,12 @@ final class MainTextView: UITextView {
     private func setupLayout() {
         layer.cornerRadius = 16
         layer.masksToBounds = true
-        clipsToBounds = false
+        clipsToBounds = true
         
         backgroundColor = .whiteCustom ?? .white
         textColor = .blackCustom ?? .black
         tintColor = .orangeMain
-        textContainerInset = UIEdgeInsets(top: 13, left: 14, bottom: 14, right: 13)
+        textContainerInset = .init(top: 13, left: 14, bottom: 14, right: 13)
         font = Fonts.Poppins.bold(20.0).font
         
         returnKeyType = .done

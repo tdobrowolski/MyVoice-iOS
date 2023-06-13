@@ -13,7 +13,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     @IBOutlet weak var scrollView: CustomScrollView!
     
     @IBOutlet weak var mainTextView: MainTextView!
-    @IBOutlet weak var placeholderLabel: UILabel!
+    @IBOutlet weak var placeholderTextView: UITextView!
     @IBOutlet weak var backgroundShadowView: BackgroundShadowView!
     
     @IBOutlet weak var speakButton: LargeIconButton!
@@ -101,7 +101,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
         
         mainTextView.rx.text
             .subscribe { [weak self] text in
-                self?.placeholderLabel.isHidden = text?.isEmpty == false
+                self?.placeholderTextView.isHidden = text?.isEmpty == false
             }
             .disposed(by: disposeBag)
         
@@ -139,7 +139,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
                     return UITableViewCell()
                 }
             },
-            canEditRowAtIndexPath: { _, _ in return true }
+            canEditRowAtIndexPath: { _, _ in true }
         )
     }
     
@@ -152,10 +152,10 @@ final class MainViewController: BaseViewController<MainViewModel> {
     }
     
     private func setupPlaceholderLabel() {
-        placeholderLabel.text = NSLocalizedString("What do you want to say?", comment: "What do you want to say?")
-        placeholderLabel.textColor = .blueDark
-        placeholderLabel.font = Fonts.Poppins.bold(20.0).font
-        // FIXME: Fix centered label
+        placeholderTextView.text = NSLocalizedString("What do you want to say?", comment: "What do you want to say?")
+        placeholderTextView.textContainerInset = .init(top: 13, left: 14, bottom: 14, right: 13)
+        placeholderTextView.textColor = .blueDark
+        placeholderTextView.font = Fonts.Poppins.bold(20.0).font
     }
     
     private func setupHeader() {
@@ -226,7 +226,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
                 viewModel.stopSpeaking()
             } else {
                 guard let text = mainTextView.text, text.isEmpty == false else {
-                    placeholderLabel.flashWithColor(.orangeMain ?? .orange)
+                    placeholderTextView.flashWithColor(.orangeMain ?? .orange)
                     viewModel.warnUserWithFeedback()
                     
                     return
@@ -249,7 +249,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     func saveButtonDidTouch(_ sender: Any) {
         guard let phrase = mainTextView.text, phrase.isEmpty == false else {
             viewModel.warnUserWithFeedback()
-            placeholderLabel.flashWithColor(.orangeMain ?? .orange)
+            placeholderTextView.flashWithColor(.orangeMain ?? .orange)
             
             return
         }

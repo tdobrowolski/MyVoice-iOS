@@ -23,22 +23,11 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     lazy var disposeBag = DisposeBag()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 62).isActive = true
-    }
-    
     func setupCell(phrase: String, isFirstCell: Bool, isLastCell: Bool) {
         bind()
         setupIcon()
 
         phraseLabel.text = phrase
-
-        selectionStyle = .none
-        backgroundColor = .clear
-
-        backgroundContainerView.clipsToBounds = true
-        backgroundContainerView.layer.masksToBounds = true
 
         if isFirstCell {
             tipLabel.text = NSLocalizedString("Tip: Select text to say it loud.", comment: "")
@@ -52,15 +41,20 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     
     private func bind() {
         isSpeaking
-            .subscribe(onNext: { [weak self] isSpeaking in
-            if isSpeaking == false {
-                self?.setupIcon(isSpeaking: false)
+            .subscribe { [weak self] isSpeaking in
+                if isSpeaking == false {
+                    self?.setupIcon(isSpeaking: false)
+                }
             }
-        })
             .disposed(by: disposeBag)
     }
     
     // MARK: Setuping layout
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupLayout()
+    }
     
     func setupIcon(isSpeaking: Bool = false) {
         iconContainerView.layer.cornerRadius = self.iconContainerView.frame.width / 2
@@ -78,6 +72,19 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     func setTipVisibility(isHidden: Bool) {
         tipLabel.text = isHidden ? nil : NSLocalizedString("Tip: Select text to say it loud.", comment: "")
         tipLabel.isHidden = isHidden
+    }
+    
+    private func setupLayout() {
+        contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 62).isActive = true
+        
+        phraseLabel.font = Fonts.Poppins.semibold(14.0).font
+        tipLabel.font = Fonts.Poppins.medium(14.0).font
+
+        selectionStyle = .none
+        backgroundColor = .clear
+
+        backgroundContainerView.clipsToBounds = true
+        backgroundContainerView.layer.masksToBounds = true
     }
     
     override func prepareForReuse() {

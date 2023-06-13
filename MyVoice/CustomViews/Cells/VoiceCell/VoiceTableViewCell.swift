@@ -13,9 +13,13 @@ final class VoiceTableViewCell: UITableViewCell {
     @IBOutlet weak var additionalInfoLabel: UILabel!
     @IBOutlet weak var checkmarkImageView: UIImageView!
     
-    func setupCell(languageName: String, voiceName: String, voiceQuality: AVSpeechSynthesisVoiceQuality, voiceGender: AVSpeechSynthesisVoiceGender, isSelected: Bool) {
-        contentView.backgroundColor = .clear
-        backgroundColor = .clear
+    func setupCell(
+        languageName: String,
+        voiceName: String,
+        voiceQuality: AVSpeechSynthesisVoiceQuality,
+        voiceGender: AVSpeechSynthesisVoiceGender,
+        isSelected: Bool
+    ) {
         voiceLabel.text = "\(languageName) - \(voiceName)"
         
         var voiceGenderText: NSMutableAttributedString
@@ -91,9 +95,21 @@ final class VoiceTableViewCell: UITableViewCell {
         checkmarkImageView.image = UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupLayout()
+    }
+    
+    private func setupLayout() {
+        contentView.backgroundColor = .clear
+        backgroundColor = .clear
+        
+        voiceLabel.font = Fonts.Poppins.semibold(14.0).font
+        additionalInfoLabel.font = Fonts.Poppins.medium(12.0).font
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
-
         voiceLabel.text = nil
         additionalInfoLabel.text = nil
         checkmarkImageView.isHidden = true
