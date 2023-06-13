@@ -56,36 +56,36 @@ final class LargeIconButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        customInit()
+        setupLayout()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        customInit()
-    }
-    
-    private func customInit() {
-        Bundle.main.loadNibNamed("LargeIconButton", owner: self, options: nil)
-        addSubview(self.contentView)
-        contentView.frame = self.bounds
-        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        addTarget(self, action: #selector(buttonPressed), for: .touchDown)
-        addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
-        addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
-        bindRxValues()
+        setupLayout()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         switch traitCollection.userInterfaceStyle {
-        case .light:
-            addShadow(color: .blueDark ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
-
-        default:
-            addShadow(color: .blueDark ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
+        case .light: addShadow(color: .blueDark ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
+        default: addShadow(color: .blueDark ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
         }
+    }
+    
+    private func setupLayout() {
+        Bundle.main.loadNibNamed("LargeIconButton", owner: self, options: nil)
+        
+        addSubview(contentView)
+        contentView.frame = self.bounds
+        contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        
+        addTarget(self, action: #selector(buttonPressed), for: .touchDown)
+        addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
+        addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
+                
+        bindRxValues()
     }
     
     private func addShadow(color: UIColor = .black, alpha: Float = 0.2, x: CGFloat = 0, y: CGFloat = 2, blur: CGFloat = 4, spread: CGFloat = 0) {

@@ -35,7 +35,7 @@
 		E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */; };
 		E15B839F25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839D25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift */; };
 		E15B83A025CF3D3F00C8BFA5 /* VoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B839E25CF3D3F00C8BFA5 /* VoiceTableViewCell.xib */; };
-		E1771A8025C21523003FE247 /* UILabel+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */; };
+		E1771A8025C21523003FE247 /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A7F25C21523003FE247 /* UITextView+Extensions.swift */; };
 		E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A8B25C21680003FE247 /* SettingsViewController.swift */; };
 		E1771A8E25C21680003FE247 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1771A8C25C21680003FE247 /* SettingsViewController.xib */; };
 		E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A9025C2168F003FE247 /* SettingsViewModel.swift */; };
@@ -100,7 +100,7 @@
 		E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewModel.swift; sourceTree = "<group>"; };
 		E15B839D25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceTableViewCell.swift; sourceTree = "<group>"; };
 		E15B839E25CF3D3F00C8BFA5 /* VoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoiceTableViewCell.xib; sourceTree = "<group>"; };
-		E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extensions.swift"; sourceTree = "<group>"; };
+		E1771A7F25C21523003FE247 /* UITextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extensions.swift"; sourceTree = "<group>"; };
 		E1771A8B25C21680003FE247 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1771A8C25C21680003FE247 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		E1771A9025C2168F003FE247 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -234,7 +234,7 @@
 			children = (
 				E115576925B4C5C20093851B /* ViewController+Extensions.swift */,
 				E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */,
-				E1771A7F25C21523003FE247 /* UILabel+Extensions.swift */,
+				E1771A7F25C21523003FE247 /* UITextView+Extensions.swift */,
 				E19392AC2A2C0AE400CA6238 /* UIColor+Extensions.swift */,
 			);
 			path = Extensions;
@@ -651,7 +651,7 @@
 				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
 				E1F246F825FE82A90077EE4F /* HelpViewController.swift in Sources */,
 				E141AD4425F58B9000C61408 /* BackgroundShadowView.swift in Sources */,
-				E1771A8025C21523003FE247 /* UILabel+Extensions.swift in Sources */,
+				E1771A8025C21523003FE247 /* UITextView+Extensions.swift in Sources */,
 				E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */,
 				E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */,
 				E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */,

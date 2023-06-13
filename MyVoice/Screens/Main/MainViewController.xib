@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -28,7 +28,7 @@
                 <outlet property="editButton" destination="S1N-az-PYR" id="4wv-70-GBD"/>
                 <outlet property="headerTitleLabel" destination="emE-tE-bFV" id="JjD-ds-MhV"/>
                 <outlet property="mainTextView" destination="bL3-7m-SfT" id="7jC-NI-0fs"/>
-                <outlet property="placeholderLabel" destination="Btb-UM-1dv" id="00j-FR-mHS"/>
+                <outlet property="placeholderTextView" destination="lcr-Ix-ZOR" id="TKd-wu-j1y"/>
                 <outlet property="quickAccessPlaceholderImageView" destination="nvN-Qf-BsX" id="ZaM-X4-JGZ"/>
                 <outlet property="quickAccessPlaceholderMainLabel" destination="kcb-DC-wmW" id="MXN-dP-Q34"/>
                 <outlet property="quickAccessPlaceholderSecondaryLabel" destination="zEy-bj-WnG" id="WTP-xq-hyy"/>
@@ -65,12 +65,12 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Placeholder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Btb-UM-1dv">
-                                    <rect key="frame" x="34" y="21" width="378" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" canCancelContentTouches="NO" bouncesZoom="NO" editable="NO" text="_Placeholder" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcr-Ix-ZOR" userLabel="Placeholder Text View">
+                                    <rect key="frame" x="16" y="8" width="382" height="200"/>
+                                    <color key="textColor" systemColor="labelColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="rFk-io-9ZK">
                                     <rect key="frame" x="16" y="224" width="382" height="110"/>
                                     <subviews>
@@ -174,19 +174,20 @@
                             </subviews>
                             <constraints>
                                 <constraint firstItem="rFk-io-9ZK" firstAttribute="top" secondItem="bL3-7m-SfT" secondAttribute="bottom" constant="16" id="0ME-Nv-UJ9"/>
+                                <constraint firstItem="lcr-Ix-ZOR" firstAttribute="top" secondItem="bL3-7m-SfT" secondAttribute="top" id="2Ty-yA-hta"/>
                                 <constraint firstItem="tui-a2-3yS" firstAttribute="trailing" secondItem="bL3-7m-SfT" secondAttribute="trailing" id="4od-y7-slc"/>
                                 <constraint firstItem="Phl-JM-7vZ" firstAttribute="leading" secondItem="eQl-5I-Ypw" secondAttribute="leading" constant="16" id="9FT-n4-jFE"/>
-                                <constraint firstItem="Btb-UM-1dv" firstAttribute="trailing" secondItem="bL3-7m-SfT" secondAttribute="trailing" constant="14" id="AZh-wq-1kM"/>
                                 <constraint firstItem="tui-a2-3yS" firstAttribute="leading" secondItem="bL3-7m-SfT" secondAttribute="leading" id="Bd6-ee-6td"/>
+                                <constraint firstItem="bL3-7m-SfT" firstAttribute="bottom" secondItem="lcr-Ix-ZOR" secondAttribute="bottom" id="C2U-BA-woD"/>
                                 <constraint firstItem="tui-a2-3yS" firstAttribute="bottom" secondItem="bL3-7m-SfT" secondAttribute="bottom" id="FEd-Yu-g3w"/>
-                                <constraint firstItem="Btb-UM-1dv" firstAttribute="top" secondItem="bL3-7m-SfT" secondAttribute="top" constant="13" id="HpH-yY-e9N"/>
                                 <constraint firstItem="9QN-YU-QVx" firstAttribute="top" secondItem="Phl-JM-7vZ" secondAttribute="top" id="Hzb-F8-SKB"/>
                                 <constraint firstItem="bL3-7m-SfT" firstAttribute="top" secondItem="eQl-5I-Ypw" secondAttribute="top" constant="8" id="Ibx-Au-iLT"/>
                                 <constraint firstItem="Phl-JM-7vZ" firstAttribute="top" secondItem="czT-nz-l6l" secondAttribute="bottom" constant="16" id="IdA-EP-wnL"/>
                                 <constraint firstItem="tui-a2-3yS" firstAttribute="top" secondItem="bL3-7m-SfT" secondAttribute="top" id="Lib-6t-KQP"/>
                                 <constraint firstItem="czT-nz-l6l" firstAttribute="leading" secondItem="eQl-5I-Ypw" secondAttribute="leading" constant="16" id="QMM-tE-i93"/>
+                                <constraint firstItem="lcr-Ix-ZOR" firstAttribute="leading" secondItem="bL3-7m-SfT" secondAttribute="leading" id="VZQ-JD-M31"/>
                                 <constraint firstItem="bL3-7m-SfT" firstAttribute="leading" secondItem="eQl-5I-Ypw" secondAttribute="leading" constant="16" id="Vsb-KN-DKI"/>
-                                <constraint firstItem="Btb-UM-1dv" firstAttribute="leading" secondItem="bL3-7m-SfT" secondAttribute="leading" constant="18" id="Yrf-Rc-R6h"/>
+                                <constraint firstItem="bL3-7m-SfT" firstAttribute="trailing" secondItem="lcr-Ix-ZOR" secondAttribute="trailing" id="YWU-ST-XxX"/>
                                 <constraint firstAttribute="trailing" secondItem="rFk-io-9ZK" secondAttribute="trailing" constant="16" id="YuX-Au-wuL"/>
                                 <constraint firstAttribute="trailing" secondItem="czT-nz-l6l" secondAttribute="trailing" constant="16" id="aH4-dq-CPB"/>
                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9QN-YU-QVx" secondAttribute="bottom" constant="30" id="cck-sW-uKv"/>
@@ -234,6 +235,9 @@
         <namedColor name="White">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

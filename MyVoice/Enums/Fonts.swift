@@ -18,16 +18,45 @@ enum Fonts {
         var font: UIFont {
             switch self {
             case let .regular(size):
-                return UIFont(name: "Poppins-Regular", size: size) ?? .systemFont(ofSize: size)
+                return fontMetrics.scaledFont(for: UIFont(name: "Poppins-Regular", size: size) ?? .systemFont(ofSize: size))
                 
             case let .medium(size):
-                return UIFont(name: "Poppins-Medium", size: size) ?? .systemFont(ofSize: size)
+                return fontMetrics.scaledFont(for: UIFont(name: "Poppins-Medium", size: size) ?? .systemFont(ofSize: size))
                 
             case let .semibold(size):
-                return UIFont(name: "Poppins-SemiBold", size: size) ?? .boldSystemFont(ofSize: size)
+                return fontMetrics.scaledFont(for: UIFont(name: "Poppins-SemiBold", size: size) ?? .boldSystemFont(ofSize: size))
                 
             case let .bold(size):
-                return UIFont(name: "Poppins-Bold", size: size) ?? .boldSystemFont(ofSize: size)
+                return fontMetrics.scaledFont(for: UIFont(name: "Poppins-Bold", size: size) ?? .boldSystemFont(ofSize: size))
+            }
+        }
+        
+        var fontMetrics: UIFontMetrics {
+            switch self {
+            case let .regular(size):
+                switch size {
+                case 15.0: return .init(forTextStyle: .subheadline)
+                case 12.0: return .init(forTextStyle: .caption1)
+                default: return .init(forTextStyle: .body)
+                }
+                
+            case let .medium(size):
+                switch size {
+                case 17.0: return .init(forTextStyle: .body)
+                case 15.0: return .init(forTextStyle: .subheadline)
+                case 14.0: return .init(forTextStyle: .subheadline)
+                case 13.0: return .init(forTextStyle: .footnote)
+                default: return .init(forTextStyle: .body)
+                }
+                
+            case let .semibold(size), let .bold(size):
+                switch size {
+                case 20.0: return .init(forTextStyle: .title3)
+                case 17.0, 18.0: return .init(forTextStyle: .headline)
+                case 15.0: return .init(forTextStyle: .subheadline)
+                case 14.0: return .init(forTextStyle: .subheadline)
+                default: return .init(forTextStyle: .headline)
+                }
             }
         }
     }

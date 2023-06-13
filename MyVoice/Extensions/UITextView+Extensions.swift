@@ -1,5 +1,5 @@
 //
-//  UILabel+Extensions.swift
+//  UITextView+Extensions.swift
 //  MyVoice
 //
 //  Created by Tobiasz Dobrowolski on 27/01/2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UILabel {
+extension UITextView {
     func flashWithColor(_ flashColor: UIColor) {
         guard tag != 1 else { return }
 

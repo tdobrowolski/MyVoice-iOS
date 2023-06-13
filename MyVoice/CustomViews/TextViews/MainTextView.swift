@@ -42,15 +42,17 @@ final class MainTextView: UITextView {
 
     private func setupLayout() {
         layer.cornerRadius = 16
-        backgroundColor = .whiteCustom ?? .white
-        textContainerInset = UIEdgeInsets(top: 13, left: 14, bottom: 14, right: 13)
-        font = Fonts.Poppins.bold(20.0).font
-        textColor = .blackCustom ?? .black
-        clipsToBounds = false
-        returnKeyType = .done
-        tintColor = .orangeMain
-        inputAccessoryView = toolbar
         layer.masksToBounds = true
+        clipsToBounds = true
+        
+        backgroundColor = .whiteCustom ?? .white
+        textColor = .blackCustom ?? .black
+        tintColor = .orangeMain
+        textContainerInset = .init(top: 13, left: 14, bottom: 14, right: 13)
+        font = Fonts.Poppins.bold(20.0).font
+        
+        returnKeyType = .done
+        inputAccessoryView = toolbar
     }
     
     private func addShadow(color: UIColor = .black, alpha: Float = 0.2, x: CGFloat = 0, y: CGFloat = 2, blur: CGFloat = 4, spread: CGFloat = 0) {
