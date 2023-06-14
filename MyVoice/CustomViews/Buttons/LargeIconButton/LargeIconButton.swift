@@ -20,16 +20,12 @@ enum SystemVolumeState {
         let noVolume = 0.0
         let lowVolume = 0.01...0.25
         let mediumVolume = 0.26...0.75
-//        let highVolume = 0.76...1.0
-
-        if currentVolume == noVolume {
-            return .noVolume
-        } else if lowVolume.contains(currentVolume) {
-            return .lowVolume
-        } else if mediumVolume.contains(currentVolume) {
-            return .mediumVolume
-        } else {
-            return .highVolume
+        
+        switch currentVolume {
+        case noVolume: return .noVolume
+        case lowVolume: return .lowVolume
+        case mediumVolume: return .mediumVolume
+        default: return .highVolume
         }
     }
 }
@@ -75,10 +71,10 @@ final class LargeIconButton: UIButton {
     }
     
     private func setupLayout() {
-        Bundle.main.loadNibNamed("LargeIconButton", owner: self, options: nil)
+        Bundle.main.loadNibNamed("LargeIconButton", owner: self)
         
         addSubview(contentView)
-        contentView.frame = self.bounds
+        contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
         addTarget(self, action: #selector(buttonPressed), for: .touchDown)
@@ -109,6 +105,7 @@ final class LargeIconButton: UIButton {
             
             layer.insertSublayer(shadowLayer, at: 0)
         } else {
+            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
             shadowLayer.fillColor = UIColor.whiteCustom?.cgColor
             shadowLayer.shadowOpacity = alpha
         }
@@ -132,13 +129,13 @@ final class LargeIconButton: UIButton {
     }
     
     private func setupIcon(actionType: ActionType) {
-        iconContainerView.layer.cornerRadius = self.iconContainerView.frame.width / 2
+        iconContainerView.layer.cornerRadius = iconContainerView.frame.width / 2
 
         switch actionType {
         case .speak:
             iconContainerView.backgroundColor = .orangeLight ?? .white
             iconImageView.tintColor = .orangeMain ?? .orange
-            iconImageView.image = self.getSystemVolumeIcon()
+            iconImageView.image = getSystemVolumeIcon()
 
         case .clear:
             iconContainerView.backgroundColor = .redLight ?? .white
@@ -197,7 +194,7 @@ final class LargeIconButton: UIButton {
         } else {
             iconContainerView.backgroundColor = .orangeLight ?? .white
             iconImageView.tintColor = .orangeMain ?? .orange
-            iconImageView.image = self.getSystemVolumeIcon()
+            iconImageView.image = getSystemVolumeIcon()
             setupTitleLabel(title: NSLocalizedString("Speak", comment: "Speak"))
         }
     }
