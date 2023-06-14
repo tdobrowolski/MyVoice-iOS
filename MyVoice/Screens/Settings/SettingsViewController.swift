@@ -11,6 +11,29 @@ import RxDataSources
 import MessageUI
 
 final class SettingsViewController: BaseViewController<SettingsViewModel> {
+    private enum FeedbackConstants {
+        static var mail: String { "infinity.tobiasz.dobrowolski@gmail.com" }
+        
+        static private var mailTo: String? {
+            "mailto:\(mail)?subject=\(subject)"
+                .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        }
+        
+        static var mailToUrl: URL? {
+            guard let mailTo else { return nil }
+            
+            return URL(string: mailTo)
+        }
+        
+        static var subject: String {
+            if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] {
+                return "MyVoice App (\(appVersion)) - Feedback"
+            } else {
+                return "MyVoice App - Feedback"
+            }
+        }
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     private var dataSource: RxTableViewSectionedAnimatedDataSource<SettingsSection>!
@@ -174,18 +197,31 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
     }
     
-    private func composeFeedbackMail() {
+    private func openFeedbackMail() {
+        if MFMailComposeViewController.canSendMail() {
+            handleMFMailComposeFeedback()
+        } else if let mailToUrl = FeedbackConstants.mailToUrl,
+                    UIApplication.shared.canOpenURL(mailToUrl) {
+            handleMailToFeedback(for: mailToUrl)
+        } else {
+            showAlert(title: NSLocalizedString("No mail account", comment: "No mail account"),
+                      message: NSLocalizedString("It looks like there's no mail account, that the system can use to send feedback.",
+                                                 comment: "It looks like there's no mail account, that the system can use to send feedback."),
+                      actions: [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)])
+        }
+    }
+    
+    private func handleMFMailComposeFeedback() {
         let mailViewController = MFMailComposeViewController()
         mailViewController.mailComposeDelegate = self
-        mailViewController.setToRecipients(["infinity.tobiasz.dobrowolski@gmail.com"])
-        
-        if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] {
-            mailViewController.setSubject("MyVoice App (\(appVersion)) - Feedback")
-        } else {
-            mailViewController.setSubject("MyVoice App - Feedback")
-        }
+        mailViewController.setToRecipients([FeedbackConstants.mail])
+        mailViewController.setSubject(FeedbackConstants.subject)
         
         present(mailViewController, animated: true)
+    }
+    
+    private func handleMailToFeedback(for mailToUrl: URL) {
+        UIApplication.shared.open(mailToUrl)
     }
 }
 
@@ -216,19 +252,12 @@ extension SettingsViewController: UITableViewDelegate {
         case .other:
             switch indexPath.row {
             case 0:
-//                self.openAppStoreForReview()
+//                openAppStoreForReview()
                 fallthrough
                 // TODO: If review available, remove fallthrough
                 
             case 1:
-                if MFMailComposeViewController.canSendMail() {
-                    composeFeedbackMail()
-                } else {
-                    showAlert(title: NSLocalizedString("No mail account", comment: "No mail account"),
-                              message: NSLocalizedString("It looks like there's no mail account, that the system can use to send feedback.",
-                                                         comment: "It looks like there's no mail account, that the system can use to send feedback."),
-                              actions: [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)])
-                }
+                openFeedbackMail()
                 
             default:
                 return
