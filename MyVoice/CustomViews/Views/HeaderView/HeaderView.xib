@@ -26,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Section title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIK-Ou-GML">
-                    <rect key="frame" x="14" y="0.0" width="365" height="43"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="43"/>
                     <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="14"/>
                     <color key="textColor" name="Black"/>
                     <nil key="highlightedColor"/>
@@ -34,9 +34,9 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bIK-Ou-GML" secondAttribute="trailing" constant="14" id="0UJ-a1-Yf5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bIK-Ou-GML" secondAttribute="trailing" id="0UJ-a1-Yf5"/>
                 <constraint firstItem="bIK-Ou-GML" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6yj-G0-GHS"/>
-                <constraint firstItem="bIK-Ou-GML" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="14" id="ZLc-e0-pE5"/>
+                <constraint firstItem="bIK-Ou-GML" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="ZLc-e0-pE5"/>
                 <constraint firstAttribute="bottom" secondItem="bIK-Ou-GML" secondAttribute="bottom" id="fOA-5s-fhz"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>

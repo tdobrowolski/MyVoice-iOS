@@ -41,6 +41,7 @@
 		E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A8B25C21680003FE247 /* SettingsViewController.swift */; };
 		E1771A8E25C21680003FE247 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1771A8C25C21680003FE247 /* SettingsViewController.xib */; };
 		E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A9025C2168F003FE247 /* SettingsViewModel.swift */; };
+		E179E5A52A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E179E5A42A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift */; };
 		E18AF60825F57A27008CFA5D /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AF60725F57A27008CFA5D /* CustomScrollView.swift */; };
 		E18AF60D25F57BDF008CFA5D /* TouchHandlerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AF60C25F57BDF008CFA5D /* TouchHandlerButton.swift */; };
 		E19392AB2A2C06DA00CA6238 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19392AA2A2C06DA00CA6238 /* Colors.swift */; };
@@ -110,6 +111,7 @@
 		E1771A8B25C21680003FE247 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1771A8C25C21680003FE247 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		E1771A9025C2168F003FE247 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		E179E5A42A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVSpeechSynthesisVoice+Extensions.swift"; sourceTree = "<group>"; };
 		E18AF60725F57A27008CFA5D /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		E18AF60C25F57BDF008CFA5D /* TouchHandlerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchHandlerButton.swift; sourceTree = "<group>"; };
 		E19392AA2A2C06DA00CA6238 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				E19392AC2A2C0AE400CA6238 /* UIColor+Extensions.swift */,
 				E134BBE02A3F429700109013 /* String+Extensions.swift */,
 				E134BBE22A3F429F00109013 /* Array+Extensions.swift */,
+				E179E5A42A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1F4CA6F2A326E1A00ADC747 /* SliderDataType.swift in Sources */,
+				E179E5A52A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift in Sources */,
 				E1E6C2CB25B4D24800774B17 /* UIView+Extensions.swift in Sources */,
 				E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */,
 				E115576625B4C5A10093851B /* BaseViewController.swift in Sources */,

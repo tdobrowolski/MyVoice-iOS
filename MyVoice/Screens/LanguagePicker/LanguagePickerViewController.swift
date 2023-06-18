@@ -14,7 +14,7 @@ import AVFAudio
 final class LanguagePickerViewController: BaseViewController<LanguagePickerViewModel> {
     @IBOutlet weak var tableView: UITableView!
     
-    private let searchController = Views.searchController
+    private lazy var searchController = UISearchController()
     
     private let selectedLanguageIndexPathSubject = BehaviorSubject<IndexPath?>(value: nil)
     private var selectedLanguageIndexPath: IndexPath? {
@@ -27,18 +27,9 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         super.viewDidLoad()
         
         title = NSLocalizedString("Select voice", comment: "Select voice")
-        
-        navigationItem.searchController = searchController
-        navigationItem.hidesSearchBarWhenScrolling = false
-        
-        let font = Fonts.Poppins.regular(14.0).font
-        let attributedPlaceholder = NSAttributedString(string: "Search...", attributes: [.font: font]) // TODO: Add translation
-        
-        searchController.searchBar.searchTextField.font = font
-        searchController.searchBar.searchTextField.attributedPlaceholder = attributedPlaceholder // FIXME: Not working
-        
         view.backgroundColor = .background
         tableView.backgroundColor = .clear
+        addSearchController()
         addNavigationBarButton()
     }
     
@@ -97,8 +88,13 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
     private func filterDataSource(for voices: [SectionModel<String, AVSpeechSynthesisVoice>], searchTerm: String) -> [SectionModel<String, AVSpeechSynthesisVoice>] {
         guard searchTerm.isEmpty == false else { return voices }
         
-        return voices.map { section in
-            SectionModel(model: section.model, items: section.items.filter { $0.language.voiceFullLanguage?.range(of: searchTerm, options: .anchored) != nil })
+        return voices.compactMap { section in
+            let filteredItems = section.items.filter { $0.containsSearchTerm(searchTerm) }
+            if filteredItems.isEmpty {
+                return nil
+            } else {
+                return SectionModel(model: section.model, items: filteredItems)
+            }
         }
     }
     
@@ -127,7 +123,25 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         )
     }
     
-    // MARK: Navigation Bar items methods
+    // MARK: Navigation items methods
+    
+    private func addSearchController() {
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        let font = Fonts.Poppins.medium(14.0).font
+        let attributedPlaceholder = NSAttributedString(string: "Search...", attributes: [.font: font]) // TODO: Add translation
+        
+        searchController.searchBar.searchTextField.font = font
+        searchController.searchBar.searchTextField.attributedPlaceholder = attributedPlaceholder
+        searchController.searchBar.tintColor = .orangeMain
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.orangeMain ?? .orange,
+            .font: Fonts.Poppins.semibold(17.0).font
+        ]
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(attributes, for: .normal)
+    }
     
     private func addNavigationBarButton() {
         let font = Fonts.Poppins.semibold(17.0).font
@@ -181,14 +195,7 @@ extension LanguagePickerViewController: UITableViewDelegate {
         
         return view
     }
+    
+    // TODO: I don't like this
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 32.0 }
 }
-
-private enum Views {
-    static var searchController: UISearchController {
-        let controller = UISearchController()
-        
-        return controller
-    }
-}
-
-// TODO: Set custom color and font for cancel button of searchBar

@@ -32,5 +32,8 @@ final class HeaderView: UIView {
         
         label.font = Fonts.Poppins.medium(14.0).font
         label.textColor = .blueDark
+        
+        // TODO: Remove after header has good height
+        backgroundColor = .red.withAlphaComponent(0.2)
     }
 }

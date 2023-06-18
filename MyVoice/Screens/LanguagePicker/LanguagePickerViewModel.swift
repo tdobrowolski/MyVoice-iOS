@@ -17,6 +17,7 @@ final class LanguagePickerViewModel: BaseViewModel {
     private let userDefaultsService: UserDefaultsService
     weak var delegate: VoiceSelectionDelegate?
     
+    // FIXME: Needs two data sources, search elements indexes dont match
     let voices = BehaviorSubject<[SectionModel<String, AVSpeechSynthesisVoice>]>(value: [])
     
     init(delegate: VoiceSelectionDelegate?) {
@@ -56,7 +57,7 @@ final class LanguagePickerViewModel: BaseViewModel {
         
         let sections: [SectionModel<String, AVSpeechSynthesisVoice>]
         sections = allAvailableLanguages.map { voiceAvailableLanguage in
-            return SectionModel(
+            SectionModel(
                 model: voiceAvailableLanguage.voiceFullLanguage ?? NSLocalizedString("Unknown", comment: "Unknown"),
                 items: availableSpeechVoices.filter { $0.language == voiceAvailableLanguage }
             )
