@@ -9,14 +9,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import AVFAudio
 
 final class LanguagePickerViewController: BaseViewController<LanguagePickerViewModel> {
     @IBOutlet weak var tableView: UITableView!
     
-    private let selectedLanguageIndexSubject = BehaviorSubject<Int?>(value: nil)
-    private var selectedLanguageIndex: Int? {
-        get { try? selectedLanguageIndexSubject.value() }
-        set { selectedLanguageIndexSubject.onNext(newValue) }
+    private let selectedLanguageIndexPathSubject = BehaviorSubject<IndexPath?>(value: nil)
+    private var selectedLanguageIndexPath: IndexPath? {
+        get { try? selectedLanguageIndexPathSubject.value() }
+        set { selectedLanguageIndexPathSubject.onNext(newValue) }
     }
     
     override func viewDidLoad() {
@@ -24,11 +25,8 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         
         title = NSLocalizedString("Select voice", comment: "Select voice")
         view.backgroundColor = .background
+        tableView.backgroundColor = .clear
         addNavigationBarButton()
-        tableView.register(
-            UINib(nibName: Nib.voiceTableViewCell.name, bundle: nil),
-            forCellReuseIdentifier: Nib.voiceTableViewCell.cellIdentifier
-        )
     }
     
     override func bindViewModel(_ viewModel: LanguagePickerViewModel) {
@@ -38,39 +36,62 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
             .setDelegate(self)
             .disposed(by: disposeBag)
         
-        viewModel.availableVoices
-            .bind(
-                to: tableView.rx.items(cellIdentifier: Nib.voiceTableViewCell.cellIdentifier, cellType: VoiceTableViewCell.self)
-            ) { [weak self] (row, item, cell) in
-                let fullLanguage = NSLocale(localeIdentifier: NSLocale.current.identifier).displayName(forKey: NSLocale.Key.identifier, value: item.language)
-                cell.setupCell(
-                    languageName: fullLanguage ?? NSLocalizedString("Unknown", comment: "Unknown"),
-                    voiceName: item.name,
-                    voiceQuality: item.quality,
-                    voiceGender: item.gender,
-                    isSelected: row == self?.selectedLanguageIndex
-                )
-            }
+        tableView.register(
+            UINib(nibName: Nib.voiceTableViewCell.name, bundle: nil),
+            forCellReuseIdentifier: Nib.voiceTableViewCell.cellIdentifier
+        )
+        
+        viewModel.voices
+            .bind(to: tableView.rx.items(dataSource: getDataSource()))
+            .disposed(by: disposeBag)
+        
+        tableView.rx.itemSelected
+            .subscribe { [weak self] in self?.didSelectRowAt($0) }
             .disposed(by: disposeBag)
         
         rx.methodInvoked(#selector(viewWillLayoutSubviews))
             .take(1)
-            .withLatestFrom(selectedLanguageIndexSubject.compactMap { $0 })
-            .subscribe { [weak self] selectedLanguageIndex in
-                guard let row = selectedLanguageIndex.element else { return }
+            .withLatestFrom(selectedLanguageIndexPathSubject.compactMap { $0 })
+            .subscribe { [weak self] selectedLanguageIndexPath in
+                guard let indexPath = selectedLanguageIndexPath.element else { return }
                 
-                self?.tableView.scrollToRow(at: .init(row: row, section: 0), at: .middle, animated: false)
+                self?.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
             }
             .disposed(by: disposeBag)
         
-        viewModel.availableVoices
-            .subscribe { [weak self] languages in
-                guard languages.element?.count ?? 0 != 0 else { return }
+        viewModel.voices
+            .subscribe { [weak self] voices in
+                guard voices.element?.count ?? 0 != 0 else { return }
                 
-                let indexToSelect = viewModel.getIndexForCurrentVoice()
-                self?.selectedLanguageIndex = indexToSelect
+                let indexPathToSelect = viewModel.getIndexPathForCurrentVoice()
+                self?.selectedLanguageIndexPath = indexPathToSelect
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func getDataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<String, AVSpeechSynthesisVoice>> {
+        .init(
+            configureCell: { [weak self] _, tableView, indexPath, element in
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: Nib.voiceTableViewCell.cellIdentifier) as? VoiceTableViewCell else {
+                    return .init()
+                }
+                
+                let numberOfItemsInSection = try? self?.viewModel.voices.value()[indexPath.section].items.count
+                let isLastInSection = indexPath.row + 1 == numberOfItemsInSection
+                let isSelected = indexPath == self?.selectedLanguageIndexPath
+                
+                cell.setupCell(
+                    voiceName: element.name,
+                    voiceQuality: element.quality,
+                    voiceGender: element.gender,
+                    isLastInSection: isLastInSection,
+                    isSelected: isSelected
+                )
+                
+                return cell
+            },
+            titleForHeaderInSection: { dataSource, section in dataSource[section].model }
+        )
     }
     
     // MARK: Navigation Bar items methods
@@ -79,26 +100,35 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         let font = Fonts.Poppins.semibold(17.0).font
         let color = UIColor.orangeMain ?? .orange
         
-        let rightItem = UIBarButtonItem(title: NSLocalizedString("Done", comment: "Done"), style: .plain, target: self, action: #selector(doneDidTouch))
-        rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
-                                          NSAttributedString.Key.foregroundColor: color], for: .normal)
-        rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
-                                          NSAttributedString.Key.foregroundColor: color], for: .selected)
+        let rightItem = UIBarButtonItem(
+            title: NSLocalizedString("Done", comment: "Done"),
+            style: .plain,
+            target: self,
+            action: #selector(doneDidTouch)
+        )
+        rightItem.setTitleTextAttributes(
+            [NSAttributedString.Key.font: font,
+             NSAttributedString.Key.foregroundColor: color],
+            for: .normal
+        )
+        rightItem.setTitleTextAttributes(
+            [NSAttributedString.Key.font: font,
+             NSAttributedString.Key.foregroundColor: color],
+            for: .selected
+        )
         navigationItem.rightBarButtonItem = rightItem
     }
     
     @objc
     private func doneDidTouch() { dismiss(animated: true, completion: nil) }
-}
 
-extension LanguagePickerViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let previousSelectedIndex = selectedLanguageIndex, previousSelectedIndex != indexPath.row {
-            let previousSelectedCell = tableView.cellForRow(at: IndexPath(row: previousSelectedIndex, section: 0)) as? VoiceTableViewCell
+    private func didSelectRowAt(_ indexPath: IndexPath) {        
+        if let previousSelectedIndexPath = selectedLanguageIndexPath, previousSelectedIndexPath != indexPath {
+            let previousSelectedCell = tableView.cellForRow(at: previousSelectedIndexPath) as? VoiceTableViewCell
             previousSelectedCell?.checkmarkImageView.isHidden = true
         }
         
-        selectedLanguageIndex = indexPath.row
+        selectedLanguageIndexPath = indexPath
         
         let cell = tableView.cellForRow(at: indexPath) as? VoiceTableViewCell
         cell?.checkmarkImageView.isHidden = false
@@ -106,5 +136,16 @@ extension LanguagePickerViewController: UITableViewDelegate {
         viewModel.selectVoiceForIndexPath(indexPath)
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+extension LanguagePickerViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let sectionTitle = try? viewModel.voices.value()[section].model else { return nil }
+        
+        let view = HeaderView()
+        view.label.text = sectionTitle
+        
+        return view
     }
 }
