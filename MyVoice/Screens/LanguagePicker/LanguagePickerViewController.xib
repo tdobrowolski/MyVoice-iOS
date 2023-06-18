@@ -20,16 +20,15 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="siC-mP-RRs">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="siC-mP-RRs">
                     <rect key="frame" x="0.0" y="48" width="414" height="848"/>
-                    <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="siC-mP-RRs" secondAttribute="bottom" id="UKW-NN-rJS"/>
-                <constraint firstItem="siC-mP-RRs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="iMH-gg-m0j"/>
+                <constraint firstItem="siC-mP-RRs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="b25-ag-eoB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="siC-mP-RRs" secondAttribute="trailing" id="kmL-53-4zl"/>
                 <constraint firstItem="siC-mP-RRs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nTo-U4-K8n"/>
             </constraints>

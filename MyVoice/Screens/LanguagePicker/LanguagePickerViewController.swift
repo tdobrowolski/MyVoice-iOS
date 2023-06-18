@@ -14,16 +14,29 @@ import AVFAudio
 final class LanguagePickerViewController: BaseViewController<LanguagePickerViewModel> {
     @IBOutlet weak var tableView: UITableView!
     
+    private let searchController = Views.searchController
+    
     private let selectedLanguageIndexPathSubject = BehaviorSubject<IndexPath?>(value: nil)
     private var selectedLanguageIndexPath: IndexPath? {
         get { try? selectedLanguageIndexPathSubject.value() }
         set { selectedLanguageIndexPathSubject.onNext(newValue) }
     }
     
+    // TODO: Clean up
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = NSLocalizedString("Select voice", comment: "Select voice")
+        
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        
+        let font = Fonts.Poppins.regular(14.0).font
+        let attributedPlaceholder = NSAttributedString(string: "Search...", attributes: [.font: font]) // TODO: Add translation
+        
+        searchController.searchBar.searchTextField.font = font
+        searchController.searchBar.searchTextField.attributedPlaceholder = attributedPlaceholder // FIXME: Not working
+        
         view.backgroundColor = .background
         tableView.backgroundColor = .clear
         addNavigationBarButton()
@@ -41,22 +54,12 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
             forCellReuseIdentifier: Nib.voiceTableViewCell.cellIdentifier
         )
         
-        viewModel.voices
-            .bind(to: tableView.rx.items(dataSource: getDataSource()))
-            .disposed(by: disposeBag)
+//        viewModel.voices
+//            .bind(to: tableView.rx.items(dataSource: getDataSource()))
+//            .disposed(by: disposeBag)
         
         tableView.rx.itemSelected
             .subscribe { [weak self] in self?.didSelectRowAt($0) }
-            .disposed(by: disposeBag)
-        
-        rx.methodInvoked(#selector(viewWillLayoutSubviews))
-            .take(1)
-            .withLatestFrom(selectedLanguageIndexPathSubject.compactMap { $0 })
-            .subscribe { [weak self] selectedLanguageIndexPath in
-                guard let indexPath = selectedLanguageIndexPath.element else { return }
-                
-                self?.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
-            }
             .disposed(by: disposeBag)
         
         viewModel.voices
@@ -67,6 +70,36 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
                 self?.selectedLanguageIndexPath = indexPathToSelect
             }
             .disposed(by: disposeBag)
+        
+        let searchTerm = searchController.searchBar.rx.text
+            .orEmpty
+//            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .distinctUntilChanged()
+        
+        Observable.combineLatest(viewModel.voices, searchTerm)
+            .map { [weak self] in self?.filterDataSource(for: $0.0, searchTerm: $0.1) ?? $0.0 }
+            .bind(to: tableView.rx.items(dataSource: getDataSource()))
+            .disposed(by: disposeBag)
+        
+        // TODO: Uncomment when working again
+//        rx.methodInvoked(#selector(viewWillLayoutSubviews))
+//            .take(1)
+//            .withLatestFrom(selectedLanguageIndexPathSubject.compactMap { $0 })
+//            .subscribe { [weak self] selectedLanguageIndexPath in
+//                guard let indexPath = selectedLanguageIndexPath.element else { return }
+//
+//                self?.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+//            }
+//            .disposed(by: disposeBag)
+    }
+    
+    // TODO: Move
+    private func filterDataSource(for voices: [SectionModel<String, AVSpeechSynthesisVoice>], searchTerm: String) -> [SectionModel<String, AVSpeechSynthesisVoice>] {
+        guard searchTerm.isEmpty == false else { return voices }
+        
+        return voices.map { section in
+            SectionModel(model: section.model, items: section.items.filter { $0.language.voiceFullLanguage?.range(of: searchTerm, options: .anchored) != nil })
+        }
     }
     
     private func getDataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<String, AVSpeechSynthesisVoice>> {
@@ -122,7 +155,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
     @objc
     private func doneDidTouch() { dismiss(animated: true, completion: nil) }
 
-    private func didSelectRowAt(_ indexPath: IndexPath) {        
+    private func didSelectRowAt(_ indexPath: IndexPath) {
         if let previousSelectedIndexPath = selectedLanguageIndexPath, previousSelectedIndexPath != indexPath {
             let previousSelectedCell = tableView.cellForRow(at: previousSelectedIndexPath) as? VoiceTableViewCell
             previousSelectedCell?.checkmarkImageView.isHidden = true
@@ -149,3 +182,13 @@ extension LanguagePickerViewController: UITableViewDelegate {
         return view
     }
 }
+
+private enum Views {
+    static var searchController: UISearchController {
+        let controller = UISearchController()
+        
+        return controller
+    }
+}
+
+// TODO: Set custom color and font for cancel button of searchBar

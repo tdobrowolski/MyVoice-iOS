@@ -92,7 +92,7 @@ final class VoiceTableViewCell: UITableViewCell {
         
         voiceGenderText.append(voiceQualityText)
         additionalInfoLabel.attributedText = voiceGenderText
-        separatorView.isHidden = isLastInSection
+        separatorView.isHidden = true //isLastInSection // TODO: Check this
         checkmarkImageView.isHidden = isSelected == false
         checkmarkImageView.image = UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
     }
@@ -104,7 +104,7 @@ final class VoiceTableViewCell: UITableViewCell {
     
     private func setupLayout() {
         contentView.backgroundColor = .clear
-        backgroundColor = .clear
+        backgroundColor = .whiteCustom
         
         voiceLabel.font = Fonts.Poppins.semibold(14.0).font
         additionalInfoLabel.font = Fonts.Poppins.medium(12.0).font
