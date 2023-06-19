@@ -19,39 +19,38 @@ final class LanguagePickerViewModel: BaseViewModel {
     
     // FIXME: Needs two data sources, search elements indexes dont match
     let voices = BehaviorSubject<[SectionModel<String, AVSpeechSynthesisVoice>]>(value: [])
+    var selectedLanguageIdentifier: String?
     
     init(delegate: VoiceSelectionDelegate?) {
         self.userDefaultsService = UserDefaultsService()
         self.delegate = delegate
         super.init()
         
-        self.setupSectionsWithVoices()
+        selectedLanguageIdentifier = userDefaultsService.getSpeechVoiceIdentifier() ?? AVSpeechSynthesisVoice(language: nil)?.identifier
+        voices.onNext(getSectionsWithVoices())
     }
     
-    func getIndexPathForCurrentVoice() -> IndexPath {
-        if let currentVoiceIdentifier = userDefaultsService.getSpeechVoiceIdentifier(), // User has voice saved in UserDefaults
-           let indexPathToSelect = firstIndexPath(for: currentVoiceIdentifier) {
-            
-            return indexPathToSelect
-        } else if let defaultVoice = AVSpeechSynthesisVoice(language: nil), // User has no voice saved in UserDefaults
-                  let defaultVoiceIndexPathToSelect = firstIndexPath(for: defaultVoice.identifier) {
-            userDefaultsService.setSpeechVoice(for: defaultVoice.identifier)
-            
-            return defaultVoiceIndexPathToSelect
-        } else {
-            return .init(row: 0, section: 0)
-        }
-    }
+//    func getIndexPathForCurrentVoice() -> IndexPath {
+//        if let currentVoiceIdentifier = userDefaultsService.getSpeechVoiceIdentifier(), // User has voice saved in UserDefaults
+//           let indexPathToSelect = firstIndexPath(for: currentVoiceIdentifier) {
+//
+//            return indexPathToSelect
+//        } else if let defaultVoice = AVSpeechSynthesisVoice(language: nil), // User has no voice saved in UserDefaults
+//                  let defaultVoiceIndexPathToSelect = firstIndexPath(for: defaultVoice.identifier) {
+//            userDefaultsService.setSpeechVoice(for: defaultVoice.identifier)
+//
+//            return defaultVoiceIndexPathToSelect
+//        } else {
+//            return .init(row: 0, section: 0)
+//        }
+//    }
     
-    func selectVoiceForIndexPath(_ indexPath: IndexPath) {
-        guard let voices = try? voices.value() else { return }
-        
-        let selectedVoice = voices[indexPath.section].items[indexPath.row]
-        userDefaultsService.setSpeechVoice(for: selectedVoice.identifier)
+    func selectVoice(for identifier: String) {
+        userDefaultsService.setSpeechVoice(for: identifier)
         delegate?.didSelectVoice()
     }
     
-    private func setupSectionsWithVoices() {
+    func getSectionsWithVoices() -> [SectionModel<String, AVSpeechSynthesisVoice>] {
         let availableSpeechVoices = AVSpeechSynthesisVoice.speechVoices()
         let allAvailableLanguages = availableSpeechVoices.map { $0.language }.uniqued()
         
@@ -63,10 +62,10 @@ final class LanguagePickerViewModel: BaseViewModel {
             )
         }
         
-        voices.onNext(sections)
+        return sections
     }
     
-    private func firstIndexPath(for identifier: String) -> IndexPath? {
+    func firstIndexPath(for identifier: String) -> IndexPath? {
         guard let voices = try? voices.value(),
               let section = voices.firstIndex(where: { $0.items.contains { $0.identifier == identifier } }),
               let row = voices[section].items.firstIndex(where: { $0.identifier == identifier }) else {

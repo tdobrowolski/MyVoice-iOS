@@ -16,11 +16,12 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
     
     private lazy var searchController = UISearchController()
     
-    private let selectedLanguageIndexPathSubject = BehaviorSubject<IndexPath?>(value: nil)
-    private var selectedLanguageIndexPath: IndexPath? {
-        get { try? selectedLanguageIndexPathSubject.value() }
-        set { selectedLanguageIndexPathSubject.onNext(newValue) }
-    }
+    // TODO: Move to ViewModel and initialize
+//    private let selectedLanguageIdentifierSubject = BehaviorSubject<String?>(value: nil)
+//    private var selectedLanguageIdentifier: String? {
+//        get { try? selectedLanguageIdentifierSubject.value() }
+//        set { selectedLanguageIdentifierSubject.onNext(newValue) }
+//    }
     
     // TODO: Clean up
     override func viewDidLoad() {
@@ -49,28 +50,36 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
 //            .bind(to: tableView.rx.items(dataSource: getDataSource()))
 //            .disposed(by: disposeBag)
         
-        tableView.rx.itemSelected
-            .subscribe { [weak self] in self?.didSelectRowAt($0) }
+//        tableView.rx.itemSelected
+//            .subscribe { [weak self] in self?.didSelectRowAt($0) }
+//            .disposed(by: disposeBag)
+        
+        Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(AVSpeechSynthesisVoice.self))
+            .bind { [weak self] in self?.didSelectRowFor(indexPath: $0.0, identifier: $0.1.identifier) }
             .disposed(by: disposeBag)
         
-        viewModel.voices
-            .subscribe { [weak self] voices in
-                guard voices.element?.count ?? 0 != 0 else { return }
-                
-                let indexPathToSelect = viewModel.getIndexPathForCurrentVoice()
-                self?.selectedLanguageIndexPath = indexPathToSelect
-            }
-            .disposed(by: disposeBag)
+//        viewModel.voices
+//            .subscribe { [weak self] voices in
+//                guard voices.element?.count ?? 0 != 0 else { return }
+//
+//                let indexPathToSelect = viewModel.getIndexPathForCurrentVoice()
+//                self?.selectedLanguageIdentifier = indexPathToSelect
+//            }
+//            .disposed(by: disposeBag)
         
-        let searchTerm = searchController.searchBar.rx.text
+        searchController.searchBar.rx.text
             .orEmpty
-//            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+//            .debounce(.milliseconds(500), scheduler: MainScheduler.instance) // FIXME: Problem with init loading, why it's affecting first
             .distinctUntilChanged()
-        
-        Observable.combineLatest(viewModel.voices, searchTerm)
-            .map { [weak self] in self?.filterDataSource(for: $0.0, searchTerm: $0.1) ?? $0.0 }
+            .map { [weak self] in self?.filterDataSource(searchTerm: $0) ?? [] }
             .bind(to: tableView.rx.items(dataSource: getDataSource()))
             .disposed(by: disposeBag)
+        
+        
+//        Observable.combineLatest(viewModel.voices, searchTerm)
+//            .map { [weak self] in self?.filterDataSource(for: $0.0, searchTerm: $0.1) ?? $0.0 }
+//            .bind(to: tableView.rx.items(dataSource: getDataSource()))
+//            .disposed(by: disposeBag)
         
         // TODO: Uncomment when working again
 //        rx.methodInvoked(#selector(viewWillLayoutSubviews))
@@ -84,11 +93,13 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
 //            .disposed(by: disposeBag)
     }
     
-    // TODO: Move
-    private func filterDataSource(for voices: [SectionModel<String, AVSpeechSynthesisVoice>], searchTerm: String) -> [SectionModel<String, AVSpeechSynthesisVoice>] {
-        guard searchTerm.isEmpty == false else { return voices }
+    // TODO: Move to ViewModel
+    private func filterDataSource(searchTerm: String) -> [SectionModel<String, AVSpeechSynthesisVoice>] {
+        let sectionsWithVoices = viewModel.getSectionsWithVoices()
         
-        return voices.compactMap { section in
+        guard searchTerm.isEmpty == false else { return sectionsWithVoices }
+        
+        return sectionsWithVoices.compactMap { section in
             let filteredItems = section.items.filter { $0.containsSearchTerm(searchTerm) }
             if filteredItems.isEmpty {
                 return nil
@@ -107,7 +118,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
                 
                 let numberOfItemsInSection = try? self?.viewModel.voices.value()[indexPath.section].items.count
                 let isLastInSection = indexPath.row + 1 == numberOfItemsInSection
-                let isSelected = indexPath == self?.selectedLanguageIndexPath
+                let isSelected = element.identifier == self?.viewModel.selectedLanguageIdentifier
                 
                 cell.setupCell(
                     voiceName: element.name,
@@ -169,18 +180,21 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
     @objc
     private func doneDidTouch() { dismiss(animated: true, completion: nil) }
 
-    private func didSelectRowAt(_ indexPath: IndexPath) {
-        if let previousSelectedIndexPath = selectedLanguageIndexPath, previousSelectedIndexPath != indexPath {
-            let previousSelectedCell = tableView.cellForRow(at: previousSelectedIndexPath) as? VoiceTableViewCell
+    // TODO: Move to ViewModel
+    private func didSelectRowFor(indexPath: IndexPath, identifier: String) {
+        if let previousSelectedIdentifier = viewModel.selectedLanguageIdentifier,
+           previousSelectedIdentifier != identifier,
+           let previouseSelectedIndexPath = viewModel.firstIndexPath(for: previousSelectedIdentifier) {
+            let previousSelectedCell = tableView.cellForRow(at: previouseSelectedIndexPath) as? VoiceTableViewCell
             previousSelectedCell?.checkmarkImageView.isHidden = true
         }
         
-        selectedLanguageIndexPath = indexPath
+        viewModel.selectedLanguageIdentifier = identifier
         
         let cell = tableView.cellForRow(at: indexPath) as? VoiceTableViewCell
         cell?.checkmarkImageView.isHidden = false
         
-        viewModel.selectVoiceForIndexPath(indexPath)
+        viewModel.selectVoice(for: identifier)
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
@@ -199,3 +213,5 @@ extension LanguagePickerViewController: UITableViewDelegate {
     // TODO: I don't like this
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 32.0 }
 }
+
+// FIXME: Sections have bad titles when searching
