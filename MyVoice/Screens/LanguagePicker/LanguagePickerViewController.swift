@@ -15,15 +15,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
     @IBOutlet weak var tableView: UITableView!
     
     private lazy var searchController = UISearchController()
-    
-    // TODO: Move to ViewModel and initialize
-//    private let selectedLanguageIdentifierSubject = BehaviorSubject<String?>(value: nil)
-//    private var selectedLanguageIdentifier: String? {
-//        get { try? selectedLanguageIdentifierSubject.value() }
-//        set { selectedLanguageIdentifierSubject.onNext(newValue) }
-//    }
-    
-    // TODO: Clean up
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,40 +38,21 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
             forCellReuseIdentifier: Nib.voiceTableViewCell.cellIdentifier
         )
         
-//        viewModel.voices
-//            .bind(to: tableView.rx.items(dataSource: getDataSource()))
-//            .disposed(by: disposeBag)
-        
-//        tableView.rx.itemSelected
-//            .subscribe { [weak self] in self?.didSelectRowAt($0) }
-//            .disposed(by: disposeBag)
+        viewModel.sections
+            .bind(to: tableView.rx.items(dataSource: getDataSource()))
+            .disposed(by: disposeBag)
         
         Observable.zip(tableView.rx.itemSelected, tableView.rx.modelSelected(AVSpeechSynthesisVoice.self))
             .bind { [weak self] in self?.didSelectRowFor(indexPath: $0.0, identifier: $0.1.identifier) }
             .disposed(by: disposeBag)
         
-//        viewModel.voices
-//            .subscribe { [weak self] voices in
-//                guard voices.element?.count ?? 0 != 0 else { return }
-//
-//                let indexPathToSelect = viewModel.getIndexPathForCurrentVoice()
-//                self?.selectedLanguageIdentifier = indexPathToSelect
-//            }
-//            .disposed(by: disposeBag)
-        
         searchController.searchBar.rx.text
             .orEmpty
-//            .debounce(.milliseconds(500), scheduler: MainScheduler.instance) // FIXME: Problem with init loading, why it's affecting first
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance) // FIXME: Problem with init loading, why it's affecting first
             .distinctUntilChanged()
-            .map { [weak self] in self?.filterDataSource(searchTerm: $0) ?? [] }
-            .bind(to: tableView.rx.items(dataSource: getDataSource()))
+            .bind { [weak self] in self?.viewModel.didEnterSearchTerm($0) }
             .disposed(by: disposeBag)
-        
-        
-//        Observable.combineLatest(viewModel.voices, searchTerm)
-//            .map { [weak self] in self?.filterDataSource(for: $0.0, searchTerm: $0.1) ?? $0.0 }
-//            .bind(to: tableView.rx.items(dataSource: getDataSource()))
-//            .disposed(by: disposeBag)
         
         // TODO: Uncomment when working again
 //        rx.methodInvoked(#selector(viewWillLayoutSubviews))
@@ -93,32 +66,18 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
 //            .disposed(by: disposeBag)
     }
     
-    // TODO: Move to ViewModel
-    private func filterDataSource(searchTerm: String) -> [SectionModel<String, AVSpeechSynthesisVoice>] {
-        let sectionsWithVoices = viewModel.getSectionsWithVoices()
-        
-        guard searchTerm.isEmpty == false else { return sectionsWithVoices }
-        
-        return sectionsWithVoices.compactMap { section in
-            let filteredItems = section.items.filter { $0.containsSearchTerm(searchTerm) }
-            if filteredItems.isEmpty {
-                return nil
-            } else {
-                return SectionModel(model: section.model, items: filteredItems)
-            }
-        }
-    }
-    
     private func getDataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<String, AVSpeechSynthesisVoice>> {
         .init(
             configureCell: { [weak self] _, tableView, indexPath, element in
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: Nib.voiceTableViewCell.cellIdentifier) as? VoiceTableViewCell else {
+                guard let self,
+                      let sections = try? self.viewModel.sections.value(),
+                      let cell = tableView.dequeueReusableCell(withIdentifier: Nib.voiceTableViewCell.cellIdentifier) as? VoiceTableViewCell else {
                     return .init()
                 }
                 
-                let numberOfItemsInSection = try? self?.viewModel.voices.value()[indexPath.section].items.count
+                let numberOfItemsInSection = sections[indexPath.section].items.count
                 let isLastInSection = indexPath.row + 1 == numberOfItemsInSection
-                let isSelected = element.identifier == self?.viewModel.selectedLanguageIdentifier
+                let isSelected = element.identifier == self.viewModel.selectedLanguageIdentifier
                 
                 cell.setupCell(
                     voiceName: element.name,
@@ -180,7 +139,6 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
     @objc
     private func doneDidTouch() { dismiss(animated: true, completion: nil) }
 
-    // TODO: Move to ViewModel
     private func didSelectRowFor(indexPath: IndexPath, identifier: String) {
         if let previousSelectedIdentifier = viewModel.selectedLanguageIdentifier,
            previousSelectedIdentifier != identifier,
@@ -201,17 +159,15 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
 }
 
 extension LanguagePickerViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard let sectionTitle = try? viewModel.voices.value()[section].model else { return nil }
-        
-        let view = HeaderView()
-        view.label.text = sectionTitle
-        
-        return view
-    }
-    
-    // TODO: I don't like this
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 32.0 }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        guard let sectionTitle = try? viewModel.voices.value()[section].model else { return nil }
+//
+//        let view = HeaderView()
+//        view.label.text = sectionTitle
+//
+//        return view
+//    }
+//
+//    // TODO: I don't like this
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 32.0 }
 }
-
-// FIXME: Sections have bad titles when searching
