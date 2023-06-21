@@ -49,21 +49,24 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         searchController.searchBar.rx.text
             .orEmpty
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            .debounce(.milliseconds(500), scheduler: MainScheduler.instance) // FIXME: Problem with init loading, why it's affecting first
+            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .bind { [weak self] in self?.viewModel.didEnterSearchTerm($0) }
             .disposed(by: disposeBag)
         
-        // TODO: Uncomment when working again
-//        rx.methodInvoked(#selector(viewWillLayoutSubviews))
-//            .take(1)
+        // TODO: Test, test and test!
+        rx.methodInvoked(#selector(viewWillLayoutSubviews))
+            .take(1)
 //            .withLatestFrom(selectedLanguageIndexPathSubject.compactMap { $0 })
-//            .subscribe { [weak self] selectedLanguageIndexPath in
-//                guard let indexPath = selectedLanguageIndexPath.element else { return }
-//
-//                self?.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
-//            }
-//            .disposed(by: disposeBag)
+            .subscribe { [weak self] _ in// selectedLanguageIndexPath in
+                guard let identifier = viewModel.selectedLanguageIdentifier,
+                      let indexPath = self?.viewModel.firstIndexPath(for: identifier) else {
+                    return
+                }
+
+                self?.tableView.scrollToRow(at: indexPath, at: .middle, animated: false)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func getDataSource() -> RxTableViewSectionedReloadDataSource<SectionModel<String, AVSpeechSynthesisVoice>> {
@@ -159,15 +162,14 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
 }
 
 extension LanguagePickerViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        guard let sectionTitle = try? viewModel.voices.value()[section].model else { return nil }
-//
-//        let view = HeaderView()
-//        view.label.text = sectionTitle
-//
-//        return view
-//    }
-//
-//    // TODO: I don't like this
-//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 32.0 }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let sectionTitle = try? viewModel.sections.value()[section].model else { return nil }
+
+        let view = HeaderView()
+        view.label.text = sectionTitle
+
+        return view
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat { 32.0 }
 }
