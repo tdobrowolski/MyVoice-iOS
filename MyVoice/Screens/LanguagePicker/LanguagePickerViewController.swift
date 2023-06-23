@@ -49,16 +49,14 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         searchController.searchBar.rx.text
             .orEmpty
             .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
             .bind { [weak self] in self?.viewModel.didEnterSearchTerm($0) }
             .disposed(by: disposeBag)
         
-        // TODO: Test, test and test!
         rx.methodInvoked(#selector(viewWillLayoutSubviews))
             .take(1)
-//            .withLatestFrom(selectedLanguageIndexPathSubject.compactMap { $0 })
-            .subscribe { [weak self] _ in// selectedLanguageIndexPath in
+            .subscribe { [weak self] _ in
                 guard let identifier = viewModel.selectedLanguageIdentifier,
                       let indexPath = self?.viewModel.firstIndexPath(for: identifier) else {
                     return
@@ -103,7 +101,10 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         navigationItem.hidesSearchBarWhenScrolling = false
         
         let font = Fonts.Poppins.medium(14.0).font
-        let attributedPlaceholder = NSAttributedString(string: "Search...", attributes: [.font: font]) // TODO: Add translation
+        let attributedPlaceholder = NSAttributedString(
+            string: NSLocalizedString("Search", comment: ""),
+            attributes: [.font: font]
+        )
         
         searchController.searchBar.searchTextField.font = font
         searchController.searchBar.searchTextField.attributedPlaceholder = attributedPlaceholder

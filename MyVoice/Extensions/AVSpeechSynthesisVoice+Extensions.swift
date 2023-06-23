@@ -6,6 +6,7 @@
 //
 
 import class AVFAudio.AVSpeechSynthesisVoice
+import RxDataSources
 
 extension AVSpeechSynthesisVoice {
     func containsSearchTerm(_ term: String) -> Bool {
@@ -15,5 +16,21 @@ extension AVSpeechSynthesisVoice {
         let matchedLanguage = language.voiceFullLanguage?.lowercased().contains(lowercasedTerm) == true
         
         return matchedIdentifier || matchedName || matchedLanguage
+    }
+}
+
+extension [AVSpeechSynthesisVoice] {
+    var mapToSections: [SectionModel<String, AVSpeechSynthesisVoice>] {
+        let allAvailableLanguages = map { $0.language }.uniqued()
+        
+        let sections: [SectionModel<String, AVSpeechSynthesisVoice>]
+        sections = allAvailableLanguages.map { voiceAvailableLanguage in
+            SectionModel(
+                model: voiceAvailableLanguage.voiceFullLanguage ?? NSLocalizedString("Unknown", comment: "Unknown"),
+                items: filter { $0.language == voiceAvailableLanguage }
+            )
+        }
+        
+        return sections
     }
 }

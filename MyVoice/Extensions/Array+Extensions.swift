@@ -11,5 +11,3 @@ extension Array where Element: Hashable {
         return filter { seen.insert($0).inserted }
     }
 }
-
-// TODO: Check if needed
