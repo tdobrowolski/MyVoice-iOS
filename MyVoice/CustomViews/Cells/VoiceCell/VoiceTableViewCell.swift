@@ -12,15 +12,16 @@ final class VoiceTableViewCell: UITableViewCell {
     @IBOutlet weak var voiceLabel: UILabel!
     @IBOutlet weak var additionalInfoLabel: UILabel!
     @IBOutlet weak var checkmarkImageView: UIImageView!
+    @IBOutlet weak var separatorView: UIView!
     
     func setupCell(
-        languageName: String,
         voiceName: String,
         voiceQuality: AVSpeechSynthesisVoiceQuality,
         voiceGender: AVSpeechSynthesisVoiceGender,
+        isLastInSection: Bool,
         isSelected: Bool
     ) {
-        voiceLabel.text = "\(languageName) - \(voiceName)"
+        voiceLabel.text = voiceName
         
         var voiceGenderText: NSMutableAttributedString
 
@@ -91,6 +92,7 @@ final class VoiceTableViewCell: UITableViewCell {
         
         voiceGenderText.append(voiceQualityText)
         additionalInfoLabel.attributedText = voiceGenderText
+        separatorView.isHidden = isLastInSection
         checkmarkImageView.isHidden = isSelected == false
         checkmarkImageView.image = UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
     }
@@ -102,7 +104,7 @@ final class VoiceTableViewCell: UITableViewCell {
     
     private func setupLayout() {
         contentView.backgroundColor = .clear
-        backgroundColor = .clear
+        backgroundColor = .whiteCustom
         
         voiceLabel.font = Fonts.Poppins.semibold(14.0).font
         additionalInfoLabel.font = Fonts.Poppins.medium(12.0).font

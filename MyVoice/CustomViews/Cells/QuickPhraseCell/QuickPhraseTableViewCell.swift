@@ -18,7 +18,7 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     @IBOutlet weak var phraseLabel: UILabel!
     @IBOutlet weak var tipLabel: UILabel!
     
-    @IBOutlet weak var separator: UIView!
+    @IBOutlet weak var separatorView: UIView!
     
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     lazy var disposeBag = DisposeBag()
@@ -36,7 +36,7 @@ final class QuickPhraseTableViewCell: UITableViewCell {
             tipLabel.isHidden = true
         }
 
-        separator.isHidden = isLastCell
+        separatorView.isHidden = isLastCell
     }
     
     private func bind() {

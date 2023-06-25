@@ -108,7 +108,7 @@
                 <outlet property="iconContainerView" destination="e0I-oO-slD" id="DXS-DL-M8b"/>
                 <outlet property="iconImageView" destination="cYr-3p-85D" id="gSO-TA-rTC"/>
                 <outlet property="phraseLabel" destination="0nc-Zz-iaP" id="oBs-Ir-OY7"/>
-                <outlet property="separator" destination="gTx-qY-cLR" id="UVJ-XR-e74"/>
+                <outlet property="separatorView" destination="gTx-qY-cLR" id="UVJ-XR-e74"/>
                 <outlet property="tapHandlerButton" destination="IzX-8r-P14" id="zOs-Ag-vwT"/>
                 <outlet property="tipLabel" destination="BJS-Yu-l1P" id="HQp-HJ-MEJ"/>
             </connections>
