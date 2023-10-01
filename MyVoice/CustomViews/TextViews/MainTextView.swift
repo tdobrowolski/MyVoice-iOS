@@ -27,17 +27,11 @@ final class MainTextView: UITextView {
         
         return toolbar
     }()
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        
         setupLayout()
-//        switch traitCollection.userInterfaceStyle {
-//        case .light:
-//            self.addShadow(color: .blueDark ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
-//        default:
-//            self.addShadow(color: .blueDark ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
-//        }
     }
 
     private func setupLayout() {
@@ -48,9 +42,10 @@ final class MainTextView: UITextView {
         backgroundColor = .whiteCustom ?? .white
         textColor = .blackCustom ?? .black
         tintColor = .orangeMain
+        
         textContainerInset = .init(top: 13, left: 14, bottom: 14, right: 13)
         font = Fonts.Poppins.bold(20.0).font
-        
+
         returnKeyType = .done
         inputAccessoryView = toolbar
     }
