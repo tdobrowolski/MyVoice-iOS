@@ -15,6 +15,7 @@ enum Colors: String {
     case redLight = "Red (Light)"
     case redMain = "Red (Main)"
     case white = "White"
+    case purpleMain = "Purple (Main)"
     
     var name: String { rawValue }
 }

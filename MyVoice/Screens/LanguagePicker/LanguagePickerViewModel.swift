@@ -30,7 +30,11 @@ final class LanguagePickerViewModel: BaseViewModel {
         
         bind()
         selectedLanguageIdentifier = userDefaultsService.getSpeechVoiceIdentifier() ?? AVSpeechSynthesisVoice(language: nil)?.identifier
-        voices.onNext(AVSpeechSynthesisVoice.speechVoices())
+        reloadAvailableSpeechVoices()
+        
+        if #available(iOS 17.0, *) {
+            Task { await requestPersonalVoiceAuth() }
+        }
     }
     
     private func bind() {
@@ -38,6 +42,16 @@ final class LanguagePickerViewModel: BaseViewModel {
             .map { $0.mapToSections }
             .bind(to: sections)
             .disposed(by: disposeBag)
+        
+        if #available(iOS 17.0, *) {
+            NotificationCenter.default
+                .addObserver(
+                    self,
+                    selector: #selector(reloadAvailableSpeechVoices),
+                    name: AVSpeechSynthesizer.availableVoicesDidChangeNotification,
+                    object: nil
+                )
+        }
     }
     
     func firstIndexPath(for identifier: String) -> IndexPath? {
@@ -62,5 +76,26 @@ final class LanguagePickerViewModel: BaseViewModel {
     func selectVoice(for identifier: String) {
         userDefaultsService.setSpeechVoice(for: identifier)
         delegate?.didSelectVoice()
+    }
+    
+    @available(iOS 17.0, *)
+    func requestPersonalVoiceAuth() async {
+        guard .authorized != AVSpeechSynthesizer.personalVoiceAuthorizationStatus else { return }
+            
+        let authorizationResult = await AVSpeechSynthesizer.requestPersonalVoiceAuthorization()
+        
+        print("Personal voice result: \(authorizationResult)")
+        
+        switch authorizationResult {
+        case .notDetermined, .denied, .unsupported: return
+        case .authorized: reloadAvailableSpeechVoices()
+        @unknown default: return
+        }
+    }
+    
+    @objc
+    private func reloadAvailableSpeechVoices() {
+        voices.onNext(AVSpeechSynthesisVoice.speechVoices())
+        print("Reloaded available voices")
     }
 }

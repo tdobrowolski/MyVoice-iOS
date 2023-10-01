@@ -84,6 +84,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
                     voiceName: element.name,
                     voiceQuality: element.quality,
                     voiceGender: element.gender,
+                    isPersonalVoice: element.isPersonalVoice,
                     isLastInSection: isLastInSection,
                     isSelected: isSelected
                 )

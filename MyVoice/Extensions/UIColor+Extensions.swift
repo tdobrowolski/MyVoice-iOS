@@ -43,4 +43,8 @@ extension UIColor {
     static var whiteCustom: UIColor? {
         .init(named: Colors.white.name)
     }
+    
+    static var purpleMain: UIColor? {
+        .init(named: Colors.purpleMain.name)
+    }
 }
