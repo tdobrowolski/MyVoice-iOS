@@ -17,30 +17,42 @@ final class LanguagePickerViewModel: BaseViewModel {
     weak var delegate: VoiceSelectionDelegate?
     
     let sections = BehaviorSubject<[SectionModel<String, AVSpeechSynthesisVoice>]>(value: [])
+    let personalVoiceAuthorizationStatus = BehaviorSubject<PersonalVoiceAuthorizationStatus>(value: .unsupported)
     
     private let voices = BehaviorSubject<[AVSpeechSynthesisVoice]>(value: [])
     private let userDefaultsService: UserDefaultsService
+    private let personalVoiceService: PersonalVoiceService
     
     var selectedLanguageIdentifier: String?
+    var showPersonalVoiceInfoBottomSheet: Bool {
+        if #available(iOS 17.0, *) {
+            guard let status = try? personalVoiceAuthorizationStatus.value() else { return false }
+            
+            return userDefaultsService.didShowPersonalVoiceInfo == false && status == .notDetermined
+        } else {
+            return false
+        }
+    }
     
     init(delegate: VoiceSelectionDelegate?) {
         self.userDefaultsService = UserDefaultsService()
+        self.personalVoiceService = PersonalVoiceService()
         self.delegate = delegate
         super.init()
         
         bind()
         selectedLanguageIdentifier = userDefaultsService.getSpeechVoiceIdentifier() ?? AVSpeechSynthesisVoice(language: nil)?.identifier
         reloadAvailableSpeechVoices()
-        
-        if #available(iOS 17.0, *) {
-            Task { await requestPersonalVoiceAuth() }
-        }
     }
     
     private func bind() {
         voices
             .map { $0.mapToSections }
             .bind(to: sections)
+            .disposed(by: disposeBag)
+        
+        personalVoiceService.authorizationStatus
+            .bind(to: personalVoiceAuthorizationStatus)
             .disposed(by: disposeBag)
         
         if #available(iOS 17.0, *) {
@@ -78,24 +90,8 @@ final class LanguagePickerViewModel: BaseViewModel {
         delegate?.didSelectVoice()
     }
     
-    @available(iOS 17.0, *)
-    func requestPersonalVoiceAuth() async {
-        guard .authorized != AVSpeechSynthesizer.personalVoiceAuthorizationStatus else { return }
-            
-        let authorizationResult = await AVSpeechSynthesizer.requestPersonalVoiceAuthorization()
-        
-        print("Personal voice result: \(authorizationResult)")
-        
-        switch authorizationResult {
-        case .notDetermined, .denied, .unsupported: return
-        case .authorized: reloadAvailableSpeechVoices()
-        @unknown default: return
-        }
-    }
-    
     @objc
     private func reloadAvailableSpeechVoices() {
         voices.onNext(AVSpeechSynthesisVoice.speechVoices())
-        print("Reloaded available voices")
     }
 }
