@@ -42,7 +42,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         
         let bottomInfoNavigationController = DefaultNavigationController(rootViewController: bottomInfoViewController)
         bottomInfoViewController.navigationController?.setNavigationBarHidden(true, animated: false)
-        bottomInfoNavigationController.sheetPresentationController?.detents = [.custom { _ in 285.0 }]
+        bottomInfoNavigationController.sheetPresentationController?.detents = [.custom { _ in 275.0 }]
         bottomInfoNavigationController.sheetPresentationController?.prefersGrabberVisible = true
         
         present(bottomInfoNavigationController, animated: true, completion: nil)
