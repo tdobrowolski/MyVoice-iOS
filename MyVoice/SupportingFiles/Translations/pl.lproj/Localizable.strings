@@ -10,20 +10,44 @@
 /* No comment provided by engineer. */
 "4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice." = "4. Wróć do ekranu Mowa i kliknij w nowo dodany język. Wybierz interesujący cię głos i jego jakość.";
 
+/* No comment provided by engineer. */
+"Access to Personal Voice was denied. You can change this setting, by granting access again in the Settings app." = "Odmówiono dostępu do głosu personalnego. Możesz ponownie go przyznać w systemowej aplikacji Ustawienia.";
+
+/* No comment provided by engineer. */
+"Access to Personal Voice was granted. You can now select configured Personal Voices from the voice picker list." = "Przyznano dostęp do głosu personalnego. Możesz teraz wybrać skonfigurowane głosy personalne z listy wyboru.";
+
+/* No comment provided by engineer. */
+"Access to Personal Voice was not yet determined." = "Nie określono dostępu do głosu personalnego.";
+
 /* Second part of bigger text */
 "Accessibility > VoiceOver > Speech" = "Dostępność > VoiceOver > Mowa";
 
 /* Name for Settings app button */
 "Add New Language" = "Dodaj nowy język…";
 
+/* No comment provided by engineer. */
+"Allow access" = "Zezwól";
+
+/* No comment provided by engineer. */
+"Authorized" = "Zezwolono";
+
+/* No comment provided by engineer. */
+"Can't open App Store" = "Nie można otworzyć App Store";
+
 /* Clear */
 "Clear" = "Wyczyść";
+
+/* No comment provided by engineer. */
+"Close" = "Zamknij";
 
 /* No comment provided by engineer. */
 "Default" = "Domyślny";
 
 /* Default quality */
 "Default quality" = "Domyślna jakość";
+
+/* No comment provided by engineer. */
+"Denied" = "Odmówiono";
 
 /* Done */
 "Done" = "Gotowe";
@@ -64,6 +88,12 @@
 /* No comment provided by engineer. */
 "Language and voice, which is used for speaking phrases. This will not affect your system language." = "Język i głos, używany do wymawiania tekstu. Twój wybór nie wpłynie na ustawienia języku systemu.";
 
+/* No comment provided by engineer. */
+"Learn more about Personal Voice" = "Dowiedz się więcej o głosie personalnym";
+
+/* No comment provided by engineer. */
+"Looks like we have some problems with opening the App Store. Our team of trained monkeys is working hard to fix this. You can still leave a review by sending feedback." = "Wygląda na to, że mamy problem z przejściem do App Store. Nasz zespół wytrenowanych małp ciężko pracuje nad rozwiązaniem. W międzyczasie możesz wysłać feedback.";
+
 /* Male */
 "Male" = "Mężczyzna";
 
@@ -72,6 +102,9 @@
 
 /* No mail account */
 "No mail account" = "Brak konta mailowego";
+
+/* No comment provided by engineer. */
+"Not determined" = "Nie określono";
 
 /* OK */
 "OK" = "OK";
@@ -84,6 +117,12 @@
 
 /* Personal Voice */
 "Personal Voice" = "Głos Indywidualny";
+
+/* No comment provided by engineer. */
+"Personal Voice access" = "Dostęp do głosu personalnego";
+
+/* No comment provided by engineer. */
+"Personal Voice now available" = "Głos personalny już dostępny";
 
 /* Premium quality */
 "Premium quality" = "Premium";
@@ -146,6 +185,9 @@
 "That’s it. If you go to MyVoice’s Select voice screen, you will see added voice on the list. You can now select it and all your phrases will be spoken with that voice." = "To wszystko. Jeśli otworzysz ekran wyboru głosu wewnątrz aplikacji MyVoice, zobaczysz dodany głos na liście. Możesz go teraz zaznaczyć. Tekst będzie teraz czytany wybranym głosem.";
 
 /* No comment provided by engineer. */
+"This device doesn't support Personal Voice." = "To urządzenie nie wspiera głosu personalnego.";
+
+/* No comment provided by engineer. */
 "Tip: Select text to say it loud." = "Porada: Wybierz frazę aby ją wypowiedzieć.";
 
 /* Placeholder text with line break */
@@ -164,6 +206,9 @@
 "Unspecified" = "Nieokreślono";
 
 /* No comment provided by engineer. */
+"Unsupported" = "Niewspierany";
+
+/* No comment provided by engineer. */
 "Version:" = "Wersja:";
 
 /* No comment provided by engineer. */
@@ -177,6 +222,12 @@
 
 /* No comment provided by engineer. */
 "You can always download a bunch of new voices with support for more languages. You can’t do that from the MyVoice app. To do that:" = "W każdej chwili możesz pobrać więcej głosów ze wsparciem dla nowych języków. Nie możesz tego zrobić wprost z aplikacji MyVoice. Aby pobrać dodatkowe głosy:";
+
+/* No comment provided by engineer. */
+"You can now use your generated Personal Voice to read phrases within the MyVoice app. To use your generated voices, grant access to it." = "Możesz teraz używać wygenerowany głos personalny wewnątrz aplikacji MyVoice. Aby użyć głosów, zezwól na MyVoice na dostęp do nich.";
+
+/* No comment provided by engineer. */
+"You can use Personal Voice - a synthesized voice that sounds like your own in the app, only if you grant access to it." = "Możesz używać głosu personalnego - syntezowanego głosu, który brzmi jak Twój własny, tylko jeśli przyznasz do niego dostęp.";
 
 /* You have no phrases yet! */
 "You have no phrases yet!" = "Nie masz zapisanych fraz!";

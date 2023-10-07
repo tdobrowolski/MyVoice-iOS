@@ -9,14 +9,10 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Poppins-Bold.ttf">
-            <string>Poppins-Bold</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BottomInfoViewController" customModule="MyVoice" customModuleProvider="target">
             <connections>
+                <outlet property="personalVoiceInfoView" destination="5jV-2D-ugL" id="bQo-hK-RB2"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,41 +21,26 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Header title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuC-4E-fy2">
-                    <rect key="frame" x="16" y="75" width="361" height="28"/>
-                    <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="20"/>
-                    <color key="textColor" name="Black"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="MyVoice now supports Personal Voice. When configured..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xCE-Ws-O7w">
-                    <rect key="frame" x="16" y="119" width="361" height="683"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5jV-2D-ugL" customClass="PersonalVoiceInfoView" customModule="MyVoice" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <color key="textColor" systemColor="labelColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="Blue (Light)"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GuC-4E-fy2" secondAttribute="trailing" constant="16" id="HgL-FN-55v"/>
-                <constraint firstItem="xCE-Ws-O7w" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="JNc-Rm-Sw2"/>
-                <constraint firstItem="GuC-4E-fy2" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="NNX-Kn-W3Q"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="xCE-Ws-O7w" secondAttribute="bottom" constant="16" id="Ot8-Nt-IZG"/>
-                <constraint firstItem="xCE-Ws-O7w" firstAttribute="top" secondItem="GuC-4E-fy2" secondAttribute="bottom" constant="16" id="SGd-Qh-vfZ"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xCE-Ws-O7w" secondAttribute="trailing" constant="16" id="cfz-Ys-Xe7"/>
-                <constraint firstItem="GuC-4E-fy2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="pdS-hB-v7W"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5jV-2D-ugL" secondAttribute="bottom" id="EOB-zc-6Pp"/>
+                <constraint firstItem="5jV-2D-ugL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="PxO-1g-KUM"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="5jV-2D-ugL" secondAttribute="trailing" id="RPJ-1t-IBF"/>
+                <constraint firstItem="5jV-2D-ugL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="pVb-1O-BxS"/>
             </constraints>
             <point key="canvasLocation" x="131" y="-11"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="Black">
-            <color red="0.090000003576278687" green="0.090000003576278687" blue="0.11800000071525574" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Blue (Light)">
+            <color red="0.93300002813339233" green="0.9570000171661377" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

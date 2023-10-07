@@ -18,10 +18,10 @@ final class LanguagePickerViewModel: BaseViewModel {
     
     let sections = BehaviorSubject<[SectionModel<String, AVSpeechSynthesisVoice>]>(value: [])
     let personalVoiceAuthorizationStatus = BehaviorSubject<PersonalVoiceAuthorizationStatus>(value: .unsupported)
+    let personalVoiceService: PersonalVoiceService
     
     private let voices = BehaviorSubject<[AVSpeechSynthesisVoice]>(value: [])
     private let userDefaultsService: UserDefaultsService
-    private let personalVoiceService: PersonalVoiceService
     
     var selectedLanguageIdentifier: String?
     var showPersonalVoiceInfoBottomSheet: Bool {
@@ -35,8 +35,8 @@ final class LanguagePickerViewModel: BaseViewModel {
     }
     
     init(delegate: VoiceSelectionDelegate?) {
-        self.userDefaultsService = UserDefaultsService()
         self.personalVoiceService = PersonalVoiceService()
+        self.userDefaultsService = UserDefaultsService()
         self.delegate = delegate
         super.init()
         

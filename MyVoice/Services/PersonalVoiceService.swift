@@ -8,6 +8,7 @@
 import AVFoundation
 import RxSwift
 
+// TODO: Move
 enum PersonalVoiceAuthorizationStatus {
     /// The device is not compatibile or iOS 17+ is not installed.
     case unsupported
@@ -20,6 +21,31 @@ enum PersonalVoiceAuthorizationStatus {
     
     /// User authorized request. The app has access to Personal Voices.
     case authorized
+    
+    var title: String {
+        switch self {
+        case .unsupported: return NSLocalizedString("Unsupported", comment: "")
+        case .notDetermined: return NSLocalizedString("Not determined", comment: "")
+        case .denied: return NSLocalizedString("Denied", comment: "")
+        case .authorized: return NSLocalizedString("Authorized", comment: "")
+        }
+    }
+    
+    var settingsAlertMessage: String {
+        switch self {
+        case .unsupported: 
+            return NSLocalizedString("This device doesn't support Personal Voice.", comment: "")
+            
+        case .notDetermined: 
+            return NSLocalizedString("Access to Personal Voice was not yet determined.", comment: "")
+            
+        case .denied: 
+            return NSLocalizedString("Access to Personal Voice was denied. You can change this setting, by granting access again in the Settings app.", comment: "")
+            
+        case .authorized: 
+            return NSLocalizedString("Access to Personal Voice was granted. You can now select configured Personal Voices from the voice picker list.", comment: "")
+        }
+    }
 }
 
 @available(iOS 17.0, *)

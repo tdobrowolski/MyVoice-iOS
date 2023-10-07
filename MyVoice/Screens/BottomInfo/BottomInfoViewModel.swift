@@ -8,5 +8,14 @@
 import Foundation
 
 final class BottomInfoViewModel: BaseViewModel {
+    private let personalVoiceService: PersonalVoiceService
     
+    init(personalVoiceService: PersonalVoiceService) {
+        self.personalVoiceService = personalVoiceService
+    }
+    
+    @available(iOS 17.0, *)
+    func didTapGrantAccess() async {
+        let _ = await personalVoiceService.requestPersonalVoiceAccess()
+    }
 }

@@ -13,7 +13,6 @@ import AVFAudio
 
 final class LanguagePickerViewController: BaseViewController<LanguagePickerViewModel> {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var personalVoiceInfoView: PersonalVoiceInfoView!
     
     private lazy var searchController = UISearchController()
         
@@ -26,21 +25,25 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         addSearchController()
         addNavigationBarButton()
         
-//        showBottomInfo()
+        // TODO: Move logic from here
+        if #available(iOS 16.0, *) {
+            showBottomInfo()
+        }
     }
     
     // TODO: Move or remove
+    @available(iOS 16.0, *)
     private func showBottomInfo() {
-        let bottomInfoViewModel = BottomInfoViewModel()
+        let bottomInfoViewModel = BottomInfoViewModel(personalVoiceService: viewModel.personalVoiceService)
         let bottomInfoViewController = BottomInfoViewController(
             viewModel: bottomInfoViewModel,
             nibName: Nib.bottomInfoViewController.name
         )
+        
         let bottomInfoNavigationController = DefaultNavigationController(rootViewController: bottomInfoViewController)
-        if #available(iOS 15.0, *) {
-            bottomInfoNavigationController.sheetPresentationController?.detents = [.medium()]
-            bottomInfoNavigationController.sheetPresentationController?.prefersGrabberVisible = true
-        }
+        bottomInfoViewController.navigationController?.setNavigationBarHidden(true, animated: false)
+        bottomInfoNavigationController.sheetPresentationController?.detents = [.custom { _ in 285.0 }]
+        bottomInfoNavigationController.sheetPresentationController?.prefersGrabberVisible = true
         
         present(bottomInfoNavigationController, animated: true, completion: nil)
     }

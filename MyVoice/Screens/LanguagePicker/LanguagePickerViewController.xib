@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +11,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LanguagePickerViewController" customModule="MyVoice" customModuleProvider="target">
             <connections>
-                <outlet property="personalVoiceInfoView" destination="X9g-dQ-XWs" id="9sy-tE-0L9"/>
                 <outlet property="tableView" destination="siC-mP-RRs" id="IpB-1J-ugD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,35 +20,22 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9g-dQ-XWs" userLabel="Personal Voice Info" customClass="PersonalVoiceInfoView" customModule="MyVoice" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="48" width="414" height="200"/>
-                    <color key="backgroundColor" name="Blue (Light)"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="200" id="S7a-eO-kil"/>
-                    </constraints>
-                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" style="insetGrouped" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="siC-mP-RRs">
-                    <rect key="frame" x="0.0" y="248" width="414" height="648"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="848"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="X9g-dQ-XWs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FQ6-Qr-yBk"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="X9g-dQ-XWs" secondAttribute="trailing" id="NOV-bp-evL"/>
-                <constraint firstItem="X9g-dQ-XWs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="OgS-Jv-n1b"/>
                 <constraint firstAttribute="bottom" secondItem="siC-mP-RRs" secondAttribute="bottom" id="UKW-NN-rJS"/>
-                <constraint firstItem="siC-mP-RRs" firstAttribute="top" secondItem="X9g-dQ-XWs" secondAttribute="bottom" id="b25-ag-eoB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="siC-mP-RRs" secondAttribute="trailing" id="kmL-53-4zl"/>
                 <constraint firstItem="siC-mP-RRs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nTo-U4-K8n"/>
+                <constraint firstItem="siC-mP-RRs" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="qnG-7t-Sms"/>
             </constraints>
             <point key="canvasLocation" x="132" y="132"/>
         </view>
     </objects>
     <resources>
-        <namedColor name="Blue (Light)">
-            <color red="0.93300002813339233" green="0.9570000171661377" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -26,7 +26,7 @@ class InfoButton: UIButton {
         var borderWidth: CGFloat {
             switch self {
             case .primary: return 0.0
-            case .secondary: return 1.5
+            case .secondary: return 2.0
             }
         }
         
@@ -57,7 +57,7 @@ class InfoButton: UIButton {
     }
     
     func setupLayout(forTitle title: String, type: `Type`) {
-        titleLabel?.text = title
+        setTitle(title, for: .normal)
         titleLabel?.font = type.titleFont
         
         setTitleColor(type.titleColor, for: .normal)
@@ -69,7 +69,7 @@ class InfoButton: UIButton {
         layer.borderColor = type.borderColor.cgColor
     }
     
-    // MARK: Handle button touch state
+    // MARK: Handling button touch state
     
     @objc
     private func buttonPressed() {

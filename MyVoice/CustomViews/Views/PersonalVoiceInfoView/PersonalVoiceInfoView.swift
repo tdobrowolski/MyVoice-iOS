@@ -22,6 +22,7 @@ final class PersonalVoiceInfoView: UIView {
     @IBOutlet weak var learnMoreButton: UIButton!
     @IBOutlet weak var primaryButton: InfoButton!
     @IBOutlet weak var secondaryButton: InfoButton!
+    @IBOutlet weak var containerBottomConstraint: NSLayoutConstraint!
     
     weak var delegate: PersonalVoiceInfoViewDelegate?
     
@@ -55,12 +56,30 @@ final class PersonalVoiceInfoView: UIView {
         iconContainer.layer.cornerRadius = iconContainer.frame.width / 2
         iconContainer.layer.masksToBounds = true
         
-        titleLabel.font = Fonts.Poppins.semibold(14.0).font
-        subtitleLabel.font = Fonts.Poppins.medium(12.0).font
-        learnMoreButton.titleLabel?.font = Fonts.Poppins.medium(12.0).font
+        titleLabel.text = NSLocalizedString("Personal Voice now available", comment: "")
+        subtitleLabel.text = NSLocalizedString("You can now use your generated Personal Voice to read phrases within the MyVoice app. To use your generated voices, grant access to it.", comment: "")
+        learnMoreButton.setTitle(NSLocalizedString("Learn more about Personal Voice", comment: ""), for: .normal)
         
-        primaryButton.setupLayout(forTitle: "Grant access", type: .primary)
-        secondaryButton.setupLayout(forTitle: "Close", type: .secondary)
+        titleLabel.font = Fonts.Poppins.bold(16.0).font
+        subtitleLabel.font = Fonts.Poppins.medium(13.0).font
+        learnMoreButton.titleLabel?.font = Fonts.Poppins.medium(13.0).font
+        
+        titleLabel.allowsDefaultTighteningForTruncation = true
+        subtitleLabel.allowsDefaultTighteningForTruncation = true
+        learnMoreButton.titleLabel?.allowsDefaultTighteningForTruncation = true
+        
+        primaryButton.setupLayout(forTitle: NSLocalizedString("Allow access", comment: ""), type: .primary)
+        secondaryButton.setupLayout(forTitle: NSLocalizedString("Close", comment: ""), type: .secondary)
+        
+        primaryButton.titleLabel?.allowsDefaultTighteningForTruncation = true
+        secondaryButton.titleLabel?.allowsDefaultTighteningForTruncation = true
+        
+        primaryButton.titleLabel?.font = Fonts.Poppins.semibold(14.0).font
+        secondaryButton.titleLabel?.font = Fonts.Poppins.medium(14.0).font
+    }
+    
+    func adjustBottomSpacingForNoSafeArea() {
+        containerBottomConstraint.constant = 16.0
     }
     
     @IBAction func didTapLearnMore(_ sender: UIButton) {

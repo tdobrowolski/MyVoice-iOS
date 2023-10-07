@@ -7,10 +7,12 @@
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
         <array key="Poppins-Medium.ttf">
             <string>Poppins-Medium</string>
         </array>
@@ -21,6 +23,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalVoiceInfoView" customModule="MyVoice" customModuleProvider="target">
             <connections>
+                <outlet property="containerBottomConstraint" destination="yen-bM-1HL" id="UCl-X6-Jc1"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="ZAl-Eh-QpI"/>
                 <outlet property="iconContainer" destination="Kch-O0-IAU" id="rrJ-lY-q9Y"/>
                 <outlet property="learnMoreButton" destination="fbN-wN-418" id="re3-Al-ghU"/>
@@ -33,135 +36,160 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="393" height="426"/>
+            <rect key="frame" x="0.0" y="0.0" width="422" height="426"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Trt-pi-KKo" userLabel="RoundedRectangleContainer">
-                    <rect key="frame" x="16" y="75" width="361" height="301"/>
+                    <rect key="frame" x="16" y="75" width="390" height="317"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kch-O0-IAU" userLabel="IconContainer">
-                            <rect key="frame" x="297" y="125.66666666666666" width="50" height="50"/>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="y7H-rI-1WI">
+                            <rect key="frame" x="14" y="14" width="362" height="289"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DHg-hQ-6tL">
-                                    <rect key="frame" x="13" y="7.9999999999999964" width="24" height="32.333333333333329"/>
-                                    <color key="tintColor" name="Purple (Main)"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="24" id="12x-Oo-Uvd"/>
-                                        <constraint firstAttribute="height" constant="24" id="wK5-8x-rPv"/>
-                                    </constraints>
-                                    <imageReference key="image" image="sparkles" catalog="system" symbolScale="large"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" name="Purple (Light)"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="50" id="1DF-j6-0qo"/>
-                                <constraint firstItem="DHg-hQ-6tL" firstAttribute="centerY" secondItem="Kch-O0-IAU" secondAttribute="centerY" id="3rI-dl-Lct"/>
-                                <constraint firstItem="DHg-hQ-6tL" firstAttribute="centerX" secondItem="Kch-O0-IAU" secondAttribute="centerX" id="lqB-mA-Kp6"/>
-                                <constraint firstAttribute="height" constant="50" id="sBs-5k-1qE"/>
-                            </constraints>
-                        </view>
-                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CSg-T3-0MU">
-                            <rect key="frame" x="14" y="12" width="269" height="277"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Personal Voice now available" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15B-Bq-igl">
-                                    <rect key="frame" x="0.0" y="0.0" width="269" height="19.666666666666668"/>
-                                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
-                                    <color key="textColor" name="Black"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can now use your generated Personal Voice to read phrases within MyVoice app." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xb-vs-ErR">
-                                    <rect key="frame" x="0.0" y="23.666666666666668" width="269" height="33.666666666666657"/>
-                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
-                                    <color key="textColor" name="Blue (Dark)"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbN-wN-418">
-                                    <rect key="frame" x="0.0" y="61.333333333333343" width="269" height="25"/>
-                                    <color key="tintColor" name="Purple (Main)"/>
-                                    <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain">
-                                        <attributedString key="attributedTitle">
-                                            <fragment content="Learn more about Personal Voice">
-                                                <attributes>
-                                                    <font key="NSFont" size="12" name="Poppins-Medium"/>
-                                                </attributes>
-                                            </fragment>
-                                        </attributedString>
-                                        <directionalEdgeInsets key="contentInsets" top="0.0" leading="0.0" bottom="0.0" trailing="0.0"/>
-                                    </buttonConfiguration>
-                                    <connections>
-                                        <action selector="didTapLearnMore:" destination="-1" eventType="touchUpInside" id="c0m-jF-Yvp"/>
-                                    </connections>
-                                </button>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iy2-x4-Ynp" userLabel="Spacer">
-                                    <rect key="frame" x="0.0" y="90.333333333333343" width="269" height="149"/>
-                                </view>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="iRx-Nl-5ca">
-                                    <rect key="frame" x="0.0" y="243.33333333333329" width="269" height="33.666666666666657"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="9Hq-au-TCw" userLabel="Upper Stack View">
+                                    <rect key="frame" x="0.0" y="0.0" width="362" height="218"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-fU-Rk9" customClass="InfoButton" customModule="MyVoice" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="130.66666666666666" height="33.666666666666664"/>
-                                            <color key="backgroundColor" name="Purple (Light)"/>
-                                            <color key="tintColor" name="Purple (Main)"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain">
-                                                <attributedString key="attributedTitle">
-                                                    <fragment content="Grant access">
-                                                        <attributes>
-                                                            <font key="NSFont" size="14" name="Poppins-Medium"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                            </buttonConfiguration>
-                                            <connections>
-                                                <action selector="primaryButtonDidTap:" destination="-1" eventType="touchUpInside" id="h8r-cv-PXS"/>
-                                            </connections>
-                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Zo-fK-hcI" userLabel="Icon Stack View">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="218"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kch-O0-IAU" userLabel="IconContainer">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DHg-hQ-6tL">
+                                                            <rect key="frame" x="13" y="7.9999999999999964" width="24" height="32.333333333333329"/>
+                                                            <color key="tintColor" name="Purple (Main)"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="24" id="BJK-QZ-4Lp"/>
+                                                                <constraint firstAttribute="height" constant="24" id="NaA-6W-C5V"/>
+                                                            </constraints>
+                                                            <imageReference key="image" image="sparkles" catalog="system" symbolScale="large"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" name="Purple (Light)"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="34s-q3-jEP"/>
+                                                        <constraint firstItem="DHg-hQ-6tL" firstAttribute="centerX" secondItem="Kch-O0-IAU" secondAttribute="centerX" id="JID-8C-l8f"/>
+                                                        <constraint firstAttribute="width" constant="50" id="Ysg-hE-9ex"/>
+                                                        <constraint firstItem="DHg-hQ-6tL" firstAttribute="centerY" secondItem="Kch-O0-IAU" secondAttribute="centerY" id="g3r-FA-ZWe"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xj8-3N-QZ4">
+                                                    <rect key="frame" x="0.0" y="50" width="50" height="168"/>
+                                                </view>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CSg-T3-0MU" userLabel="Text Stack View">
+                                            <rect key="frame" x="64" y="0.0" width="298" height="218"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="5HW-M0-jON" userLabel="Spacer">
+                                                    <rect key="frame" x="0.0" y="0.0" width="298" height="2"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="2" id="4pj-Kc-BRa"/>
+                                                    </constraints>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Personal Voice now available" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15B-Bq-igl">
+                                                    <rect key="frame" x="0.0" y="6" width="298" height="24"/>
+                                                    <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="17"/>
+                                                    <color key="textColor" name="Black"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_You can now use your generated Personal Voice to read phrases within MyVoice app." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Xb-vs-ErR">
+                                                    <rect key="frame" x="0.0" y="34" width="298" height="36.666666666666657"/>
+                                                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="13"/>
+                                                    <color key="textColor" name="Blue (Dark)"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbN-wN-418">
+                                                    <rect key="frame" x="0.0" y="74.666666666666657" width="298" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="oL7-Ad-FkO"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="13"/>
+                                                    <color key="tintColor" name="Purple (Main)"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="_Learn more about Personal Voice">
+                                                        <color key="titleColor" name="Purple (Main)"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didTapLearnMore:" destination="-1" eventType="touchUpInside" id="c0m-jF-Yvp"/>
+                                                    </connections>
+                                                </button>
+                                                <view contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Iy2-x4-Ynp" userLabel="Spacer">
+                                                    <rect key="frame" x="0.0" y="102.66666666666666" width="298" height="115.33333333333334"/>
+                                                </view>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                </stackView>
+                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Huc-2I-rDe">
+                                    <rect key="frame" x="0.0" y="232" width="362" height="1"/>
+                                    <color key="backgroundColor" name="Blue (Light)"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="910-rL-1y2"/>
+                                    </constraints>
+                                </view>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="iRx-Nl-5ca" userLabel="Buttons Stack View">
+                                    <rect key="frame" x="0.0" y="247" width="362" height="42"/>
+                                    <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdq-Rf-XjM" customClass="InfoButton" customModule="MyVoice" customModuleProvider="target">
-                                            <rect key="frame" x="138.66666666666663" y="0.0" width="130.33333333333337" height="33.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="174" height="42"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="42" id="VD8-zq-5Ih"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <color key="tintColor" name="Purple (Main)"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain">
-                                                <attributedString key="attributedTitle">
-                                                    <fragment content="Close">
-                                                        <attributes>
-                                                            <font key="NSFont" size="14" name="Poppins-Medium"/>
-                                                        </attributes>
-                                                    </fragment>
-                                                </attributedString>
-                                            </buttonConfiguration>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="_Close">
+                                                <color key="titleColor" name="Purple (Main)"/>
+                                            </state>
                                             <connections>
                                                 <action selector="secondaryButtonDidTap:" destination="-1" eventType="touchUpInside" id="d6n-XJ-EIY"/>
                                             </connections>
                                         </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-fU-Rk9" customClass="InfoButton" customModule="MyVoice" customModuleProvider="target">
+                                            <rect key="frame" x="188" y="0.0" width="174" height="42"/>
+                                            <color key="backgroundColor" name="Purple (Light)"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="42" id="cfQ-AE-NTu"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                            <color key="tintColor" name="Purple (Main)"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="_Grant access">
+                                                <color key="titleColor" name="Purple (Main)"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="primaryButtonDidTap:" destination="-1" eventType="touchUpInside" id="h8r-cv-PXS"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Rdq-Rf-XjM" firstAttribute="width" secondItem="hxm-fU-Rk9" secondAttribute="width" id="l8A-Dp-rH5"/>
+                                    </constraints>
                                 </stackView>
                             </subviews>
                         </stackView>
                     </subviews>
-                    <color key="backgroundColor" name="Blue (Light)"/>
+                    <color key="backgroundColor" name="White"/>
                     <constraints>
-                        <constraint firstItem="CSg-T3-0MU" firstAttribute="top" secondItem="Trt-pi-KKo" secondAttribute="top" constant="12" id="1R4-2n-qv8"/>
-                        <constraint firstAttribute="trailing" secondItem="Kch-O0-IAU" secondAttribute="trailing" constant="14" id="4P8-Ra-b5q"/>
-                        <constraint firstItem="CSg-T3-0MU" firstAttribute="leading" secondItem="Trt-pi-KKo" secondAttribute="leading" constant="14" id="9Os-8N-v4d"/>
-                        <constraint firstItem="Kch-O0-IAU" firstAttribute="leading" secondItem="CSg-T3-0MU" secondAttribute="trailing" constant="14" id="MNi-oG-TrH"/>
-                        <constraint firstAttribute="bottom" secondItem="CSg-T3-0MU" secondAttribute="bottom" constant="12" id="arv-nb-Qfi"/>
-                        <constraint firstItem="Kch-O0-IAU" firstAttribute="centerY" secondItem="Trt-pi-KKo" secondAttribute="centerY" id="gop-ly-nfk"/>
+                        <constraint firstAttribute="trailing" secondItem="y7H-rI-1WI" secondAttribute="trailing" constant="14" id="CHZ-U9-CML"/>
+                        <constraint firstAttribute="bottom" secondItem="y7H-rI-1WI" secondAttribute="bottom" constant="14" id="U6U-eY-p7c"/>
+                        <constraint firstItem="y7H-rI-1WI" firstAttribute="top" secondItem="Trt-pi-KKo" secondAttribute="top" constant="14" id="rMY-se-XGp"/>
+                        <constraint firstItem="y7H-rI-1WI" firstAttribute="leading" secondItem="Trt-pi-KKo" secondAttribute="leading" constant="14" id="zLo-MP-UjZ"/>
                     </constraints>
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" name="Blue (Light)"/>
             <constraints>
-                <constraint firstItem="Trt-pi-KKo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="4hh-Ed-v4l"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Trt-pi-KKo" secondAttribute="bottom" constant="16" id="Vmm-Ck-YRa"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Trt-pi-KKo" secondAttribute="trailing" constant="16" id="Zr3-eh-RX3"/>
-                <constraint firstItem="Trt-pi-KKo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="dQp-Uk-vQn"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Trt-pi-KKo" secondAttribute="trailing" constant="16" id="3lU-dd-U3I"/>
+                <constraint firstItem="Trt-pi-KKo" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="4RG-qm-KPc"/>
+                <constraint firstItem="Trt-pi-KKo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="yJ3-Br-Ead"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Trt-pi-KKo" secondAttribute="bottom" id="yen-bM-1HL"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="130.53435114503816" y="138.73239436619718"/>
+            <point key="canvasLocation" x="152.67175572519082" y="138.73239436619718"/>
         </view>
     </objects>
     <resources>
@@ -179,10 +207,10 @@
             <color red="0.83529411764705885" green="0.79607843137254897" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Purple (Main)">
-            <color red="0.45199999213218689" green="0.31700000166893005" blue="0.9179999828338623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.45098039215686275" green="0.31372549019607843" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <namedColor name="White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
