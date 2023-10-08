@@ -27,7 +27,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" name="Blue (Light)"/>
+            <color key="backgroundColor" name="Background"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="5jV-2D-ugL" secondAttribute="bottom" id="EOB-zc-6Pp"/>
                 <constraint firstItem="5jV-2D-ugL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="PxO-1g-KUM"/>
@@ -38,7 +38,7 @@
         </view>
     </objects>
     <resources>
-        <namedColor name="Blue (Light)">
+        <namedColor name="Background">
             <color red="0.93300002813339233" green="0.9570000171661377" blue="0.9649999737739563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">

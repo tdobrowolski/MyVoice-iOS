@@ -31,6 +31,7 @@ enum PersonalVoiceAuthorizationStatus {
         }
     }
     
+    // TODO: Correct messages. Polish version of approved is not perfect.
     var settingsAlertMessage: String {
         switch self {
         case .unsupported: 

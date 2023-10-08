@@ -7,6 +7,9 @@
 
 import UIKit
 
+// FIXME: Improve height of action buttons
+// FIXME: Improve primary purple for Dark Mode
+
 class BottomInfoViewController: BaseViewController<BottomInfoViewModel> {
     @IBOutlet weak var personalVoiceInfoView: PersonalVoiceInfoView!
     
@@ -24,7 +27,10 @@ class BottomInfoViewController: BaseViewController<BottomInfoViewModel> {
     
     private func learnMoreDidTap() {
         let helpViewModel = HelpViewModel()
-        let helpViewController = HelpViewController(viewModel: helpViewModel, nibName: Nib.helpViewController.name)
+        let helpViewController = HelpView(
+            contentTypeToExpand: .personalVoice,
+            onDone: { [weak self] in self?.dismiss(animated: true) }
+        ).asViewController
         let helpNavigationController = DefaultNavigationController(rootViewController: helpViewController)
         
         present(helpNavigationController, animated: true, completion: nil)

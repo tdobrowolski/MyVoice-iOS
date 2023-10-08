@@ -231,3 +231,39 @@
 
 /* You have no phrases yet! */
 "You have no phrases yet!" = "Nie masz zapisanych fraz!";
+
+/* No comment provided by engineer. */
+"1. Create a Personal Voice in the system Settings app. Navigate to Accessibility > Personal Voice > Create a Personal Voice. Follow the onscreen instructions to generate the voice. You will be informed by the system when Personal Voice is ready." = "";
+
+/* No comment provided by engineer. */
+"2. After Personal Voice is generated, allow access to it in the system Settings app. Go to Accessibility > Personal Voice and enable Allow Apps to Request to Use option." = "";
+
+/* No comment provided by engineer. */
+"3. Go to the MyVoice Settings screen and enable Personal Voice by tapping on the Personal Voice access button." = "";
+
+/* No comment provided by engineer. */
+"4. After allowing access, your generated voice will be visible to choose on the Select voice screen." = "";
+
+/* No comment provided by engineer. */
+"Accessibility > Personal Voice" = "";
+
+/* No comment provided by engineer. */
+"Accessibility > Personal Voice > Create a Personal Voice" = "";
+
+/* No comment provided by engineer. */
+"Allow Apps to Request to Use" = "";
+
+/* No comment provided by engineer. */
+"How to use Personal Voice?" = "";
+
+/* No comment provided by engineer. */
+"If you have denied access to Personal Voice, you can still change your settings from the system Settings app." = "";
+
+/* No comment provided by engineer. */
+"MyVoice Settings screen" = "";
+
+/* No comment provided by engineer. */
+"Personal Voice is a generated, synthesized voice that sounds like your own. You can use it in the MyVoice app, like any other available voice. Personal Voice supports all customization settings including adjustment of speech rate and speech pitch. To use Personal Voice in the app:" = "";
+
+/* No comment provided by engineer. */
+"Select voice screen" = "";

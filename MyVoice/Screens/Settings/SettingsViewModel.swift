@@ -74,6 +74,7 @@ final class SettingsViewModel: BaseViewModel {
                             items: [rateAppSetting, feedbackSetting])
         ]
         
+        // FIXME: Remove top padding
         if #available(iOS 17.0, *) {
             sections.insert(
                 SettingsSection(type: .personalVoice,

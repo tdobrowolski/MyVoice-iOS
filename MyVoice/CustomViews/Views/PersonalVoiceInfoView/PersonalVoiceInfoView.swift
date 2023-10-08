@@ -45,7 +45,7 @@ final class PersonalVoiceInfoView: UIView {
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        contentView.backgroundColor = .blueLight
+        contentView.backgroundColor = .background
         backgroundColor = .clear
         
         roundedContainerView.backgroundColor = .whiteCustom

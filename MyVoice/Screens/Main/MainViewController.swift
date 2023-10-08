@@ -203,7 +203,9 @@ final class MainViewController: BaseViewController<MainViewModel> {
     private func helpDidTouch() {
         viewModel.stopSpeaking()
         let helpViewModel = HelpViewModel()
-        let helpViewController = Help().asViewController// HelpViewController(viewModel: helpViewModel, nibName: Nib.helpViewController.name)
+        let helpViewController = HelpView(
+            onDone: { [weak self] in self?.dismiss(animated: true) }
+        ).asViewController
         let helpNavigationController = DefaultNavigationController(rootViewController: helpViewController)
         
         present(helpNavigationController, animated: true, completion: nil)

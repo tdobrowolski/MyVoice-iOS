@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIColor {
     static var background: UIColor? {
@@ -50,5 +51,11 @@ extension UIColor {
     
     static var purpleMain: UIColor? {
         .init(named: Colors.purpleMain.name)
+    }
+}
+
+extension UIColor {
+    var asColor: Color {
+        Color(self)
     }
 }

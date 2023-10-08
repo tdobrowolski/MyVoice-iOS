@@ -7,6 +7,8 @@
 
 import UIKit
 
+// TODO: Remove old ViewController files
+
 final class HelpViewController: BaseViewController<HelpViewModel> {
     @IBOutlet weak var speakPhrasesHelpView: UIView!
     @IBOutlet weak var speakPhrasesHelpTitleLabel: UILabel!
@@ -147,5 +149,4 @@ final class HelpViewController: BaseViewController<HelpViewModel> {
     private func doneDidTouch() {
         navigationController?.dismiss(animated: true, completion: nil)
     }
-
 }

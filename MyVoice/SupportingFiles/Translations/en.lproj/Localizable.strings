@@ -1,11 +1,23 @@
+/* No comment provided by engineer. */
+"1. Create a Personal Voice in the system Settings app. Navigate to Accessibility > Personal Voice > Create a Personal Voice. Follow the onscreen instructions to generate the voice. You will be informed by the system when Personal Voice is ready." = "1. Create a Personal Voice in the system Settings app. Navigate to Accessibility > Personal Voice > Create a Personal Voice. Follow the onscreen instructions to generate the voice. You will be informed by the system when Personal Voice is ready.";
+
 /* First part of bigger text */
 "1. Open the system" = "1. Open the system";
+
+/* No comment provided by engineer. */
+"2. After Personal Voice is generated, allow access to it in the system Settings app. Go to Accessibility > Personal Voice and enable Allow Apps to Request to Use option." = "2. After Personal Voice is generated, allow access to it in the system Settings app. Go to Accessibility > Personal Voice and enable Allow Apps to Request to Use option.";
 
 /* First part of bigger text */
 "2. Navigate to" = "2. Navigate to";
 
 /* No comment provided by engineer. */
+"3. Go to the MyVoice Settings screen and enable Personal Voice by tapping on the Personal Voice access button." = "3. Go to the MyVoice Settings screen and enable Personal Voice by tapping on the Personal Voice access button.";
+
+/* No comment provided by engineer. */
 "3. Tap on Add New Language and select the language/dialect that you want to add." = "3. Tap on Add New Language and select the language/dialect that you want to add.";
+
+/* No comment provided by engineer. */
+"4. After allowing access, your generated voice will be visible to choose on the Select voice screen." = "4. After allowing access, your generated voice will be visible to choose on the Select voice screen.";
 
 /* No comment provided by engineer. */
 "4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice." = "4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice.";
@@ -19,6 +31,12 @@
 /* No comment provided by engineer. */
 "Access to Personal Voice was not yet determined." = "Access to Personal Voice was not yet determined.";
 
+/* No comment provided by engineer. */
+"Accessibility > Personal Voice" = "Accessibility > Personal Voice";
+
+/* No comment provided by engineer. */
+"Accessibility > Personal Voice > Create a Personal Voice" = "Accessibility > Personal Voice > Create a Personal Voice";
+
 /* Second part of bigger text */
 "Accessibility > VoiceOver > Speech" = "Accessibility > VoiceOver > Speech";
 
@@ -27,6 +45,9 @@
 
 /* No comment provided by engineer. */
 "Allow access" = "Allow access";
+
+/* No comment provided by engineer. */
+"Allow Apps to Request to Use" = "Allow Apps to Request to Use";
 
 /* No comment provided by engineer. */
 "Authorized" = "Authorized";
@@ -82,6 +103,12 @@
 /* No comment provided by engineer. */
 "How to make my phrases be spoken out loud?" = "How to make my phrases be spoken out loud?";
 
+/* No comment provided by engineer. */
+"How to use Personal Voice?" = "How to use Personal Voice?";
+
+/* No comment provided by engineer. */
+"If you have denied access to Personal Voice, you can still change your settings from the system Settings app." = "If you have denied access to Personal Voice, you can still change your settings from the system Settings app.";
+
 /* It looks like there's no mail account, that the system can use to send feedback. */
 "It looks like there's no mail account, that the system can use to send feedback." = "It looks like there's no mail account, that the system can use to send feedback.";
 
@@ -99,6 +126,9 @@
 
 /* MyVoice */
 "MyVoice" = "MyVoice";
+
+/* No comment provided by engineer. */
+"MyVoice Settings screen" = "MyVoice Settings screen";
 
 /* No mail account */
 "No mail account" = "No mail account";
@@ -120,6 +150,9 @@
 
 /* No comment provided by engineer. */
 "Personal Voice access" = "Personal Voice access";
+
+/* No comment provided by engineer. */
+"Personal Voice is a generated, synthesized voice that sounds like your own. You can use it in the MyVoice app, like any other available voice. Personal Voice supports all customization settings including adjustment of speech rate and speech pitch. To use Personal Voice in the app:" = "Personal Voice is a generated, synthesized voice that sounds like your own. You can use it in the MyVoice app, like any other available voice. Personal Voice supports all customization settings including adjustment of speech rate and speech pitch. To use Personal Voice in the app:";
 
 /* No comment provided by engineer. */
 "Personal Voice now available" = "Personal Voice now available";
@@ -147,6 +180,9 @@
 
 /* Select voice */
 "Select voice" = "Select voice";
+
+/* No comment provided by engineer. */
+"Select voice screen" = "Select voice screen";
 
 /* No comment provided by engineer. */
 "Send feedback" = "Send feedback";
