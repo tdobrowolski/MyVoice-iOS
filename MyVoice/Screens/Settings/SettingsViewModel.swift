@@ -19,7 +19,7 @@ final class SettingsViewModel: BaseViewModel {
     
     override init() {
         self.userDefaultsService = UserDefaultsService()
-        self.textToSpeechService = TextToSpeechService() // TODO: Refactor to pass existing service
+        self.textToSpeechService = TextToSpeechService()
         self.personalVoiceService = PersonalVoiceService()
         self.feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
 
@@ -74,7 +74,6 @@ final class SettingsViewModel: BaseViewModel {
                             items: [rateAppSetting, feedbackSetting])
         ]
         
-        // FIXME: Remove top padding
         if personalVoiceService.isSupported {
             sections.insert(
                 SettingsSection(type: .personalVoice,

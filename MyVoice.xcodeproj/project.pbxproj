@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		562CFA2A2AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CFA292AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift */; };
+		562CFA2C2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CFA2B2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift */; };
 		E115574325B4C4290093851B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115574225B4C4290093851B /* AppDelegate.swift */; };
 		E115574525B4C4290093851B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115574425B4C4290093851B /* SceneDelegate.swift */; };
 		E115574C25B4C42B0093851B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E115574B25B4C42B0093851B /* Assets.xcassets */; };
@@ -85,6 +87,8 @@
 /* Begin PBXFileReference section */
 		00064B458A7017DF2720DD19 /* Pods-MyVoice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVoice.debug.xcconfig"; path = "Target Support Files/Pods-MyVoice/Pods-MyVoice.debug.xcconfig"; sourceTree = "<group>"; };
 		4A86AE1510816C7951487315 /* Pods-MyVoice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVoice.release.xcconfig"; path = "Target Support Files/Pods-MyVoice/Pods-MyVoice.release.xcconfig"; sourceTree = "<group>"; };
+		562CFA292AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVSpeechSynthesizer+Extensions.swift"; sourceTree = "<group>"; };
+		562CFA2B2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceAuthorizationStatus.swift; sourceTree = "<group>"; };
 		61378B4DF55B36302E38E8BA /* Pods_MyVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E115573F25B4C4290093851B /* MyVoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E115574225B4C4290093851B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -272,8 +276,9 @@
 				E19392AC2A2C0AE400CA6238 /* UIColor+Extensions.swift */,
 				E134BBE02A3F429700109013 /* String+Extensions.swift */,
 				E134BBE22A3F429F00109013 /* Array+Extensions.swift */,
-				E179E5A42A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift */,
 				E13919C92AD3342D00694200 /* View+Extensions.swift */,
+				E179E5A42A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift */,
+				562CFA292AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -441,6 +446,7 @@
 				E1417F952A324E5D00B0A9DA /* Fonts.swift */,
 				E1F4CA6E2A326E1A00ADC747 /* SliderDataType.swift */,
 				E13919C42AD3190600694200 /* HelpContentType.swift */,
+				562CFA2B2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -751,6 +757,7 @@
 				E18AF60825F57A27008CFA5D /* CustomScrollView.swift in Sources */,
 				E115576A25B4C5C20093851B /* ViewController+Extensions.swift in Sources */,
 				E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */,
+				562CFA2A2AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift in Sources */,
 				E134BBE12A3F429700109013 /* String+Extensions.swift in Sources */,
 				E11C1AD125D83CFF001FE05E /* Phrase+CoreDataProperties.swift in Sources */,
 				E15B839F25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift in Sources */,
@@ -766,6 +773,7 @@
 				E13919C52AD3190600694200 /* HelpContentType.swift in Sources */,
 				E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */,
 				E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */,
+				562CFA2C2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift in Sources */,
 				E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */,
 				E13919C82AD333DE00694200 /* CollapsableHelpComponentView.swift in Sources */,
 				E1D4C3EF2AD0A23A0059DC46 /* PersonalVoiceService.swift in Sources */,

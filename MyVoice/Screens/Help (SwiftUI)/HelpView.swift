@@ -7,9 +7,6 @@
 
 import SwiftUI
 
-// TODO: Scroll to expandedType from init
-// FIXME: Fix navbar color, background color is set only if you open other screen
-
 struct HelpView: View {
     @State private var expandedType: HelpContentType?
     
@@ -63,6 +60,11 @@ struct HelpView: View {
                 .id(type.id)
                 .animation(.bouncy(extraBounce: -0.1), value: expandedType)
             }
+        }
+        .onAppear {
+            guard let expandedType else { return }
+
+            scrollViewProxy.scrollTo(expandedType.id, anchor: .top)
         }
     }
     
