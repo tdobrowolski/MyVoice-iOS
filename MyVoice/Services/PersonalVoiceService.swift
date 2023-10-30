@@ -24,14 +24,13 @@ enum PersonalVoiceAuthorizationStatus {
     
     var title: String {
         switch self {
-        case .unsupported: return NSLocalizedString("Unsupported", comment: "")
-        case .notDetermined: return NSLocalizedString("Not determined", comment: "")
-        case .denied: return NSLocalizedString("Denied", comment: "")
-        case .authorized: return NSLocalizedString("Authorized", comment: "")
+        case .unsupported: return NSLocalizedString("Personal Voice not supported", comment: "")
+        case .notDetermined: return NSLocalizedString("Access not determined", comment: "")
+        case .denied: return NSLocalizedString("Access denied", comment: "")
+        case .authorized: return NSLocalizedString("Access granted", comment: "")
         }
     }
     
-    // TODO: Correct messages. Polish version of approved is not perfect.
     var settingsAlertMessage: String {
         switch self {
         case .unsupported: 
@@ -65,6 +64,10 @@ extension AVSpeechSynthesizer.PersonalVoiceAuthorizationStatus {
 
 final class PersonalVoiceService {
     let authorizationStatus = BehaviorSubject<PersonalVoiceAuthorizationStatus>(value: .unsupported)
+    
+    var isSupported: Bool {
+        (try? authorizationStatus.value() != .unsupported) ?? false
+    }
     
     init() {
         if #available(iOS 17.0, *) {

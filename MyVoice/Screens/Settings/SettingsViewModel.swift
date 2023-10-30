@@ -11,16 +11,16 @@ import AVFoundation
 final class SettingsViewModel: BaseViewModel {
     let sections = BehaviorSubject<[SettingsSection]>(value: [])
     let personalVoiceAuthorizationStatus = BehaviorSubject<PersonalVoiceAuthorizationStatus>(value: .unsupported)
-    let personalVoiceService: PersonalVoiceService
     
     private let userDefaultsService: UserDefaultsService
     private let textToSpeechService: TextToSpeechService
+    private let personalVoiceService: PersonalVoiceService
     private let feedbackGenerator: UIImpactFeedbackGenerator
     
     override init() {
-        self.personalVoiceService = PersonalVoiceService()
         self.userDefaultsService = UserDefaultsService()
         self.textToSpeechService = TextToSpeechService() // TODO: Refactor to pass existing service
+        self.personalVoiceService = PersonalVoiceService()
         self.feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
 
         super.init()
@@ -75,7 +75,7 @@ final class SettingsViewModel: BaseViewModel {
         ]
         
         // FIXME: Remove top padding
-        if #available(iOS 17.0, *) {
+        if personalVoiceService.isSupported {
             sections.insert(
                 SettingsSection(type: .personalVoice,
                                 footer: NSLocalizedString("You can use Personal Voice - a synthesized voice that sounds like your own in the app, only if you grant access to it.", comment: ""),
@@ -140,5 +140,11 @@ final class SettingsViewModel: BaseViewModel {
     
     func didSetSliderToCenter() {
         feedbackGenerator.impactOccurred()
+    }
+    
+    func requestPersonalVoiceAccess() async {
+        if #available(iOS 17.0, *) {
+            await personalVoiceService.requestPersonalVoiceAccess()
+        }
     }
 }

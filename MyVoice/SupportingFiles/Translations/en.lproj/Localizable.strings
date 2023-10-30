@@ -23,6 +23,15 @@
 "4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice." = "4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice.";
 
 /* No comment provided by engineer. */
+"Access denied" = "Access denied";
+
+/* No comment provided by engineer. */
+"Access granted" = "Access granted";
+
+/* No comment provided by engineer. */
+"Access not determined" = "Access not determined";
+
+/* No comment provided by engineer. */
 "Access to Personal Voice was denied. You can change this setting, by granting access again in the Settings app." = "Access to Personal Voice was denied. You can change this setting, by granting access again in the Settings app.";
 
 /* No comment provided by engineer. */
@@ -153,6 +162,9 @@
 
 /* No comment provided by engineer. */
 "Personal Voice is a generated, synthesized voice that sounds like your own. You can use it in the MyVoice app, like any other available voice. Personal Voice supports all customization settings including adjustment of speech rate and speech pitch. To use Personal Voice in the app:" = "Personal Voice is a generated, synthesized voice that sounds like your own. You can use it in the MyVoice app, like any other available voice. Personal Voice supports all customization settings including adjustment of speech rate and speech pitch. To use Personal Voice in the app:";
+
+/* No comment provided by engineer. */
+"Personal Voice not supported" = "Personal Voice not supported";
 
 /* No comment provided by engineer. */
 "Personal Voice now available" = "Personal Voice now available";

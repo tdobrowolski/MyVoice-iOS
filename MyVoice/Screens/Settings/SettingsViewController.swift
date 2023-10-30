@@ -199,7 +199,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         switch status {
         case .notDetermined: 
             if #available(iOS 17.0, *) {
-                Task { await viewModel.personalVoiceService.requestPersonalVoiceAccess() }
+                Task { await viewModel.requestPersonalVoiceAccess() }
                 // TODO: Refresh cell after allowing access
             } else {
                 fallthrough
