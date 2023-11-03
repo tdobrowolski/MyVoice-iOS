@@ -35,7 +35,7 @@
 "Access to Personal Voice was denied. You can change this setting, by granting access again in the Settings app." = "Odmówiono dostępu do głosu indywidualnego. Możesz ponownie go przyznać w systemowej aplikacji Ustawienia.";
 
 /* No comment provided by engineer. */
-"Access to Personal Voice was granted. You can now select configured Personal Voices from the voice picker list." = "Przyznano dostęp do głosu indywidualnego. Możesz teraz wybrać skonfigurowane głosy indywidualne z listy wyboru.";
+"Access to Personal Voice was granted. You can now select configured Personal Voices from the voice picker list." = "Możesz teraz wybrać skonfigurowane głosy indywidualne na ekranie 'Wybierz głos'.";
 
 /* No comment provided by engineer. */
 "Access to Personal Voice was not yet determined." = "Nie określono dostępu do głosu indywidualnego.";
@@ -96,6 +96,9 @@
 
 /* No comment provided by engineer. */
 "Go to the official Apple tutorial." = "Przejdź do poradnika Apple.";
+
+/* No comment provided by engineer. */
+"Grant Personal Voice access" = "Przyznaj dostęp";
 
 /* Help */
 "Help" = "Samouczek";
@@ -159,6 +162,12 @@
 
 /* No comment provided by engineer. */
 "Personal Voice access" = "Dostęp do głosu indywidualnego";
+
+/* No comment provided by engineer. */
+"Personal Voice access denied" = "Odmówiono dostępu do głosu indywidualnego";
+
+/* No comment provided by engineer. */
+"Personal Voice access granted" = "Pryznano dostęp do głosu indywidualnego";
 
 /* No comment provided by engineer. */
 "Personal Voice is a generated, synthesized voice that sounds like your own. You can use it in the MyVoice app, like any other available voice. Personal Voice supports all customization settings including adjustment of speech rate and speech pitch. To use Personal Voice in the app:" = "Głos indywidualny to wygenerowany, zsyntetyzowany głos, który brzmi jak Twój własny. Można go używać w aplikacji MyVoice, tak jak każdego innego dostępnego głosu. Głos indywidualny obsługuje wszystkie opcje personalizacji, w tym regulację tempa i tonu mowy. Aby korzystać z głosu indywidualnego w aplikacji:";

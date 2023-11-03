@@ -92,6 +92,8 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             cell.textLabel?.text = sections[indexPath.section].items[indexPath.row].primaryText
             cell.textLabel?.font = Fonts.Poppins.medium(15.0).font
             cell.textLabel?.textColor = .blackCustom ?? .black
+            cell.textLabel?.minimumScaleFactor = 0.9
+            cell.textLabel?.adjustsFontSizeToFitWidth = true
             cell.textLabel?.allowsDefaultTighteningForTruncation = true
             cell.detailTextLabel?.text = sections[indexPath.section].items[indexPath.row].secondaryText
             cell.detailTextLabel?.font = Fonts.Poppins.regular(15.0).font
@@ -199,8 +201,10 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         switch status {
         case .notDetermined: 
             if #available(iOS 17.0, *) {
-                Task { await viewModel.requestPersonalVoiceAccess() }
-                // TODO: Refresh cell after allowing access
+                Task {
+                    await viewModel.requestPersonalVoiceAccess()
+                    self.tableView.reloadData()
+                }
             } else {
                 fallthrough
             }

@@ -97,6 +97,9 @@
 /* No comment provided by engineer. */
 "Go to the official Apple tutorial." = "Go to the official Apple tutorial.";
 
+/* No comment provided by engineer. */
+"Grant Personal Voice access" = "Grant Personal Voice access";
+
 /* Help */
 "Help" = "Help";
 
@@ -279,3 +282,9 @@
 
 /* You have no phrases yet! */
 "You have no phrases yet!" = "You have no phrases yet!";
+
+/* No comment provided by engineer. */
+"Personal Voice access denied" = "Personal Voice access denied";
+
+/* No comment provided by engineer. */
+"Personal Voice access granted" = "Personal Voice access granted";

@@ -33,6 +33,15 @@ final class SettingsViewModel: BaseViewModel {
         personalVoiceService.authorizationStatus
             .bind(to: personalVoiceAuthorizationStatus)
             .disposed(by: disposeBag)
+
+        personalVoiceAuthorizationStatus
+            .skip(1)
+            .distinctUntilChanged()
+            .observe(on: MainScheduler.instance)
+            .subscribe { [weak self] status in
+                try? self?.updatePersonalVoiceSection(for: status)
+            }
+            .disposed(by: disposeBag)
     }
     
     private func getAvailableSettings() -> [SettingsSection] {
@@ -49,9 +58,10 @@ final class SettingsViewModel: BaseViewModel {
         let pitchSetting = SettingModel(primaryText: "", secondaryText: nil)
         
         // Section 4
+        let authorizationStatus = (try? personalVoiceService.authorizationStatus.value()) ?? .notDetermined
         let personalVoiceSetting = SettingModel(
-            primaryText: NSLocalizedString("Personal Voice access", comment: ""),
-            secondaryText: try? personalVoiceService.authorizationStatus.value().title
+            primaryText: authorizationStatus.settingsSectionTitle,
+            secondaryText: nil
         )
         
         // Section 5
@@ -85,7 +95,26 @@ final class SettingsViewModel: BaseViewModel {
         
         return sections
     }
-    
+
+    private func updatePersonalVoiceSection(for status: PersonalVoiceAuthorizationStatus) throws {
+        var updatedSections = try self.sections.value()
+
+        guard let indexToUpdate = updatedSections.firstIndex(
+            where: { $0.type == .personalVoice }
+        ) else {
+            return
+        }
+
+        updatedSections[indexToUpdate].items = [
+            SettingModel(
+                primaryText: status.settingsSectionTitle,
+                secondaryText: nil
+            )
+        ]
+
+        sections.onNext(updatedSections)
+    }
+
     func getSelectedVoiceName() -> String {
         if let selectedVoiceIdentifier = userDefaultsService.getSpeechVoiceIdentifier(), let selectedVoice = AVSpeechSynthesisVoice(identifier: selectedVoiceIdentifier) {
             let fullLanguage = NSLocale(localeIdentifier: NSLocale.current.identifier).localizedString(forLanguageCode: selectedVoice.language) ?? NSLocalizedString("Default", comment: "")

@@ -29,6 +29,15 @@ enum PersonalVoiceAuthorizationStatus {
         }
     }
 
+    var settingsSectionTitle: String {
+        switch self {
+        case .unsupported: return NSLocalizedString("Personal Voice not supported", comment: "")
+        case .notDetermined: return NSLocalizedString("Grant Personal Voice access", comment: "")
+        case .denied: return NSLocalizedString("Personal Voice access denied", comment: "")
+        case .authorized: return NSLocalizedString("Personal Voice access granted", comment: "")
+        }
+    }
+
     var settingsAlertMessage: String {
         switch self {
         case .unsupported:
