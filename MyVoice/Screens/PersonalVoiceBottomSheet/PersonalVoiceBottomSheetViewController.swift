@@ -1,5 +1,5 @@
 //
-//  BottomInfoViewController.swift
+//  PersonalVoiceBottomSheetViewController.swift
 //  MyVoice
 //
 //  Created by Tobiasz Dobrowolski on 03/10/2023.
@@ -10,7 +10,7 @@ import UIKit
 // FIXME: Improve height of action buttons
 // FIXME: Improve primary purple for Dark Mode
 
-class BottomInfoViewController: BaseViewController<BottomInfoViewModel> {
+class PersonalVoiceBottomSheetViewController: BaseViewController<PersonalVoiceBottomSheetViewModel> {
     @IBOutlet weak var personalVoiceInfoView: PersonalVoiceInfoView!
     
     override func viewDidLoad() {
@@ -26,10 +26,13 @@ class BottomInfoViewController: BaseViewController<BottomInfoViewModel> {
     }
     
     private func learnMoreDidTap() {
-        let helpViewModel = HelpViewModel()
-        let helpViewController = HelpView(
-            contentTypeToExpand: .personalVoice,
+        let helpViewModel = HelpViewModel(
+            supportsPersonalVoice: true,
             onDone: { [weak self] in self?.dismiss(animated: true) }
+        )
+        let helpViewController = HelpView(
+            viewModel: helpViewModel,
+            contentTypeToExpand: .personalVoice
         ).asViewController
         let helpNavigationController = DefaultNavigationController(rootViewController: helpViewController)
         
@@ -37,7 +40,7 @@ class BottomInfoViewController: BaseViewController<BottomInfoViewModel> {
     }
 }
 
-extension BottomInfoViewController: PersonalVoiceInfoViewDelegate {
+extension PersonalVoiceBottomSheetViewController: PersonalVoiceInfoViewDelegate {
     func didTapLearnMore() {
         learnMoreDidTap()
     }

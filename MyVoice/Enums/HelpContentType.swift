@@ -61,7 +61,11 @@ enum HelpContentType: String, CaseIterable, Identifiable {
             return getQuickAccessContentText()
         }
     }
-    
+
+    static var allCasesWithoutPersonalVoice: [HelpContentType] {
+        [.speakPhrases, .customizeSpeak, .changeVoice, .downloadVoice, .quickAccess]
+    }
+
     // MARK: Speak Phrases
     
     private func getSpeakPhrasesContentText() -> NSAttributedString {

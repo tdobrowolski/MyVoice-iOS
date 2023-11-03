@@ -9,6 +9,9 @@ import AVFoundation
 import Differentiator
 import RxSwift
 
+// FIXME: Personal Voice not on list after granting access (must restart app to see it)
+// TODO: Check what happens if Personal Voice selected and access is revoked
+
 protocol VoiceSelectionDelegate: AnyObject {
     func didSelectVoice()
 }
@@ -25,17 +28,18 @@ final class LanguagePickerViewModel: BaseViewModel {
     
     var selectedLanguageIdentifier: String?
     var showPersonalVoiceInfoBottomSheet: Bool {
-        if #available(iOS 17.0, *) {
-            guard let status = try? personalVoiceAuthorizationStatus.value() else { return false }
-            
-            return userDefaultsService.didShowPersonalVoiceInfo == false && status == .notDetermined
-        } else {
+        guard let status = try? personalVoiceAuthorizationStatus.value() else {
             return false
         }
+
+        return !userDefaultsService.didShowPersonalVoiceInfo && [.denied, .notDetermined].contains(status)
     }
     
-    init(delegate: VoiceSelectionDelegate?) {
-        self.personalVoiceService = PersonalVoiceService()
+    init(
+        personalVoiceService: PersonalVoiceService,
+        delegate: VoiceSelectionDelegate?
+    ) {
+        self.personalVoiceService = personalVoiceService
         self.userDefaultsService = UserDefaultsService()
         self.delegate = delegate
         super.init()
@@ -54,7 +58,18 @@ final class LanguagePickerViewModel: BaseViewModel {
         personalVoiceService.authorizationStatus
             .bind(to: personalVoiceAuthorizationStatus)
             .disposed(by: disposeBag)
-        
+
+        personalVoiceAuthorizationStatus
+            .skip(1)
+            .distinctUntilChanged()
+            .observe(on: MainScheduler.instance)
+            .subscribe { [weak self] status in
+                guard status == .authorized else { return }
+
+                self?.reloadAvailableSpeechVoices()
+            }
+            .disposed(by: disposeBag)
+
         if #available(iOS 17.0, *) {
             NotificationCenter.default
                 .addObserver(
@@ -89,7 +104,11 @@ final class LanguagePickerViewModel: BaseViewModel {
         userDefaultsService.setSpeechVoice(for: identifier)
         delegate?.didSelectVoice()
     }
-    
+
+    func didShowPersonalVoiceBottomSheet() {
+        userDefaultsService.setPersonalVoiceInfoToShown()
+    }
+
     @objc
     private func reloadAvailableSpeechVoices() {
         voices.onNext(AVSpeechSynthesisVoice.speechVoices())

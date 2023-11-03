@@ -43,9 +43,9 @@
 		E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */; };
 		E15B839F25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839D25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift */; };
 		E15B83A025CF3D3F00C8BFA5 /* VoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B839E25CF3D3F00C8BFA5 /* VoiceTableViewCell.xib */; };
-		E16C32F72ACCA58800FDEDC1 /* BottomInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16C32F52ACCA58800FDEDC1 /* BottomInfoViewController.swift */; };
-		E16C32F82ACCA58800FDEDC1 /* BottomInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16C32F62ACCA58800FDEDC1 /* BottomInfoViewController.xib */; };
-		E16C32FA2ACCA59500FDEDC1 /* BottomInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16C32F92ACCA59500FDEDC1 /* BottomInfoViewModel.swift */; };
+		E16C32F72ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16C32F52ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.swift */; };
+		E16C32F82ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16C32F62ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.xib */; };
+		E16C32FA2ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16C32F92ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift */; };
 		E1771A8025C21523003FE247 /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A7F25C21523003FE247 /* UITextView+Extensions.swift */; };
 		E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A8B25C21680003FE247 /* SettingsViewController.swift */; };
 		E1771A8E25C21680003FE247 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1771A8C25C21680003FE247 /* SettingsViewController.xib */; };
@@ -75,8 +75,6 @@
 		E1E89B1E2A3F558F004DF84F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E89B1C2A3F558F004DF84F /* HeaderView.xib */; };
 		E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */; };
 		E1E98A8325C6C77200F531BD /* SliderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E98A8125C6C77200F531BD /* SliderTableViewCell.xib */; };
-		E1F246F825FE82A90077EE4F /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F246F625FE82A90077EE4F /* HelpViewController.swift */; };
-		E1F246F925FE82A90077EE4F /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1F246F725FE82A90077EE4F /* HelpViewController.xib */; };
 		E1F246FC25FE82B30077EE4F /* HelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */; };
 		E1F4CA6F2A326E1A00ADC747 /* SliderDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4CA6E2A326E1A00ADC747 /* SliderDataType.swift */; };
 		E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */; };
@@ -126,9 +124,9 @@
 		E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewModel.swift; sourceTree = "<group>"; };
 		E15B839D25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceTableViewCell.swift; sourceTree = "<group>"; };
 		E15B839E25CF3D3F00C8BFA5 /* VoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoiceTableViewCell.xib; sourceTree = "<group>"; };
-		E16C32F52ACCA58800FDEDC1 /* BottomInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomInfoViewController.swift; sourceTree = "<group>"; };
-		E16C32F62ACCA58800FDEDC1 /* BottomInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomInfoViewController.xib; sourceTree = "<group>"; };
-		E16C32F92ACCA59500FDEDC1 /* BottomInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomInfoViewModel.swift; sourceTree = "<group>"; };
+		E16C32F52ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceBottomSheetViewController.swift; sourceTree = "<group>"; };
+		E16C32F62ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalVoiceBottomSheetViewController.xib; sourceTree = "<group>"; };
+		E16C32F92ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceBottomSheetViewModel.swift; sourceTree = "<group>"; };
 		E1771A7F25C21523003FE247 /* UITextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extensions.swift"; sourceTree = "<group>"; };
 		E1771A8B25C21680003FE247 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		E1771A8C25C21680003FE247 /* SettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -159,8 +157,6 @@
 		E1E89B1C2A3F558F004DF84F /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
 		E1E98A8125C6C77200F531BD /* SliderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderTableViewCell.xib; sourceTree = "<group>"; };
-		E1F246F625FE82A90077EE4F /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
-		E1F246F725FE82A90077EE4F /* HelpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpViewController.xib; sourceTree = "<group>"; };
 		E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewModel.swift; sourceTree = "<group>"; };
 		E1F4CA6E2A326E1A00ADC747 /* SliderDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderDataType.swift; sourceTree = "<group>"; };
 		E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
@@ -238,12 +234,11 @@
 		E115575925B4C51A0093851B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				E13919C12AD2D47A00694200 /* Help (SwiftUI) */,
 				E115575D25B4C5390093851B /* Main */,
+				E13919C12AD2D47A00694200 /* Help (SwiftUI) */,
 				E1771A8225C21605003FE247 /* Settings */,
-				E1F246F525FE82960077EE4F /* Help */,
 				E15B839225CF17AD00C8BFA5 /* LanguagePicker */,
-				E16C32F42ACCA54300FDEDC1 /* BottomInfo */,
+				E16C32F42ACCA54300FDEDC1 /* PersonalVoiceBottomSheet */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -361,6 +356,7 @@
 			children = (
 				E13919C62AD333D400694200 /* Subviews */,
 				E13919C22AD2D48E00694200 /* HelpView.swift */,
+				E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */,
 			);
 			path = "Help (SwiftUI)";
 			sourceTree = "<group>";
@@ -402,14 +398,14 @@
 			path = VoiceCell;
 			sourceTree = "<group>";
 		};
-		E16C32F42ACCA54300FDEDC1 /* BottomInfo */ = {
+		E16C32F42ACCA54300FDEDC1 /* PersonalVoiceBottomSheet */ = {
 			isa = PBXGroup;
 			children = (
-				E16C32F62ACCA58800FDEDC1 /* BottomInfoViewController.xib */,
-				E16C32F52ACCA58800FDEDC1 /* BottomInfoViewController.swift */,
-				E16C32F92ACCA59500FDEDC1 /* BottomInfoViewModel.swift */,
+				E16C32F62ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.xib */,
+				E16C32F52ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.swift */,
+				E16C32F92ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift */,
 			);
-			path = BottomInfo;
+			path = PersonalVoiceBottomSheet;
 			sourceTree = "<group>";
 		};
 		E1771A8225C21605003FE247 /* Settings */ = {
@@ -538,16 +534,6 @@
 			path = SliderCell;
 			sourceTree = "<group>";
 		};
-		E1F246F525FE82960077EE4F /* Help */ = {
-			isa = PBXGroup;
-			children = (
-				E1F246F625FE82A90077EE4F /* HelpViewController.swift */,
-				E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */,
-				E1F246F725FE82A90077EE4F /* HelpViewController.xib */,
-			);
-			path = Help;
-			sourceTree = "<group>";
-		};
 		E1FFC29225B625DD00E8F1C0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -630,8 +616,7 @@
 				E115574F25B4C42B0093851B /* LaunchScreen.storyboard in Resources */,
 				E1B148A125EC4326003C1401 /* Localizable.strings in Resources */,
 				E1D4C3F22AD0AA400059DC46 /* PersonalVoiceInfoView.xib in Resources */,
-				E16C32F82ACCA58800FDEDC1 /* BottomInfoViewController.xib in Resources */,
-				E1F246F925FE82A90077EE4F /* HelpViewController.xib in Resources */,
+				E16C32F82ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.xib in Resources */,
 				E15B83A025CF3D3F00C8BFA5 /* VoiceTableViewCell.xib in Resources */,
 				E115577425B4C93C0093851B /* Poppins-Medium.ttf in Resources */,
 				E115576225B4C56A0093851B /* MainViewController.xib in Resources */,
@@ -745,7 +730,7 @@
 				E19392AD2A2C0AE400CA6238 /* UIColor+Extensions.swift in Sources */,
 				E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */,
 				E18AF60D25F57BDF008CFA5D /* TouchHandlerButton.swift in Sources */,
-				E16C32F72ACCA58800FDEDC1 /* BottomInfoViewController.swift in Sources */,
+				E16C32F72ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.swift in Sources */,
 				E115574325B4C4290093851B /* AppDelegate.swift in Sources */,
 				E1E89B1D2A3F558F004DF84F /* HeaderView.swift in Sources */,
 				E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */,
@@ -763,11 +748,10 @@
 				E15B839F25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift in Sources */,
 				E115576125B4C56A0093851B /* MainViewController.swift in Sources */,
 				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
-				E1F246F825FE82A90077EE4F /* HelpViewController.swift in Sources */,
 				E141AD4425F58B9000C61408 /* BackgroundShadowView.swift in Sources */,
 				E1771A8025C21523003FE247 /* UITextView+Extensions.swift in Sources */,
 				E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */,
-				E16C32FA2ACCA59500FDEDC1 /* BottomInfoViewModel.swift in Sources */,
+				E16C32FA2ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift in Sources */,
 				E1D4C3F72AD0C7880059DC46 /* InfoButton.swift in Sources */,
 				E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */,
 				E13919C52AD3190600694200 /* HelpContentType.swift in Sources */,

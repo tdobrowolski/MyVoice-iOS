@@ -24,28 +24,8 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         tableView.backgroundColor = .clear
         addSearchController()
         addNavigationBarButton()
-        
-        // TODO: Move logic from here
-        if #available(iOS 16.0, *) {
-            showBottomInfo()
-        }
-    }
-    
-    // TODO: Move or remove
-    @available(iOS 16.0, *)
-    private func showBottomInfo() {
-        let bottomInfoViewModel = BottomInfoViewModel(personalVoiceService: viewModel.personalVoiceService)
-        let bottomInfoViewController = BottomInfoViewController(
-            viewModel: bottomInfoViewModel,
-            nibName: Nib.bottomInfoViewController.name
-        )
-        
-        let bottomInfoNavigationController = DefaultNavigationController(rootViewController: bottomInfoViewController)
-        bottomInfoViewController.navigationController?.setNavigationBarHidden(true, animated: false)
-        bottomInfoNavigationController.sheetPresentationController?.detents = [.custom { _ in 275.0 }]
-        bottomInfoNavigationController.sheetPresentationController?.prefersGrabberVisible = true
-        
-        present(bottomInfoNavigationController, animated: true, completion: nil)
+
+        showPersonalVoiceBottomSheetIfNeeded()
     }
     
     override func bindViewModel(_ viewModel: LanguagePickerViewModel) {
@@ -182,6 +162,34 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         viewModel.selectVoice(for: identifier)
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    // MARK: Personal Voice Bottom Sheet logic
+
+    private func showPersonalVoiceBottomSheetIfNeeded() {
+        guard viewModel.showPersonalVoiceInfoBottomSheet, #available(iOS 15.0, *) else { return }
+
+        showPersonalVoiceBottomSheet()
+    }
+
+    @available(iOS 15.0, *)
+    private func showPersonalVoiceBottomSheet() {
+        let bottomSheetViewModel = PersonalVoiceBottomSheetViewModel(personalVoiceService: viewModel.personalVoiceService)
+        let bottomSheetViewController = PersonalVoiceBottomSheetViewController(
+            viewModel: bottomSheetViewModel,
+            nibName: Nib.personalVoiceBottomSheetViewController.name
+        )
+
+        let bottomSheetNavigationController = DefaultNavigationController(rootViewController: bottomSheetViewController)
+        bottomSheetViewController.navigationController?.setNavigationBarHidden(true, animated: false)
+        bottomSheetNavigationController.sheetPresentationController?.detents = [.medium()]
+        bottomSheetNavigationController.sheetPresentationController?.prefersGrabberVisible = true
+
+        present(
+            bottomSheetNavigationController,
+            animated: true,
+            completion:  { [weak self] in self?.viewModel.didShowPersonalVoiceBottomSheet() }
+        )
     }
 }
 

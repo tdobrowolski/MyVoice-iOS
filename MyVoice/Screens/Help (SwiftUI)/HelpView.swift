@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+// FIXME: Fix animation, add delay when closing component
+
 struct HelpView: View {
+    @ObservedObject private var viewModel: HelpViewModel
+
     @State private var expandedType: HelpContentType?
-    
-    private let types = HelpContentType.allCases
-    private let onDone: () -> Void
     
     var body: some View {
         content
@@ -37,7 +38,7 @@ struct HelpView: View {
     
     private func getList(_ scrollViewProxy: ScrollViewProxy) -> some View {
         VStack(spacing: 16.0) {
-            ForEach(types) { type in
+            ForEach(viewModel.types) { type in
                 CollapsableHelpComponentView(
                     contentType: type,
                     onTap: { id in
@@ -62,7 +63,7 @@ struct HelpView: View {
             }
         }
         .onAppear {
-            guard let expandedType else { return }
+            guard let expandedType else { return } // FIXME: Not working, is still nil?
 
             scrollViewProxy.scrollTo(expandedType.id, anchor: .top)
         }
@@ -72,17 +73,17 @@ struct HelpView: View {
         Button(
             NSLocalizedString("Done", comment: "Done")
         ) {
-           onDone()
+            viewModel.didTapDone()
         }
         .font(Fonts.Poppins.semibold(17.0).swiftUIFont)
         .foregroundColor(UIColor.orangeMain?.asColor ?? .orange)
     }
     
     init(
-        contentTypeToExpand: HelpContentType? = nil,
-        onDone: @escaping () -> Void
+        viewModel: HelpViewModel,
+        contentTypeToExpand: HelpContentType? = nil
     ) {
+        self.viewModel = viewModel
         self.expandedType = contentTypeToExpand
-        self.onDone = onDone
     }
 }

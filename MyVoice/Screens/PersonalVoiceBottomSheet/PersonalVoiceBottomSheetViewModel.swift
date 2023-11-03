@@ -1,5 +1,5 @@
 //
-//  BottomInfoViewModel.swift
+//  PersonalVoiceBottomSheetViewModel.swift
 //  MyVoice
 //
 //  Created by Tobiasz Dobrowolski on 03/10/2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class BottomInfoViewModel: BaseViewModel {
+final class PersonalVoiceBottomSheetViewModel: BaseViewModel {
     private let personalVoiceService: PersonalVoiceService
     
     init(personalVoiceService: PersonalVoiceService) {

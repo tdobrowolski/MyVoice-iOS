@@ -11,16 +11,17 @@ import AVFoundation
 final class SettingsViewModel: BaseViewModel {
     let sections = BehaviorSubject<[SettingsSection]>(value: [])
     let personalVoiceAuthorizationStatus = BehaviorSubject<PersonalVoiceAuthorizationStatus>(value: .unsupported)
-    
+
+    let personalVoiceService: PersonalVoiceService
+
     private let userDefaultsService: UserDefaultsService
     private let textToSpeechService: TextToSpeechService
-    private let personalVoiceService: PersonalVoiceService
     private let feedbackGenerator: UIImpactFeedbackGenerator
     
-    override init() {
+    init(personalVoiceService: PersonalVoiceService) {
+        self.personalVoiceService = personalVoiceService
         self.userDefaultsService = UserDefaultsService()
         self.textToSpeechService = TextToSpeechService()
-        self.personalVoiceService = PersonalVoiceService()
         self.feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
 
         super.init()

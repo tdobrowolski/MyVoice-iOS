@@ -164,6 +164,12 @@
 "Personal Voice access" = "Personal Voice access";
 
 /* No comment provided by engineer. */
+"Personal Voice access denied" = "Personal Voice access denied";
+
+/* No comment provided by engineer. */
+"Personal Voice access granted" = "Personal Voice access granted";
+
+/* No comment provided by engineer. */
 "Personal Voice is a generated, synthesized voice that sounds like your own. You can use it in the MyVoice app, like any other available voice. Personal Voice supports all customization settings including adjustment of speech rate and speech pitch. To use Personal Voice in the app:" = "Personal Voice is a generated, synthesized voice that sounds like your own. You can use it in the MyVoice app, like any other available voice. Personal Voice supports all customization settings including adjustment of speech rate and speech pitch. To use Personal Voice in the app:";
 
 /* No comment provided by engineer. */
@@ -282,9 +288,3 @@
 
 /* You have no phrases yet! */
 "You have no phrases yet!" = "You have no phrases yet!";
-
-/* No comment provided by engineer. */
-"Personal Voice access denied" = "Personal Voice access denied";
-
-/* No comment provided by engineer. */
-"Personal Voice access granted" = "Personal Voice access granted";

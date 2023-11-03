@@ -185,7 +185,10 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     // MARK: Handle settings actions
     
     private func showLanguagePicker() {
-        let languagePickerViewModel = LanguagePickerViewModel(delegate: self)
+        let languagePickerViewModel = LanguagePickerViewModel(
+            personalVoiceService: viewModel.personalVoiceService,
+            delegate: self
+        )
         let languagePickerViewController = LanguagePickerViewController(
             viewModel: languagePickerViewModel,
             nibName: Nib.languagePickerViewController.name

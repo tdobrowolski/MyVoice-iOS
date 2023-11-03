@@ -64,7 +64,7 @@ struct CollapsableHelpComponentView: View {
                 .multilineTextAlignment(.leading)
                 .lineSpacing(1.0)
         } else {
-            Text(contentType.secondaryText.string) // TODO: Handle iOS 14
+            Text(contentType.secondaryText.string)
                 .font(Fonts.Poppins.medium(14.0).swiftUIFont)
                 .multilineTextAlignment(.leading)
                 .lineSpacing(1.0)
