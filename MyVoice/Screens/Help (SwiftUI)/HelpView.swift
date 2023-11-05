@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// FIXME: Fix animation, add delay when closing component
-
 struct HelpView: View {
     @ObservedObject private var viewModel: HelpViewModel
 
@@ -63,7 +61,7 @@ struct HelpView: View {
             }
         }
         .onAppear {
-            guard let expandedType else { return } // FIXME: Not working, is still nil?
+            guard let expandedType else { return }
 
             scrollViewProxy.scrollTo(expandedType.id, anchor: .top)
         }
@@ -83,7 +81,7 @@ struct HelpView: View {
         viewModel: HelpViewModel,
         contentTypeToExpand: HelpContentType? = nil
     ) {
-        self.viewModel = viewModel
         self.expandedType = contentTypeToExpand
+        self.viewModel = viewModel
     }
 }

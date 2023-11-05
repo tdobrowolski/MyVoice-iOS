@@ -7,9 +7,6 @@
 
 import UIKit
 
-// FIXME: Improve height of action buttons
-// FIXME: Improve primary purple for Dark Mode
-
 class PersonalVoiceBottomSheetViewController: BaseViewController<PersonalVoiceBottomSheetViewModel> {
     @IBOutlet weak var personalVoiceInfoView: PersonalVoiceInfoView!
     

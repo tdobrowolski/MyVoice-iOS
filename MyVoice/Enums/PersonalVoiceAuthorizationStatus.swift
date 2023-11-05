@@ -47,7 +47,7 @@ enum PersonalVoiceAuthorizationStatus {
             return NSLocalizedString("Access to Personal Voice was not yet determined.", comment: "")
 
         case .denied:
-            return NSLocalizedString("Access to Personal Voice was denied. You can change this setting, by granting access again in the Settings app.", comment: "")
+            return NSLocalizedString("Access to Personal Voice was denied by the user or it's blocked from the Settings app. Make sure to grant access to third-party apps from the Settings app (Accessibility > Personal Voice), then allow use from MyVoice app settings.", comment: "")
 
         case .authorized:
             return NSLocalizedString("Access to Personal Voice was granted. You can now select configured Personal Voices from the voice picker list.", comment: "")

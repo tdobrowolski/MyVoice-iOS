@@ -26,6 +26,7 @@
                 <outlet property="containerBottomConstraint" destination="yen-bM-1HL" id="UCl-X6-Jc1"/>
                 <outlet property="contentView" destination="iN0-l3-epB" id="ZAl-Eh-QpI"/>
                 <outlet property="iconContainer" destination="Kch-O0-IAU" id="rrJ-lY-q9Y"/>
+                <outlet property="iconStackViewContainer" destination="4Zo-fK-hcI" id="XKP-Ew-VK5"/>
                 <outlet property="learnMoreButton" destination="fbN-wN-418" id="re3-Al-ghU"/>
                 <outlet property="primaryButton" destination="hxm-fU-Rk9" id="Y3R-A0-lSc"/>
                 <outlet property="roundedContainerView" destination="Trt-pi-KKo" id="Dbs-cd-Vsc"/>
@@ -46,10 +47,10 @@
                             <rect key="frame" x="14" y="14" width="362" height="289"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="9Hq-au-TCw" userLabel="Upper Stack View">
-                                    <rect key="frame" x="0.0" y="0.0" width="362" height="218"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="362" height="210"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Zo-fK-hcI" userLabel="Icon Stack View">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="218"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="210"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kch-O0-IAU" userLabel="IconContainer">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -73,12 +74,12 @@
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xj8-3N-QZ4">
-                                                    <rect key="frame" x="0.0" y="50" width="50" height="168"/>
+                                                    <rect key="frame" x="0.0" y="50" width="50" height="160"/>
                                                 </view>
                                             </subviews>
                                         </stackView>
                                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E61-kn-P0e">
-                                            <rect key="frame" x="64" y="0.0" width="298" height="218"/>
+                                            <rect key="frame" x="64" y="0.0" width="298" height="210"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="CSg-T3-0MU" userLabel="Text Stack View">
                                                     <rect key="frame" x="0.0" y="0.0" width="298" height="236.33333333333334"/>
@@ -101,7 +102,7 @@
                                                             <color key="textColor" name="Blue (Dark)"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbN-wN-418">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbN-wN-418">
                                                             <rect key="frame" x="0.0" y="74.666666666666657" width="298" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="oL7-Ad-FkO"/>
@@ -135,19 +136,19 @@
                                     </subviews>
                                 </stackView>
                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Huc-2I-rDe">
-                                    <rect key="frame" x="0.0" y="232" width="362" height="1"/>
+                                    <rect key="frame" x="0.0" y="224" width="362" height="1"/>
                                     <color key="backgroundColor" name="Blue (Light)"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="910-rL-1y2"/>
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="iRx-Nl-5ca" userLabel="Buttons Stack View">
-                                    <rect key="frame" x="0.0" y="247" width="362" height="42"/>
+                                    <rect key="frame" x="0.0" y="239" width="362" height="50"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdq-Rf-XjM" customClass="InfoButton" customModule="MyVoice" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="174" height="42"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="174" height="50"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="42" id="VD8-zq-5Ih"/>
+                                                <constraint firstAttribute="height" constant="50" id="VD8-zq-5Ih"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                             <color key="tintColor" name="Purple (Main)"/>
@@ -160,10 +161,10 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hxm-fU-Rk9" customClass="InfoButton" customModule="MyVoice" customModuleProvider="target">
-                                            <rect key="frame" x="188" y="0.0" width="174" height="42"/>
+                                            <rect key="frame" x="188" y="0.0" width="174" height="50"/>
                                             <color key="backgroundColor" name="Purple (Light)"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="42" id="cfQ-AE-NTu"/>
+                                                <constraint firstAttribute="height" constant="50" id="cfQ-AE-NTu"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
                                             <color key="tintColor" name="Purple (Main)"/>

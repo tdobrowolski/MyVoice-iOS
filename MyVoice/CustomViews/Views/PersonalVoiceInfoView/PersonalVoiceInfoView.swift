@@ -13,9 +13,12 @@ protocol PersonalVoiceInfoViewDelegate: AnyObject {
     func didTapClose()
 }
 
+// TODO: Refactor layout. On some devices this still does not seem to work good.
+
 final class PersonalVoiceInfoView: UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var roundedContainerView: UIView!
+    @IBOutlet weak var iconStackViewContainer: UIStackView!
     @IBOutlet weak var iconContainer: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -52,10 +55,14 @@ final class PersonalVoiceInfoView: UIView {
         roundedContainerView.layer.cornerRadius = 10.0
         roundedContainerView.layer.masksToBounds = true
         
-        iconContainer.backgroundColor = .purpleLight
-        iconContainer.layer.cornerRadius = iconContainer.frame.width / 2
-        iconContainer.layer.masksToBounds = true
-        
+        if traitCollection.preferredContentSizeCategory > .extraLarge {
+            iconStackViewContainer.isHidden = true
+        } else {
+            iconContainer.backgroundColor = .purpleLight
+            iconContainer.layer.cornerRadius = iconContainer.frame.width / 2
+            iconContainer.layer.masksToBounds = true
+        }
+
         titleLabel.text = NSLocalizedString("Personal Voice now available", comment: "")
         subtitleLabel.text = NSLocalizedString("You can now use your generated Personal Voice to read phrases within the MyVoice app. To use your generated voices, grant access to it.", comment: "")
         learnMoreButton.setTitle(NSLocalizedString("Learn more about Personal Voice", comment: ""), for: .normal)
@@ -67,7 +74,9 @@ final class PersonalVoiceInfoView: UIView {
         titleLabel.allowsDefaultTighteningForTruncation = true
         subtitleLabel.allowsDefaultTighteningForTruncation = true
         learnMoreButton.titleLabel?.allowsDefaultTighteningForTruncation = true
-        
+
+        learnMoreButton.titleLabel?.minimumScaleFactor = 0.8
+
         primaryButton.setupLayout(forTitle: NSLocalizedString("Allow access", comment: ""), type: .primary)
         secondaryButton.setupLayout(forTitle: NSLocalizedString("Close", comment: ""), type: .secondary)
         

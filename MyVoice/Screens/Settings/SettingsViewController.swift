@@ -213,12 +213,44 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             }
             
         default:
+            var actions = [
+                UIAlertAction(
+                title: NSLocalizedString("OK", comment: "OK"),
+                style: .default,
+                handler: nil
+                )
+            ]
+            if status == .denied {
+                actions.insert(
+                    UIAlertAction(
+                        title: NSLocalizedString("Learn more", comment: ""),
+                        style: .default,
+                        handler: { [weak self] _ in self?.learnMoreDidTap() }
+                    ),
+                    at: 0
+                )
+            }
+
             showAlert(title: status.title,
                       message: status.settingsAlertMessage,
-                      actions: [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)])
+                      actions: actions)
         }
     }
-    
+
+    private func learnMoreDidTap() {
+        let helpViewModel = HelpViewModel(
+            supportsPersonalVoice: true,
+            onDone: { [weak self] in self?.dismiss(animated: true) }
+        )
+        let helpViewController = HelpView(
+            viewModel: helpViewModel,
+            contentTypeToExpand: .personalVoice
+        ).asViewController
+        let helpNavigationController = DefaultNavigationController(rootViewController: helpViewController)
+
+        present(helpNavigationController, animated: true, completion: nil)
+    }
+
     private func openAppStoreForReview() {
         guard let writeReviewURL = URL(string: "itms-apps:itunes.apple.com/app/6450155201"), UIApplication.shared.canOpenURL(writeReviewURL) else {
             return showAlert(title: NSLocalizedString("Can't open App Store", comment: ""),
