@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+/*
 class PersonalVoiceBottomSheetViewController: BaseViewController<PersonalVoiceBottomSheetViewModel> {
     @IBOutlet weak var personalVoiceInfoView: PersonalVoiceInfoView!
     
@@ -53,3 +53,4 @@ extension PersonalVoiceBottomSheetViewController: PersonalVoiceInfoViewDelegate 
         navigationController?.dismiss(animated: true, completion: nil)
     }
 }
+*/

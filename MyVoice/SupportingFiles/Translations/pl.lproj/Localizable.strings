@@ -32,6 +32,9 @@
 "Access not determined" = "Nie określono dostępu";
 
 /* No comment provided by engineer. */
+"Access to Personal Voice is not granted. First, make sure you've granted Personal Voice access to third-party apps in Accessiblity > Personal Voice." = "Nie przyznano dostępu do głosu indywidualnego dla aplikacji firm trzecich. Upewnij się, że przyznano dostęp dla aplikacji innych firm w Dostępność > Głos indywidualny.";
+
+/* No comment provided by engineer. */
 "Access to Personal Voice was denied by the user or it's blocked from the Settings app. Make sure to grant access to third-party apps from the Settings app (Accessibility > Personal Voice), then allow use from MyVoice app settings." = "Odmówiono dostępu do głosu indywidualnego lub dostęp jest zablokowany z poziomu ustawień systemowych. Upewnij się, że przyznano dostęp dla aplikacji innych firm z aplikacji Ustawienia (Dostępność > Głos indywidualny), a potem zezwól na użycie głosu aplikacji MyVoice.";
 
 /* No comment provided by engineer. */
@@ -60,6 +63,9 @@
 
 /* No comment provided by engineer. */
 "Allow Apps to Request to Use" = "Pozwalaj aplikacjom prosić o zgodę na użycie";
+
+/* No comment provided by engineer. */
+"Allow in Settings" = "Zezwól w Ustawieniach";
 
 /* No comment provided by engineer. */
 "Authorized" = "Zezwolono na dostęp";

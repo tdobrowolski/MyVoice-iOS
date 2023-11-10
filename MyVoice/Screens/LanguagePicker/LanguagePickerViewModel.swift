@@ -12,7 +12,7 @@ import RxSwift
 // FIXME: Personal Voice not on list after granting access (must restart app to see it)
 // TODO: Improve Bottom Sheet:
 // - When unspecified: Show allow access
-// - When denied: Show to go to Settings anf fix permissions
+// - When denied: Show to go to Settings and fix permissions
 
 protocol VoiceSelectionDelegate: AnyObject {
     func didSelectVoice()
@@ -34,7 +34,7 @@ final class LanguagePickerViewModel: BaseViewModel {
             return false
         }
 
-        return !userDefaultsService.didShowPersonalVoiceInfo && status == .notDetermined
+        return !userDefaultsService.didShowPersonalVoiceInfo && status.accessDeniedOrNotDetermined
     }
     
     init(

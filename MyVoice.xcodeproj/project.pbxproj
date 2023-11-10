@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		562CFA2A2AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CFA292AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift */; };
 		562CFA2C2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CFA2B2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift */; };
+		566666A42AFEF3F3009990EB /* InfoButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566666A32AFEF3F3009990EB /* InfoButtonStyle.swift */; };
+		56AE0CC12AF8297200D16467 /* PersonalVoiceBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AE0CC02AF8297200D16467 /* PersonalVoiceBottomSheetView.swift */; };
 		E115574325B4C4290093851B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115574225B4C4290093851B /* AppDelegate.swift */; };
 		E115574525B4C4290093851B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115574425B4C4290093851B /* SceneDelegate.swift */; };
 		E115574C25B4C42B0093851B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E115574B25B4C42B0093851B /* Assets.xcassets */; };
@@ -87,6 +89,8 @@
 		4A86AE1510816C7951487315 /* Pods-MyVoice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVoice.release.xcconfig"; path = "Target Support Files/Pods-MyVoice/Pods-MyVoice.release.xcconfig"; sourceTree = "<group>"; };
 		562CFA292AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVSpeechSynthesizer+Extensions.swift"; sourceTree = "<group>"; };
 		562CFA2B2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceAuthorizationStatus.swift; sourceTree = "<group>"; };
+		566666A32AFEF3F3009990EB /* InfoButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonStyle.swift; sourceTree = "<group>"; };
+		56AE0CC02AF8297200D16467 /* PersonalVoiceBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceBottomSheetView.swift; sourceTree = "<group>"; };
 		61378B4DF55B36302E38E8BA /* Pods_MyVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E115573F25B4C4290093851B /* MyVoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E115574225B4C4290093851B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +187,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		56AE0CBF2AF8295B00D16467 /* PersonalVoiceInfo (SwiftUI) */ = {
+			isa = PBXGroup;
+			children = (
+				56AE0CC02AF8297200D16467 /* PersonalVoiceBottomSheetView.swift */,
+			);
+			path = "PersonalVoiceInfo (SwiftUI)";
+			sourceTree = "<group>";
+		};
 		5DD28FE72419B1A46AD2C89F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +246,7 @@
 		E115575925B4C51A0093851B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				56AE0CBF2AF8295B00D16467 /* PersonalVoiceInfo (SwiftUI) */,
 				E115575D25B4C5390093851B /* Main */,
 				E13919C12AD2D47A00694200 /* Help (SwiftUI) */,
 				E1771A8225C21605003FE247 /* Settings */,
@@ -404,6 +417,7 @@
 				E16C32F62ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.xib */,
 				E16C32F52ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.swift */,
 				E16C32F92ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift */,
+				566666A32AFEF3F3009990EB /* InfoButtonStyle.swift */,
 			);
 			path = PersonalVoiceBottomSheet;
 			sourceTree = "<group>";
@@ -692,7 +706,7 @@
 		};
 		E1B1488D25EC4056003C1401 /* Bartycrouch script */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -735,9 +749,11 @@
 				E1E89B1D2A3F558F004DF84F /* HeaderView.swift in Sources */,
 				E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */,
 				E115577E25B4CA0E0093851B /* LargeIconButton.swift in Sources */,
+				566666A42AFEF3F3009990EB /* InfoButtonStyle.swift in Sources */,
 				E127353925C617BE007993EA /* SettingModel.swift in Sources */,
 				E115574525B4C4290093851B /* SceneDelegate.swift in Sources */,
 				E13919CA2AD3342D00694200 /* View+Extensions.swift in Sources */,
+				56AE0CC12AF8297200D16467 /* PersonalVoiceBottomSheetView.swift in Sources */,
 				E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */,
 				E18AF60825F57A27008CFA5D /* CustomScrollView.swift in Sources */,
 				E115576A25B4C5C20093851B /* ViewController+Extensions.swift in Sources */,

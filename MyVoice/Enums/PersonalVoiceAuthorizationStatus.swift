@@ -53,4 +53,26 @@ enum PersonalVoiceAuthorizationStatus {
             return NSLocalizedString("Access to Personal Voice was granted. You can now select configured Personal Voices from the voice picker list.", comment: "")
         }
     }
+
+    var accessDeniedOrNotDetermined: Bool {
+        switch self {
+        case .notDetermined, .denied: return true
+        default: return false
+        }
+    }
+
+    @available(iOS 17.0, *)
+    var toPersonalVoiceBottomSheetType: PersonalVoiceBottomSheetViewModel.AccessType {
+        switch self {
+        case .notDetermined: 
+            return .accessNotSpecified
+
+        case .denied: 
+            return .accessDenied
+
+        default:
+            assertionFailure("Tried to show Personal Voice Bottom Sheet for wrong access.")
+            return .accessNotSpecified
+        }
+    }
 }

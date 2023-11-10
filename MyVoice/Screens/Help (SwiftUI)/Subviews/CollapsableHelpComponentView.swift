@@ -58,17 +58,17 @@ struct CollapsableHelpComponentView: View {
     }
     
     private var secondaryContent: some View {
-        if #available(iOS 15, *) {
-            Text(AttributedString(contentType.secondaryText))
-                .font(Fonts.Poppins.medium(14.0).swiftUIFont)
-                .multilineTextAlignment(.leading)
-                .lineSpacing(1.0)
-        } else {
+//        if #available(iOS 15, *) {
+//            Text(AttributedString(contentType.secondaryText))
+//                .font(Fonts.Poppins.medium(14.0).swiftUIFont)
+//                .multilineTextAlignment(.leading)
+//                .lineSpacing(1.0)
+//        } else {
             Text(contentType.secondaryText.string)
                 .font(Fonts.Poppins.medium(14.0).swiftUIFont)
                 .multilineTextAlignment(.leading)
                 .lineSpacing(1.0)
-        }
+//        }
     }
     
     private var containerBox: some View {
