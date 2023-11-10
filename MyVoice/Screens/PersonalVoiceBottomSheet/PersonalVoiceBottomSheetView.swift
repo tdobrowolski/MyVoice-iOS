@@ -40,11 +40,14 @@ struct PersonalVoiceBottomSheetView: View {
         VStack(spacing: 4.0) {
             title
             subtitle
-            VStack(spacing: 0.0) {
+            VStack(spacing: 2.0) {
                 learnMoreButton
                 Spacer()
                     .background(
                         ViewThatFits(in: .vertical) {
+                            getContentImage(for: 13)
+                            getContentImage(for: 12)
+                            getContentImage(for: 11)
                             getContentImage(for: 10)
                             getContentImage(for: 9)
                             getContentImage(for: 8)

@@ -8,6 +8,8 @@
 import RxSwift
 import AVFoundation
 
+// TODO: Update Personal Voice access data on viewDidAppear (when user comes back from Settings should be updated)
+
 final class SettingsViewModel: BaseViewModel {
     let sections = BehaviorSubject<[SettingsSection]>(value: [])
     let personalVoiceAuthorizationStatus = BehaviorSubject<PersonalVoiceAuthorizationStatus>(value: .unsupported)

@@ -45,8 +45,6 @@
 		E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */; };
 		E15B839F25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839D25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift */; };
 		E15B83A025CF3D3F00C8BFA5 /* VoiceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B839E25CF3D3F00C8BFA5 /* VoiceTableViewCell.xib */; };
-		E16C32F72ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16C32F52ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.swift */; };
-		E16C32F82ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E16C32F62ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.xib */; };
 		E16C32FA2ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16C32F92ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift */; };
 		E1771A8025C21523003FE247 /* UITextView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A7F25C21523003FE247 /* UITextView+Extensions.swift */; };
 		E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A8B25C21680003FE247 /* SettingsViewController.swift */; };
@@ -66,9 +64,6 @@
 		E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5225B4E97F00339B9A /* MainTextView.swift */; };
 		E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */; };
 		E1D4C3EF2AD0A23A0059DC46 /* PersonalVoiceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4C3EE2AD0A23A0059DC46 /* PersonalVoiceService.swift */; };
-		E1D4C3F22AD0AA400059DC46 /* PersonalVoiceInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1D4C3F12AD0AA400059DC46 /* PersonalVoiceInfoView.xib */; };
-		E1D4C3F42AD0AA4B0059DC46 /* PersonalVoiceInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4C3F32AD0AA4B0059DC46 /* PersonalVoiceInfoView.swift */; };
-		E1D4C3F72AD0C7880059DC46 /* InfoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4C3F62AD0C7880059DC46 /* InfoButton.swift */; };
 		E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */; };
 		E1E5FECA25D9879800FEB6E2 /* PhraseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */; };
 		E1E6C2CB25B4D24800774B17 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */; };
@@ -128,8 +123,6 @@
 		E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewModel.swift; sourceTree = "<group>"; };
 		E15B839D25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceTableViewCell.swift; sourceTree = "<group>"; };
 		E15B839E25CF3D3F00C8BFA5 /* VoiceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VoiceTableViewCell.xib; sourceTree = "<group>"; };
-		E16C32F52ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceBottomSheetViewController.swift; sourceTree = "<group>"; };
-		E16C32F62ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalVoiceBottomSheetViewController.xib; sourceTree = "<group>"; };
 		E16C32F92ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceBottomSheetViewModel.swift; sourceTree = "<group>"; };
 		E1771A7F25C21523003FE247 /* UITextView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Extensions.swift"; sourceTree = "<group>"; };
 		E1771A8B25C21680003FE247 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -150,9 +143,6 @@
 		E1C3EF5225B4E97F00339B9A /* MainTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextView.swift; sourceTree = "<group>"; };
 		E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationController.swift; sourceTree = "<group>"; };
 		E1D4C3EE2AD0A23A0059DC46 /* PersonalVoiceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceService.swift; sourceTree = "<group>"; };
-		E1D4C3F12AD0AA400059DC46 /* PersonalVoiceInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalVoiceInfoView.xib; sourceTree = "<group>"; };
-		E1D4C3F32AD0AA4B0059DC46 /* PersonalVoiceInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceInfoView.swift; sourceTree = "<group>"; };
-		E1D4C3F62AD0C7880059DC46 /* InfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButton.swift; sourceTree = "<group>"; };
 		E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDatabaseService.swift; sourceTree = "<group>"; };
 		E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -185,14 +175,6 @@
 				61378B4DF55B36302E38E8BA /* Pods_MyVoice.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		56AE0CBF2AF8295B00D16467 /* PersonalVoiceInfo (SwiftUI) */ = {
-			isa = PBXGroup;
-			children = (
-				56AE0CC02AF8297200D16467 /* PersonalVoiceBottomSheetView.swift */,
-			);
-			path = "PersonalVoiceInfo (SwiftUI)";
 			sourceTree = "<group>";
 		};
 		5DD28FE72419B1A46AD2C89F /* Pods */ = {
@@ -246,9 +228,8 @@
 		E115575925B4C51A0093851B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				56AE0CBF2AF8295B00D16467 /* PersonalVoiceInfo (SwiftUI) */,
 				E115575D25B4C5390093851B /* Main */,
-				E13919C12AD2D47A00694200 /* Help (SwiftUI) */,
+				E13919C12AD2D47A00694200 /* Help */,
 				E1771A8225C21605003FE247 /* Settings */,
 				E15B839225CF17AD00C8BFA5 /* LanguagePicker */,
 				E16C32F42ACCA54300FDEDC1 /* PersonalVoiceBottomSheet */,
@@ -329,7 +310,6 @@
 		E115577C25B4C9E40093851B /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				E1D4C3F52AD0C7490059DC46 /* InfoButton */,
 				E18AF60B25F57BC7008CFA5D /* TouchHandlerButton */,
 				E115578125B4CA230093851B /* LargeIconButton */,
 			);
@@ -364,14 +344,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		E13919C12AD2D47A00694200 /* Help (SwiftUI) */ = {
+		E13919C12AD2D47A00694200 /* Help */ = {
 			isa = PBXGroup;
 			children = (
 				E13919C62AD333D400694200 /* Subviews */,
 				E13919C22AD2D48E00694200 /* HelpView.swift */,
 				E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */,
 			);
-			path = "Help (SwiftUI)";
+			path = Help;
 			sourceTree = "<group>";
 		};
 		E13919C62AD333D400694200 /* Subviews */ = {
@@ -386,7 +366,6 @@
 			isa = PBXGroup;
 			children = (
 				E141AD4325F58B9000C61408 /* BackgroundShadowView.swift */,
-				E1D4C3F02AD0AA1A0059DC46 /* PersonalVoiceInfoView */,
 				E134BBE82A3F527C00109013 /* HeaderView */,
 			);
 			path = Views;
@@ -414,10 +393,9 @@
 		E16C32F42ACCA54300FDEDC1 /* PersonalVoiceBottomSheet */ = {
 			isa = PBXGroup;
 			children = (
-				E16C32F62ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.xib */,
-				E16C32F52ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.swift */,
-				E16C32F92ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift */,
 				566666A32AFEF3F3009990EB /* InfoButtonStyle.swift */,
+				56AE0CC02AF8297200D16467 /* PersonalVoiceBottomSheetView.swift */,
+				E16C32F92ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift */,
 			);
 			path = PersonalVoiceBottomSheet;
 			sourceTree = "<group>";
@@ -512,23 +490,6 @@
 				E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */,
 			);
 			path = NavigationControllers;
-			sourceTree = "<group>";
-		};
-		E1D4C3F02AD0AA1A0059DC46 /* PersonalVoiceInfoView */ = {
-			isa = PBXGroup;
-			children = (
-				E1D4C3F32AD0AA4B0059DC46 /* PersonalVoiceInfoView.swift */,
-				E1D4C3F12AD0AA400059DC46 /* PersonalVoiceInfoView.xib */,
-			);
-			path = PersonalVoiceInfoView;
-			sourceTree = "<group>";
-		};
-		E1D4C3F52AD0C7490059DC46 /* InfoButton */ = {
-			isa = PBXGroup;
-			children = (
-				E1D4C3F62AD0C7880059DC46 /* InfoButton.swift */,
-			);
-			path = InfoButton;
 			sourceTree = "<group>";
 		};
 		E1DF158725BCCC1300810C0D /* TableViews */ = {
@@ -629,8 +590,6 @@
 				E115577725B4C93C0093851B /* Poppins-Regular.ttf in Resources */,
 				E115574F25B4C42B0093851B /* LaunchScreen.storyboard in Resources */,
 				E1B148A125EC4326003C1401 /* Localizable.strings in Resources */,
-				E1D4C3F22AD0AA400059DC46 /* PersonalVoiceInfoView.xib in Resources */,
-				E16C32F82ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.xib in Resources */,
 				E15B83A025CF3D3F00C8BFA5 /* VoiceTableViewCell.xib in Resources */,
 				E115577425B4C93C0093851B /* Poppins-Medium.ttf in Resources */,
 				E115576225B4C56A0093851B /* MainViewController.xib in Resources */,
@@ -733,7 +692,6 @@
 				E179E5A52A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift in Sources */,
 				E1E6C2CB25B4D24800774B17 /* UIView+Extensions.swift in Sources */,
 				E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */,
-				E1D4C3F42AD0AA4B0059DC46 /* PersonalVoiceInfoView.swift in Sources */,
 				E115576625B4C5A10093851B /* BaseViewController.swift in Sources */,
 				E134BBE32A3F429F00109013 /* Array+Extensions.swift in Sources */,
 				E13919C32AD2D48E00694200 /* HelpView.swift in Sources */,
@@ -744,7 +702,6 @@
 				E19392AD2A2C0AE400CA6238 /* UIColor+Extensions.swift in Sources */,
 				E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */,
 				E18AF60D25F57BDF008CFA5D /* TouchHandlerButton.swift in Sources */,
-				E16C32F72ACCA58800FDEDC1 /* PersonalVoiceBottomSheetViewController.swift in Sources */,
 				E115574325B4C4290093851B /* AppDelegate.swift in Sources */,
 				E1E89B1D2A3F558F004DF84F /* HeaderView.swift in Sources */,
 				E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */,
@@ -768,7 +725,6 @@
 				E1771A8025C21523003FE247 /* UITextView+Extensions.swift in Sources */,
 				E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */,
 				E16C32FA2ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift in Sources */,
-				E1D4C3F72AD0C7880059DC46 /* InfoButton.swift in Sources */,
 				E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */,
 				E13919C52AD3190600694200 /* HelpContentType.swift in Sources */,
 				E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */,
