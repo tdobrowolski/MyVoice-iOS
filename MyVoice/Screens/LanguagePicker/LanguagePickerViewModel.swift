@@ -10,9 +10,6 @@ import Differentiator
 import RxSwift
 
 // FIXME: Personal Voice not on list after granting access (must restart app to see it)
-// TODO: Improve Bottom Sheet:
-// - When unspecified: Show allow access
-// - When denied: Show to go to Settings and fix permissions
 
 protocol VoiceSelectionDelegate: AnyObject {
     func didSelectVoice()
