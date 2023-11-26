@@ -8,8 +8,6 @@
 import RxSwift
 import AVFoundation
 
-// TODO: Update Personal Voice access data on viewDidAppear (when user comes back from Settings should be updated)
-
 final class SettingsViewModel: BaseViewModel {
     let sections = BehaviorSubject<[SettingsSection]>(value: [])
     let personalVoiceAuthorizationStatus = BehaviorSubject<PersonalVoiceAuthorizationStatus>(value: .unsupported)
@@ -34,6 +32,7 @@ final class SettingsViewModel: BaseViewModel {
     
     private func bind() {
         personalVoiceService.authorizationStatus
+            .distinctUntilChanged()
             .bind(to: personalVoiceAuthorizationStatus)
             .disposed(by: disposeBag)
 
@@ -176,6 +175,12 @@ final class SettingsViewModel: BaseViewModel {
     func requestPersonalVoiceAccess() async {
         if #available(iOS 17.0, *) {
             await personalVoiceService.requestPersonalVoiceAccess()
+        }
+    }
+    
+    func onEnterForeground() {
+        if #available(iOS 17.0, *) {
+            personalVoiceService.updatePersonalVoiceStatus()
         }
     }
 }

@@ -28,4 +28,9 @@ final class PersonalVoiceService {
         let result = await AVSpeechSynthesizer.requestPersonalVoiceAuthorization()
         authorizationStatus.onNext(result.asDomain)
     }
+    
+    @available(iOS 17.0, *)
+    func updatePersonalVoiceStatus() {
+        authorizationStatus.onNext(AVSpeechSynthesizer.personalVoiceAuthorizationStatus.asDomain)
+    }
 }

@@ -41,7 +41,7 @@
 "Access to Personal Voice was denied. You can change this setting, by granting access again in the Settings app." = "Odmówiono dostępu do głosu indywidualnego. Możesz ponownie go przyznać w systemowej aplikacji Ustawienia.";
 
 /* No comment provided by engineer. */
-"Access to Personal Voice was granted. You can now select configured Personal Voices from the voice picker list." = "Możesz teraz wybrać skonfigurowane głosy indywidualne po kliknięciu w sekcję 'Głos'.";
+"Access to Personal Voice was granted. You can now select configured Personal Voices from the voice picker list." = "Możesz teraz wybrać skonfigurowane głosy indywidualne po kliknięciu w sekcję 'Głos'. Jeśli nie widzisz ich na liście, uruchom aplikację ponownie.";
 
 /* No comment provided by engineer. */
 "Access to Personal Voice was not yet determined." = "Nie określono dostępu do głosu indywidualnego.";

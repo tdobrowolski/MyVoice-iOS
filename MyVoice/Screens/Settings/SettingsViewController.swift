@@ -50,6 +50,13 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             forCellReuseIdentifier: Nib.sliderTableViewCell.cellIdentifier
         )
         tableView.delaysContentTouches = false
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
     }
     
     override func bindViewModel(_ viewModel: SettingsViewModel) {
@@ -62,6 +69,11 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         tableView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
+    }
+    
+    @objc
+    private func didEnterForeground() {
+        viewModel.onEnterForeground()
     }
     
     // MARK: Setting data source
