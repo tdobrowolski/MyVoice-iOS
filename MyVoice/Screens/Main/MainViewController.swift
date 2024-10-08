@@ -202,8 +202,13 @@ final class MainViewController: BaseViewController<MainViewModel> {
     @objc
     private func helpDidTouch() {
         viewModel.stopSpeaking()
-        let helpViewModel = HelpViewModel()
-        let helpViewController = HelpViewController(viewModel: helpViewModel, nibName: Nib.helpViewController.name)
+        let helpViewModel = HelpViewModel(
+            supportsPersonalVoice: viewModel.personalVoiceService.isSupported,
+            onDone: { [weak self] in self?.dismiss(animated: true) }
+        )
+        let helpViewController = HelpView(
+            viewModel: helpViewModel
+        ).asViewController
         let helpNavigationController = DefaultNavigationController(rootViewController: helpViewController)
         
         present(helpNavigationController, animated: true, completion: nil)
@@ -212,7 +217,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     @objc
     private func settingsDidTouch() {
         viewModel.stopSpeaking()
-        let settingsViewModel = SettingsViewModel()
+        let settingsViewModel = SettingsViewModel(personalVoiceService: viewModel.personalVoiceService)
         let settingsViewController = SettingsViewController(viewModel: settingsViewModel, nibName: Nib.settingsViewController.name)
         let settingsNavigationController = DefaultNavigationController(rootViewController: settingsViewController)
         

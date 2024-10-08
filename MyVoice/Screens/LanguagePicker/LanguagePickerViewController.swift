@@ -24,6 +24,8 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         tableView.backgroundColor = .clear
         addSearchController()
         addNavigationBarButton()
+
+        showPersonalVoiceBottomSheetIfNeeded()
     }
     
     override func bindViewModel(_ viewModel: LanguagePickerViewModel) {
@@ -84,6 +86,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
                     voiceName: element.name,
                     voiceQuality: element.quality,
                     voiceGender: element.gender,
+                    isPersonalVoice: element.isPersonalVoice,
                     isLastInSection: isLastInSection,
                     isSelected: isSelected
                 )
@@ -159,6 +162,38 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
         viewModel.selectVoice(for: identifier)
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+    // MARK: Personal Voice Bottom Sheet logic
+
+    private func showPersonalVoiceBottomSheetIfNeeded() {
+        guard viewModel.showPersonalVoiceInfoBottomSheet, #available(iOS 17.0, *) else { return }
+
+        showPersonalVoiceBottomSheet()
+    }
+
+    @available(iOS 17.0, *)
+    private func showPersonalVoiceBottomSheet() {
+        let bottomSheetViewModel = PersonalVoiceBottomSheetViewModel(
+            personalVoiceService: viewModel.personalVoiceService,
+            onClose: { [weak self] in
+                self?.dismiss(animated: true)
+            }
+        )
+        let bottomSheetViewController = PersonalVoiceBottomSheetView(viewModel: bottomSheetViewModel).asViewController
+
+        let bottomSheetNavigationController = DefaultNavigationController(rootViewController: bottomSheetViewController)
+        bottomSheetViewController.navigationController?.setNavigationBarHidden(true, animated: false)
+        bottomSheetNavigationController.sheetPresentationController?.detents = [.large()]
+        bottomSheetNavigationController.sheetPresentationController?.prefersGrabberVisible = true
+
+        bottomSheetViewModel.navigationController = bottomSheetNavigationController
+
+        present(
+            bottomSheetNavigationController,
+            animated: true,
+            completion:  { [weak self] in self?.viewModel.didShowPersonalVoiceBottomSheet() }
+        )
     }
 }
 

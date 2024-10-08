@@ -50,6 +50,13 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             forCellReuseIdentifier: Nib.sliderTableViewCell.cellIdentifier
         )
         tableView.delaysContentTouches = false
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didEnterForeground),
+            name: UIApplication.willEnterForegroundNotification,
+            object: nil
+        )
     }
     
     override func bindViewModel(_ viewModel: SettingsViewModel) {
@@ -62,6 +69,11 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         tableView.rx
             .setDelegate(self)
             .disposed(by: disposeBag)
+    }
+    
+    @objc
+    private func didEnterForeground() {
+        viewModel.onEnterForeground()
     }
     
     // MARK: Setting data source
@@ -86,15 +98,19 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         let sectionType = sections[indexPath.section].type
         
         switch sectionType {
-        case .speechVoice, .other:
+        case .speechVoice, .personalVoice, .other:
             let cell = tableView.dequeueReusableCell(withIdentifier: Nib.defaultCell.cellIdentifier) ?? UITableViewCell(style: .value1, reuseIdentifier: Nib.defaultCell.cellIdentifier)
             cell.backgroundColor = .whiteCustom
             cell.textLabel?.text = sections[indexPath.section].items[indexPath.row].primaryText
             cell.textLabel?.font = Fonts.Poppins.medium(15.0).font
             cell.textLabel?.textColor = .blackCustom ?? .black
+            cell.textLabel?.minimumScaleFactor = 0.9
+            cell.textLabel?.adjustsFontSizeToFitWidth = true
+            cell.textLabel?.allowsDefaultTighteningForTruncation = true
             cell.detailTextLabel?.text = sections[indexPath.section].items[indexPath.row].secondaryText
             cell.detailTextLabel?.font = Fonts.Poppins.regular(15.0).font
             cell.detailTextLabel?.textColor = .blueDark ?? .gray
+            cell.detailTextLabel?.allowsDefaultTighteningForTruncation = true
             cell.accessoryType = .disclosureIndicator
             
             return cell
@@ -181,7 +197,10 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     // MARK: Handle settings actions
     
     private func showLanguagePicker() {
-        let languagePickerViewModel = LanguagePickerViewModel(delegate: self)
+        let languagePickerViewModel = LanguagePickerViewModel(
+            personalVoiceService: viewModel.personalVoiceService,
+            delegate: self
+        )
         let languagePickerViewController = LanguagePickerViewController(
             viewModel: languagePickerViewModel,
             nibName: Nib.languagePickerViewController.name
@@ -191,8 +210,66 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         present(languagePickerNavigationController, animated: true, completion: nil)
     }
     
+    private func handlePersonalVoiceStatusAction() {
+        guard let status = try? viewModel.personalVoiceAuthorizationStatus.value() else { return }
+        
+        switch status {
+        case .notDetermined: 
+            if #available(iOS 17.0, *) {
+                Task {
+                    await viewModel.requestPersonalVoiceAccess()
+                    self.tableView.reloadData()
+                }
+            } else {
+                fallthrough
+            }
+            
+        default:
+            var actions = [
+                UIAlertAction(
+                title: NSLocalizedString("OK", comment: "OK"),
+                style: .default,
+                handler: nil
+                )
+            ]
+            if status == .denied {
+                actions.insert(
+                    UIAlertAction(
+                        title: NSLocalizedString("Learn more", comment: ""),
+                        style: .default,
+                        handler: { [weak self] _ in self?.learnMoreDidTap() }
+                    ),
+                    at: 0
+                )
+            }
+
+            showAlert(title: status.title,
+                      message: status.settingsAlertMessage,
+                      actions: actions)
+        }
+    }
+
+    private func learnMoreDidTap() {
+        let helpViewModel = HelpViewModel(
+            supportsPersonalVoice: true,
+            onDone: { [weak self] in self?.dismiss(animated: true) }
+        )
+        let helpViewController = HelpView(
+            viewModel: helpViewModel,
+            contentTypeToExpand: .personalVoice
+        ).asViewController
+        let helpNavigationController = DefaultNavigationController(rootViewController: helpViewController)
+
+        present(helpNavigationController, animated: true, completion: nil)
+    }
+
     private func openAppStoreForReview() {
-        guard let writeReviewURL = URL(string: "") else { return }
+        guard let writeReviewURL = URL(string: "itms-apps:itunes.apple.com/app/6450155201"), UIApplication.shared.canOpenURL(writeReviewURL) else {
+            return showAlert(title: NSLocalizedString("Can't open App Store", comment: ""),
+                      message: NSLocalizedString("Looks like we have some problems with opening the App Store. Our team of trained monkeys is working hard to fix this. You can still leave a review by sending feedback.",
+                                                 comment: ""),
+                      actions: [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)])
+        }
         
         UIApplication.shared.open(writeReviewURL, options: [:], completionHandler: nil)
     }
@@ -232,7 +309,7 @@ extension SettingsViewController: UITableViewDelegate {
         let sectionType = sections[indexPath.section].type
         
         switch sectionType {
-        case .speechVoice, .other: return indexPath
+        case .speechVoice, .personalVoice, .other: return indexPath
         case .speechRate, .speechPitch: return nil
         }
     }
@@ -249,12 +326,13 @@ extension SettingsViewController: UITableViewDelegate {
         case .speechRate, .speechPitch:
             return
             
+        case .personalVoice:
+            handlePersonalVoiceStatusAction()
+            
         case .other:
             switch indexPath.row {
             case 0:
-//                openAppStoreForReview()
-                fallthrough
-                // TODO: If review available, remove fallthrough
+                openAppStoreForReview()
                 
             case 1:
                 openFeedbackMail()

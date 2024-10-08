@@ -14,6 +14,7 @@ final class UserDefaultsService {
         case speechRate = "SpeechRate"
         case speechPitch = "SpeechPitch"
         case speechLanguage = "SpeechLanguage"
+        case personalVoiceInfo = "PersonalVoiceInfo"
     }
     
     // MARK: Speech settings
@@ -48,5 +49,15 @@ final class UserDefaultsService {
     
     func getSpeechVoiceIdentifier() -> String? {
         defaults.string(forKey: Keys.speechLanguage.rawValue)
+    }
+    
+    // MARK: Personal Voice info bottom sheet
+    
+    func setPersonalVoiceInfoToShown() {
+        defaults.setValue(true, forKey: Keys.personalVoiceInfo.rawValue)
+    }
+    
+    var didShowPersonalVoiceInfo: Bool {
+        defaults.bool(forKey: Keys.personalVoiceInfo.rawValue)
     }
 }

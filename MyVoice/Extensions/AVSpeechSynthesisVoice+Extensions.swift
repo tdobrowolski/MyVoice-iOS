@@ -9,6 +9,18 @@ import class AVFAudio.AVSpeechSynthesisVoice
 import RxDataSources
 
 extension AVSpeechSynthesisVoice {
+    var isPersonalVoice: Bool {
+        if #available(iOS 17.0, *) {
+            switch voiceTraits {
+            case .isNoveltyVoice: return false
+            case .isPersonalVoice: return true
+            default: return false
+            }
+        } else {
+            return false
+        }
+    }
+    
     func containsSearchTerm(_ term: String) -> Bool {
         let lowercasedTerm = term.lowercased()
         let matchedIdentifier = identifier.lowercased().contains(lowercasedTerm)

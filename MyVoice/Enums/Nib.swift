@@ -10,6 +10,7 @@ enum Nib {
     case helpViewController
     case settingsViewController
     case languagePickerViewController
+    case personalVoiceBottomSheetViewController
     case mainViewController
     
     // MARK: Cells
@@ -23,6 +24,7 @@ enum Nib {
         case .helpViewController: return "HelpViewController"
         case .settingsViewController: return "SettingsViewController"
         case .languagePickerViewController: return "LanguagePickerViewController"
+        case .personalVoiceBottomSheetViewController: return "PersonalVoiceBottomSheetViewController"
         case .mainViewController: return "MainViewController"
         case .quickPhraseTableViewCell: return "QuickPhraseTableViewCell"
         case .sliderTableViewCell: return "SliderTableViewCell"
@@ -48,6 +50,7 @@ enum Nib {
         case .helpViewController,
                 .settingsViewController,
                 .languagePickerViewController,
+                .personalVoiceBottomSheetViewController,
                 .mainViewController:
             assertionFailure("This type of Nib doesn't support cellIdentifier.")
             

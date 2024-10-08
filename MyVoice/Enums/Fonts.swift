@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit.UIFont
+import SwiftUI
 
 enum Fonts {
     enum Poppins {
@@ -30,6 +31,8 @@ enum Fonts {
                 return fontMetrics.scaledFont(for: UIFont(name: "Poppins-Bold", size: size) ?? .boldSystemFont(ofSize: size))
             }
         }
+        
+        var swiftUIFont: Font { .init(font) }
         
         var fontMetrics: UIFontMetrics {
             switch self {

@@ -17,7 +17,13 @@ final class MainViewModel: BaseViewModel {
     private var notificationFeedbackGenerator: UINotificationFeedbackGenerator
     
     var systemValueObserver: NSKeyValueObservation?
-    
+
+    // PersonalVoiceService is needed in this ViewModel only to pass to other, child views/modals.
+    // This is dictated by wrong architecture pick at the start of the development and should be fixed in the future.
+    // CompositionRoot should be used.
+
+    let personalVoiceService: PersonalVoiceService
+
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     let systemVolumeState = BehaviorSubject<SystemVolumeState>(value: .lowVolume)
     
@@ -28,6 +34,7 @@ final class MainViewModel: BaseViewModel {
         self.phraseDatabaseService = PhraseDatabaseService()
         self.feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         self.notificationFeedbackGenerator = UINotificationFeedbackGenerator()
+        self.personalVoiceService = PersonalVoiceService()
 
         super.init()
 

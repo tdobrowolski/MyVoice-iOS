@@ -11,13 +11,25 @@ final class DefaultNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationBar.barTintColor = .blueLight ?? .red
-        navigationBar.titleTextAttributes = [
+        configureStyle()
+    }
+
+    private func configureStyle() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.backgroundColor = .background ?? .red
+        navigationBarAppearance.shadowColor = .clear
+        navigationBarAppearance.titleTextAttributes = [
             NSAttributedString.Key.foregroundColor: UIColor.blackCustom ?? .black,
             NSAttributedString.Key.font: Fonts.Poppins.bold(17.0).font
         ]
-        navigationBar.setBackgroundImage(UIImage(), for: .default)
-        navigationBar.shadowImage = UIImage()
-    }
 
+        navigationBar.standardAppearance = navigationBarAppearance
+        navigationBar.compactAppearance = navigationBarAppearance
+        navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        if #available(iOS 15.0, *) {
+            navigationBar.compactScrollEdgeAppearance = navigationBarAppearance
+        }
+    }
 }

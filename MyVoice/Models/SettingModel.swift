@@ -12,6 +12,7 @@ struct SettingsSection {
         case speechVoice = "speechVoice"
         case speechRate = "speechRate"
         case speechPitch = "speechPitch"
+        case personalVoice = "personalVoice"
         case other = "other"
     }
     
@@ -24,6 +25,7 @@ struct SettingsSection {
         case .speechVoice: return NSLocalizedString("Speech settings", comment: "Speech settings")
         case .speechRate: return NSLocalizedString("Speech rate", comment: "Speech rate")
         case .speechPitch: return NSLocalizedString("Speech pitch", comment: "Speech pitch")
+        case .personalVoice: return NSLocalizedString("Personal Voice", comment: "Personal Voice")
         case .other: return NSLocalizedString("Other", comment: "Other")
         }
     }
