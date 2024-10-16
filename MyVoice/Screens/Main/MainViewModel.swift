@@ -15,7 +15,7 @@ final class MainViewModel: BaseViewModel {
     private let phraseDatabaseService: PhraseDatabaseService
     private var feedbackGenerator: UIImpactFeedbackGenerator
     private var notificationFeedbackGenerator: UINotificationFeedbackGenerator
-    
+
     var systemValueObserver: NSKeyValueObservation?
 
     // PersonalVoiceService is needed in this ViewModel only to pass to other, child views/modals.

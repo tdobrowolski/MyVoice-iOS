@@ -6,21 +6,31 @@
 //
 
 import AppIntents
+import Shared
 
-struct LaunchAppIntent: OpenIntent {
-    static var title: LocalizedStringResource = "Launch MyVoice"
+@available(iOS 16, *)
+struct OpenApp: OpenIntent {
+    static var title: LocalizedStringResource = "Open MyVoice"
 
-    @Parameter(title: "Target")
-    var target: LaunchAppEnum
+    @Parameter(title: "Mode")
+    var target: OpenAppModeEnum
+
+    static var parameterSummary: some ParameterSummary {
+        Summary("Open in \(\.$target)")
+    }
+
+    func perform() async throws -> some IntentResult {
+        Shared.AppSignal.shared.shouldPrepareInstantTyping = true
+        return .result()
+    }
 }
 
-enum LaunchAppEnum: String, AppEnum {
-    case `default`
+@available(iOS 16, *)
+enum OpenAppModeEnum: String, AppEnum {
     case instantTyping
 
     static var typeDisplayRepresentation = TypeDisplayRepresentation("MyVoice launch modes")
     static var caseDisplayRepresentations = [
-        LaunchAppEnum.default : DisplayRepresentation("Default"),
-        LaunchAppEnum.instantTyping : DisplayRepresentation("Instant Typing")
+        OpenAppModeEnum.instantTyping: DisplayRepresentation("Instant Typing")
     ]
 }

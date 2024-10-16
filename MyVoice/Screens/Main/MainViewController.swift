@@ -5,9 +5,10 @@
 //  Created by Tobiasz Dobrowolski on 17/01/2021.
 //
 
-import UIKit
 import RxCocoa
 import RxDataSources
+import Shared
+import UIKit
 
 final class MainViewController: BaseViewController<MainViewModel> {
     @IBOutlet weak var scrollView: CustomScrollView!
