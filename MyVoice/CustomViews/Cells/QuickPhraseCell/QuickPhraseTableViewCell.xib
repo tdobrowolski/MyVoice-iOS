@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24123.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24062"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -54,13 +54,13 @@
                         <rect key="frame" x="14" y="12" width="261" height="69"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Phrase" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0nc-Zz-iaP" userLabel="Phrase Label">
-                                <rect key="frame" x="0.0" y="0.0" width="261" height="44.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="261" height="41"/>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
                                 <color key="textColor" name="Black"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="_Tip" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BJS-Yu-l1P" userLabel="Tip Label">
-                                <rect key="frame" x="0.0" y="52.5" width="261" height="16.5"/>
+                                <rect key="frame" x="0.0" y="49" width="261" height="20"/>
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
                                 <color key="textColor" name="Blue (Dark)"/>
                                 <nil key="highlightedColor"/>
@@ -105,15 +105,12 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backgroundContainerView" destination="6Cn-UW-Okx" id="xjS-2c-HRi"/>
-                <outlet property="bottomStackViewConstraint" destination="KiN-xT-wa9" id="kVk-8w-jdk"/>
                 <outlet property="iconContainerView" destination="e0I-oO-slD" id="DXS-DL-M8b"/>
                 <outlet property="iconImageView" destination="cYr-3p-85D" id="gSO-TA-rTC"/>
-                <outlet property="leadingStackViewConstraint" destination="uZO-Dt-Mx6" id="tbk-ts-hyq"/>
                 <outlet property="phraseLabel" destination="0nc-Zz-iaP" id="oBs-Ir-OY7"/>
                 <outlet property="separatorView" destination="gTx-qY-cLR" id="UVJ-XR-e74"/>
                 <outlet property="tapHandlerButton" destination="IzX-8r-P14" id="zOs-Ag-vwT"/>
                 <outlet property="tipLabel" destination="BJS-Yu-l1P" id="HQp-HJ-MEJ"/>
-                <outlet property="topStackViewConstraint" destination="UlJ-d8-Gl1" id="7Tq-Kg-gzM"/>
             </connections>
             <point key="canvasLocation" x="133" y="132"/>
         </tableViewCell>

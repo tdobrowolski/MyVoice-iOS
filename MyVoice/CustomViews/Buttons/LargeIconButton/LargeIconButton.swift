@@ -54,7 +54,7 @@ final class LargeIconButton: UIButton {
 
         setupLayout()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
@@ -84,17 +84,10 @@ final class LargeIconButton: UIButton {
         bindRxValues()
     }
     
-    private func addShadow(
-        color: UIColor = .black,
-        alpha: Float = 0.2,
-        x: CGFloat = 0.0,
-        y: CGFloat = 2.0,
-        blur: CGFloat = 4.0,
-        spread: CGFloat = 0.0
-    ) {
+    private func addShadow(color: UIColor = .black, alpha: Float = 0.2, x: CGFloat = 0, y: CGFloat = 2, blur: CGFloat = 4, spread: CGFloat = 0) {
         if shadowLayer == nil {
             shadowLayer = CAShapeLayer()
-            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: System.cornerRadius).cgPath
+            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
             shadowLayer.fillColor = UIColor.whiteCustom?.cgColor
             
             shadowLayer.shadowColor = color.cgColor
@@ -112,7 +105,7 @@ final class LargeIconButton: UIButton {
             
             layer.insertSublayer(shadowLayer, at: 0)
         } else {
-            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: System.cornerRadius).cgPath
+            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
             shadowLayer.fillColor = UIColor.whiteCustom?.cgColor
             shadowLayer.shadowOpacity = alpha
         }

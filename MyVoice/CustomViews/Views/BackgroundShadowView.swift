@@ -7,7 +7,6 @@
 
 import UIKit
 
-// FIXME: Debug and fix shadow corner radius glitch (it's more dark around the edges)
 final class BackgroundShadowView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -20,8 +19,8 @@ final class BackgroundShadowView: UIView {
         }
     }
     
-    private func setupLayout() { layer.cornerRadius = System.cornerRadius }
-
+    private func setupLayout() { layer.cornerRadius = 16 }
+    
     private func addShadow(
         color: UIColor = .black,
         alpha: Float = 0.2,
