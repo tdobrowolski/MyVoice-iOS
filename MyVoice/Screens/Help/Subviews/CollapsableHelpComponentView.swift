@@ -72,7 +72,7 @@ struct CollapsableHelpComponentView: View {
     }
     
     private var containerBox: some View {
-        RoundedRectangle(cornerRadius: 16.0)
+        RoundedRectangle(cornerRadius: System.cornerRadius)
             .fill(UIColor.whiteCustom?.asColor ?? .white)
     }
     

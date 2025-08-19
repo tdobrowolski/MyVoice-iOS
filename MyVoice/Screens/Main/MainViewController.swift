@@ -39,7 +39,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
         view.backgroundColor = .background
         
         quickAccessTableView.delegate = self
-        quickAccessTableView.layer.cornerRadius = 16
+        quickAccessTableView.layer.cornerRadius = System.cornerRadius
         quickAccessTableView.isScrollEnabled = false
         
         addNavigationBarButtons()
@@ -120,9 +120,11 @@ final class MainViewController: BaseViewController<MainViewModel> {
                 guard let self else { return UITableViewCell() }
                 
                 if let cell = tableView.dequeueReusableCell(withIdentifier: Nib.quickPhraseTableViewCell.cellIdentifier) as? QuickPhraseTableViewCell {
-                    let itemsEndIndex = (try? self.viewModel.sections.value().first?.items.endIndex) ?? 1
-                    
-                    cell.setupCell(phrase: item.phrase, isFirstCell: indexPath.row == 0, isLastCell: indexPath.row == itemsEndIndex - 1)
+                    let items = try? self.viewModel.sections.value().first?.items
+                    let itemsCount = items?.count ?? 1
+                    let itemsEndIndex = items?.endIndex ?? 1
+
+                    cell.setupCell(phrase: item.phrase, isOnlyCell: itemsCount == 1, isLastCell: indexPath.row == itemsEndIndex - 1)
                     self.viewModel.isSpeaking.subscribe(cell.isSpeaking).disposed(by: cell.disposeBag)
                     cell.tapHandlerButton.rx.tap
                         .subscribe { [weak self] _ in
@@ -153,7 +155,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     
     private func setupPlaceholderLabel() {
         placeholderTextView.text = NSLocalizedString("What do you want to say?", comment: "What do you want to say?")
-        placeholderTextView.textContainerInset = .init(top: 13, left: 14, bottom: 14, right: 13)
+        placeholderTextView.textContainerInset = .init(top: 13.0, left: 14.0, bottom: 14.0, right: 13.0)
         placeholderTextView.textColor = .blueDark
         placeholderTextView.font = Fonts.Poppins.bold(20.0).font
     }
@@ -181,24 +183,54 @@ final class MainViewController: BaseViewController<MainViewModel> {
     // MARK: Navigation Bar items methods
     
     private func addNavigationBarButtons() {
+        if System.supportsLiquidGlass {
+            addLiquidGlassNavigationBarButtons()
+        } else {
+            addLegacyNavigationBarButtons()
+        }
+    }
+
+    private func addLegacyNavigationBarButtons() {
         let font = Fonts.Poppins.medium(17.0).font
         let color = UIColor.orangeMain ?? .orange
-        
-        let leftItem = UIBarButtonItem(title: NSLocalizedString("Help", comment: "Help"), style: .plain, target: self, action: #selector(helpDidTouch))
-        leftItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
+
+        let helpItem = UIBarButtonItem(title: NSLocalizedString("Help", comment: "Help"), style: .plain, target: self, action: #selector(helpDidTouch))
+        helpItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                          NSAttributedString.Key.foregroundColor: color], for: .normal)
-        leftItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
+        helpItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                          NSAttributedString.Key.foregroundColor: color], for: .selected)
-        navigationItem.leftBarButtonItem = leftItem
-        
-        let rightItem = UIBarButtonItem(title: NSLocalizedString("Settings", comment: "Settings"), style: .plain, target: self, action: #selector(settingsDidTouch))
-        rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
+        helpItem.accessibilityLabel = NSLocalizedString("Open Help", comment: "Add button accessibility label.")
+        navigationItem.leftBarButtonItem = helpItem
+
+        let settingsItem = UIBarButtonItem(title: NSLocalizedString("Settings", comment: "Settings"), style: .plain, target: self, action: #selector(settingsDidTouch))
+        settingsItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                           NSAttributedString.Key.foregroundColor: color], for: .normal)
-        rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
+        settingsItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                           NSAttributedString.Key.foregroundColor: color], for: .selected)
-        navigationItem.rightBarButtonItem = rightItem
+        settingsItem.accessibilityLabel = NSLocalizedString("Open Settings", comment: "Add button accessibility label.")
+        navigationItem.rightBarButtonItem = settingsItem
     }
-    
+
+    private func addLiquidGlassNavigationBarButtons() {
+        let color = UIColor.orangeMain ?? .orange
+
+        let helpItem = UIBarButtonItem(
+            image: .init(systemName: "questionmark", withConfiguration: UIImage.SymbolConfiguration(weight: .semibold)),
+            primaryAction: .init(handler: { [weak self] _ in self?.helpDidTouch() })
+        )
+        helpItem.tintColor = color
+        helpItem.accessibilityLabel = NSLocalizedString("Open Help", comment: "Add button accessibility label.")
+        navigationItem.leftBarButtonItem = helpItem
+
+        let settingsItem = UIBarButtonItem(
+            image: .init(systemName: "gearshape", withConfiguration: UIImage.SymbolConfiguration(weight: .semibold)),
+            primaryAction: .init(handler: { [weak self] _ in self?.settingsDidTouch() })
+        )
+        settingsItem.tintColor = color
+        settingsItem.accessibilityLabel = NSLocalizedString("Open Settings", comment: "Add button accessibility label.")
+        navigationItem.rightBarButtonItem = settingsItem
+    }
+
     @objc
     private func helpDidTouch() {
         viewModel.stopSpeaking()
@@ -286,5 +318,25 @@ extension MainViewController: UITableViewDelegate {
         delete.backgroundColor = .redMain
         
         return UISwipeActionsConfiguration(actions: [delete])
+    }
+}
+
+// TODO: Move
+
+enum System {
+    static var supportsLiquidGlass: Bool {
+        if #available(iOS 26.0, *) {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    static var isPad: Bool {
+        UIDevice.current.userInterfaceIdiom == .pad
+    }
+
+    static var cornerRadius: CGFloat {
+        supportsLiquidGlass ? 26.0 : 16.0
     }
 }

@@ -63,6 +63,7 @@
 		E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3E4C25B6308E00DB87E1 /* BaseViewModel.swift */; };
 		E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5225B4E97F00339B9A /* MainTextView.swift */; };
 		E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */; };
+		E1CBF9482E54B70F00791C68 /* ToolbarInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */; };
 		E1D4C3EF2AD0A23A0059DC46 /* PersonalVoiceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4C3EE2AD0A23A0059DC46 /* PersonalVoiceService.swift */; };
 		E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */; };
 		E1E5FECA25D9879800FEB6E2 /* PhraseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */; };
@@ -142,6 +143,7 @@
 		E1BD3E4C25B6308E00DB87E1 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		E1C3EF5225B4E97F00339B9A /* MainTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextView.swift; sourceTree = "<group>"; };
 		E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationController.swift; sourceTree = "<group>"; };
+		E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarInputAccessoryView.swift; sourceTree = "<group>"; };
 		E1D4C3EE2AD0A23A0059DC46 /* PersonalVoiceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceService.swift; sourceTree = "<group>"; };
 		E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDatabaseService.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 			isa = PBXGroup;
 			children = (
 				E141AD4325F58B9000C61408 /* BackgroundShadowView.swift */,
+				E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */,
 				E134BBE82A3F527C00109013 /* HeaderView */,
 			);
 			path = Views;
@@ -614,9 +617,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyVoice/Pods-MyVoice-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MyVoice/Pods-MyVoice-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -708,6 +715,7 @@
 				E115577E25B4CA0E0093851B /* LargeIconButton.swift in Sources */,
 				566666A42AFEF3F3009990EB /* InfoButtonStyle.swift in Sources */,
 				E127353925C617BE007993EA /* SettingModel.swift in Sources */,
+				E1CBF9482E54B70F00791C68 /* ToolbarInputAccessoryView.swift in Sources */,
 				E115574525B4C4290093851B /* SceneDelegate.swift in Sources */,
 				E13919CA2AD3342D00694200 /* View+Extensions.swift in Sources */,
 				56AE0CC12AF8297200D16467 /* PersonalVoiceBottomSheetView.swift in Sources */,
