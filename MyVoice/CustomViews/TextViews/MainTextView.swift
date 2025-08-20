@@ -8,70 +8,95 @@
 import UIKit
 
 final class MainTextView: UITextView {
-    private var shadowLayer: CAShapeLayer?
-    
-    lazy var toolbar: UIToolbar = {
-        let toolbar = UIToolbar(frame: CGRect.zero)
-        toolbar.tintColor = .orangeMain
-        toolbar.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        let leftSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let doneButton = UIBarButtonItem(
-            title: NSLocalizedString("Done", comment: "Done"),
-            style: .done,
-            target: self,
-            action: #selector(doneButtonDidTap)
+    // TODO: Debug on iPad, when orientation changes
+    lazy var accessoryView: UIInputView = {
+        ToolbarInputAccessoryView(
+            frame: frame,
+            pasteboardButtonDidTap: pasteboardButtonDidTap,
+            clearTextButtonDidTap: clearTextButtonDidTap,
+            hideKeyboardButtonDidTap: hideKeyboardButtonDidTap
         )
-        doneButton.setTitleTextAttributes([NSAttributedString.Key.font: Fonts.Poppins.semibold(17.0).font], for: .normal)
-        toolbar.items = [leftSpace, doneButton]
-        
-        return toolbar
     }()
-    
+
+    lazy var backgroundView: UIView = {
+        if #available(iOS 26.0, *) {
+            return UIVisualEffectView()
+        } else {
+            return UIView()
+        }
+    }()
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
         setupLayout()
+        setupTextContent()
     }
 
     private func setupLayout() {
-        layer.cornerRadius = 16
+        layer.cornerRadius = System.cornerRadius
         layer.masksToBounds = true
         clipsToBounds = true
         
-        backgroundColor = .whiteCustom ?? .white
+        backgroundColor = .clear
         textColor = .blackCustom ?? .black
         tintColor = .orangeMain
-        
-        textContainerInset = .init(top: 13, left: 14, bottom: 14, right: 13)
+
+        setupBackground()
+
+        textContainerInset = .init(
+            top: 13.0,
+            left: 14.0,
+            bottom: 14.0,
+            right: 13.0
+        )
         font = Fonts.Poppins.bold(20.0).font
 
-        returnKeyType = .done
-        inputAccessoryView = toolbar
-    }
-    
-    private func addShadow(color: UIColor = .black, alpha: Float = 0.2, x: CGFloat = 0, y: CGFloat = 2, blur: CGFloat = 4, spread: CGFloat = 0) {
-        shadowLayer?.removeFromSuperlayer()
-        shadowLayer = CAShapeLayer()
-        shadowLayer?.path = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
-        shadowLayer?.fillColor = UIColor.whiteCustom?.cgColor
-        
-        shadowLayer?.shadowColor = color.cgColor
-        shadowLayer?.shadowOffset = CGSize(width: x, height: y)
-        shadowLayer?.shadowOpacity = alpha
-        shadowLayer?.shadowRadius = blur / 2
+        inputAccessoryView = accessoryView
 
-        if spread == 0 {
-            layer.shadowPath = nil
+        verticalScrollIndicatorInsets = .init(
+            top: System.cornerRadius,
+            left: .zero,
+            bottom: System.cornerRadius,
+            right: .zero
+        )
+    }
+
+    private func setupBackground() {
+        insertSubview(backgroundView, at: 0)
+        backgroundView.frame = bounds
+        backgroundView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+
+        if #available(iOS 26.0, *) {
+            let glassEffect = UIGlassEffect()
+            glassEffect.tintColor = .whiteCustom
+
+            backgroundView.cornerConfiguration = .corners(radius: .init(floatLiteral: System.cornerRadius))
+
+            UIView.animate { (backgroundView as? UIVisualEffectView)?.effect = glassEffect }
         } else {
-            let dx = -spread
-            let rect = bounds.insetBy(dx: dx, dy: dx)
-            layer.shadowPath = UIBezierPath(rect: rect).cgPath
+            backgroundView.backgroundColor = .whiteCustom ?? .white
         }
-
-        layer.insertSublayer(shadowLayer!, at: 0)
     }
-    
-    @objc
-    private func doneButtonDidTap() { resignFirstResponder() }
+
+    private func setupTextContent() {
+        keyboardType = .asciiCapable
+        keyboardDismissMode = .interactive
+        returnKeyType = .default
+    }
+
+    private func pasteboardButtonDidTap() {
+        if UIPasteboard.general.hasStrings {
+            text = UIPasteboard.general.string
+        }
+    }
+
+    private func clearTextButtonDidTap() { text = nil }
+
+    private func hideKeyboardButtonDidTap() { resignFirstResponder() }
 }
+
+// TODO: Make whole TextView tapable
+// TODO: Experiment with shadow configuration
+// TODO: Experiment with tint color
+// TODO: Debug how isInteractive works and why it's so strange looking
