@@ -19,9 +19,9 @@ struct HelpView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) { doneButton }
             }
-            .background(
+            .background {
                 UIColor.background?.asColor.ignoresSafeArea()
-            )
+            }
     }
     
     private var content: some View {

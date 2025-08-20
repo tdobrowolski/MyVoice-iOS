@@ -9,7 +9,7 @@ import UIKit
 
 final class MainTextView: UITextView {
     // TODO: Debug on iPad, when orientation changes
-    lazy var accessoryView: UIInputView = {
+    private lazy var accessoryView: UIInputView = {
         ToolbarInputAccessoryView(
             frame: frame,
             pasteboardButtonDidTap: pasteboardButtonDidTap,
@@ -18,13 +18,15 @@ final class MainTextView: UITextView {
         )
     }()
 
-    lazy var backgroundView: UIView = {
+    private lazy var backgroundView: UIView = {
         if #available(iOS 26.0, *) {
             return UIVisualEffectView()
         } else {
             return UIView()
         }
     }()
+
+    private let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -91,7 +93,10 @@ final class MainTextView: UITextView {
         }
     }
 
-    private func clearTextButtonDidTap() { text = nil }
+    private func clearTextButtonDidTap() {
+        feedbackGenerator.impactOccurred()
+        text = nil
+    }
 
     private func hideKeyboardButtonDidTap() { resignFirstResponder() }
 }

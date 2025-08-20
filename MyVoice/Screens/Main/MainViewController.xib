@@ -24,7 +24,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="MyVoice" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundShadowView" destination="tui-a2-3yS" id="guy-NQ-Fu3"/>
-                <outlet property="clearButton" destination="Dya-US-nHO" id="CMJ-Zk-dJw"/>
+                <outlet property="displayButton" destination="Dya-US-nHO" id="CMJ-Zk-dJw"/>
                 <outlet property="editButton" destination="S1N-az-PYR" id="4wv-70-GBD"/>
                 <outlet property="headerTitleLabel" destination="emE-tE-bFV" id="JjD-ds-MhV"/>
                 <outlet property="mainTextView" destination="bL3-7m-SfT" id="7jC-NI-0fs"/>
@@ -85,7 +85,7 @@
                                             <rect key="frame" x="132.5" y="0.0" width="117" height="110"/>
                                             <state key="normal" title="_Clear"/>
                                             <connections>
-                                                <action selector="clearButtonDidTouch:" destination="-1" eventType="touchUpInside" id="oqI-S4-QvD"/>
+                                                <action selector="displayButtonDidTouch:" destination="-1" eventType="touchUpInside" id="oqI-S4-QvD"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWa-dJ-pYF" customClass="LargeIconButton" customModule="MyVoice" customModuleProvider="target">

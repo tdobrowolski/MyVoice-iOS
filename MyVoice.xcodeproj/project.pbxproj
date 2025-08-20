@@ -58,6 +58,8 @@
 		E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */; };
 		E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */; };
 		E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */; };
+		E198518D2E560133002001DF /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198518C2E560133002001DF /* DisplayView.swift */; };
+		E198518F2E560139002001DF /* DisplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198518E2E560139002001DF /* DisplayViewModel.swift */; };
 		E1B148A125EC4326003C1401 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1B148A325EC4326003C1401 /* Localizable.strings */; };
 		E1B148A525EC432A003C1401 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1B148A725EC432A003C1401 /* Localizable.strings */; };
 		E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3E4C25B6308E00DB87E1 /* BaseViewModel.swift */; };
@@ -137,6 +139,8 @@
 		E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseModel.swift; sourceTree = "<group>"; };
 		E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseTableViewCell.swift; sourceTree = "<group>"; };
 		E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickPhraseTableViewCell.xib; sourceTree = "<group>"; };
+		E198518C2E560133002001DF /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		E198518E2E560139002001DF /* DisplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewModel.swift; sourceTree = "<group>"; };
 		E1B1489025EC41B0003C1401 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E1B148A225EC4326003C1401 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E1B148A625EC432A003C1401 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -231,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				E115575D25B4C5390093851B /* Main */,
+				E198518B2E560122002001DF /* Display */,
 				E13919C12AD2D47A00694200 /* Help */,
 				E1771A8225C21605003FE247 /* Settings */,
 				E15B839225CF17AD00C8BFA5 /* LanguagePicker */,
@@ -470,6 +475,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E198518B2E560122002001DF /* Display */ = {
+			isa = PBXGroup;
+			children = (
+				E198518C2E560133002001DF /* DisplayView.swift */,
+				E198518E2E560139002001DF /* DisplayViewModel.swift */,
+			);
+			path = Display;
+			sourceTree = "<group>";
+		};
 		E1B1489225EC4288003C1401 /* Translations */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,11 +714,13 @@
 				E13919C32AD2D48E00694200 /* HelpView.swift in Sources */,
 				E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */,
 				E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */,
+				E198518D2E560133002001DF /* DisplayView.swift in Sources */,
 				E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */,
 				E15B839525CF17CB00C8BFA5 /* LanguagePickerViewController.swift in Sources */,
 				E19392AD2A2C0AE400CA6238 /* UIColor+Extensions.swift in Sources */,
 				E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */,
 				E18AF60D25F57BDF008CFA5D /* TouchHandlerButton.swift in Sources */,
+				E198518F2E560139002001DF /* DisplayViewModel.swift in Sources */,
 				E115574325B4C4290093851B /* AppDelegate.swift in Sources */,
 				E1E89B1D2A3F558F004DF84F /* HeaderView.swift in Sources */,
 				E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */,
@@ -905,7 +921,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V9858W9DAL;
 				INFOPLIST_FILE = "$(SRCROOT)/MyVoice/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -929,7 +945,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V9858W9DAL;
 				INFOPLIST_FILE = "$(SRCROOT)/MyVoice/SupportingFiles/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
