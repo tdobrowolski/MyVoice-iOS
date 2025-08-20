@@ -30,13 +30,16 @@ enum SystemVolumeState {
     }
 }
 
+// TODO: Whole button needs to be written from scratch
+// Not as XIB, from code - so liquid glass efect will animate properly
+
+enum ActionType {
+    case speak
+    case clear
+    case save
+}
+
 final class LargeIconButton: UIButton {
-    enum ActionType {
-        case speak
-        case clear
-        case save
-    }
-    
     @IBOutlet weak var contentView: UIView!
     
     @IBOutlet weak var iconContainerView: UIView!
@@ -44,7 +47,11 @@ final class LargeIconButton: UIButton {
     @IBOutlet weak var mainTitleLabel: UILabel!
     
     private var shadowLayer: CAShapeLayer!
-    
+
+    private lazy var backgroundView: UIVisualEffectView = {
+        .init()
+    }()
+
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     let systemVolumeState = BehaviorSubject<SystemVolumeState>(value: .lowVolume)
     let disposeBag = DisposeBag()
@@ -53,22 +60,24 @@ final class LargeIconButton: UIButton {
         super.init(frame: frame)
 
         setupLayout()
+        bindRxValues()
     }
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
         setupLayout()
+        bindRxValues()
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        
-        switch traitCollection.userInterfaceStyle {
-        case .light: addShadow(color: .blueDark ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
-        default: addShadow(color: .blueDark ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
-        }
-    }
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        
+//        switch traitCollection.userInterfaceStyle {
+//        case .light: addShadow(color: .blueDark ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
+//        default: addShadow(color: .blueDark ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
+//        }
+//    }
     
     private func setupLayout() {
         Bundle.main.loadNibNamed("LargeIconButton", owner: self)
@@ -76,14 +85,32 @@ final class LargeIconButton: UIButton {
         addSubview(contentView)
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
-        addTarget(self, action: #selector(buttonPressed), for: .touchDown)
-        addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
-        addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
-                
-        bindRxValues()
+
+        setupBackground()
+
+//        addTarget(self, action: #selector(buttonPressed), for: .touchDown)
+//        addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
+//        addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
     }
-    
+
+    private func setupBackground() {
+        insertSubview(backgroundView, at: 0)
+        backgroundView.frame = bounds
+        backgroundView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+
+        if #available(iOS 26.0, *) {
+            let glassEffect = UIGlassEffect()
+            glassEffect.isInteractive = true
+            glassEffect.tintColor = .whiteCustom
+
+            backgroundView.cornerConfiguration = .corners(radius: .init(floatLiteral: System.cornerRadius))
+
+            UIView.animate { backgroundView.effect = glassEffect }
+        } else {
+            backgroundView.backgroundColor = .whiteCustom ?? .white
+        }
+    }
+
     private func addShadow(
         color: UIColor = .black,
         alpha: Float = 0.2,

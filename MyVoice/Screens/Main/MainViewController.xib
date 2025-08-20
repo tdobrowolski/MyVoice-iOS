@@ -51,7 +51,7 @@
                         <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eQl-5I-Ypw">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="587.5"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tui-a2-3yS" customClass="BackgroundShadowView" customModule="MyVoice" customModuleProvider="target">
+                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tui-a2-3yS" customClass="BackgroundShadowView" customModule="MyVoice" customModuleProvider="target">
                                     <rect key="frame" x="16" y="8" width="382" height="200"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>

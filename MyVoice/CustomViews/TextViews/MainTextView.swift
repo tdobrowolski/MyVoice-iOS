@@ -8,8 +8,6 @@
 import UIKit
 
 final class MainTextView: UITextView {
-    private var shadowLayer: CAShapeLayer?
-
     // TODO: Debug on iPad, when orientation changes
     lazy var accessoryView: UIInputView = {
         ToolbarInputAccessoryView(
@@ -19,7 +17,15 @@ final class MainTextView: UITextView {
             hideKeyboardButtonDidTap: hideKeyboardButtonDidTap
         )
     }()
-    
+
+    lazy var backgroundView: UIView = {
+        if #available(iOS 26.0, *) {
+            return UIVisualEffectView()
+        } else {
+            return UIView()
+        }
+    }()
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         
@@ -32,10 +38,12 @@ final class MainTextView: UITextView {
         layer.masksToBounds = true
         clipsToBounds = true
         
-        backgroundColor = .whiteCustom ?? .white
+        backgroundColor = .clear
         textColor = .blackCustom ?? .black
         tintColor = .orangeMain
-        
+
+        setupBackground()
+
         textContainerInset = .init(
             top: 13.0,
             left: 14.0,
@@ -54,39 +62,27 @@ final class MainTextView: UITextView {
         )
     }
 
+    private func setupBackground() {
+        insertSubview(backgroundView, at: 0)
+        backgroundView.frame = bounds
+        backgroundView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+
+        if #available(iOS 26.0, *) {
+            let glassEffect = UIGlassEffect()
+            glassEffect.tintColor = .whiteCustom
+
+            backgroundView.cornerConfiguration = .corners(radius: .init(floatLiteral: System.cornerRadius))
+
+            UIView.animate { (backgroundView as? UIVisualEffectView)?.effect = glassEffect }
+        } else {
+            backgroundView.backgroundColor = .whiteCustom ?? .white
+        }
+    }
+
     private func setupTextContent() {
         keyboardType = .asciiCapable
         keyboardDismissMode = .interactive
         returnKeyType = .default
-    }
-
-    private func addShadow(
-        color: UIColor = .black,
-        alpha: Float = 0.2,
-        x: CGFloat = 0.0,
-        y: CGFloat = 2.0,
-        blur: CGFloat = 4.0,
-        spread: CGFloat = 0.0
-    ) {
-        shadowLayer?.removeFromSuperlayer()
-        shadowLayer = CAShapeLayer()
-        shadowLayer?.path = UIBezierPath(roundedRect: bounds, cornerRadius: System.cornerRadius).cgPath
-        shadowLayer?.fillColor = UIColor.whiteCustom?.cgColor
-        
-        shadowLayer?.shadowColor = color.cgColor
-        shadowLayer?.shadowOffset = CGSize(width: x, height: y)
-        shadowLayer?.shadowOpacity = alpha
-        shadowLayer?.shadowRadius = blur / 2
-
-        if spread == 0 {
-            layer.shadowPath = nil
-        } else {
-            let dx = -spread
-            let rect = bounds.insetBy(dx: dx, dy: dx)
-            layer.shadowPath = UIBezierPath(rect: rect).cgPath
-        }
-
-        layer.insertSublayer(shadowLayer!, at: 0)
     }
 
     private func pasteboardButtonDidTap() {
@@ -99,3 +95,8 @@ final class MainTextView: UITextView {
 
     private func hideKeyboardButtonDidTap() { resignFirstResponder() }
 }
+
+// TODO: Make whole TextView tapable
+// TODO: Experiment with shadow configuration
+// TODO: Experiment with tint color
+// TODO: Debug how isInteractive works and why it's so strange looking

@@ -22,10 +22,7 @@ struct CollapsableHelpComponentView: View {
         VStack(alignment: .leading, spacing: 8.0) {
             primaryHeader
                 .contentShape(Rectangle())
-                .onTapGesture {
-                    isExpanded.toggle()
-                    onTap(contentType.id)
-                }
+                .onTapGesture { didTapItem(with: contentType.id) }
             if isExpanded {
                 secondaryContent
             }
@@ -41,22 +38,41 @@ struct CollapsableHelpComponentView: View {
                 .font(Fonts.Poppins.bold(18.0).swiftUIFont)
                 .multilineTextAlignment(.leading)
             Spacer()
-            chevronIcon
+            chevronButton
         }
     }
-    
-    private var chevronIcon: some View {
-        ZStack {
-            Circle()
-                .fill(UIColor.blueLight?.asColor ?? .white)
-                .frame(width: 40.0, height: 40.0)
-            Image(systemName: "chevron.right")
-                .font(.system(size: 17.0, weight: .bold))
-                .foregroundColor(UIColor.blueDark?.asColor)
-        }
-        .rotationEffect(isExpanded ? .degrees(90.0) : .zero)
+
+    private func didTapItem(with id: String) {
+        isExpanded.toggle()
+        onTap(contentType.id)
     }
-    
+
+    @ViewBuilder
+    private var chevronButton: some View {
+        if #available(iOS 26.0, *) {
+            Button {
+                didTapItem(with: contentType.id)
+            } label: {
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 17.0, weight: .bold))
+                    .foregroundColor(UIColor.blueDark?.asColor)
+                    .rotationEffect(isExpanded ? .degrees(90.0) : .zero)
+            }
+            .frame(width: 40.0, height: 40.0)
+            .glassEffect(.regular.tint(UIColor.blueLight?.asColor ?? .white).interactive(), in: Circle())
+        } else {
+            ZStack {
+                Circle()
+                    .fill(UIColor.blueLight?.asColor ?? .white)
+                    .frame(width: 40.0, height: 40.0)
+                Image(systemName: "chevron.right")
+                    .font(.system(size: 17.0, weight: .bold))
+                    .foregroundColor(UIColor.blueDark?.asColor)
+            }
+            .rotationEffect(isExpanded ? .degrees(90.0) : .zero)
+        }
+    }
+
     private var secondaryContent: some View {
         if #available(iOS 15, *) {
             Text(AttributedString(contentType.secondaryText))
