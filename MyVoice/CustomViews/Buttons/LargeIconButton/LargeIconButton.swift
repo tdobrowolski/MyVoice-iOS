@@ -28,15 +28,71 @@ enum SystemVolumeState {
         default: return .highVolume
         }
     }
+
+    var icon: UIImage? {
+        UIImage(
+            systemName: iconName,
+            withConfiguration: UIImage.SymbolConfiguration(weight: .bold)
+        )
+    }
+
+    private var iconName: String {
+        switch self {
+        case .noVolume: "speaker.fill"
+        case .lowVolume: "speaker.wave.1.fill"
+        case .mediumVolume: "speaker.wave.2.fill"
+        case .highVolume: "speaker.wave.3.fill"
+        }
+    }
 }
 
 // TODO: Whole button needs to be written from scratch
 // Not as XIB, from code - so liquid glass efect will animate properly
 
 enum ActionType {
-    case speak
-    case clear
+    case speak(isSpeaking: Bool)
+    case display
     case save
+
+    var title: String {
+        switch self {
+        case .speak(let isSpeaking):
+            isSpeaking ? NSLocalizedString("Stop", comment: "Stop") : NSLocalizedString("Speak", comment: "Speak")
+        case .display:
+            NSLocalizedString("Display", comment: "Display")
+        case .save:
+            NSLocalizedString("Save", comment: "Save")
+        }
+    }
+
+    var backgroundColor: UIColor? {
+        switch self {
+        case .speak(let isSpeaking):
+            isSpeaking ? UIColor.redLight : UIColor.orangeLight
+        case .display, .save:
+            UIColor.orangeLight
+        }
+    }
+
+    var tintColor: UIColor? {
+        switch self {
+        case .speak(let isSpeaking):
+            isSpeaking ? UIColor.redMain : UIColor.orangeMain
+        case .display, .save:
+            UIColor.orangeMain
+        }
+    }
+
+    func getIcon(with volumeState: SystemVolumeState) -> UIImage? {
+        switch self {
+        case .speak:
+            volumeState.icon
+        case .display:
+            UIImage(systemName: "arrow.up.left.and.arrow.down.right", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        case .save:
+            UIImage(systemName: "plus.bubble.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        }
+    }
 }
 
 final class LargeIconButton: UIButton {
@@ -70,14 +126,18 @@ final class LargeIconButton: UIButton {
         bindRxValues()
     }
     
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        
-//        switch traitCollection.userInterfaceStyle {
-//        case .light: addShadow(color: .blueDark ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
-//        default: addShadow(color: .blueDark ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
-//        }
-//    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        if #available(iOS 26.0, *) {
+            return
+        } else {
+            switch traitCollection.userInterfaceStyle {
+            case .light: addShadow(color: .blueDark ?? .black, alpha: 0.25, x: 0, y: 2, blur: 12, spread: -2)
+            default: addShadow(color: .blueDark ?? .black, alpha: 0.0, x: 0, y: 2, blur: 12, spread: -2)
+            }
+        }
+    }
     
     private func setupLayout() {
         Bundle.main.loadNibNamed("LargeIconButton", owner: self)
@@ -86,11 +146,15 @@ final class LargeIconButton: UIButton {
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 
-        setupBackground()
+//        setupBackground()
 
-//        addTarget(self, action: #selector(buttonPressed), for: .touchDown)
-//        addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
-//        addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
+//        if #available(iOS 26.0, *) {
+//            return
+//        } else {
+            addTarget(self, action: #selector(buttonPressed), for: .touchDown)
+            addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
+            addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
+//        }
     }
 
     private func setupBackground() {
@@ -145,16 +209,16 @@ final class LargeIconButton: UIButton {
         }
     }
     
-    func setupLayout(forTitle title: String, actionType: ActionType) {
+    func setupLayout(for actionType: ActionType) {
         setupIcon(actionType: actionType)
-        setupTitleLabel(title: title)
+        setupTitleLabel(actionType: actionType)
         layer.backgroundColor = nil
         contentView.backgroundColor = nil
         contentView.isUserInteractionEnabled = false
     }
     
-    private func setupTitleLabel(title: String) {
-        let attributedText = NSMutableAttributedString(string: title, attributes: [NSAttributedString.Key.kern: 0.6])
+    private func setupTitleLabel(actionType: ActionType) {
+        let attributedText = NSMutableAttributedString(string: actionType.title, attributes: [NSAttributedString.Key.kern: 0.6])
         attributedText.addAttribute(.font, value: Fonts.Poppins.bold(15.0).font, range: NSMakeRange(0, attributedText.length))
         attributedText.addAttribute(.foregroundColor, value: UIColor.blackCustom ?? .black, range: NSMakeRange(0, attributedText.length))
         setTitle(nil, for: .normal)
@@ -165,22 +229,9 @@ final class LargeIconButton: UIButton {
     private func setupIcon(actionType: ActionType) {
         iconContainerView.layer.cornerRadius = iconContainerView.frame.width / 2
 
-        switch actionType {
-        case .speak:
-            iconContainerView.backgroundColor = .orangeLight ?? .white
-            iconImageView.tintColor = .orangeMain ?? .orange
-            iconImageView.image = getSystemVolumeIcon()
-
-        case .clear:
-            iconContainerView.backgroundColor = .redLight ?? .white
-            iconImageView.tintColor = .redMain ?? .red
-            iconImageView.image = UIImage(systemName: "pencil.slash", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
-
-        case .save:
-            iconContainerView.backgroundColor = .orangeLight ?? .white
-            iconImageView.tintColor = .orangeMain ?? .orange
-            iconImageView.image = UIImage(systemName: "plus.bubble.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-        }
+        iconContainerView.backgroundColor = actionType.backgroundColor
+        iconImageView.tintColor = actionType.tintColor
+        iconImageView.image = actionType.getIcon(with: SystemVolumeState.getState(from: nil))
     }
     
     // MARK: Methods for Speak button
@@ -192,45 +243,23 @@ final class LargeIconButton: UIButton {
                 self?.setupForSpeakButton(isSpeaking: isSpeaking)
             }
             .disposed(by: disposeBag)
-        
+
+        // TODO: Debug what happens when volume is changed while button is in speaking state
         systemVolumeState
             .skip(1)
             .subscribe { [weak self] volumeState in
                 guard let state = volumeState.element, let isSpeaking = try? self?.isSpeaking.value(), isSpeaking == false else { return }
                 
-                self?.iconImageView.image = self?.getSystemVolumeIcon(for: state)
+                self?.iconImageView.image = ActionType.speak(isSpeaking: isSpeaking).getIcon(with: state)
             }
             .disposed(by: disposeBag)
     }
     
-    private func getSystemVolumeIcon(for volumeState: SystemVolumeState? = nil) -> UIImage? {
-        switch volumeState ?? SystemVolumeState.getState(from: nil) {
-        case .noVolume:
-            return UIImage(systemName: "speaker.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            
-        case .lowVolume:
-            return UIImage(systemName: "speaker.wave.1.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            
-        case .mediumVolume:
-            return UIImage(systemName: "speaker.wave.2.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            
-        case .highVolume:
-            return UIImage(systemName: "speaker.wave.3.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-        }
-    }
-    
     private func setupForSpeakButton(isSpeaking: Bool = false) {
-        if isSpeaking {
-            iconContainerView.backgroundColor = .redLight ?? .white
-            iconImageView.tintColor = .redMain ?? .red
-            iconImageView.image = UIImage(systemName: "stop.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-            setupTitleLabel(title: NSLocalizedString("Stop", comment: "Stop"))
-        } else {
-            iconContainerView.backgroundColor = .orangeLight ?? .white
-            iconImageView.tintColor = .orangeMain ?? .orange
-            iconImageView.image = getSystemVolumeIcon()
-            setupTitleLabel(title: NSLocalizedString("Speak", comment: "Speak"))
-        }
+        iconContainerView.backgroundColor = ActionType.speak(isSpeaking: isSpeaking).backgroundColor
+        iconImageView.tintColor = ActionType.speak(isSpeaking: isSpeaking).tintColor
+        iconImageView.image = ActionType.speak(isSpeaking: isSpeaking).getIcon(with: SystemVolumeState.getState(from: nil))
+        setupTitleLabel(actionType: ActionType.speak(isSpeaking: isSpeaking))
     }
     
     // MARK: Handle button touch state

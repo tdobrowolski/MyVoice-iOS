@@ -54,6 +54,7 @@ enum Fonts {
                 
             case let .semibold(size), let .bold(size):
                 switch size {
+                case 72.0: return .init(forTextStyle: .largeTitle)
                 case 20.0: return .init(forTextStyle: .title3)
                 case 17.0, 18.0: return .init(forTextStyle: .headline)
                 case 15.0: return .init(forTextStyle: .subheadline)

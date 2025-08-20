@@ -17,7 +17,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     @IBOutlet weak var backgroundShadowView: BackgroundShadowView!
     
     @IBOutlet weak var speakButton: LargeIconButton!
-    @IBOutlet weak var clearButton: LargeIconButton!
+    @IBOutlet weak var displayButton: LargeIconButton!
     @IBOutlet weak var saveButton: LargeIconButton!
     
     @IBOutlet weak var headerTitleLabel: UILabel!
@@ -146,9 +146,9 @@ final class MainViewController: BaseViewController<MainViewModel> {
     // MARK: Setting up
     
     private func setupLargeButtons() {
-        speakButton.setupLayout(forTitle: NSLocalizedString("Speak", comment: "Speak"), actionType: .speak)
-        clearButton.setupLayout(forTitle: NSLocalizedString("Clear", comment: "Clear"), actionType: .clear)
-        saveButton.setupLayout(forTitle: NSLocalizedString("Save", comment: "Save"), actionType: .save)
+        speakButton.setupLayout(for: .speak(isSpeaking: false))
+        displayButton.setupLayout(for: .display)
+        saveButton.setupLayout(for: .save)
     }
     
     private func setupPlaceholderLabel() {
@@ -245,9 +245,14 @@ final class MainViewController: BaseViewController<MainViewModel> {
     }
     
     @IBAction
-    func clearButtonDidTouch(_ sender: Any) {
+    func displayButtonDidTouch(_ sender: Any) {
         viewModel.impactUserWithFeedback()
-        mainTextView.text = nil
+
+        let displayViewController = DisplayViewController()
+        displayViewController.modalPresentationStyle = .fullScreen
+        displayViewController.modalTransitionStyle = .crossDissolve
+
+        present(displayViewController, animated: true, completion: nil)
     }
     
     @IBAction
