@@ -248,7 +248,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     func displayButtonDidTouch(_ sender: Any) {
         viewModel.impactUserWithFeedback()
 
-        let displayViewController = DisplayViewController()
+        let displayViewController = ClaudeDisplayViewController(text: "Large text to display")
         displayViewController.modalPresentationStyle = .fullScreen
         displayViewController.modalTransitionStyle = .crossDissolve
 
