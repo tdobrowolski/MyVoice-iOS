@@ -24,7 +24,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainViewController" customModule="MyVoice" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundShadowView" destination="tui-a2-3yS" id="guy-NQ-Fu3"/>
-                <outlet property="displayButton" destination="Dya-US-nHO" id="CMJ-Zk-dJw"/>
+                <outlet property="displayContainer" destination="zWu-XN-2xu" id="6OQ-t0-F3B"/>
                 <outlet property="editButton" destination="S1N-az-PYR" id="4wv-70-GBD"/>
                 <outlet property="headerTitleLabel" destination="emE-tE-bFV" id="JjD-ds-MhV"/>
                 <outlet property="mainTextView" destination="bL3-7m-SfT" id="7jC-NI-0fs"/>
@@ -34,9 +34,9 @@
                 <outlet property="quickAccessPlaceholderSecondaryLabel" destination="zEy-bj-WnG" id="WTP-xq-hyy"/>
                 <outlet property="quickAccessPlaceholderView" destination="9QN-YU-QVx" id="dmq-Jw-iCp"/>
                 <outlet property="quickAccessTableView" destination="Phl-JM-7vZ" id="x1L-sP-caI"/>
-                <outlet property="saveButton" destination="AWa-dJ-pYF" id="Jb0-E1-hLA"/>
+                <outlet property="saveContainer" destination="n9q-0C-EuF" id="aFG-eS-Cc5"/>
                 <outlet property="scrollView" destination="rVh-g5-XuI" id="sID-U1-lDy"/>
-                <outlet property="speakButton" destination="514-y1-hZT" id="FdW-yz-xMC"/>
+                <outlet property="speakContainer" destination="tgn-Lf-CdC" id="NJe-5o-egu"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -74,27 +74,15 @@
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="rFk-io-9ZK">
                                     <rect key="frame" x="16" y="224" width="382" height="110"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="514-y1-hZT" customClass="LargeIconButton" customModule="MyVoice" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tgn-Lf-CdC" userLabel="SpeakContainer">
                                             <rect key="frame" x="0.0" y="0.0" width="116.5" height="110"/>
-                                            <state key="normal" title="_Speak"/>
-                                            <connections>
-                                                <action selector="speakButtonDidTouch:" destination="-1" eventType="touchUpInside" id="p0p-3B-00O"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dya-US-nHO" customClass="LargeIconButton" customModule="MyVoice" customModuleProvider="target">
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zWu-XN-2xu" userLabel="DisplayContainer">
                                             <rect key="frame" x="132.5" y="0.0" width="117" height="110"/>
-                                            <state key="normal" title="_Clear"/>
-                                            <connections>
-                                                <action selector="displayButtonDidTouch:" destination="-1" eventType="touchUpInside" id="oqI-S4-QvD"/>
-                                            </connections>
-                                        </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AWa-dJ-pYF" customClass="LargeIconButton" customModule="MyVoice" customModuleProvider="target">
+                                        </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n9q-0C-EuF" userLabel="SaveContainer">
                                             <rect key="frame" x="265.5" y="0.0" width="116.5" height="110"/>
-                                            <state key="normal" title="_Save"/>
-                                            <connections>
-                                                <action selector="saveButtonDidTouch:" destination="-1" eventType="touchUpInside" id="gWw-HP-guB"/>
-                                            </connections>
-                                        </button>
+                                        </view>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="110" id="ZhJ-H3-kdh"/>

@@ -50,13 +50,13 @@ enum SystemVolumeState {
 // Not as XIB, from code - so liquid glass efect will animate properly
 
 enum ActionType {
-    case speak(isSpeaking: Bool)
+    case speak
     case display
     case save
 
-    var title: String {
+    func getTitle(isSpeaking: Bool) -> String {
         switch self {
-        case .speak(let isSpeaking):
+        case .speak:
             isSpeaking ? NSLocalizedString("Stop", comment: "Stop") : NSLocalizedString("Speak", comment: "Speak")
         case .display:
             NSLocalizedString("Display", comment: "Display")
@@ -65,28 +65,29 @@ enum ActionType {
         }
     }
 
-    var backgroundColor: UIColor? {
+    func getBackgroundColor(isSpeaking: Bool) -> UIColor? {
         switch self {
-        case .speak(let isSpeaking):
+        case .speak:
             isSpeaking ? UIColor.redLight : UIColor.orangeLight
         case .display, .save:
             UIColor.orangeLight
         }
     }
 
-    var tintColor: UIColor? {
+    func getTintColor(isSpeaking: Bool) -> UIColor? {
         switch self {
-        case .speak(let isSpeaking):
+        case .speak:
             isSpeaking ? UIColor.redMain : UIColor.orangeMain
         case .display, .save:
             UIColor.orangeMain
         }
     }
 
-    func getIcon(with volumeState: SystemVolumeState) -> UIImage? {
+    // TODO: If SwiftUI, make it Image
+    func getIcon(with volumeState: SystemVolumeState, isSpeaking: Bool) -> UIImage? {
         switch self {
         case .speak:
-            volumeState.icon
+            isSpeaking ? UIImage(systemName: "stop.fill", withConfiguration: UIImage.SymbolConfiguration(weight: .bold)) : volumeState.icon
         case .display:
             UIImage(systemName: "arrow.up.left.and.arrow.down.right", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         case .save:
@@ -103,10 +104,6 @@ final class LargeIconButton: UIButton {
     @IBOutlet weak var mainTitleLabel: UILabel!
     
     private var shadowLayer: CAShapeLayer!
-
-    private lazy var backgroundView: UIVisualEffectView = {
-        .init()
-    }()
 
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     let systemVolumeState = BehaviorSubject<SystemVolumeState>(value: .lowVolume)
@@ -146,32 +143,24 @@ final class LargeIconButton: UIButton {
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
 
-//        setupBackground()
+        setupBackground()
 
-//        if #available(iOS 26.0, *) {
-//            return
-//        } else {
+        if #available(iOS 26.0, *) {
+            return
+        } else {
             addTarget(self, action: #selector(buttonPressed), for: .touchDown)
             addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
             addTarget(self, action: #selector(buttonReleased), for: .touchUpOutside)
-//        }
+        }
     }
 
     private func setupBackground() {
-        insertSubview(backgroundView, at: 0)
-        backgroundView.frame = bounds
-        backgroundView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-
         if #available(iOS 26.0, *) {
-            let glassEffect = UIGlassEffect()
-            glassEffect.isInteractive = true
-            glassEffect.tintColor = .whiteCustom
-
-            backgroundView.cornerConfiguration = .corners(radius: .init(floatLiteral: System.cornerRadius))
-
-            UIView.animate { backgroundView.effect = glassEffect }
+            configuration = .prominentGlass()
+            tintColor = .background
+            cornerConfiguration = .corners(radius: .init(floatLiteral: System.cornerRadius))
         } else {
-            backgroundView.backgroundColor = .whiteCustom ?? .white
+            backgroundColor = .whiteCustom ?? .white
         }
     }
 
@@ -218,20 +207,24 @@ final class LargeIconButton: UIButton {
     }
     
     private func setupTitleLabel(actionType: ActionType) {
+        /*
         let attributedText = NSMutableAttributedString(string: actionType.title, attributes: [NSAttributedString.Key.kern: 0.6])
         attributedText.addAttribute(.font, value: Fonts.Poppins.bold(15.0).font, range: NSMakeRange(0, attributedText.length))
         attributedText.addAttribute(.foregroundColor, value: UIColor.blackCustom ?? .black, range: NSMakeRange(0, attributedText.length))
         setTitle(nil, for: .normal)
         mainTitleLabel.text = nil
         mainTitleLabel.attributedText = attributedText
+         */
     }
     
     private func setupIcon(actionType: ActionType) {
+        /*
         iconContainerView.layer.cornerRadius = iconContainerView.frame.width / 2
 
         iconContainerView.backgroundColor = actionType.backgroundColor
         iconImageView.tintColor = actionType.tintColor
         iconImageView.image = actionType.getIcon(with: SystemVolumeState.getState(from: nil))
+         */
     }
     
     // MARK: Methods for Speak button
@@ -250,16 +243,16 @@ final class LargeIconButton: UIButton {
             .subscribe { [weak self] volumeState in
                 guard let state = volumeState.element, let isSpeaking = try? self?.isSpeaking.value(), isSpeaking == false else { return }
                 
-                self?.iconImageView.image = ActionType.speak(isSpeaking: isSpeaking).getIcon(with: state)
+//                self?.iconImageView.image = ActionType.speak(isSpeaking: isSpeaking).getIcon(with: state)
             }
             .disposed(by: disposeBag)
     }
     
     private func setupForSpeakButton(isSpeaking: Bool = false) {
-        iconContainerView.backgroundColor = ActionType.speak(isSpeaking: isSpeaking).backgroundColor
-        iconImageView.tintColor = ActionType.speak(isSpeaking: isSpeaking).tintColor
-        iconImageView.image = ActionType.speak(isSpeaking: isSpeaking).getIcon(with: SystemVolumeState.getState(from: nil))
-        setupTitleLabel(actionType: ActionType.speak(isSpeaking: isSpeaking))
+//        iconContainerView.backgroundColor = ActionType.speak(isSpeaking: isSpeaking).backgroundColor
+//        iconImageView.tintColor = ActionType.speak(isSpeaking: isSpeaking).tintColor
+//        iconImageView.image = ActionType.speak(isSpeaking: isSpeaking).getIcon(with: SystemVolumeState.getState(from: nil))
+//        setupTitleLabel(actionType: ActionType.speak(isSpeaking: isSpeaking))
     }
     
     // MARK: Handle button touch state
