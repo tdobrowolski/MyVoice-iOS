@@ -8,6 +8,17 @@
 import UIKit
 import RxCocoa
 import RxDataSources
+import SwiftUI
+
+// TODO: Move
+
+// This allows to connect RxSwift, SwiftUI and UIKit together
+// The right choice is to store this type of data in ViewModel
+// This should be achieved by rewriting the MainViewController with SwiftUI + Combine in the future
+class SpeakButtonViewState: ObservableObject {
+    @Published var isSpeaking: Bool = false
+    @Published var systemVolumeState: SystemVolumeState = .lowVolume
+}
 
 final class MainViewController: BaseViewController<MainViewModel> {
     @IBOutlet weak var scrollView: CustomScrollView!
@@ -16,10 +27,10 @@ final class MainViewController: BaseViewController<MainViewModel> {
     @IBOutlet weak var placeholderTextView: UITextView!
     @IBOutlet weak var backgroundShadowView: BackgroundShadowView!
     
-    @IBOutlet weak var speakButton: LargeIconButton!
-    @IBOutlet weak var displayButton: LargeIconButton!
-    @IBOutlet weak var saveButton: LargeIconButton!
-    
+    @IBOutlet weak var speakContainer: UIView!
+    @IBOutlet weak var displayContainer: UIView!
+    @IBOutlet weak var saveContainer: UIView!
+
     @IBOutlet weak var headerTitleLabel: UILabel!
     @IBOutlet weak var editButton: UIButton!
     
@@ -29,7 +40,13 @@ final class MainViewController: BaseViewController<MainViewModel> {
     @IBOutlet weak var quickAccessPlaceholderImageView: UIImageView!
     @IBOutlet weak var quickAccessPlaceholderMainLabel: UILabel!
     @IBOutlet weak var quickAccessPlaceholderSecondaryLabel: UILabel!
-    
+
+    private var speakHostingController: UIHostingController<ActionButton>?
+    private var displayHostingController: UIHostingController<ActionButton>?
+    private var saveHostingController: UIHostingController<ActionButton>?
+
+    private var speakButtonViewState = SpeakButtonViewState()
+
     private var dataSource: RxTableViewSectionedAnimatedDataSource<QuickPhraseSection>!
     
     override func viewDidLoad() {
@@ -43,14 +60,17 @@ final class MainViewController: BaseViewController<MainViewModel> {
         quickAccessTableView.isScrollEnabled = false
         
         addNavigationBarButtons()
-        setupLargeButtons()
+        setupSpeakButton()
+        setupDisplayButton()
+        setupSaveButton()
+//        setupLargeButtons()
         setupPlaceholderLabel()
         setupQuickAccessPlaceholder()
         setupHeader()
         hideKeyboardWhenTappedAround()
         listenForActiveStateChange()
     }
-    
+
     override func bindViewModel(_ viewModel: MainViewModel) {
         super.bindViewModel(viewModel)
         
@@ -95,7 +115,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
         viewModel.isSpeaking
             .skip(1)
             .subscribe { [weak self] isSpeaking in
-                self?.speakButton.isSpeaking.onNext(isSpeaking)
+                self?.speakButtonViewState.isSpeaking = isSpeaking
             }
             .disposed(by: disposeBag)
         
@@ -108,11 +128,83 @@ final class MainViewController: BaseViewController<MainViewModel> {
         viewModel.systemVolumeState
             .skip(1)
             .subscribe { [weak self] volumeState in
-                self?.speakButton.systemVolumeState.onNext(volumeState)
+                self?.speakButtonViewState.systemVolumeState = volumeState
             }
             .disposed(by: disposeBag)
     }
-    
+
+    private func setupSpeakButton() {
+        let swiftUIView = ActionButton(
+            type: .speak,
+            state: speakButtonViewState
+        )
+
+        speakHostingController = UIHostingController(rootView: swiftUIView)
+
+        guard let speakHostingController else { return }
+
+        addChild(speakHostingController)
+        speakContainer.addSubview(speakHostingController.view)
+        speakHostingController.view.backgroundColor = nil
+        speakHostingController.didMove(toParent: self)
+
+        speakHostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            speakHostingController.view.topAnchor.constraint(equalTo: speakContainer.topAnchor),
+            speakHostingController.view.leadingAnchor.constraint(equalTo: speakContainer.leadingAnchor),
+            speakHostingController.view.trailingAnchor.constraint(equalTo: speakContainer.trailingAnchor),
+            speakHostingController.view.bottomAnchor.constraint(equalTo: speakContainer.bottomAnchor)
+        ])
+    }
+
+    private func setupDisplayButton() {
+        let swiftUIView = ActionButton(
+            type: .display,
+            state: speakButtonViewState
+        )
+
+        displayHostingController = UIHostingController(rootView: swiftUIView)
+
+        guard let displayHostingController else { return }
+
+        addChild(displayHostingController)
+        displayContainer.addSubview(displayHostingController.view)
+        displayHostingController.view.backgroundColor = nil
+        displayHostingController.didMove(toParent: self)
+
+        displayHostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            displayHostingController.view.topAnchor.constraint(equalTo: displayContainer.topAnchor),
+            displayHostingController.view.leadingAnchor.constraint(equalTo: displayContainer.leadingAnchor),
+            displayHostingController.view.trailingAnchor.constraint(equalTo: displayContainer.trailingAnchor),
+            displayHostingController.view.bottomAnchor.constraint(equalTo: displayContainer.bottomAnchor)
+        ])
+    }
+
+    private func setupSaveButton() {
+        let swiftUIView = ActionButton(
+            type: .save,
+            state: speakButtonViewState
+        )
+
+        saveHostingController = UIHostingController(rootView: swiftUIView)
+
+        guard let saveHostingController else { return }
+
+        addChild(saveHostingController)
+        saveContainer.addSubview(saveHostingController.view)
+        saveHostingController.view.backgroundColor = nil
+        saveHostingController.didMove(toParent: self)
+
+        saveHostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            saveHostingController.view.topAnchor.constraint(equalTo: saveContainer.topAnchor),
+            saveHostingController.view.leadingAnchor.constraint(equalTo: saveContainer.leadingAnchor),
+            saveHostingController.view.trailingAnchor.constraint(equalTo: saveContainer.trailingAnchor),
+            saveHostingController.view.bottomAnchor.constraint(equalTo: saveContainer.bottomAnchor)
+        ])
+    }
+
     // FIXME: Fix memory leak, cells are not deinitialised
     func getDataSourceForQuickPhrase() -> RxTableViewSectionedAnimatedDataSource<QuickPhraseSection> {
         RxTableViewSectionedAnimatedDataSource<QuickPhraseSection> (
@@ -145,11 +237,11 @@ final class MainViewController: BaseViewController<MainViewModel> {
     
     // MARK: Setting up
     
-    private func setupLargeButtons() {
-        speakButton.setupLayout(for: .speak(isSpeaking: false))
-        displayButton.setupLayout(for: .display)
-        saveButton.setupLayout(for: .save)
-    }
+//    private func setupLargeButtons() {
+//        speakButton.setupLayout(for: .speak(isSpeaking: false))
+//        displayButton.setupLayout(for: .display)
+//        saveButton.setupLayout(for: .save)
+//    }
     
     private func setupPlaceholderLabel() {
         placeholderTextView.text = NSLocalizedString("What do you want to say?", comment: "What do you want to say?")
@@ -248,7 +340,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     func displayButtonDidTouch(_ sender: Any) {
         viewModel.impactUserWithFeedback()
 
-        let displayViewController = ClaudeDisplayViewController(text: "Large text to display")
+        let displayViewController = DisplayViewController(text: "Large text to display")
         displayViewController.modalPresentationStyle = .fullScreen
         displayViewController.modalTransitionStyle = .crossDissolve
 

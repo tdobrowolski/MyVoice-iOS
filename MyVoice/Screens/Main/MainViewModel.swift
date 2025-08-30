@@ -10,7 +10,7 @@ import RxSwift
 import RxDataSources
 import AVKit
 
-final class MainViewModel: BaseViewModel {
+final class MainViewModel: BaseViewModel, ObservableObject {
     private let textToSpeechService: TextToSpeechService
     private let phraseDatabaseService: PhraseDatabaseService
     private var feedbackGenerator: UIImpactFeedbackGenerator
@@ -61,8 +61,8 @@ final class MainViewModel: BaseViewModel {
         notificationFeedbackGenerator.notificationOccurred(.error)
     }
     
-    // TODO: Adding/removing items to sections
-    
+    // TODO: Adding / removing items to sections
+
     func addQuickPhraseItem(phrase: String) {
         do {
             let selectedLanguageIdentifier = textToSpeechService.getCurrentLanguageIdentifier()
