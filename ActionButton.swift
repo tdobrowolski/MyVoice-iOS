@@ -7,8 +7,11 @@
 
 import SwiftUI
 
+// TODO: Debug if speak volume state is changing the speaker icon
+
 struct ActionButton: View {
-    let type: ActionType
+    let type: ActionButtonType
+    let onTap: () -> ()
 
     @ObservedObject var state: SpeakButtonViewState
 
@@ -24,7 +27,7 @@ struct ActionButton: View {
     private var liquidGlassContent: some View {
         if #available(iOS 26.0, *) {
             Button {
-                // TODO: Add action
+                onTap()
             } label: {
                 content
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -40,7 +43,7 @@ struct ActionButton: View {
     // TODO: Tweak shadow
     private var legacyContent: some View {
         Button {
-            // TODO: Add action
+            onTap()
         } label: {
             ZStack {
                 background
@@ -54,9 +57,10 @@ struct ActionButton: View {
                 y: 2.0
             )
         }
-        .actionButtonStyle()
+        .scaledWhenPressed()
     }
 
+    // TODO: Tweak spacing
     private var content: some View {
         VStack(spacing: 8.0) {
             icon
@@ -74,29 +78,31 @@ struct ActionButton: View {
         .fill(UIColor.whiteCustom?.asColor ?? .white)
     }
 
-    // TODO: Fix icon transition animation
     private var icon: some View {
         Circle()
-            .fill(type.getBackgroundColor(isSpeaking: state.isSpeaking)?.asColor ?? .white)
+            .fill(type.getBackgroundColor(isSpeaking: state.isSpeaking) ?? .white)
             .frame(width: 50.0, height: 50.0)
             .overlay {
-//                if let image = type.getIcon(with: state.systemVolumeState, isSpeaking: state.isSpeaking) {
-                    if #available(iOS 17.0, *) {
-//                        Image(uiImage: image)
-                        Image(systemName: state.isSpeaking ? "stop" : "play")
-                            .renderingMode(.template)
-                            .foregroundColor(type.getTintColor(isSpeaking: state.isSpeaking)?.asColor ?? .black)
-                            .frame(width: 24.0, height: 24.0) // FIXME: Bad way
-                            .contentTransition(.symbolEffect(.replace))
-                    } else {
-//                        Image(uiImage: image)
-                        Image(systemName: "play")
-                            .renderingMode(.template)
-                            .foregroundColor(type.getTintColor(isSpeaking: state.isSpeaking)?.asColor ?? .black)
-                            .frame(width: 24.0, height: 24.0) // FIXME: Bad way
-                    }
-//                }
+                if #available(iOS 17.0, *) {
+                    symbol
+                        .contentTransition(.symbolEffect(.replace))
+                } else {
+                    symbol
+                }
             }
+    }
+
+    private var symbol: some View {
+        Image(
+            systemName: type.getIconName(
+                with: state.systemVolumeState,
+                isSpeaking: state.isSpeaking
+            )
+        )
+        .renderingMode(.template)
+        .foregroundColor(type.getTintColor(isSpeaking: state.isSpeaking) ?? .black)
+        .font(.title3.bold()) // TODO: Check with design if correct
+        .dynamicTypeSize(.medium)
     }
 
     private var title: some View {
@@ -113,33 +119,20 @@ struct ActionButton: View {
     HStack(spacing: 16.0) {
         ActionButton(
             type: .speak,
+            onTap: {},
             state: state
         )
         ActionButton(
             type: .display,
+            onTap: {},
             state: state
         )
         ActionButton(
             type: .save,
+            onTap: {},
             state: state
         )
     }
     .frame(height: 120.0)
     .padding(.horizontal, 16.0)
-}
-
-// TODO: Move
-
-struct ActionButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .scaleEffect(configuration.isPressed ? 0.85 : 1.0)
-            .animation(.bouncy(duration: 0.3), value: configuration.isPressed)
-    }
-}
-
-extension View {
-    func actionButtonStyle() -> some View {
-        buttonStyle(ActionButtonStyle())
-    }
 }

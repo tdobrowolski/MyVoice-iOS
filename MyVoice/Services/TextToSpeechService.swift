@@ -5,7 +5,6 @@
 //  Created by Tobiasz Dobrowolski on 18/01/2021.
 //
 
-import Foundation
 import AVFoundation
 import RxSwift
 
@@ -14,17 +13,38 @@ final class TextToSpeechService: NSObject, AVSpeechSynthesizerDelegate {
     private let userDefaultsService: UserDefaultsService
     
     let isSpeaking = BehaviorSubject<Bool>(value: false)
-    
+
+    // TODO: Debug if works correctly after mode change
     override init() {
-        try? AVAudioSession.sharedInstance().setCategory(.playback, mode: .default)
         self.speechSynthesizer = AVSpeechSynthesizer()
         self.userDefaultsService = UserDefaultsService()
 
         super.init()
 
+        setupAVAudioSession() // TODO: Check if works after super.init()
+
         speechSynthesizer.delegate = self
     }
-        
+
+    private func setupAVAudioSession() {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(
+                .playAndRecord,
+                mode: .voicePrompt,
+                options: [
+                    .defaultToSpeaker, // TODO: Check if works with telephone
+                    .duckOthers, // TODO: Check if played audio has low volume when speaking
+                    .mixWithOthers // TODO: Check if can talk with music with this optionss and without it too
+                ]
+            )
+
+            // TODO: Check if needed for telephone
+//            try? AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
+        } catch {
+            print("🔴 Error: \(error.localizedDescription)")
+        }
+    }
+
     func startSpeaking(text: String) {
         let speechUtterance = AVSpeechUtterance(string: text)
         speechUtterance.voice = getSelectedVoice()

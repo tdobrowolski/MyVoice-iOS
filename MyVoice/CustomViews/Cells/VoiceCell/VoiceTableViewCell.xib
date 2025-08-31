@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24123.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24062"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -27,16 +27,16 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Ygx-CP-tr6">
-                        <rect key="frame" x="14" y="12" width="268" height="43"/>
+                        <rect key="frame" x="16" y="14" width="266" height="39"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_Language" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQf-U4-Hu8" userLabel="Language Label">
-                                <rect key="frame" x="0.0" y="0.0" width="268" height="22"/>
+                                <rect key="frame" x="0.0" y="0.0" width="266" height="20"/>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
                                 <color key="textColor" name="Black"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="749" text="_Additional info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QbD-iN-8dU" userLabel="Info Label">
-                                <rect key="frame" x="0.0" y="26" width="268" height="17"/>
+                                <rect key="frame" x="0.0" y="24" width="266" height="15"/>
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
                                 <color key="textColor" name="Blue (Dark)"/>
                                 <nil key="highlightedColor"/>
@@ -59,12 +59,12 @@
                     </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Ygx-CP-tr6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="14" id="0wR-5L-u6J"/>
+                    <constraint firstItem="Ygx-CP-tr6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="0wR-5L-u6J"/>
                     <constraint firstItem="6xW-SE-TAU" firstAttribute="leading" secondItem="Ygx-CP-tr6" secondAttribute="trailing" constant="4" id="4ii-eC-2I2"/>
-                    <constraint firstItem="zF9-D0-QQL" firstAttribute="top" secondItem="Ygx-CP-tr6" secondAttribute="bottom" constant="12" id="6bl-DD-WpL"/>
+                    <constraint firstItem="zF9-D0-QQL" firstAttribute="top" secondItem="Ygx-CP-tr6" secondAttribute="bottom" constant="14" id="6bl-DD-WpL"/>
                     <constraint firstItem="zF9-D0-QQL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="CbU-N6-iCf"/>
                     <constraint firstAttribute="trailing" secondItem="6xW-SE-TAU" secondAttribute="trailing" constant="14" id="E1h-Vg-Ekz"/>
-                    <constraint firstItem="Ygx-CP-tr6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="FoD-ma-7aW"/>
+                    <constraint firstItem="Ygx-CP-tr6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="FoD-ma-7aW"/>
                     <constraint firstAttribute="bottom" secondItem="zF9-D0-QQL" secondAttribute="bottom" id="Pov-PU-xzR"/>
                     <constraint firstAttribute="trailing" secondItem="zF9-D0-QQL" secondAttribute="trailing" id="aHl-41-vgX"/>
                     <constraint firstItem="6xW-SE-TAU" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="fY4-ec-22N"/>
