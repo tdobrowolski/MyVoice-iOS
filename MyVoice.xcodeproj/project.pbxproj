@@ -23,8 +23,6 @@
 		E115577525B4C93C0093851B /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E115577125B4C93C0093851B /* Poppins-SemiBold.ttf */; };
 		E115577625B4C93C0093851B /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E115577225B4C93C0093851B /* Poppins-Bold.ttf */; };
 		E115577725B4C93C0093851B /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E115577325B4C93C0093851B /* Poppins-Regular.ttf */; };
-		E115577E25B4CA0E0093851B /* LargeIconButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115577D25B4CA0E0093851B /* LargeIconButton.swift */; };
-		E115578325B4CA350093851B /* LargeIconButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = E115578225B4CA350093851B /* LargeIconButton.xib */; };
 		E11C1ACF25D83CFA001FE05E /* Phrase+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137885825D48BC6007E2DD8 /* Phrase+CoreDataClass.swift */; };
 		E11C1AD125D83CFF001FE05E /* Phrase+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137885725D48BC6007E2DD8 /* Phrase+CoreDataProperties.swift */; };
 		E127353925C617BE007993EA /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127353825C617BE007993EA /* SettingModel.swift */; };
@@ -63,6 +61,12 @@
 		E1B148A125EC4326003C1401 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1B148A325EC4326003C1401 /* Localizable.strings */; };
 		E1B148A525EC432A003C1401 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1B148A725EC432A003C1401 /* Localizable.strings */; };
 		E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3E4C25B6308E00DB87E1 /* BaseViewModel.swift */; };
+		E1BF06BE2E64DC34009F653F /* SystemVolumeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF06BD2E64DC34009F653F /* SystemVolumeState.swift */; };
+		E1BF06C02E64DC59009F653F /* ActionButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF06BF2E64DC59009F653F /* ActionButtonType.swift */; };
+		E1BF06C22E64DCFE009F653F /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF06C12E64DCFE009F653F /* Color+Extensions.swift */; };
+		E1BF06C42E64DD9D009F653F /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF06C32E64DD9D009F653F /* System.swift */; };
+		E1BF06C62E64DDBB009F653F /* SpeakButtonViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF06C52E64DDBB009F653F /* SpeakButtonViewState.swift */; };
+		E1BF06C92E64DFDD009F653F /* ScalableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF06C82E64DFDD009F653F /* ScalableButtonStyle.swift */; };
 		E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5225B4E97F00339B9A /* MainTextView.swift */; };
 		E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */; };
 		E1CBF9482E54B70F00791C68 /* ToolbarInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */; };
@@ -104,8 +108,6 @@
 		E115577125B4C93C0093851B /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		E115577225B4C93C0093851B /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		E115577325B4C93C0093851B /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
-		E115577D25B4CA0E0093851B /* LargeIconButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeIconButton.swift; sourceTree = "<group>"; };
-		E115578225B4CA350093851B /* LargeIconButton.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LargeIconButton.xib; sourceTree = "<group>"; };
 		E127353825C617BE007993EA /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 		E127353B25C61DEB007993EA /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		E134BBE02A3F429700109013 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -145,6 +147,12 @@
 		E1B148A225EC4326003C1401 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E1B148A625EC432A003C1401 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E1BD3E4C25B6308E00DB87E1 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		E1BF06BD2E64DC34009F653F /* SystemVolumeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemVolumeState.swift; sourceTree = "<group>"; };
+		E1BF06BF2E64DC59009F653F /* ActionButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonType.swift; sourceTree = "<group>"; };
+		E1BF06C12E64DCFE009F653F /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		E1BF06C32E64DD9D009F653F /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		E1BF06C52E64DDBB009F653F /* SpeakButtonViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakButtonViewState.swift; sourceTree = "<group>"; };
+		E1BF06C82E64DFDD009F653F /* ScalableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalableButtonStyle.swift; sourceTree = "<group>"; };
 		E1C3EF5225B4E97F00339B9A /* MainTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextView.swift; sourceTree = "<group>"; };
 		E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationController.swift; sourceTree = "<group>"; };
 		E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarInputAccessoryView.swift; sourceTree = "<group>"; };
@@ -251,6 +259,7 @@
 				E115576025B4C56A0093851B /* MainViewController.xib */,
 				E115575F25B4C56A0093851B /* MainViewController.swift */,
 				E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */,
+				E1BF06C52E64DDBB009F653F /* SpeakButtonViewState.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -267,10 +276,12 @@
 		E115576825B4C5AC0093851B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				E1BF06C72E64DFD3009F653F /* Modifiers */,
 				E115576925B4C5C20093851B /* ViewController+Extensions.swift */,
 				E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */,
 				E1771A7F25C21523003FE247 /* UITextView+Extensions.swift */,
 				E19392AC2A2C0AE400CA6238 /* UIColor+Extensions.swift */,
+				E1BF06C12E64DCFE009F653F /* Color+Extensions.swift */,
 				E134BBE02A3F429700109013 /* String+Extensions.swift */,
 				E134BBE22A3F429F00109013 /* Array+Extensions.swift */,
 				E13919C92AD3342D00694200 /* View+Extensions.swift */,
@@ -319,18 +330,8 @@
 			isa = PBXGroup;
 			children = (
 				E18AF60B25F57BC7008CFA5D /* TouchHandlerButton */,
-				E115578125B4CA230093851B /* LargeIconButton */,
 			);
 			path = Buttons;
-			sourceTree = "<group>";
-		};
-		E115578125B4CA230093851B /* LargeIconButton */ = {
-			isa = PBXGroup;
-			children = (
-				E115577D25B4CA0E0093851B /* LargeIconButton.swift */,
-				E115578225B4CA350093851B /* LargeIconButton.xib */,
-			);
-			path = LargeIconButton;
 			sourceTree = "<group>";
 		};
 		E134BBE82A3F527C00109013 /* HeaderView */ = {
@@ -444,6 +445,9 @@
 				E1F4CA6E2A326E1A00ADC747 /* SliderDataType.swift */,
 				E13919C42AD3190600694200 /* HelpContentType.swift */,
 				562CFA2B2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift */,
+				E1BF06BD2E64DC34009F653F /* SystemVolumeState.swift */,
+				E1BF06BF2E64DC59009F653F /* ActionButtonType.swift */,
+				E1BF06C32E64DD9D009F653F /* System.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -491,6 +495,14 @@
 				E1B148A325EC4326003C1401 /* Localizable.strings */,
 			);
 			path = Translations;
+			sourceTree = "<group>";
+		};
+		E1BF06C72E64DFD3009F653F /* Modifiers */ = {
+			isa = PBXGroup;
+			children = (
+				E1BF06C82E64DFDD009F653F /* ScalableButtonStyle.swift */,
+			);
+			path = Modifiers;
 			sourceTree = "<group>";
 		};
 		E1C3EF5125B4E96200339B9A /* TextViews */ = {
@@ -616,7 +628,6 @@
 				E1E6C2CE25B4D30300774B17 /* Colors.xcassets in Resources */,
 				E1E89B1E2A3F558F004DF84F /* HeaderView.xib in Resources */,
 				E15B839625CF17CB00C8BFA5 /* LanguagePickerViewController.xib in Resources */,
-				E115578325B4CA350093851B /* LargeIconButton.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -709,12 +720,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BF06C92E64DFDD009F653F /* ScalableButtonStyle.swift in Sources */,
 				E1F4CA6F2A326E1A00ADC747 /* SliderDataType.swift in Sources */,
 				E179E5A52A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift in Sources */,
 				E1E6C2CB25B4D24800774B17 /* UIView+Extensions.swift in Sources */,
 				E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */,
 				E115576625B4C5A10093851B /* BaseViewController.swift in Sources */,
 				E134BBE32A3F429F00109013 /* Array+Extensions.swift in Sources */,
+				E1BF06C42E64DD9D009F653F /* System.swift in Sources */,
 				E13919C32AD2D48E00694200 /* HelpView.swift in Sources */,
 				E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */,
 				E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */,
@@ -728,7 +741,6 @@
 				E115574325B4C4290093851B /* AppDelegate.swift in Sources */,
 				E1E89B1D2A3F558F004DF84F /* HeaderView.swift in Sources */,
 				E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */,
-				E115577E25B4CA0E0093851B /* LargeIconButton.swift in Sources */,
 				566666A42AFEF3F3009990EB /* InfoButtonStyle.swift in Sources */,
 				E127353925C617BE007993EA /* SettingModel.swift in Sources */,
 				E1CBF9482E54B70F00791C68 /* ToolbarInputAccessoryView.swift in Sources */,
@@ -740,15 +752,19 @@
 				E115576A25B4C5C20093851B /* ViewController+Extensions.swift in Sources */,
 				E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */,
 				562CFA2A2AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift in Sources */,
+				E1BF06C62E64DDBB009F653F /* SpeakButtonViewState.swift in Sources */,
 				E134BBE12A3F429700109013 /* String+Extensions.swift in Sources */,
 				E11C1AD125D83CFF001FE05E /* Phrase+CoreDataProperties.swift in Sources */,
 				E15B839F25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift in Sources */,
 				E115576125B4C56A0093851B /* MainViewController.swift in Sources */,
 				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
+				E1BF06C22E64DCFE009F653F /* Color+Extensions.swift in Sources */,
 				E141AD4425F58B9000C61408 /* BackgroundShadowView.swift in Sources */,
 				E1771A8025C21523003FE247 /* UITextView+Extensions.swift in Sources */,
+				E1BF06C02E64DC59009F653F /* ActionButtonType.swift in Sources */,
 				E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */,
 				E16C32FA2ACCA59500FDEDC1 /* PersonalVoiceBottomSheetViewModel.swift in Sources */,
+				E1BF06BE2E64DC34009F653F /* SystemVolumeState.swift in Sources */,
 				E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */,
 				E13919C52AD3190600694200 /* HelpContentType.swift in Sources */,
 				E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */,

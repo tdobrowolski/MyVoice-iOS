@@ -10,16 +10,6 @@ import RxCocoa
 import RxDataSources
 import SwiftUI
 
-// TODO: Move
-
-// This allows to connect RxSwift, SwiftUI and UIKit together
-// The right choice is to store this type of data in ViewModel
-// This should be achieved by rewriting the MainViewController with SwiftUI + Combine in the future
-class SpeakButtonViewState: ObservableObject {
-    @Published var isSpeaking: Bool = false
-    @Published var systemVolumeState: SystemVolumeState = .lowVolume
-}
-
 final class MainViewController: BaseViewController<MainViewModel> {
     @IBOutlet weak var scrollView: CustomScrollView!
     
@@ -63,7 +53,6 @@ final class MainViewController: BaseViewController<MainViewModel> {
         setupSpeakButton()
         setupDisplayButton()
         setupSaveButton()
-//        setupLargeButtons()
         setupPlaceholderLabel()
         setupQuickAccessPlaceholder()
         setupHeader()
@@ -133,78 +122,6 @@ final class MainViewController: BaseViewController<MainViewModel> {
             .disposed(by: disposeBag)
     }
 
-    private func setupSpeakButton() {
-        let swiftUIView = ActionButton(
-            type: .speak,
-            state: speakButtonViewState
-        )
-
-        speakHostingController = UIHostingController(rootView: swiftUIView)
-
-        guard let speakHostingController else { return }
-
-        addChild(speakHostingController)
-        speakContainer.addSubview(speakHostingController.view)
-        speakHostingController.view.backgroundColor = nil
-        speakHostingController.didMove(toParent: self)
-
-        speakHostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            speakHostingController.view.topAnchor.constraint(equalTo: speakContainer.topAnchor),
-            speakHostingController.view.leadingAnchor.constraint(equalTo: speakContainer.leadingAnchor),
-            speakHostingController.view.trailingAnchor.constraint(equalTo: speakContainer.trailingAnchor),
-            speakHostingController.view.bottomAnchor.constraint(equalTo: speakContainer.bottomAnchor)
-        ])
-    }
-
-    private func setupDisplayButton() {
-        let swiftUIView = ActionButton(
-            type: .display,
-            state: speakButtonViewState
-        )
-
-        displayHostingController = UIHostingController(rootView: swiftUIView)
-
-        guard let displayHostingController else { return }
-
-        addChild(displayHostingController)
-        displayContainer.addSubview(displayHostingController.view)
-        displayHostingController.view.backgroundColor = nil
-        displayHostingController.didMove(toParent: self)
-
-        displayHostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            displayHostingController.view.topAnchor.constraint(equalTo: displayContainer.topAnchor),
-            displayHostingController.view.leadingAnchor.constraint(equalTo: displayContainer.leadingAnchor),
-            displayHostingController.view.trailingAnchor.constraint(equalTo: displayContainer.trailingAnchor),
-            displayHostingController.view.bottomAnchor.constraint(equalTo: displayContainer.bottomAnchor)
-        ])
-    }
-
-    private func setupSaveButton() {
-        let swiftUIView = ActionButton(
-            type: .save,
-            state: speakButtonViewState
-        )
-
-        saveHostingController = UIHostingController(rootView: swiftUIView)
-
-        guard let saveHostingController else { return }
-
-        addChild(saveHostingController)
-        saveContainer.addSubview(saveHostingController.view)
-        saveHostingController.view.backgroundColor = nil
-        saveHostingController.didMove(toParent: self)
-
-        saveHostingController.view.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            saveHostingController.view.topAnchor.constraint(equalTo: saveContainer.topAnchor),
-            saveHostingController.view.leadingAnchor.constraint(equalTo: saveContainer.leadingAnchor),
-            saveHostingController.view.trailingAnchor.constraint(equalTo: saveContainer.trailingAnchor),
-            saveHostingController.view.bottomAnchor.constraint(equalTo: saveContainer.bottomAnchor)
-        ])
-    }
-
     // FIXME: Fix memory leak, cells are not deinitialised
     func getDataSourceForQuickPhrase() -> RxTableViewSectionedAnimatedDataSource<QuickPhraseSection> {
         RxTableViewSectionedAnimatedDataSource<QuickPhraseSection> (
@@ -239,12 +156,6 @@ final class MainViewController: BaseViewController<MainViewModel> {
     
     // MARK: Setting up
     
-//    private func setupLargeButtons() {
-//        speakButton.setupLayout(for: .speak(isSpeaking: false))
-//        displayButton.setupLayout(for: .display)
-//        saveButton.setupLayout(for: .save)
-//    }
-    
     private func setupPlaceholderLabel() {
         placeholderTextView.text = NSLocalizedString("What do you want to say?", comment: "What do you want to say?")
         placeholderTextView.textContainerInset = .init(top: 13.0, left: 14.0, bottom: 14.0, right: 13.0)
@@ -257,7 +168,82 @@ final class MainViewController: BaseViewController<MainViewModel> {
         headerTitleLabel.font = Fonts.Poppins.bold(20.0).font
         editButton.setTitle(NSLocalizedString("Edit", comment: "Edit"), for: .normal)
     }
-    
+
+    private func setupSpeakButton() {
+        let swiftUIView = ActionButton(
+            type: .speak,
+            onTap: speakButtonDidTouch,
+            state: speakButtonViewState
+        )
+
+        speakHostingController = UIHostingController(rootView: swiftUIView)
+
+        guard let speakHostingController else { return }
+
+        addChild(speakHostingController)
+        speakContainer.addSubview(speakHostingController.view)
+        speakHostingController.view.backgroundColor = nil
+        speakHostingController.didMove(toParent: self)
+
+        speakHostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            speakHostingController.view.topAnchor.constraint(equalTo: speakContainer.topAnchor),
+            speakHostingController.view.leadingAnchor.constraint(equalTo: speakContainer.leadingAnchor),
+            speakHostingController.view.trailingAnchor.constraint(equalTo: speakContainer.trailingAnchor),
+            speakHostingController.view.bottomAnchor.constraint(equalTo: speakContainer.bottomAnchor)
+        ])
+    }
+
+    private func setupDisplayButton() {
+        let swiftUIView = ActionButton(
+            type: .display,
+            onTap: displayButtonDidTouch,
+            state: speakButtonViewState
+        )
+
+        displayHostingController = UIHostingController(rootView: swiftUIView)
+
+        guard let displayHostingController else { return }
+
+        addChild(displayHostingController)
+        displayContainer.addSubview(displayHostingController.view)
+        displayHostingController.view.backgroundColor = nil
+        displayHostingController.didMove(toParent: self)
+
+        displayHostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            displayHostingController.view.topAnchor.constraint(equalTo: displayContainer.topAnchor),
+            displayHostingController.view.leadingAnchor.constraint(equalTo: displayContainer.leadingAnchor),
+            displayHostingController.view.trailingAnchor.constraint(equalTo: displayContainer.trailingAnchor),
+            displayHostingController.view.bottomAnchor.constraint(equalTo: displayContainer.bottomAnchor)
+        ])
+    }
+
+    private func setupSaveButton() {
+        let swiftUIView = ActionButton(
+            type: .save,
+            onTap: saveButtonDidTouch,
+            state: speakButtonViewState
+        )
+
+        saveHostingController = UIHostingController(rootView: swiftUIView)
+
+        guard let saveHostingController else { return }
+
+        addChild(saveHostingController)
+        saveContainer.addSubview(saveHostingController.view)
+        saveHostingController.view.backgroundColor = nil
+        saveHostingController.didMove(toParent: self)
+
+        saveHostingController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            saveHostingController.view.topAnchor.constraint(equalTo: saveContainer.topAnchor),
+            saveHostingController.view.leadingAnchor.constraint(equalTo: saveContainer.leadingAnchor),
+            saveHostingController.view.trailingAnchor.constraint(equalTo: saveContainer.trailingAnchor),
+            saveHostingController.view.bottomAnchor.constraint(equalTo: saveContainer.bottomAnchor)
+        ])
+    }
+
     private func setupQuickAccessPlaceholder() {
         quickAccessPlaceholderMainLabel.text = NSLocalizedString("You have no phrases yet!", comment: "You have no hrases yet!")
         quickAccessPlaceholderMainLabel.font = Fonts.Poppins.bold(18.0).font
@@ -348,8 +334,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
         present(settingsNavigationController, animated: true, completion: nil)
     }
     
-    @IBAction
-    func speakButtonDidTouch(_ sender: Any) {
+    func speakButtonDidTouch() {
         do {
             if try viewModel.isSpeaking.value() == true {
                 viewModel.stopSpeaking()
@@ -367,9 +352,9 @@ final class MainViewController: BaseViewController<MainViewModel> {
             logError(with: error)
         }
     }
-    
-    @IBAction
-    func displayButtonDidTouch(_ sender: Any) {
+
+    // TODO: Implement proper functionality
+    func displayButtonDidTouch() {
         viewModel.impactUserWithFeedback()
 
         let displayViewController = DisplayViewController(text: "Large text to display")
@@ -379,8 +364,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
         present(displayViewController, animated: true, completion: nil)
     }
     
-    @IBAction
-    func saveButtonDidTouch(_ sender: Any) {
+    func saveButtonDidTouch() {
         guard let phrase = mainTextView.text, phrase.isEmpty == false else {
             viewModel.warnUserWithFeedback()
             placeholderTextView.flashWithColor(.orangeMain ?? .orange)
@@ -415,25 +399,5 @@ extension MainViewController: UITableViewDelegate {
         delete.backgroundColor = .redMain
         
         return UISwipeActionsConfiguration(actions: [delete])
-    }
-}
-
-// TODO: Move
-
-enum System {
-    static var supportsLiquidGlass: Bool {
-        if #available(iOS 26.0, *) {
-            return true
-        } else {
-            return false
-        }
-    }
-
-    static var isPad: Bool {
-        UIDevice.current.userInterfaceIdiom == .pad
-    }
-
-    static var cornerRadius: CGFloat {
-        supportsLiquidGlass ? 26.0 : 16.0
     }
 }
