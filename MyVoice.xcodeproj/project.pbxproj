@@ -58,8 +58,6 @@
 		E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */; };
 		E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */; };
 		E198518D2E560133002001DF /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198518C2E560133002001DF /* DisplayView.swift */; };
-		E1B148A125EC4326003C1401 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1B148A325EC4326003C1401 /* Localizable.strings */; };
-		E1B148A525EC432A003C1401 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1B148A725EC432A003C1401 /* Localizable.strings */; };
 		E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3E4C25B6308E00DB87E1 /* BaseViewModel.swift */; };
 		E1BF06BE2E64DC34009F653F /* SystemVolumeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF06BD2E64DC34009F653F /* SystemVolumeState.swift */; };
 		E1BF06C02E64DC59009F653F /* ActionButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF06BF2E64DC59009F653F /* ActionButtonType.swift */; };
@@ -71,6 +69,7 @@
 		E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */; };
 		E1C99C1A2E670F5000CACB0D /* AVSpeechSynthesisVoiceQuality+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C99C192E670F5000CACB0D /* AVSpeechSynthesisVoiceQuality+Extensions.swift */; };
 		E1C99C1C2E670F7700CACB0D /* AVSpeechSynthesisVoiceGender+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C99C1B2E670F7700CACB0D /* AVSpeechSynthesisVoiceGender+Extensions.swift */; };
+		E1C99C1E2E672B5800CACB0D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E1C99C1D2E672B5700CACB0D /* Localizable.xcstrings */; };
 		E1CBF9482E54B70F00791C68 /* ToolbarInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */; };
 		E1D4C3EF2AD0A23A0059DC46 /* PersonalVoiceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4C3EE2AD0A23A0059DC46 /* PersonalVoiceService.swift */; };
 		E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */; };
@@ -146,8 +145,6 @@
 		E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickPhraseTableViewCell.xib; sourceTree = "<group>"; };
 		E198518C2E560133002001DF /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
 		E1B1489025EC41B0003C1401 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		E1B148A225EC4326003C1401 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E1B148A625EC432A003C1401 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E1BD3E4C25B6308E00DB87E1 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		E1BF06BD2E64DC34009F653F /* SystemVolumeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemVolumeState.swift; sourceTree = "<group>"; };
 		E1BF06BF2E64DC59009F653F /* ActionButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButtonType.swift; sourceTree = "<group>"; };
@@ -159,6 +156,7 @@
 		E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationController.swift; sourceTree = "<group>"; };
 		E1C99C192E670F5000CACB0D /* AVSpeechSynthesisVoiceQuality+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVSpeechSynthesisVoiceQuality+Extensions.swift"; sourceTree = "<group>"; };
 		E1C99C1B2E670F7700CACB0D /* AVSpeechSynthesisVoiceGender+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVSpeechSynthesisVoiceGender+Extensions.swift"; sourceTree = "<group>"; };
+		E1C99C1D2E672B5700CACB0D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarInputAccessoryView.swift; sourceTree = "<group>"; };
 		E1D4C3EE2AD0A23A0059DC46 /* PersonalVoiceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceService.swift; sourceTree = "<group>"; };
 		E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
@@ -497,8 +495,7 @@
 		E1B1489225EC4288003C1401 /* Translations */ = {
 			isa = PBXGroup;
 			children = (
-				E1B148A725EC432A003C1401 /* Localizable.strings */,
-				E1B148A325EC4326003C1401 /* Localizable.strings */,
+				E1C99C1D2E672B5700CACB0D /* Localizable.xcstrings */,
 			);
 			path = Translations;
 			sourceTree = "<group>";
@@ -564,7 +561,6 @@
 			buildConfigurationList = E115575325B4C42B0093851B /* Build configuration list for PBXNativeTarget "MyVoice" */;
 			buildPhases = (
 				81BE8228A7AC25DEF06DEAF1 /* [CP] Check Pods Manifest.lock */,
-				E1B1488D25EC4056003C1401 /* Bartycrouch script */,
 				E115573B25B4C4290093851B /* Sources */,
 				E115573C25B4C4290093851B /* Frameworks */,
 				E115573D25B4C4290093851B /* Resources */,
@@ -619,17 +615,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				E115577525B4C93C0093851B /* Poppins-SemiBold.ttf in Resources */,
+				E1C99C1E2E672B5800CACB0D /* Localizable.xcstrings in Resources */,
 				E115577625B4C93C0093851B /* Poppins-Bold.ttf in Resources */,
 				E1E98A8325C6C77200F531BD /* SliderTableViewCell.xib in Resources */,
 				E1771A8E25C21680003FE247 /* SettingsViewController.xib in Resources */,
 				E115577725B4C93C0093851B /* Poppins-Regular.ttf in Resources */,
 				E115574F25B4C42B0093851B /* LaunchScreen.storyboard in Resources */,
-				E1B148A125EC4326003C1401 /* Localizable.strings in Resources */,
 				E15B83A025CF3D3F00C8BFA5 /* VoiceTableViewCell.xib in Resources */,
 				E115577425B4C93C0093851B /* Poppins-Medium.ttf in Resources */,
 				E115576225B4C56A0093851B /* MainViewController.xib in Resources */,
 				E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */,
-				E1B148A525EC432A003C1401 /* Localizable.strings in Resources */,
 				E115574C25B4C42B0093851B /* Assets.xcassets in Resources */,
 				E1E6C2CE25B4D30300774B17 /* Colors.xcassets in Resources */,
 				E1E89B1E2A3F558F004DF84F /* HeaderView.xib in Resources */,
@@ -700,24 +695,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "PLIST=\"${INFOPLIST_FILE}\"\nPLB=/usr/libexec/PlistBuddy\nLAST_NUMBER=$($PLB -c \"Print CFBundleVersion\" \"$PLIST\")\nNEW_VERSION=$(($LAST_NUMBER + 1))\n$PLB -c \"Set :CFBundleVersion $NEW_VERSION\" \"$PLIST\"\n";
-		};
-		E1B1488D25EC4056003C1401 /* Bartycrouch script */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Bartycrouch script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which bartycrouch > /dev/null; then\n    bartycrouch update -x\n    bartycrouch lint -x\nelse\n    echo \"warning: BartyCrouch not installed, download it from https://github.com/FlineDev/BartyCrouch\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -803,22 +780,6 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
-		E1B148A325EC4326003C1401 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1B148A225EC4326003C1401 /* pl */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		E1B148A725EC432A003C1401 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1B148A625EC432A003C1401 /* en */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -880,6 +841,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -935,6 +897,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};

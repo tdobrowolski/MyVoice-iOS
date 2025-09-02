@@ -168,7 +168,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
     // MARK: Personal Voice Bottom Sheet logic
 
     private func showPersonalVoiceBottomSheetIfNeeded() {
-        guard /* viewModel.showPersonalVoiceInfoBottomSheet, */ #available(iOS 17.0, *) else { return }
+        guard viewModel.showPersonalVoiceInfoBottomSheet, #available(iOS 17.0, *) else { return }
 
         showPersonalVoiceBottomSheet()
     }

@@ -1,0 +1,1244 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "1. Create a Personal Voice in the system Settings app. Navigate to Accessibility > Personal Voice > Create a Personal Voice. Follow the onscreen instructions to generate the voice. You will be informed by the system when Personal Voice is ready." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Utwórz głos indywidualny w aplikacji systemowej Ustawienia. Przejdź do Dostępność > Głos indywidualny > Utwórz głos indywidualny. Postępuj zgodnie z instrukcjami wyświetlanymi na ekranie, aby wygenerować głos. System poinformuje Cię, gdy głos indywidualny będzie gotowy."
+          }
+        }
+      }
+    },
+    "1. Open the system" : {
+      "comment" : "First part of bigger text",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Otwórz"
+          }
+        }
+      }
+    },
+    "2. After Personal Voice is generated, allow access to it in the system Settings app. Go to Accessibility > Personal Voice and enable Allow Apps to Request to Use option." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Po wygenerowaniu głosu indywidualnego zezwól na dostęp do niego w aplikacji systemowej Ustawienia. Przejdź do Dostępność > Głos indywidualny i włącz opcję Pozwalaj aplikacjom prosić o zgodę na użycie."
+          }
+        }
+      }
+    },
+    "2. Navigate to" : {
+      "comment" : "First part of bigger text",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Przejdź do"
+          }
+        }
+      }
+    },
+    "3. Go to the MyVoice Settings screen and enable Personal Voice by tapping on the Personal Voice access button." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Przejdź do widoku Ustawienia w MyVoice i włącz funkcję głos indywidualny, dotykając przycisku Dostęp do głosu indywidualnego."
+          }
+        }
+      }
+    },
+    "3. Tap on Add New Language and select the language/dialect that you want to add." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Naciśnij Dodaj nowy język… i zaznacz język, który cię interesuje."
+          }
+        }
+      }
+    },
+    "4. After allowing access, your generated voice will be visible to choose on the Select voice screen." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Po zezwoleniu na dostęp wygenerowany głos będzie widoczny do wyboru na ekranie Wybierz głos."
+          }
+        }
+      }
+    },
+    "4. Select an added language from the Speech screen and choose Default or Enhanced quality of your voice." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Wróć do ekranu Mowa i kliknij w nowo dodany język. Wybierz interesujący cię głos i jego jakość."
+          }
+        }
+      }
+    },
+    "Access denied" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie przyznano dostępu"
+          }
+        }
+      }
+    },
+    "Access granted" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przyznano dostęp"
+          }
+        }
+      }
+    },
+    "Access not determined" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie określono dostępu"
+          }
+        }
+      }
+    },
+    "Access to Personal Voice is not granted. First, make sure you've granted Personal Voice access to third-party apps in Accessiblity > Personal Voice." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie przyznano dostępu do głosu indywidualnego dla aplikacji firm trzecich. Upewnij się, że przyznano dostęp dla aplikacji innych firm w Dostępność > Głos indywidualny."
+          }
+        }
+      }
+    },
+    "Access to Personal Voice was denied by the user or it's blocked from the Settings app. Make sure to grant access to third-party apps from the Settings app (Accessibility > Personal Voice), then allow use from MyVoice app settings." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odmówiono dostępu do głosu indywidualnego lub dostęp jest zablokowany z poziomu ustawień systemowych. Upewnij się, że przyznano dostęp dla aplikacji innych firm z aplikacji Ustawienia (Dostępność > Głos indywidualny), a potem zezwól na użycie głosu aplikacji MyVoice."
+          }
+        }
+      }
+    },
+    "Access to Personal Voice was denied. You can change this setting, by granting access again in the Settings app." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Access to Personal Voice was denied. You can change this setting, by granting access again in the Settings app."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odmówiono dostępu do głosu indywidualnego. Możesz ponownie go przyznać w systemowej aplikacji Ustawienia."
+          }
+        }
+      }
+    },
+    "Access to Personal Voice was granted. You can now select configured Personal Voices from the voice picker list." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can now select configured Personal Voices by tapping on the 'Speech voice' cell. If you have trouble finding the voice, restart the app."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Możesz teraz wybrać skonfigurowane głosy indywidualne po kliknięciu w sekcję 'Głos'. Jeśli nie widzisz ich na liście, uruchom aplikację ponownie."
+          }
+        }
+      }
+    },
+    "Access to Personal Voice was not yet determined." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie określono dostępu do głosu indywidualnego."
+          }
+        }
+      }
+    },
+    "Accessibility > Personal Voice" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dostępność > Głos indywidualny"
+          }
+        }
+      }
+    },
+    "Accessibility > Personal Voice > Create a Personal Voice" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dostępność > Głos indywidualny > Utwórz głos indywidualny"
+          }
+        }
+      }
+    },
+    "Accessibility > VoiceOver > Speech" : {
+      "comment" : "Second part of bigger text",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dostępność > VoiceOver > Mowa"
+          }
+        }
+      }
+    },
+    "Add New Language" : {
+      "comment" : "Name for Settings app button",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj nowy język…"
+          }
+        }
+      }
+    },
+    "Allow access" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwól"
+          }
+        }
+      }
+    },
+    "Allow Apps to Request to Use" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pozwalaj aplikacjom prosić o zgodę na użycie"
+          }
+        }
+      }
+    },
+    "Allow in Settings" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwól w Ustawieniach"
+          }
+        }
+      }
+    },
+    "Authorized" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Authorized"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zezwolono na dostęp"
+          }
+        }
+      }
+    },
+    "Can't open App Store" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie można otworzyć App Store"
+          }
+        }
+      }
+    },
+    "Clear" : {
+      "comment" : "Clear text button title.",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyczyść"
+          }
+        }
+      }
+    },
+    "Clear text field" : {
+      "comment" : "Add button accessibility label.",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyczyść pole tekstowe"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamknij"
+          }
+        }
+      }
+    },
+    "Close help" : {
+      "comment" : "Close help",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamknij samouczek"
+          }
+        }
+      }
+    },
+    "Close language picker" : {
+      "comment" : "Close language picker",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamknij listę głosów"
+          }
+        }
+      }
+    },
+    "Close settings" : {
+      "comment" : "Close settings",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamknij ustawienia"
+          }
+        }
+      }
+    },
+    "Default" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domyślny"
+          }
+        }
+      }
+    },
+    "Default quality" : {
+      "comment" : "Default quality",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domyślna jakość"
+          }
+        }
+      }
+    },
+    "Denied" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denied"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odmówiono dostępu"
+          }
+        }
+      }
+    },
+    "Display" : {
+      "comment" : "Display",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyświetl"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "comment" : "Done",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gotowe"
+          }
+        }
+      }
+    },
+    "Edit" : {
+      "comment" : "Edit",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edytuj"
+          }
+        }
+      }
+    },
+    "Enhanced quality" : {
+      "comment" : "Enhanced quality",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rozszerzona jakość"
+          }
+        }
+      }
+    },
+    "Enter the text, that you want to be spoken, into the main, upper text field on the MyVoice screen. When you are ready to hear your phrase, tap Speak button under the text field. If you don’t hear your text, try to change the volume of your device. You can always have a quick look at your volume level on Speak button. The speaker icon shows your current volume setting." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wpisz tekst, który ma zostać wypowiedziany w główne pole tekstowe na widoku MyVoice. Aby wypowiedzieć wpisaną frazę, naciśnij przycisk Powiedz. Jeśli nie usłyszysz wypowiadanego tekstu, spróbuj podgłośnić swoje urządzenie. Pamiętaj, że zawsze możesz sprawdzić poziom głośności na przycisku Powiedz. Ikona głośnika zmienia się w zależności od ustawień głośności."
+          }
+        }
+      }
+    },
+    "Female" : {
+      "comment" : "Female",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kobieta"
+          }
+        }
+      }
+    },
+    "Go to the official Apple tutorial." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przejdź do poradnika Apple."
+          }
+        }
+      }
+    },
+    "Grant Personal Voice access" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przyznaj dostęp"
+          }
+        }
+      }
+    },
+    "Help" : {
+      "comment" : "Help",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Samouczek"
+          }
+        }
+      }
+    },
+    "Hide keyboard" : {
+      "comment" : "Add button accessibility label.",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schowaj klawiaturę"
+          }
+        }
+      }
+    },
+    "How to change speaking voice and its language?" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jak zmienić głos i jego język?"
+          }
+        }
+      }
+    },
+    "How to customize the way my phrases are spoken?" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jak spersonalizować wypowiadane kwestie?"
+          }
+        }
+      }
+    },
+    "How to download more voices?" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jak pobrać więcej głosów?"
+          }
+        }
+      }
+    },
+    "How to make my phrases be spoken out loud?" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jak wypowiedzieć moje frazy na głos?"
+          }
+        }
+      }
+    },
+    "How to use Personal Voice?" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jak użyć głosu indywidualnego?"
+          }
+        }
+      }
+    },
+    "If you have denied access to Personal Voice, you can still change your settings from the system Settings app." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeśli odmówiłeś aplikacji dostępu do głosu indywidualnego, możesz zmienić tę opcję w aplikacji systemowej Ustawienia."
+          }
+        }
+      }
+    },
+    "It looks like there's no mail account, that the system can use to send feedback." : {
+      "comment" : "It looks like there's no mail account, that the system can use to send feedback.",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląda na to, że system nie może znaleźć odpowiedniego konta mailowego, który posłużyłby do wysłania feedbacku."
+          }
+        }
+      }
+    },
+    "Language and voice, which is used for speaking phrases. This will not affect your system language." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Język i głos, używany do wymawiania tekstu. Twój wybór nie wpłynie na ustawienia języku systemu."
+          }
+        }
+      }
+    },
+    "Learn more" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dowiedz się więcej"
+          }
+        }
+      }
+    },
+    "Learn more about Personal Voice" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dowiedz się więcej o głosie indywidualnym"
+          }
+        }
+      }
+    },
+    "Looks like we have some problems with opening the App Store. Our team of trained monkeys is working hard to fix this. You can still leave a review by sending feedback." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygląda na to, że mamy problem z przejściem do App Store. Nasz zespół wytrenowanych małp ciężko pracuje nad rozwiązaniem. W międzyczasie możesz wysłać feedback."
+          }
+        }
+      }
+    },
+    "Male" : {
+      "comment" : "Male",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mężczyzna"
+          }
+        }
+      }
+    },
+    "MyVoice" : {
+      "comment" : "MyVoice",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MyVoice"
+          }
+        }
+      }
+    },
+    "MyVoice Settings screen" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "widoku Ustawienia w MyVoice"
+          }
+        }
+      }
+    },
+    "No mail account" : {
+      "comment" : "No mail account",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak konta mailowego"
+          }
+        }
+      }
+    },
+    "Not determined" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not determined"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie określono"
+          }
+        }
+      }
+    },
+    "OK" : {
+      "comment" : "OK",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "On the Settings screen, you can customize some options, that will affect how your text is spoken. With Speech rate slider, you choose how fast your phrases will be said out loud. Speech pitch slider will change voice pitch. Try to experiment with it in Settings and find the best options that will suit you. You can also change the voice with its language that will be responsible for speaking all texts." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Na widoku Ustawienia, możesz wybrać dodatkowe opcje, wpływające na sposób w jaki frazy są wypowiadane. Suwak Tempo mowy pozwala dostosować szybkość wypowiadanego tekstu. Ton mowy zmienia ton głosu. Spróbuj poeksperymentować z ustawieniami i znaleźć najlepszą dla siebie opcję. Możesz też zmienić głos i język, którym frazy są wypowiadane."
+          }
+        }
+      }
+    },
+    "Open Help" : {
+      "comment" : "Add button accessibility label.",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz samouczek"
+          }
+        }
+      }
+    },
+    "Open Settings" : {
+      "comment" : "Add button accessibility label.",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz ustawienia"
+          }
+        }
+      }
+    },
+    "Other" : {
+      "comment" : "Other",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inne"
+          }
+        }
+      }
+    },
+    "Paste from clipboard" : {
+      "comment" : "Add button accessibility label.",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wklej ze schowka"
+          }
+        }
+      }
+    },
+    "Personal Voice" : {
+      "comment" : "Personal Voice",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Głos Indywidualny"
+          }
+        }
+      }
+    },
+    "Personal Voice access" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal Voice access"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dostęp do głosu indywidualnego"
+          }
+        }
+      }
+    },
+    "Personal Voice access denied" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odmówiono dostępu do głosu indywidualnego"
+          }
+        }
+      }
+    },
+    "Personal Voice access granted" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Przyznano dostęp do głosu indywidualnego"
+          }
+        }
+      }
+    },
+    "Personal Voice is a generated, synthesized voice that sounds like your own. You can use it in the MyVoice app, like any other available voice. Personal Voice supports all customization settings including adjustment of speech rate and speech pitch. To use Personal Voice in the app:" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Głos indywidualny to wygenerowany, zsyntetyzowany głos, który brzmi jak Twój własny. Można go używać w aplikacji MyVoice, tak jak każdego innego dostępnego głosu. Głos indywidualny obsługuje wszystkie opcje personalizacji, w tym regulację tempa i tonu mowy. Aby korzystać z głosu indywidualnego w aplikacji:"
+          }
+        }
+      }
+    },
+    "Personal Voice not supported" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Głos indywidualny nie jest wspierany"
+          }
+        }
+      }
+    },
+    "Personal Voice now available" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Głos indywidualny już dostępny"
+          }
+        }
+      }
+    },
+    "Phrase" : {
+      "comment" : "Phrase",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tekst"
+          }
+        }
+      }
+    },
+    "Premium quality" : {
+      "comment" : "Premium quality",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium"
+          }
+        }
+      }
+    },
+    "Quick access" : {
+      "comment" : "Quick access",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szybki dostęp"
+          }
+        }
+      }
+    },
+    "Quick access list helps you reach your saved phrases very fast, so you don’t need to always type them when you want to speak them. Enter the phrase into the text field and tap Save button. The text will appear on the Quick access list. To say it loud, just touch it. If you want to remove it, swipe your finger on the phrase to the left." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista Szybkiego dostępu pozwala na błyskawiczne wybranie zapisanego tekstu, dzięki czemu nie musisz wpisywać często używanych zwrótów za każdym razem, gdy chcesz je wypowiedzieć. Wpisz frazę w pole tekstowe i naciśnij „Zapisz”. Tekst pojawi się w sekcji Szybkiego dostępu. Aby wypowiedzieć zapisany tekst na głos, po prostu go dotknij. Aby go usunąć, przesuń tekst w lewą stronę."
+          }
+        }
+      }
+    },
+    "Rate this app" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oceń aplikację"
+          }
+        }
+      }
+    },
+    "Remove" : {
+      "comment" : "Remove",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Usuń"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "comment" : "Save",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapisz"
+          }
+        }
+      }
+    },
+    "Search" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szukaj"
+          }
+        }
+      }
+    },
+    "Select voice" : {
+      "comment" : "Select voice",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz głos"
+          }
+        }
+      }
+    },
+    "Select voice screen" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "na ekranie Wybierz głos"
+          }
+        }
+      }
+    },
+    "Send feedback" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyślij feedback"
+          }
+        }
+      }
+    },
+    "Set how fast your phrases should be spoken." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustaw jak szybko tekst powinien być wypowiadany."
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "comment" : "Settings",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia"
+          }
+        }
+      }
+    },
+    "Settings app" : {
+      "comment" : "Second part of bigger text",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "systemową aplikację Ustawienia"
+          }
+        }
+      }
+    },
+    "Speak" : {
+      "comment" : "Speak",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Powiedz"
+          }
+        }
+      }
+    },
+    "Speech pitch" : {
+      "comment" : "Speech pitch",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ton mowy"
+          }
+        }
+      }
+    },
+    "Speech rate" : {
+      "comment" : "Speech rate",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempo mowy"
+          }
+        }
+      }
+    },
+    "Speech settings" : {
+      "comment" : "Speech settings",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ustawienia mowy"
+          }
+        }
+      }
+    },
+    "Speech voice" : {
+      "comment" : "Speech voice",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Głos"
+          }
+        }
+      }
+    },
+    "Still lost? Go to the official Apple tutorial." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Instrukcje niejasne? Przejdź do poradnika Apple."
+          }
+        }
+      }
+    },
+    "Stop" : {
+      "comment" : "Stop",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        }
+      }
+    },
+    "Tap here to enter phrase." : {
+      "comment" : "Tap here to enter phrase.",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naciśnij aby wprowadzić tekst."
+          }
+        }
+      }
+    },
+    "Tap to expand description" : {
+      "comment" : "Tap to expand description",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naciśnij aby rozwinąć treść."
+          }
+        }
+      }
+    },
+    "Tap to say it loud" : {
+      "comment" : "Tap to say it loud",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Naciśnij aby wypowiedzieć tekst na głos."
+          }
+        }
+      }
+    },
+    "That’s it. If you go to MyVoice’s Select voice screen, you will see added voice on the list. You can now select it and all your phrases will be spoken with that voice." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To wszystko. Jeśli otworzysz ekran wyboru głosu wewnątrz aplikacji MyVoice, zobaczysz dodany głos na liście. Możesz go teraz zaznaczyć. Tekst będzie teraz czytany wybranym głosem."
+          }
+        }
+      }
+    },
+    "This device doesn't support Personal Voice." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To urządzenie nie wspiera głosu indywidualnego."
+          }
+        }
+      }
+    },
+    "Tip: Select text to say it loud." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Porada: Wybierz frazę aby ją wypowiedzieć."
+          }
+        }
+      }
+    },
+    "To add your first phrase tap on \n„Save” button." : {
+      "comment" : "Placeholder text with line break",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dodaj swoją pierwszą frazę \nprzyciskiem „Zapisz”"
+          }
+        }
+      }
+    },
+    "To change the voice that will speak your phrases, go to the Settings screen. Select the Speech voice setting. You will see a new screen with a list of all voices available on your device. Each voice has its properties with its language. Some voices are also available in Enhanced mode - that means your phrases will sound more natural and with better pronunciation." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aby zmienić głos odpowiedzialny za wypowiadanie fraz, przejdź do widoku Ustawienia. Wybierz Ustawienia mowy. Zobaczysz nowy widok z listą wszystkich dostępnych głosów na twoim urządzeniu. Każdy głos ma swoje właściwości wraz z obsługiwanym językiem. Niektóre głosy mają dostępną rozszerzoną jakość - oznacza to, że frazy będą wypowiadane w sposób bardziej naturalny i z lepsza dykcją."
+          }
+        }
+      }
+    },
+    "Unknown" : {
+      "comment" : "Unknown",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak"
+          }
+        }
+      }
+    },
+    "Unknown quality" : {
+      "comment" : "Unknown quality",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieznana jakość"
+          }
+        }
+      }
+    },
+    "Unspecified" : {
+      "comment" : "Unspecified",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieokreślono"
+          }
+        }
+      }
+    },
+    "Unsupported" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unsupported"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niewspierany"
+          }
+        }
+      }
+    },
+    "Version:" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wersja:"
+          }
+        }
+      }
+    },
+    "Voice pitch, used for speaking phrases." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysokość głosu, używana do wymawiania tekstu."
+          }
+        }
+      }
+    },
+    "What do you want to say?" : {
+      "comment" : "What do you want to say?",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Co chcesz powiedzieć?"
+          }
+        }
+      }
+    },
+    "What is Quick access?" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czym jest Szybki dostęp?"
+          }
+        }
+      }
+    },
+    "You can always download a bunch of new voices with support for more languages. You can’t do that from the MyVoice app. To do that:" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "W każdej chwili możesz pobrać więcej głosów ze wsparciem dla nowych języków. Nie możesz tego zrobić wprost z aplikacji MyVoice. Aby pobrać dodatkowe głosy:"
+          }
+        }
+      }
+    },
+    "You can now use your generated Personal Voice to read phrases within the MyVoice app. To use your generated voices, grant access to it." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Możesz teraz używać wygenerowanego głosu indywidualnego wewnątrz aplikacji MyVoice. Zezwól MyVoice na dostęp do głosu."
+          }
+        }
+      }
+    },
+    "You can use Personal Voice - a synthesized voice that sounds like your own in the app, only if you grant access to it." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Możesz używać głosu indywidualnego - syntezowanego głosu, który brzmi jak Twój własny, tylko jeśli przyznasz do niego dostęp."
+          }
+        }
+      }
+    },
+    "You have no phrases yet!" : {
+      "comment" : "You have no hrases yet!",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie masz zapisanych fraz!"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

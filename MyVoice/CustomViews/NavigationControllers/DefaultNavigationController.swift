@@ -28,8 +28,6 @@ final class DefaultNavigationController: UINavigationController {
         navigationBar.standardAppearance = navigationBarAppearance
         navigationBar.compactAppearance = navigationBarAppearance
         navigationBar.scrollEdgeAppearance = navigationBarAppearance
-        if #available(iOS 15.0, *) {
-            navigationBar.compactScrollEdgeAppearance = navigationBarAppearance
-        }
+        navigationBar.compactScrollEdgeAppearance = navigationBarAppearance
     }
 }

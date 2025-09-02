@@ -12,6 +12,13 @@ enum ActionButtonType {
     case display
     case save
 
+    var supportsVariableIcon: Bool {
+        switch self {
+        case .speak: true
+        case .display, .save: false
+        }
+    }
+
     func getTitle(isSpeaking: Bool) -> String {
         switch self {
         case .speak:
@@ -41,10 +48,10 @@ enum ActionButtonType {
         }
     }
 
-    func getIconName(with volumeState: SystemVolumeState, isSpeaking: Bool) -> String {
+    func getIconName(with volumeState: SystemVolumeState, isSpeaking: Bool, supportsVariable: Bool = false) -> String {
         switch self {
         case .speak:
-            isSpeaking ? "stop.fill" : volumeState.iconName
+            isSpeaking ? "stop.fill" : (supportsVariable ? SystemVolumeState.highVolume.iconName : volumeState.iconName)
         case .display:
             "arrow.up.left.and.arrow.down.right"
         case .save:

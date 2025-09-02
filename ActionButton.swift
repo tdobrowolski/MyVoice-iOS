@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// TODO: Debug if speak volume state is changing the speaker icon
-
 struct ActionButton: View {
     let type: ActionButtonType
     let onTap: () -> ()
@@ -22,7 +20,7 @@ struct ActionButton: View {
 
     @ViewBuilder
     private var content: some View {
-        if #available(iOS 26.0, *) {
+        if #available(iOS 27.0, *) {
             liquidGlassContent
         } else {
             legacyContent
@@ -45,7 +43,7 @@ struct ActionButton: View {
             .buttonBorderShape(
                 .roundedRectangle(radius: System.cornerRadius)
             )
-            .tint(UIColor.whiteCustom?.asColor ?? .white)
+            .tint(.whiteCustom ?? .white)
         }
     }
 
@@ -62,8 +60,8 @@ struct ActionButton: View {
             }
             .drawingGroup()
             .shadow(
-                color: (UIColor.blueDark?.asColor ?? .black).opacity(0.15),
-                radius: 12.0,
+                color: (Color.blueDark ?? .black).opacity(0.1),
+                radius: 4.0,
                 x: 0.0,
                 y: 2.0
             )
@@ -91,7 +89,7 @@ struct ActionButton: View {
             cornerRadius: System.cornerRadius,
             style: .continuous
         )
-        .fill(UIColor.whiteCustom?.asColor ?? .white)
+        .fill(.whiteCustom ?? .white)
     }
 
     private var icon: some View {
@@ -109,16 +107,31 @@ struct ActionButton: View {
     }
 
     private var symbol: some View {
-        Image(
-            systemName: type.getIconName(
-                with: state.systemVolumeState,
-                isSpeaking: state.isSpeaking
+        symbolImage
+            .renderingMode(.template)
+            .foregroundColor(type.getTintColor(isSpeaking: state.isSpeaking) ?? .black)
+            .font(.title2.bold())
+            .dynamicTypeSize(.medium)
+    }
+
+    private var symbolImage: Image {
+        if #available(iOS 16.0, *), type.supportsVariableIcon {
+            Image(
+                systemName: type.getIconName(
+                    with: state.systemVolumeState,
+                    isSpeaking: state.isSpeaking,
+                    supportsVariable: true
+                ),
+                variableValue: state.systemVolumeState.simplifiedVariableValue
             )
-        )
-        .renderingMode(.template)
-        .foregroundColor(type.getTintColor(isSpeaking: state.isSpeaking) ?? .black)
-        .font(.title2.bold()) // TODO: Check with design if correct
-        .dynamicTypeSize(.medium)
+        } else {
+            Image(
+                systemName: type.getIconName(
+                    with: state.systemVolumeState,
+                    isSpeaking: state.isSpeaking
+                )
+            )
+        }
     }
 
     private var title: some View {
@@ -126,7 +139,7 @@ struct ActionButton: View {
             .kerning(0.6)
             .font(Fonts.Poppins.bold(15.0).swiftUIFont)
             .minimumScaleFactor(0.6)
-            .foregroundStyle(UIColor.blackCustom?.asColor ?? .black)
+            .foregroundStyle(.blackCustom ?? .black)
     }
 }
 

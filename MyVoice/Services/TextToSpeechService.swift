@@ -36,9 +36,10 @@ final class TextToSpeechService: NSObject {
                     .mixWithOthers // TODO: Check if can talk with music with this optionss and without it too
                 ]
             )
+            try AVAudioSession.sharedInstance().setActive(true)
 
             // TODO: Check if works and needed for telephone
-            try AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
+//            try AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
         } catch {
             print("🔴 AVAudioSession error: \(error.localizedDescription)")
         }

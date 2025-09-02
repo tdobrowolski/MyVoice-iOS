@@ -38,13 +38,24 @@ final class MainViewController: BaseViewController<MainViewModel> {
     private var speakButtonViewState = SpeakButtonViewState()
 
     private var dataSource: RxTableViewSectionedAnimatedDataSource<QuickPhraseSection>!
-    
+
+    // FIXME: Not working!
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        if System.isPad {
+            .all
+        } else {
+            .portrait
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = NSLocalizedString("MyVoice", comment: "MyVoice")
         view.backgroundColor = .background
-        
+
+        backgroundShadowView.isHidden = System.supportsLiquidGlass
+
         quickAccessTableView.delegate = self
         quickAccessTableView.layer.cornerRadius = System.cornerRadius
         quickAccessTableView.isScrollEnabled = false
@@ -344,20 +355,26 @@ final class MainViewController: BaseViewController<MainViewModel> {
         
         present(settingsNavigationController, animated: true, completion: nil)
     }
-    
+
+    private func getCurrentPhrase() -> String? {
+        if let phrase = mainTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines), phrase.isEmpty == false {
+            return phrase
+        } else {
+            viewModel.warnUserWithFeedback()
+            placeholderTextView.flashWithColor(.orangeMain ?? .orange)
+
+            return nil
+        }
+    }
+
     func speakButtonDidTouch() {
         do {
             if try viewModel.isSpeaking.value() == true {
                 viewModel.stopSpeaking()
             } else {
-                guard let text = mainTextView.text, text.isEmpty == false else {
-                    placeholderTextView.flashWithColor(.orangeMain ?? .orange)
-                    viewModel.warnUserWithFeedback()
-                    
-                    return
-                }
-                
-                viewModel.startSpeaking(text.trimmingCharacters(in: .whitespacesAndNewlines))
+                guard let phrase = getCurrentPhrase() else { return }
+
+                viewModel.startSpeaking(phrase)
             }
         } catch {
             logError(with: error)
@@ -366,6 +383,8 @@ final class MainViewController: BaseViewController<MainViewModel> {
 
     // TODO: Implement proper functionality
     func displayButtonDidTouch() {
+//        guard let phrase = getCurrentPhrase() else { return }
+
         viewModel.impactUserWithFeedback()
 
         let displayViewController = DisplayViewController(text: "Large text to display")
@@ -376,19 +395,14 @@ final class MainViewController: BaseViewController<MainViewModel> {
     }
     
     func saveButtonDidTouch() {
-        guard let phrase = mainTextView.text, phrase.isEmpty == false else {
-            viewModel.warnUserWithFeedback()
-            placeholderTextView.flashWithColor(.orangeMain ?? .orange)
-            
-            return
-        }
-        
+        guard let phrase = getCurrentPhrase() else { return }
+
         if let currentFirstCell = self.quickAccessTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? QuickPhraseTableViewCell {
             currentFirstCell.setTipVisibility(isHidden: true)
         }
         
         viewModel.impactUserWithFeedback()
-        viewModel.addQuickPhraseItem(phrase: phrase.trimmingCharacters(in: .whitespacesAndNewlines))
+        viewModel.addQuickPhraseItem(phrase: phrase)
     }
     
     @IBAction
