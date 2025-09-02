@@ -35,4 +35,13 @@ enum SystemVolumeState {
         case .highVolume: "speaker.wave.3.fill"
         }
     }
+
+    var simplifiedVariableValue: Double {
+        switch self {
+        case .noVolume: 0.0
+        case .lowVolume: 0.25
+        case .mediumVolume: 0.5
+        case .highVolume: 1.0
+        }
+    }
 }

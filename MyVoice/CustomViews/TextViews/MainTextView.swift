@@ -26,6 +26,8 @@ final class MainTextView: UITextView {
         }
     }()
 
+    private var shadowLayer: CAShapeLayer?
+
     private let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
 
     required init?(coder: NSCoder) {
@@ -83,6 +85,28 @@ final class MainTextView: UITextView {
         } else {
             backgroundView.backgroundColor = .whiteCustom ?? .white
         }
+    }
+
+    private func addShadow(color: UIColor = .black, alpha: Float = 0.2, x: CGFloat = 0, y: CGFloat = 2, blur: CGFloat = 4, spread: CGFloat = 0) {
+        shadowLayer?.removeFromSuperlayer()
+        shadowLayer = CAShapeLayer()
+        shadowLayer?.path = UIBezierPath(roundedRect: bounds, cornerRadius: 16).cgPath
+        shadowLayer?.fillColor = UIColor.whiteCustom?.cgColor
+
+        shadowLayer?.shadowColor = color.cgColor
+        shadowLayer?.shadowOffset = CGSize(width: x, height: y)
+        shadowLayer?.shadowOpacity = alpha
+        shadowLayer?.shadowRadius = blur / 2
+
+        if spread == 0 {
+            layer.shadowPath = nil
+        } else {
+            let dx = -spread
+            let rect = bounds.insetBy(dx: dx, dy: dx)
+            layer.shadowPath = UIBezierPath(rect: rect).cgPath
+        }
+
+        layer.insertSublayer(shadowLayer!, at: 0)
     }
 
     private func setupTextContent() {
