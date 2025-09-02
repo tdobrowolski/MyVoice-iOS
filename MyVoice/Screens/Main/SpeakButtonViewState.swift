@@ -12,5 +12,5 @@ import SwiftUI
 // This should be achieved by rewriting the MainViewController with SwiftUI + Combine in the future
 class SpeakButtonViewState: ObservableObject {
     @Published var isSpeaking = false
-    @Published var systemVolumeState: SystemVolumeState = .lowVolume
+    @Published var systemVolumeState: SystemVolumeState = .mediumVolume
 }

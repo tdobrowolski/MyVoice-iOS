@@ -35,26 +35,23 @@ final class ToolbarInputAccessoryView: UIInputView {
             for: .touchUpInside
         )
 
-        if #available(iOS 15.0, *) {
-            var configuration = UIButton.Configuration.plain()
-            configuration.imagePadding = 10.0
-            configuration.baseForegroundColor = .redMain
+        var configuration = UIButton.Configuration.plain()
+        configuration.imagePadding = 10.0
+        configuration.baseForegroundColor = .redMain
+        if #available(iOS 26.0, *) {
             configuration.image = UIImage(systemName: "pencil.slash", withConfiguration: UIImage.SymbolConfiguration(weight: .semibold))
-
-            var container = AttributeContainer()
-            container.font = Fonts.Poppins.medium(17.0).font
-            configuration.attributedTitle = AttributedString(
-                NSLocalizedString("Clear", comment: "Clear text button title."),
-                attributes: container
-            )
-
-            customClearButton.configuration = configuration
         } else {
-            customClearButton.setImage(
-                UIImage(systemName: "pencil.slash", withConfiguration: UIImage.SymbolConfiguration(weight: .black)),
-                for: .normal
-            )
+            configuration.image = UIImage(systemName: "pencil.slash", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
         }
+
+        var container = AttributeContainer()
+        container.font = Fonts.Poppins.medium(17.0).font
+        configuration.attributedTitle = AttributedString(
+            NSLocalizedString("Clear", comment: "Clear text button title."),
+            attributes: container
+        )
+
+        customClearButton.configuration = configuration
 
         let clearTextItem = UIBarButtonItem(customView: customClearButton)
         if #available(iOS 26.0, *) {

@@ -25,8 +25,8 @@ final class MainViewModel: BaseViewModel, ObservableObject {
     let personalVoiceService: PersonalVoiceService
 
     let isSpeaking = BehaviorSubject<Bool>(value: false)
-    let systemVolumeState = BehaviorSubject<SystemVolumeState>(value: .lowVolume)
-    
+    let systemVolumeState = BehaviorSubject<SystemVolumeState>(value: .mediumVolume)
+
     let sections = BehaviorSubject<[QuickPhraseSection]>(value: [])
     
     override init() {
