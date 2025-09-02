@@ -33,6 +33,12 @@ final class VoiceTableViewCell: UITableViewCell {
         separatorView.isHidden = isLastInSection
         checkmarkImageView.isHidden = isSelected == false
         checkmarkImageView.image = UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+
+        if isSelected {
+            accessibilityTraits.insert(.selected)
+        } else {
+            accessibilityTraits.remove(.selected)
+        }
     }
     
     override func awakeFromNib() {
@@ -54,73 +60,27 @@ final class VoiceTableViewCell: UITableViewCell {
     ) {
         var voiceGenderText: NSMutableAttributedString
 
-        switch voiceGender {
-        case .male:
-            voiceGenderText = NSMutableAttributedString(
-                string: NSLocalizedString("Male", comment: "Male"),
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
-            )
-
-        case .female:
-            voiceGenderText = NSMutableAttributedString(
-                string: NSLocalizedString("Female", comment: "Female"),
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
-            )
-            
-        case .unspecified:
-            voiceGenderText = NSMutableAttributedString(
-                string: NSLocalizedString("Unspecified", comment: "Unspecified"),
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
-            )
-            
-        @unknown default:
-            voiceGenderText = NSMutableAttributedString(
-                string: NSLocalizedString("Unspecified", comment: "Unspecified"),
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
-            )
-        }
+        voiceGenderText = NSMutableAttributedString(
+            string: voiceGender.title,
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
+        )
 
         let voiceQualityText = NSMutableAttributedString(
             string: " • ",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
         )
 
-        switch voiceQuality {
-        case .default:
-            voiceQualityText.append(
-                NSMutableAttributedString(
-                    string: NSLocalizedString("Default quality", comment: "Default quality"),
-                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
-                )
+        voiceQualityText.append(
+            NSMutableAttributedString(
+                string: voiceQuality.title,
+                attributes: [NSAttributedString.Key.foregroundColor: voiceQuality.foregroundColor]
             )
-
-        case .enhanced:
-            voiceQualityText.append(
-                NSMutableAttributedString(
-                    string: NSLocalizedString("Enhanced quality", comment: "Enhanced quality"),
-                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.orangeMain ?? .orange]
-                )
-            )
-            
-        case .premium:
-            voiceQualityText.append(
-                NSMutableAttributedString(
-                    string: NSLocalizedString("Premium quality", comment: "Premium quality"),
-                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.orangeMain ?? .orange]
-                )
-            )
-
-        @unknown default:
-            voiceQualityText.append(
-                NSMutableAttributedString(
-                    string: NSLocalizedString("Unknown quality", comment: "Unknown quality"),
-                    attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueDark ?? .black]
-                )
-            )
-        }
+        )
         
         voiceGenderText.append(voiceQualityText)
         additionalInfoLabel.attributedText = voiceGenderText
+
+        additionalInfoLabel.accessibilityLabel = voiceGender.title
     }
     
     private func setupInfoLabelForPersonalVoice() {
@@ -140,6 +100,7 @@ final class VoiceTableViewCell: UITableViewCell {
         )
         
         additionalInfoLabel.attributedText = personalVoiceText
+        additionalInfoLabel.accessibilityLabel = personalVoiceText.string
     }
     
     override func prepareForReuse() {

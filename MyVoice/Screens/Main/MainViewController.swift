@@ -41,7 +41,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         title = NSLocalizedString("MyVoice", comment: "MyVoice")
         view.backgroundColor = .background
         
@@ -142,7 +142,13 @@ final class MainViewController: BaseViewController<MainViewModel> {
                             cell.setupIcon(isSpeaking: true)
                         }
                         .disposed(by: cell.disposeBag)
-                    
+
+                    cell.accessibilityTraits.insert(.startsMediaSession)
+                    cell.accessibilityHint = NSLocalizedString("Tap to say it loud", comment: "Tap to say it loud")
+
+                    cell.tapHandlerButton.isAccessibilityElement = false
+                    cell.tapHandlerButton.accessibilityElementsHidden = true
+
                     return cell
                 } else {
                     return UITableViewCell()
@@ -159,6 +165,8 @@ final class MainViewController: BaseViewController<MainViewModel> {
         placeholderTextView.textContainerInset = .init(top: 13, left: 14, bottom: 14, right: 13)
         placeholderTextView.textColor = .blueDark
         placeholderTextView.font = Fonts.Poppins.bold(20.0).font
+        placeholderTextView.isAccessibilityElement = false
+        placeholderTextView.accessibilityElementsHidden = true
     }
     
     private func setupHeader() {

@@ -16,6 +16,12 @@ struct ActionButton: View {
     @ObservedObject var state: SpeakButtonViewState
 
     var body: some View {
+        content
+            .accessibilityAddTraits(.startsMediaSession)
+    }
+
+    @ViewBuilder
+    private var content: some View {
         if #available(iOS 26.0, *) {
             liquidGlassContent
         } else {
@@ -29,7 +35,7 @@ struct ActionButton: View {
             Button {
                 onTap()
             } label: {
-                content
+                buttonContent
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .buttonStyle(.glassProminent)
@@ -47,7 +53,7 @@ struct ActionButton: View {
         } label: {
             ZStack {
                 background
-                content
+                buttonContent
             }
             .drawingGroup()
             .shadow(
@@ -61,11 +67,18 @@ struct ActionButton: View {
     }
 
     // TODO: Tweak spacing
-    private var content: some View {
+    private var buttonContent: some View {
         VStack(spacing: 8.0) {
             icon
-            title
-                .padding(.horizontal, 2.0)
+            Group {
+                if #available(iOS 18.0, *) {
+                    title
+                        .accessibilityHidden(true, isEnabled: state.isSpeaking)
+                } else {
+                    title
+                }
+            }
+            .padding(.horizontal, 2.0)
         }
         .padding(.vertical, 12.0)
     }

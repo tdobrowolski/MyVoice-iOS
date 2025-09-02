@@ -44,6 +44,10 @@ final class MainTextView: UITextView {
         textColor = .blackCustom ?? .black
         tintColor = .orangeMain
 
+        accessibilityLabel = NSLocalizedString("Phrase", comment: "Phrase")
+        accessibilityHint = NSLocalizedString("Tap here to enter phrase.", comment: "Tap here to enter phrase.")
+        accessibilityValue = text
+
         setupBackground()
 
         textContainerInset = .init(

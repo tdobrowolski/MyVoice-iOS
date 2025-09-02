@@ -104,7 +104,7 @@ struct PersonalVoiceBottomSheetView: View {
     private func getContentImage(for numberOfRings: Int) -> some View {
         let opacityStep: CGFloat = 1.0 / CGFloat(numberOfRings + 1)
 
-        ZStack(alignment: .center) {
+        ZStack {
             ForEach(1...numberOfRings, id: \.self) { i in
                 let opacity = 1.0 - (CGFloat(i) * opacityStep)
                 let sideSize = 50.0 * CGFloat(i + 1)
@@ -125,6 +125,7 @@ struct PersonalVoiceBottomSheetView: View {
             }
             icon
         }
+        .accessibilityHidden(true)
     }
 
     private var icon: some View {

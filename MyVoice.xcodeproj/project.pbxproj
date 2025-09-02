@@ -69,6 +69,9 @@
 		E1BF06C92E64DFDD009F653F /* ScalableButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF06C82E64DFDD009F653F /* ScalableButtonStyle.swift */; };
 		E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5225B4E97F00339B9A /* MainTextView.swift */; };
 		E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */; };
+		E1C99C1A2E670F5000CACB0D /* AVSpeechSynthesisVoiceQuality+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C99C192E670F5000CACB0D /* AVSpeechSynthesisVoiceQuality+Extensions.swift */; };
+		E1C99C1C2E670F7700CACB0D /* AVSpeechSynthesisVoiceGender+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C99C1B2E670F7700CACB0D /* AVSpeechSynthesisVoiceGender+Extensions.swift */; };
+		E1CBF9482E54B70F00791C68 /* ToolbarInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */; };
 		E1D4C3EF2AD0A23A0059DC46 /* PersonalVoiceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4C3EE2AD0A23A0059DC46 /* PersonalVoiceService.swift */; };
 		E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */; };
 		E1E5FECA25D9879800FEB6E2 /* PhraseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */; };
@@ -154,6 +157,9 @@
 		E1BF06C82E64DFDD009F653F /* ScalableButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScalableButtonStyle.swift; sourceTree = "<group>"; };
 		E1C3EF5225B4E97F00339B9A /* MainTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextView.swift; sourceTree = "<group>"; };
 		E1C3EF5825B4EF7E00339B9A /* DefaultNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultNavigationController.swift; sourceTree = "<group>"; };
+		E1C99C192E670F5000CACB0D /* AVSpeechSynthesisVoiceQuality+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVSpeechSynthesisVoiceQuality+Extensions.swift"; sourceTree = "<group>"; };
+		E1C99C1B2E670F7700CACB0D /* AVSpeechSynthesisVoiceGender+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVSpeechSynthesisVoiceGender+Extensions.swift"; sourceTree = "<group>"; };
+		E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarInputAccessoryView.swift; sourceTree = "<group>"; };
 		E1D4C3EE2AD0A23A0059DC46 /* PersonalVoiceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceService.swift; sourceTree = "<group>"; };
 		E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDatabaseService.swift; sourceTree = "<group>"; };
@@ -284,6 +290,8 @@
 				E134BBE22A3F429F00109013 /* Array+Extensions.swift */,
 				E13919C92AD3342D00694200 /* View+Extensions.swift */,
 				E179E5A42A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift */,
+				E1C99C192E670F5000CACB0D /* AVSpeechSynthesisVoiceQuality+Extensions.swift */,
+				E1C99C1B2E670F7700CACB0D /* AVSpeechSynthesisVoiceGender+Extensions.swift */,
 				562CFA292AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift */,
 			);
 			path = Extensions;
@@ -722,6 +730,7 @@
 				E179E5A52A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift in Sources */,
 				E1E6C2CB25B4D24800774B17 /* UIView+Extensions.swift in Sources */,
 				E1C3EF5925B4EF7E00339B9A /* DefaultNavigationController.swift in Sources */,
+				E1C99C1C2E670F7700CACB0D /* AVSpeechSynthesisVoiceGender+Extensions.swift in Sources */,
 				E115576625B4C5A10093851B /* BaseViewController.swift in Sources */,
 				E134BBE32A3F429F00109013 /* Array+Extensions.swift in Sources */,
 				E1BF06C42E64DD9D009F653F /* System.swift in Sources */,
@@ -741,6 +750,7 @@
 				566666A42AFEF3F3009990EB /* InfoButtonStyle.swift in Sources */,
 				E127353925C617BE007993EA /* SettingModel.swift in Sources */,
 				E115574525B4C4290093851B /* SceneDelegate.swift in Sources */,
+				E1C99C1A2E670F5000CACB0D /* AVSpeechSynthesisVoiceQuality+Extensions.swift in Sources */,
 				E13919CA2AD3342D00694200 /* View+Extensions.swift in Sources */,
 				56AE0CC12AF8297200D16467 /* PersonalVoiceBottomSheetView.swift in Sources */,
 				E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */,

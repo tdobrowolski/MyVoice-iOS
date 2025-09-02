@@ -39,7 +39,9 @@ struct CollapsableHelpComponentView: View {
                 .multilineTextAlignment(.leading)
             Spacer()
             chevronButton
+                .accessibilityHidden(true)
         }
+        .accessibilityHint(NSLocalizedString("Tap to expand description", comment: "Tap to expand description"))
     }
 
     private func didTapItem(with id: String) {

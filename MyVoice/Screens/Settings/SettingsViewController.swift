@@ -135,7 +135,9 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
                     self?.viewModel.setSpeechRate(finalValue)
                 }
                 .disposed(by: cell.disposeBag)
-            
+
+
+
             return cell
             
         case .speechPitch:
@@ -186,6 +188,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
                                           NSAttributedString.Key.foregroundColor: color], for: .normal)
         rightItem.setTitleTextAttributes([NSAttributedString.Key.font: font,
                                           NSAttributedString.Key.foregroundColor: color], for: .selected)
+        rightItem.accessibilityLabel = NSLocalizedString("Close settings", comment: "Close settings")
         navigationItem.rightBarButtonItem = rightItem
     }
     
