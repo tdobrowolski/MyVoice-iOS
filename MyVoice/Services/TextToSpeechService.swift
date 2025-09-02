@@ -37,7 +37,7 @@ final class TextToSpeechService: NSObject {
                 ]
             )
 
-            // TODO: Check if needed for telephone
+            // TODO: Check if works and needed for telephone
             try AVAudioSession.sharedInstance().overrideOutputAudioPort(.none)
         } catch {
             print("🔴 AVAudioSession error: \(error.localizedDescription)")

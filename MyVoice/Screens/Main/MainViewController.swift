@@ -149,6 +149,9 @@ final class MainViewController: BaseViewController<MainViewModel> {
                     cell.tapHandlerButton.isAccessibilityElement = false
                     cell.tapHandlerButton.accessibilityElementsHidden = true
 
+                    cell.tipLabel.isAccessibilityElement = false
+                    cell.tipLabel.accessibilityElementsHidden = true
+
                     return cell
                 } else {
                     return UITableViewCell()

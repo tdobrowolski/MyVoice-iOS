@@ -36,6 +36,9 @@ struct ActionButton: View {
                 onTap()
             } label: {
                 buttonContent
+                    .padding(.horizontal, 2.0)
+                    .padding(.top, 9.0)
+                    .padding(.bottom, 7.0)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .buttonStyle(.glassProminent)
@@ -46,7 +49,6 @@ struct ActionButton: View {
         }
     }
 
-    // TODO: Tweak shadow
     private var legacyContent: some View {
         Button {
             onTap()
@@ -54,6 +56,9 @@ struct ActionButton: View {
             ZStack {
                 background
                 buttonContent
+                    .padding(.horizontal, 2.0)
+                    .padding(.top, 16.0)
+                    .padding(.bottom, 14.0)
             }
             .drawingGroup()
             .shadow(
@@ -66,10 +71,10 @@ struct ActionButton: View {
         .scaledWhenPressed()
     }
 
-    // TODO: Tweak spacing
     private var buttonContent: some View {
-        VStack(spacing: 8.0) {
+        VStack(spacing: 0.0) {
             icon
+            Spacer(minLength: 2.0)
             Group {
                 if #available(iOS 18.0, *) {
                     title
@@ -78,9 +83,7 @@ struct ActionButton: View {
                     title
                 }
             }
-            .padding(.horizontal, 2.0)
         }
-        .padding(.vertical, 12.0)
     }
 
     private var background: some View {
@@ -114,7 +117,7 @@ struct ActionButton: View {
         )
         .renderingMode(.template)
         .foregroundColor(type.getTintColor(isSpeaking: state.isSpeaking) ?? .black)
-        .font(.title3.bold()) // TODO: Check with design if correct
+        .font(.title2.bold()) // TODO: Check with design if correct
         .dynamicTypeSize(.medium)
     }
 
@@ -122,6 +125,7 @@ struct ActionButton: View {
         Text(type.getTitle(isSpeaking: state.isSpeaking))
             .kerning(0.6)
             .font(Fonts.Poppins.bold(15.0).swiftUIFont)
+            .minimumScaleFactor(0.6)
             .foregroundStyle(UIColor.blackCustom?.asColor ?? .black)
     }
 }
@@ -146,6 +150,8 @@ struct ActionButton: View {
             state: state
         )
     }
-    .frame(height: 120.0)
+    .frame(height: 110.0)
     .padding(.horizontal, 16.0)
+    .frame(maxHeight: .infinity)
+    .background { Color.background.ignoresSafeArea() }
 }
