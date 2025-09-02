@@ -75,6 +75,7 @@ struct HelpView: View {
         }
         .font(Fonts.Poppins.semibold(17.0).swiftUIFont)
         .foregroundColor(UIColor.orangeMain?.asColor ?? .orange)
+        .accessibilityLabel(NSLocalizedString("Close help", comment: "Close help"))
     }
     
     init(

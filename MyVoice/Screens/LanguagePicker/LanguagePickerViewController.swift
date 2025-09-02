@@ -140,6 +140,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
              NSAttributedString.Key.foregroundColor: color],
             for: .selected
         )
+        rightItem.accessibilityLabel = NSLocalizedString("Close language picker", comment: "Close language picker")
         navigationItem.rightBarButtonItem = rightItem
     }
     
@@ -167,7 +168,7 @@ final class LanguagePickerViewController: BaseViewController<LanguagePickerViewM
     // MARK: Personal Voice Bottom Sheet logic
 
     private func showPersonalVoiceBottomSheetIfNeeded() {
-        guard viewModel.showPersonalVoiceInfoBottomSheet, #available(iOS 17.0, *) else { return }
+        guard /* viewModel.showPersonalVoiceInfoBottomSheet, */ #available(iOS 17.0, *) else { return }
 
         showPersonalVoiceBottomSheet()
     }

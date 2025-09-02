@@ -56,7 +56,7 @@ final class PersonalVoiceBottomSheetViewModel: BaseViewModel, ObservableObject {
     ) {
         self.personalVoiceService = personalVoiceService
         self.onClose = onClose
-        self.accessType = (try? personalVoiceService.authorizationStatus.value())?.toPersonalVoiceBottomSheetType ?? .accessNotSpecified
+        self.accessType = .accessNotSpecified // (try? personalVoiceService.authorizationStatus.value())?.toPersonalVoiceBottomSheetType ?? .accessNotSpecified
     }
 
     func didTapActionButtonAccess() async {
@@ -65,7 +65,7 @@ final class PersonalVoiceBottomSheetViewModel: BaseViewModel, ObservableObject {
             await requestPersonalVoiceAccess()
 
         case .accessDenied:
-            let settingsURLString = await UIApplication.openSettingsURLString
+            let settingsURLString = UIApplication.openSettingsURLString
 
             guard let settingsUrl = URL(string: settingsURLString),
                   await UIApplication.shared.canOpenURL(settingsUrl) else { return }
