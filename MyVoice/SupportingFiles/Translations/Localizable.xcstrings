@@ -176,6 +176,17 @@
         }
       }
     },
+    "Accessibility" : {
+      "comment" : "Accessibility",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dostępność"
+          }
+        }
+      }
+    },
     "Accessibility > Personal Voice" : {
       "localizations" : {
         "pl" : {
@@ -247,6 +258,12 @@
           }
         }
       }
+    },
+    "An unknown error occurred. Please try again." : {
+
+    },
+    "Apps are currently not allowed to add their audio to calls. Would you like to open the Settings app to enable the setting, 'Allow apps to Add Audio to Calls'?" : {
+
     },
     "Authorized" : {
       "extractionState" : "manual",
@@ -561,7 +578,7 @@
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Język i głos, używany do wymawiania tekstu. Twój wybór nie wpłynie na ustawienia języku systemu."
+            "value" : "Język i głos, używany do wymawiania tekstu. Twój wybór nie wpłynie na ustawienia języka systemu."
           }
         }
       }
@@ -688,6 +705,9 @@
         }
       }
     },
+    "Open settings" : {
+
+    },
     "Open Settings" : {
       "comment" : "Add button accessibility label.",
       "localizations" : {
@@ -720,6 +740,12 @@
           }
         }
       }
+    },
+    "Permission denied" : {
+
+    },
+    "Permission required to send audio to call" : {
+
     },
     "Personal Voice" : {
       "comment" : "Personal Voice",
@@ -958,6 +984,16 @@
         }
       }
     },
+    "Speak during calls" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mów podczas połączeń"
+          }
+        }
+      }
+    },
     "Speech pitch" : {
       "comment" : "Speech pitch",
       "localizations" : {
@@ -998,6 +1034,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Głos"
+          }
+        }
+      }
+    },
+    "Spoken phrases will be audible during a call." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wypowiadane zdania będą słyszalne podczas połączeń."
           }
         }
       }
@@ -1066,6 +1112,9 @@
         }
       }
     },
+    "The app does not have permission to inject spoken audio. Would you like to open the Settings app to enabled permission?" : {
+
+    },
     "This device doesn't support Personal Voice." : {
       "localizations" : {
         "pl" : {
@@ -1117,6 +1166,9 @@
           }
         }
       }
+    },
+    "Unknown error" : {
+
     },
     "Unknown quality" : {
       "comment" : "Unknown quality",

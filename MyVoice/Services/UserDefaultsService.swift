@@ -15,6 +15,7 @@ final class UserDefaultsService {
         case speechPitch = "SpeechPitch"
         case speechLanguage = "SpeechLanguage"
         case personalVoiceInfo = "PersonalVoiceInfo"
+        case appAudioForCalls = "AppAudioForCalls"
     }
     
     // MARK: Speech settings
@@ -59,5 +60,15 @@ final class UserDefaultsService {
     
     var didShowPersonalVoiceInfo: Bool {
         defaults.bool(forKey: Keys.personalVoiceInfo.rawValue)
+    }
+
+    // MARK: App Audio For Calls
+
+    func setAppAudioForCalls(enabled: Bool) {
+        defaults.setValue(enabled, forKey: Keys.appAudioForCalls.rawValue)
+    }
+
+    func isAppAudioForCallsEnabled() -> Bool {
+        defaults.bool(forKey: Keys.appAudioForCalls.rawValue)
     }
 }
