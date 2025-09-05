@@ -13,6 +13,7 @@ struct SettingsSection {
         case speechRate = "speechRate"
         case speechPitch = "speechPitch"
         case personalVoice = "personalVoice"
+        case accessibility = "accessibility"
         case other = "other"
     }
     
@@ -22,11 +23,12 @@ struct SettingsSection {
     
     var localizedHeaderString: String {
         switch type {
-        case .speechVoice: return NSLocalizedString("Speech settings", comment: "Speech settings")
-        case .speechRate: return NSLocalizedString("Speech rate", comment: "Speech rate")
-        case .speechPitch: return NSLocalizedString("Speech pitch", comment: "Speech pitch")
-        case .personalVoice: return NSLocalizedString("Personal Voice", comment: "Personal Voice")
-        case .other: return NSLocalizedString("Other", comment: "Other")
+        case .speechVoice: NSLocalizedString("Speech settings", comment: "Speech settings")
+        case .speechRate: NSLocalizedString("Speech rate", comment: "Speech rate")
+        case .speechPitch: NSLocalizedString("Speech pitch", comment: "Speech pitch")
+        case .personalVoice: NSLocalizedString("Personal Voice", comment: "Personal Voice")
+        case .accessibility: NSLocalizedString("Accessibility", comment: "Accessibility")
+        case .other: NSLocalizedString("Other", comment: "Other")
         }
     }
 }

@@ -17,19 +17,21 @@ enum Nib {
     case quickPhraseTableViewCell
     case sliderTableViewCell
     case voiceTableViewCell
+    case switchTableViewCell
     case defaultCell
     
     var name: String {
         switch self {
-        case .helpViewController: return "HelpViewController"
-        case .settingsViewController: return "SettingsViewController"
-        case .languagePickerViewController: return "LanguagePickerViewController"
-        case .personalVoiceBottomSheetViewController: return "PersonalVoiceBottomSheetViewController"
-        case .mainViewController: return "MainViewController"
-        case .quickPhraseTableViewCell: return "QuickPhraseTableViewCell"
-        case .sliderTableViewCell: return "SliderTableViewCell"
-        case .voiceTableViewCell: return "VoiceTableViewCell"
-        case .defaultCell: return "defaultCell"
+        case .helpViewController: "HelpViewController"
+        case .settingsViewController: "SettingsViewController"
+        case .languagePickerViewController: "LanguagePickerViewController"
+        case .personalVoiceBottomSheetViewController: "PersonalVoiceBottomSheetViewController"
+        case .mainViewController: "MainViewController"
+        case .quickPhraseTableViewCell: "QuickPhraseTableViewCell"
+        case .sliderTableViewCell: "SliderTableViewCell"
+        case .voiceTableViewCell: "VoiceTableViewCell"
+        case .switchTableViewCell: "SwitchTableViewCell"
+        case .defaultCell: "defaultCell"
         }
     }
     
@@ -43,7 +45,10 @@ enum Nib {
             
         case .voiceTableViewCell:
             return "voiceCell"
-            
+
+        case .switchTableViewCell:
+            return "switchCell"
+
         case .defaultCell:
             return "defaultCell"
             

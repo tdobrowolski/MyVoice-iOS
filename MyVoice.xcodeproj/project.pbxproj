@@ -29,6 +29,8 @@
 		E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127353B25C61DEB007993EA /* UserDefaultsService.swift */; };
 		E134BBE12A3F429700109013 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134BBE02A3F429700109013 /* String+Extensions.swift */; };
 		E134BBE32A3F429F00109013 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134BBE22A3F429F00109013 /* Array+Extensions.swift */; };
+		E13538162E69C21500C219F6 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E13538152E69C21500C219F6 /* SwitchTableViewCell.xib */; };
+		E13538172E69C21500C219F6 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13538142E69C21500C219F6 /* SwitchTableViewCell.swift */; };
 		E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E137882225D47B0A007E2DD8 /* Model.xcdatamodeld */; };
 		E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137884B25D47E72007E2DD8 /* DatabaseService.swift */; };
 		E13919C32AD2D48E00694200 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13919C22AD2D48E00694200 /* HelpView.swift */; };
@@ -113,6 +115,8 @@
 		E127353B25C61DEB007993EA /* UserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsService.swift; sourceTree = "<group>"; };
 		E134BBE02A3F429700109013 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E134BBE22A3F429F00109013 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		E13538142E69C21500C219F6 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
+		E13538152E69C21500C219F6 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		E137882325D47B0A007E2DD8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E137884B25D47E72007E2DD8 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		E137885725D48BC6007E2DD8 /* Phrase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Phrase+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -347,6 +351,15 @@
 			path = HeaderView;
 			sourceTree = "<group>";
 		};
+		E13538132E69C20000C219F6 /* SwitchCell */ = {
+			isa = PBXGroup;
+			children = (
+				E13538142E69C21500C219F6 /* SwitchTableViewCell.swift */,
+				E13538152E69C21500C219F6 /* SwitchTableViewCell.xib */,
+			);
+			path = SwitchCell;
+			sourceTree = "<group>";
+		};
 		E137885325D48B40007E2DD8 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -459,6 +472,7 @@
 		E197348F25B8CFA900F3A78B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				E13538132E69C20000C219F6 /* SwitchCell */,
 				E15B839C25CF3D2800C8BFA5 /* VoiceCell */,
 				E1E98A7F25C6C73B00F531BD /* SliderCell */,
 				E197349025B8CFAF00F3A78B /* QuickPhraseCell */,
@@ -614,6 +628,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13538162E69C21500C219F6 /* SwitchTableViewCell.xib in Resources */,
 				E115577525B4C93C0093851B /* Poppins-SemiBold.ttf in Resources */,
 				E1C99C1E2E672B5800CACB0D /* Localizable.xcstrings in Resources */,
 				E115577625B4C93C0093851B /* Poppins-Bold.ttf in Resources */,
@@ -724,6 +739,7 @@
 				E18AF60D25F57BDF008CFA5D /* TouchHandlerButton.swift in Sources */,
 				E115574325B4C4290093851B /* AppDelegate.swift in Sources */,
 				E1E89B1D2A3F558F004DF84F /* HeaderView.swift in Sources */,
+				E13538172E69C21500C219F6 /* SwitchTableViewCell.swift in Sources */,
 				E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */,
 				566666A42AFEF3F3009990EB /* InfoButtonStyle.swift in Sources */,
 				E127353925C617BE007993EA /* SettingModel.swift in Sources */,

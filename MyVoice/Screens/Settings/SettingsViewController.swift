@@ -49,6 +49,10 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             UINib(nibName: Nib.sliderTableViewCell.name, bundle: nil),
             forCellReuseIdentifier: Nib.sliderTableViewCell.cellIdentifier
         )
+        tableView.register(
+            UINib(nibName: Nib.switchTableViewCell.name, bundle: nil),
+            forCellReuseIdentifier: Nib.switchTableViewCell.cellIdentifier
+        )
         tableView.delaysContentTouches = false
         
         NotificationCenter.default.addObserver(
@@ -162,6 +166,32 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
                 .disposed(by: cell.disposeBag)
             
             return cell
+
+        case .accessibility:
+            let cell = tableView.dequeueReusableCell(withIdentifier: Nib.switchTableViewCell.cellIdentifier) as! SwitchTableViewCell
+            cell.setupCell(text: sections[indexPath.section].items[indexPath.row].primaryText)
+
+            // TODO: Debug if no infinite loop occurs
+            // TODO: Check if initial value is set properly
+
+            cell.switch.rx.controlEvent(.valueChanged)
+                .withLatestFrom(cell.switch.rx.value)
+                .subscribe { [weak self] isOn in
+                    print("switch .valueChanged to \(isOn)")
+                    Task {
+                        let result = await self?.viewModel.setAppAudioForCalls(for: isOn)
+                        if let error = result?.asError {
+                            self?.handleAppAudioToCallsError(for: error)
+                        }
+                    }
+                }
+                .disposed(by: cell.disposeBag)
+
+            cell.switch.rx.isOn
+                .bind(to: viewModel.isAppAudioForCallsEnabled)
+                .disposed(by: cell.disposeBag)
+
+            return cell
         }
     }
     
@@ -221,7 +251,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             if #available(iOS 17.0, *) {
                 Task {
                     await viewModel.requestPersonalVoiceAccess()
-                    self.tableView.reloadData()
+                    tableView.reloadData()
                 }
             } else {
                 fallthrough
@@ -284,13 +314,32 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
                     UIApplication.shared.canOpenURL(mailToUrl) {
             handleMailToFeedback(for: mailToUrl)
         } else {
-            showAlert(title: NSLocalizedString("No mail account", comment: "No mail account"),
-                      message: NSLocalizedString("It looks like there's no mail account, that the system can use to send feedback.",
-                                                 comment: "It looks like there's no mail account, that the system can use to send feedback."),
-                      actions: [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)])
+            showAlert(
+                title: NSLocalizedString("No mail account", comment: "No mail account"),
+                message: NSLocalizedString("It looks like there's no mail account, that the system can use to send feedback.",
+                                           comment: "It looks like there's no mail account, that the system can use to send feedback."),
+                actions: [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)]
+            )
         }
     }
-    
+
+    private func handleAppAudioToCallsError(for error: AppAudioForCallsError) {
+        var actions = [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)]
+
+        if error.canNavigateToSystemSettings {
+            actions.insert(
+                UIAlertAction(title: NSLocalizedString("Open settings", comment: ""), style: .default, handler: nil),
+                at: 0
+            )
+        }
+
+        showAlert(
+            title: error.title,
+            message: error.message,
+            actions: actions
+        )
+    }
+
     private func handleMFMailComposeFeedback() {
         let mailViewController = MFMailComposeViewController()
         mailViewController.mailComposeDelegate = self
@@ -313,7 +362,7 @@ extension SettingsViewController: UITableViewDelegate {
         
         switch sectionType {
         case .speechVoice, .personalVoice, .other: return indexPath
-        case .speechRate, .speechPitch: return nil
+        case .speechRate, .speechPitch, .accessibility: return nil
         }
     }
     
@@ -326,22 +375,17 @@ extension SettingsViewController: UITableViewDelegate {
         case .speechVoice:
             showLanguagePicker()
             
-        case .speechRate, .speechPitch:
+        case .speechRate, .speechPitch, .accessibility:
             return
             
         case .personalVoice:
             handlePersonalVoiceStatusAction()
-            
+
         case .other:
             switch indexPath.row {
-            case 0:
-                openAppStoreForReview()
-                
-            case 1:
-                openFeedbackMail()
-                
-            default:
-                return
+            case 0: openAppStoreForReview()
+            case 1: openFeedbackMail()
+            default: return
             }
         }
         
