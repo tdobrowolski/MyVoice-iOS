@@ -260,10 +260,24 @@
       }
     },
     "An unknown error occurred. Please try again." : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wystąpił nieznany błąd. Spróbuj ponownie później."
+          }
+        }
+      }
     },
     "Apps are currently not allowed to add their audio to calls. Would you like to open the Settings app to enable the setting, 'Allow apps to Add Audio to Calls'?" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikacje nie mogą obecnie dodawać swojego dźwięku do połączeń. Czy chcesz otworzyć Ustawienia i włączyć opcję „Pozwalaj aplikacjom dodawać dźwięk do połączeń”?"
+          }
+        }
+      }
     },
     "Authorized" : {
       "extractionState" : "manual",
@@ -705,9 +719,6 @@
         }
       }
     },
-    "Open settings" : {
-
-    },
     "Open Settings" : {
       "comment" : "Add button accessibility label.",
       "localizations" : {
@@ -742,10 +753,24 @@
       }
     },
     "Permission denied" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak uprawnień"
+          }
+        }
+      }
     },
     "Permission required to send audio to call" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uprawnienie niezbędne do odtwarzania głosu podczas połączeń"
+          }
+        }
+      }
     },
     "Personal Voice" : {
       "comment" : "Personal Voice",
@@ -1113,7 +1138,14 @@
       }
     },
     "The app does not have permission to inject spoken audio. Would you like to open the Settings app to enabled permission?" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikacja nie ma uprawnień do odtwarzania głosu podczas połączeń. Czy chcesz otworzyć Ustawienia, aby włączyć to uprawnienie?"
+          }
+        }
+      }
     },
     "This device doesn't support Personal Voice." : {
       "localizations" : {
@@ -1168,7 +1200,14 @@
       }
     },
     "Unknown error" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieznany błąd"
+          }
+        }
+      }
     },
     "Unknown quality" : {
       "comment" : "Unknown quality",

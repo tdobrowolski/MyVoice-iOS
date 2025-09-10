@@ -317,8 +317,14 @@ final class MainViewController: BaseViewController<MainViewModel> {
     @objc
     private func settingsDidTouch() {
         viewModel.stopSpeaking()
-        let settingsViewModel = SettingsViewModel(personalVoiceService: viewModel.personalVoiceService)
-        let settingsViewController = SettingsViewController(viewModel: settingsViewModel, nibName: Nib.settingsViewController.name)
+        let settingsViewModel = SettingsViewModel(
+            personalVoiceService: viewModel.personalVoiceService,
+            textToSpeechService: viewModel.textToSpeechService
+        )
+        let settingsViewController = SettingsViewController(
+            viewModel: settingsViewModel,
+            nibName: Nib.settingsViewController.name
+        )
         let settingsNavigationController = DefaultNavigationController(rootViewController: settingsViewController)
         
         present(settingsNavigationController, animated: true, completion: nil)

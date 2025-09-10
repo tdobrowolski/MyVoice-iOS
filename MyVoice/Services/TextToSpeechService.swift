@@ -11,7 +11,7 @@ import RxSwift
 final class TextToSpeechService: NSObject {
     var isAppAudioForCallsSupported: Bool {
         if #available(iOS 18.2, *) {
-            AVAudioSession.sharedInstance().isMicrophoneInjectionAvailable
+            true
         } else {
             false
         }
@@ -173,13 +173,5 @@ extension TextToSpeechService: AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
         isSpeaking.onNext(false)
         print("🗣 didCancel")
-    }
-}
-
-// TODO: Move
-
-extension AVAudioSession.MicrophoneInjectionMode {
-    var isAppAudioForCallsEnabled: Bool {
-        self == .spokenAudio
     }
 }

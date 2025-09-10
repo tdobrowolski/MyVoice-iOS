@@ -11,17 +11,17 @@ import RxDataSources
 import AVKit
 
 final class MainViewModel: BaseViewModel, ObservableObject {
-    private let textToSpeechService: TextToSpeechService
     private let phraseDatabaseService: PhraseDatabaseService
     private var feedbackGenerator: UIImpactFeedbackGenerator
     private var notificationFeedbackGenerator: UINotificationFeedbackGenerator
     
     var systemValueObserver: NSKeyValueObservation?
 
-    // PersonalVoiceService is needed in this ViewModel only to pass to other, child views/modals.
+    // TextToSpeechService & PersonalVoiceService is needed in this ViewModel only to pass to other, child views/modals.
     // This is dictated by wrong architecture pick at the start of the development and should be fixed in the future.
     // CompositionRoot should be used.
 
+    let textToSpeechService: TextToSpeechService
     let personalVoiceService: PersonalVoiceService
 
     let isSpeaking = BehaviorSubject<Bool>(value: false)

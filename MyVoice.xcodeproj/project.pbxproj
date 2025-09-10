@@ -11,6 +11,8 @@
 		562CFA2C2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CFA2B2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift */; };
 		566666A42AFEF3F3009990EB /* InfoButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566666A32AFEF3F3009990EB /* InfoButtonStyle.swift */; };
 		56AE0CC12AF8297200D16467 /* PersonalVoiceBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AE0CC02AF8297200D16467 /* PersonalVoiceBottomSheetView.swift */; };
+		E10F52F52E72216600C376D3 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = E10F52F42E72216600C376D3 /* AppIcon.icon */; };
+		E10F52F82E7221D100C376D3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E10F52F72E7221D100C376D3 /* Colors.xcassets */; };
 		E115574325B4C4290093851B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115574225B4C4290093851B /* AppDelegate.swift */; };
 		E115574525B4C4290093851B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115574425B4C4290093851B /* SceneDelegate.swift */; };
 		E115574C25B4C42B0093851B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E115574B25B4C42B0093851B /* Assets.xcassets */; };
@@ -60,6 +62,9 @@
 		E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */; };
 		E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */; };
 		E198518D2E560133002001DF /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198518C2E560133002001DF /* DisplayView.swift */; };
+		E1A489532E6F267D008CD6A1 /* AppAudioForCallsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A489522E6F267D008CD6A1 /* AppAudioForCallsError.swift */; };
+		E1A489552E6F2D1A008CD6A1 /* AVAudioSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A489542E6F2D1A008CD6A1 /* AVAudioSession+Extensions.swift */; };
+		E1A489572E6F32EC008CD6A1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E1A489562E6F32EC008CD6A1 /* InfoPlist.xcstrings */; };
 		E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD3E4C25B6308E00DB87E1 /* BaseViewModel.swift */; };
 		E1BF06BE2E64DC34009F653F /* SystemVolumeState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF06BD2E64DC34009F653F /* SystemVolumeState.swift */; };
 		E1BF06C02E64DC59009F653F /* ActionButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BF06BF2E64DC59009F653F /* ActionButtonType.swift */; };
@@ -77,7 +82,6 @@
 		E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */; };
 		E1E5FECA25D9879800FEB6E2 /* PhraseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */; };
 		E1E6C2CB25B4D24800774B17 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */; };
-		E1E6C2CE25B4D30300774B17 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1E6C2CD25B4D30300774B17 /* Colors.xcassets */; };
 		E1E89B1D2A3F558F004DF84F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E89B1B2A3F558F004DF84F /* HeaderView.swift */; };
 		E1E89B1E2A3F558F004DF84F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E89B1C2A3F558F004DF84F /* HeaderView.xib */; };
 		E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */; };
@@ -97,6 +101,8 @@
 		566666A32AFEF3F3009990EB /* InfoButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonStyle.swift; sourceTree = "<group>"; };
 		56AE0CC02AF8297200D16467 /* PersonalVoiceBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceBottomSheetView.swift; sourceTree = "<group>"; };
 		61378B4DF55B36302E38E8BA /* Pods_MyVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E10F52F42E72216600C376D3 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
+		E10F52F72E7221D100C376D3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E115573F25B4C4290093851B /* MyVoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E115574225B4C4290093851B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E115574425B4C4290093851B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +154,9 @@
 		E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseTableViewCell.swift; sourceTree = "<group>"; };
 		E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickPhraseTableViewCell.xib; sourceTree = "<group>"; };
 		E198518C2E560133002001DF /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		E1A489522E6F267D008CD6A1 /* AppAudioForCallsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAudioForCallsError.swift; sourceTree = "<group>"; };
+		E1A489542E6F2D1A008CD6A1 /* AVAudioSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioSession+Extensions.swift"; sourceTree = "<group>"; };
+		E1A489562E6F32EC008CD6A1 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		E1B1489025EC41B0003C1401 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E1BD3E4C25B6308E00DB87E1 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		E1BF06BD2E64DC34009F653F /* SystemVolumeState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemVolumeState.swift; sourceTree = "<group>"; };
@@ -166,7 +175,6 @@
 		E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentSizedTableView.swift; sourceTree = "<group>"; };
 		E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhraseDatabaseService.swift; sourceTree = "<group>"; };
 		E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		E1E6C2CD25B4D30300774B17 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = MyVoice/Colors.xcassets; sourceTree = SOURCE_ROOT; };
 		E1E89B1B2A3F558F004DF84F /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		E1E89B1C2A3F558F004DF84F /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
@@ -206,6 +214,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E10F52F62E72217C00C376D3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E10F52F72E7221D100C376D3 /* Colors.xcassets */,
+				E115574B25B4C42B0093851B /* Assets.xcassets */,
+				E10F52F42E72216600C376D3 /* AppIcon.icon */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E115573625B4C4290093851B = {
 			isa = PBXGroup;
 			children = (
@@ -240,8 +258,6 @@
 				E115574225B4C4290093851B /* AppDelegate.swift */,
 				E115574425B4C4290093851B /* SceneDelegate.swift */,
 				E115574D25B4C42B0093851B /* LaunchScreen.storyboard */,
-				E1E6C2CD25B4D30300774B17 /* Colors.xcassets */,
-				E115574B25B4C42B0093851B /* Assets.xcassets */,
 			);
 			path = MyVoice;
 			sourceTree = "<group>";
@@ -295,6 +311,7 @@
 				E1C99C192E670F5000CACB0D /* AVSpeechSynthesisVoiceQuality+Extensions.swift */,
 				E1C99C1B2E670F7700CACB0D /* AVSpeechSynthesisVoiceGender+Extensions.swift */,
 				562CFA292AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift */,
+				E1A489542E6F2D1A008CD6A1 /* AVAudioSession+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -318,6 +335,7 @@
 			children = (
 				E115576F25B4C9130093851B /* Fonts */,
 				E1B1489225EC4288003C1401 /* Translations */,
+				E10F52F62E72217C00C376D3 /* Resources */,
 				E115575025B4C42B0093851B /* Info.plist */,
 			);
 			path = SupportingFiles;
@@ -455,6 +473,7 @@
 		E19392AE2A2C0B4300CA6238 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				E1A489512E6F2674008CD6A1 /* Errors */,
 				E19392AA2A2C06DA00CA6238 /* Colors.swift */,
 				E1417F932A324A2B00B0A9DA /* Nib.swift */,
 				E1417F952A324E5D00B0A9DA /* Fonts.swift */,
@@ -505,10 +524,19 @@
 			path = Display;
 			sourceTree = "<group>";
 		};
+		E1A489512E6F2674008CD6A1 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				E1A489522E6F267D008CD6A1 /* AppAudioForCallsError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		E1B1489225EC4288003C1401 /* Translations */ = {
 			isa = PBXGroup;
 			children = (
 				E1C99C1D2E672B5700CACB0D /* Localizable.xcstrings */,
+				E1A489562E6F32EC008CD6A1 /* InfoPlist.xcstrings */,
 			);
 			path = Translations;
 			sourceTree = "<group>";
@@ -638,9 +666,11 @@
 				E15B83A025CF3D3F00C8BFA5 /* VoiceTableViewCell.xib in Resources */,
 				E115577425B4C93C0093851B /* Poppins-Medium.ttf in Resources */,
 				E115576225B4C56A0093851B /* MainViewController.xib in Resources */,
+				E10F52F52E72216600C376D3 /* AppIcon.icon in Resources */,
+				E10F52F82E7221D100C376D3 /* Colors.xcassets in Resources */,
 				E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */,
 				E115574C25B4C42B0093851B /* Assets.xcassets in Resources */,
-				E1E6C2CE25B4D30300774B17 /* Colors.xcassets in Resources */,
+				E1A489572E6F32EC008CD6A1 /* InfoPlist.xcstrings in Resources */,
 				E1E89B1E2A3F558F004DF84F /* HeaderView.xib in Resources */,
 				E15B839625CF17CB00C8BFA5 /* LanguagePickerViewController.xib in Resources */,
 			);
@@ -757,6 +787,7 @@
 				E15B839F25CF3D3F00C8BFA5 /* VoiceTableViewCell.swift in Sources */,
 				E115576125B4C56A0093851B /* MainViewController.swift in Sources */,
 				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
+				E1A489532E6F267D008CD6A1 /* AppAudioForCallsError.swift in Sources */,
 				E1BF06C22E64DCFE009F653F /* Color+Extensions.swift in Sources */,
 				E141AD4425F58B9000C61408 /* BackgroundShadowView.swift in Sources */,
 				E1771A8025C21523003FE247 /* UITextView+Extensions.swift in Sources */,
@@ -778,6 +809,7 @@
 				E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */,
 				E11C1ACF25D83CFA001FE05E /* Phrase+CoreDataClass.swift in Sources */,
 				E1417F962A324E5D00B0A9DA /* Fonts.swift in Sources */,
+				E1A489552E6F2D1A008CD6A1 /* AVAudioSession+Extensions.swift in Sources */,
 				E1F246FC25FE82B30077EE4F /* HelpViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -921,8 +953,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 00064B458A7017DF2720DD19 /* Pods-MyVoice.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dark";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_OTHER_FLAGS = "--enable-icon-stack-fallback-generation=disabled";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V9858W9DAL;
 				INFOPLIST_FILE = "$(SRCROOT)/MyVoice/SupportingFiles/Info.plist";
@@ -945,8 +979,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4A86AE1510816C7951487315 /* Pods-MyVoice.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-Dark";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				ASSETCATALOG_OTHER_FLAGS = "--enable-icon-stack-fallback-generation=disabled";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V9858W9DAL;
 				INFOPLIST_FILE = "$(SRCROOT)/MyVoice/SupportingFiles/Info.plist";

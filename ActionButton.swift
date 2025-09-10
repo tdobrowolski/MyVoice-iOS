@@ -20,7 +20,7 @@ struct ActionButton: View {
 
     @ViewBuilder
     private var content: some View {
-        if #available(iOS 27.0, *) {
+        if #available(iOS 26.0, *) {
             liquidGlassContent
         } else {
             legacyContent
