@@ -14,12 +14,12 @@ final class SwitchTableViewCell: UITableViewCell {
 
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    
 
     lazy var disposeBag = DisposeBag()
 
-    func setupCell(text: String) {
+    func setupCell(text: String, isOn: Bool) {
         label.text = text
+        `switch`.isOn = isOn
     }
     
     override func awakeFromNib() {

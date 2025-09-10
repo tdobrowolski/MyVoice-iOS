@@ -169,7 +169,10 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
 
         case .accessibility:
             let cell = tableView.dequeueReusableCell(withIdentifier: Nib.switchTableViewCell.cellIdentifier) as! SwitchTableViewCell
-            cell.setupCell(text: sections[indexPath.section].items[indexPath.row].primaryText)
+            cell.setupCell(
+                text: sections[indexPath.section].items[indexPath.row].primaryText,
+                isOn: (try? viewModel.isAppAudioForCallsEnabled.value()) ?? false
+            )
 
             // TODO: Debug if no infinite loop occurs
             // TODO: Check if initial value is set properly
@@ -189,6 +192,12 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
 
             cell.switch.rx.isOn
                 .bind(to: viewModel.isAppAudioForCallsEnabled)
+                .disposed(by: cell.disposeBag)
+
+            viewModel.isAppAudioForCallsEnabled
+                .subscribe { [weak self] isOn in
+                    print("viewModel.isAppAudioForCallsEnabled .valueChanged to \(isOn)")
+                }
                 .disposed(by: cell.disposeBag)
 
             return cell
@@ -324,13 +333,22 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     }
 
     private func handleAppAudioToCallsError(for error: AppAudioForCallsError) {
-        var actions = [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)]
+        var actions: [UIAlertAction] = []
 
         if error.canNavigateToSystemSettings {
-            actions.insert(
-                UIAlertAction(title: NSLocalizedString("Open settings", comment: ""), style: .default, handler: nil),
-                at: 0
-            )
+            actions = [
+                UIAlertAction(
+                    title: NSLocalizedString("Open Settings", comment: ""),
+                    style: .default,
+                    handler: { [weak self] _ in
+                        if #available(iOS 18.2, *) {
+                            Task { await self?.viewModel.navigateToAccessibilitySettings(for: .allowAppsToAddAudioToCalls) }
+                        }
+                    }
+                )
+            ]
+        } else {
+            actions = [UIAlertAction(title: NSLocalizedString("OK", comment: "OK"), style: .default, handler: nil)]
         }
 
         showAlert(

@@ -74,6 +74,9 @@ final class MainTextView: UITextView {
         insertSubview(backgroundView, at: 0)
         backgroundView.frame = bounds
         backgroundView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        backgroundView.addGestureRecognizer(
+            UITapGestureRecognizer(target: self, action: #selector(becomeFirstResponder))
+        )
 
         if #available(iOS 26.0, *) {
             let glassEffect = UIGlassEffect()
@@ -129,7 +132,6 @@ final class MainTextView: UITextView {
     private func hideKeyboardButtonDidTap() { resignFirstResponder() }
 }
 
-// TODO: Make whole TextView tapable
 // TODO: Experiment with shadow configuration
 // TODO: Experiment with tint color
 // TODO: Debug how isInteractive works and why it's so strange looking

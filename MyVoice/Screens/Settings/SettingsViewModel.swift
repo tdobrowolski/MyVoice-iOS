@@ -19,10 +19,13 @@ final class SettingsViewModel: BaseViewModel {
     private let textToSpeechService: TextToSpeechService
     private let feedbackGenerator: UIImpactFeedbackGenerator
     
-    init(personalVoiceService: PersonalVoiceService) {
+    init(
+        personalVoiceService: PersonalVoiceService,
+        textToSpeechService: TextToSpeechService
+    ) {
         self.personalVoiceService = personalVoiceService
         self.userDefaultsService = UserDefaultsService()
-        self.textToSpeechService = TextToSpeechService()
+        self.textToSpeechService = textToSpeechService
         self.feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
 
         super.init()
@@ -49,6 +52,12 @@ final class SettingsViewModel: BaseViewModel {
         textToSpeechService.isAppAudioForCallsEnabled
             .distinctUntilChanged()
             .bind(to: isAppAudioForCallsEnabled)
+            .disposed(by: disposeBag)
+
+        textToSpeechService.isAppAudioForCallsEnabled
+            .subscribe { [weak self] isOn in
+                print("textToSpeechService.isAppAudioForCallsEnabled: \(isOn)")
+            }
             .disposed(by: disposeBag)
     }
     
@@ -242,53 +251,6 @@ final class SettingsViewModel: BaseViewModel {
             try await AccessibilitySettings.openSettings(for: setting)
         } catch {
             print("Failed to open Accessibility Settings: \(error.localizedDescription)")
-        }
-    }
-}
-
-// TODO: Move
-
-enum AppAudioForCallsError: Error {
-    case systemDisabled
-    case permissionDenied
-    case unknown
-
-    var canNavigateToSystemSettings: Bool {
-        switch self {
-        case .systemDisabled, .permissionDenied: true
-        case .unknown: false
-        }
-    }
-
-    var title: String {
-        switch self {
-        case .systemDisabled:
-            NSLocalizedString("Permission required to send audio to call", comment: "")
-        case .permissionDenied:
-            NSLocalizedString("Permission denied", comment: "")
-        case .unknown:
-            NSLocalizedString("Unknown error", comment: "")
-        }
-    }
-
-    var message: String {
-        switch self {
-        case .systemDisabled:
-            NSLocalizedString("Apps are currently not allowed to add their audio to calls. Would you like to open the Settings app to enable the setting, 'Allow apps to Add Audio to Calls'?", comment: "")
-        case .permissionDenied:
-            NSLocalizedString("The app does not have permission to inject spoken audio. Would you like to open the Settings app to enabled permission?", comment: "")
-        case .unknown:
-            NSLocalizedString("An unknown error occurred. Please try again.", comment: "")
-        }
-    }
-}
-
-
-extension Result<Bool, AppAudioForCallsError> {
-    var asError: AppAudioForCallsError? {
-        switch self {
-        case .success: nil
-        case .failure(let error): error
         }
     }
 }
