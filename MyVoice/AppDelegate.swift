@@ -18,6 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(
+        _ application: UIApplication,
+        supportedInterfaceOrientationsFor window: UIWindow?
+    ) -> UIInterfaceOrientationMask {
+        OrientationManager.shared.type
+    }
+
     // MARK: UISceneSession Lifecycle
 
     func application(
@@ -74,3 +81,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+// TODO: Move
+
+import SwiftUI
+
+final class OrientationManager: ObservableObject {
+    @Published var type: UIInterfaceOrientationMask = System.defaultOrientation
+
+    static let shared = OrientationManager()
+}

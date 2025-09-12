@@ -15,7 +15,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     
     @IBOutlet weak var mainTextView: MainTextView!
     @IBOutlet weak var placeholderTextView: UITextView!
-    @IBOutlet weak var backgroundShadowView: BackgroundShadowView!
+    @IBOutlet weak var backgroundShadowView: MainTextViewBackgroundView!
     
     @IBOutlet weak var speakContainer: UIView!
     @IBOutlet weak var displayContainer: UIView!
@@ -39,22 +39,11 @@ final class MainViewController: BaseViewController<MainViewModel> {
 
     private var dataSource: RxTableViewSectionedAnimatedDataSource<QuickPhraseSection>!
 
-    // FIXME: Not working!
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if System.isPad {
-            .all
-        } else {
-            .portrait
-        }
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         title = NSLocalizedString("MyVoice", comment: "MyVoice")
         view.backgroundColor = .background
-
-        backgroundShadowView.isHidden = System.supportsLiquidGlass
 
         quickAccessTableView.delegate = self
         quickAccessTableView.layer.cornerRadius = System.cornerRadius
@@ -387,17 +376,17 @@ final class MainViewController: BaseViewController<MainViewModel> {
         }
     }
 
-    // TODO: Implement proper functionality
     func displayButtonDidTouch() {
-//        guard let phrase = getCurrentPhrase() else { return }
+        guard let phrase = getCurrentPhrase() else { return }
 
         viewModel.impactUserWithFeedback()
 
-        let displayViewController = DisplayViewController(text: "Large text to display")
-        displayViewController.modalPresentationStyle = .fullScreen
-        displayViewController.modalTransitionStyle = .crossDissolve
+        let displayViewController = DisplayViewController(text: phrase)
+        let displayNavigationController = DefaultNavigationController(rootViewController: displayViewController)
+        displayNavigationController.modalPresentationStyle = .fullScreen
+        displayNavigationController.modalTransitionStyle = .crossDissolve
 
-        present(displayViewController, animated: true, completion: nil)
+        present(displayNavigationController, animated: true, completion: nil)
     }
     
     func saveButtonDidTouch() {

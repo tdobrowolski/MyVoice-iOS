@@ -7,43 +7,18 @@
 
 import SwiftUI
 
-// TODO: Force landscape orientation lock
-
 class DisplayViewController: UIViewController {
-    private lazy var closeButton: UIButton = {
-        let button = UIButton(type: .system)
-
-        let config = UIImage.SymbolConfiguration(pointSize: 17.0, weight: .bold)
-        let xmarkImage = UIImage(systemName: "xmark", withConfiguration: config)
-        button.setImage(xmarkImage, for: .normal)
-
-        button.layer.cornerRadius = 20.0
-        button.layer.masksToBounds = true
-
-        if #available(iOS 26.0, *) {
-            button.configuration = .prominentGlass()
-            button.tintColor = .orangeMain
-        } else {
-            button.tintColor = .orangeMain
-            button.backgroundColor = .orangeLight
-        }
-
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.widthAnchor.constraint(equalToConstant: 40.0).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 40.0).isActive = true
-
-        return button
-    }()
-
     private lazy var textLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.textAlignment = .center
         label.font = Fonts.Poppins.semibold(144.0).font
         label.adjustsFontSizeToFitWidth = true
+        label.baselineAdjustment = .alignCenters
         label.minimumScaleFactor = 0.1
         label.textColor = .blackCustom
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .orange
 
         return label
     }()
@@ -53,6 +28,8 @@ class DisplayViewController: UIViewController {
     init(text: String) {
         self.text = text
         super.init(nibName: nil, bundle: nil)
+
+        OrientationManager.shared.type = System.displayTextOrientation
     }
 
     required init?(coder: NSCoder) {
@@ -61,36 +38,52 @@ class DisplayViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addNavigationBarButtons()
         setupUI()
         setupConstraints()
-        setupActions()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        OrientationManager.shared.type = System.defaultOrientation
+        super.viewWillDisappear(animated)
+    }
+
+    private func addNavigationBarButtons() {
+        let color = UIColor.orangeMain ?? .orange
+
+        let configuration = UIImage.SymbolConfiguration(weight: .bold)
+        let xmarkImage = UIImage(
+            systemName: "xmark",
+            withConfiguration: configuration
+        )
+        let rightItem = UIBarButtonItem(
+            title: nil,
+            image: xmarkImage,
+            primaryAction: .init(handler: { [weak self] _ in self?.onCloseTap() }),
+            menu: nil
+        )
+        rightItem.tintColor = color
+        rightItem.accessibilityLabel = NSLocalizedString("Close display screen", comment: "")
+        navigationItem.rightBarButtonItem = rightItem
     }
 
     private func setupUI() {
         view.backgroundColor = .background
-
-        view.addSubview(closeButton)
         view.addSubview(textLabel)
-
         textLabel.text = text
     }
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8.0),
-            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0),
-
-            textLabel.topAnchor.constraint(equalTo: closeButton.bottomAnchor, constant: 8.0),
-            textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16.0),
-            textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0),
-            textLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0)
+            textLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            textLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16.0),
+            textLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16.0),
+            textLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32.0)
         ])
     }
 
-    private func setupActions() {
-        closeButton.addAction(
-            .init(handler: { [weak self] _ in self?.dismiss(animated: true, completion: nil) } ),
-            for: .touchUpInside
-        )
+    private func onCloseTap() {
+        OrientationManager.shared.type = System.defaultOrientation
+        dismiss(animated: true, completion: nil)
     }
 }
