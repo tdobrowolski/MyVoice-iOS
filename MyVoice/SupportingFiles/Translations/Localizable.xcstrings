@@ -338,6 +338,9 @@
         }
       }
     },
+    "Close display screen" : {
+
+    },
     "Close help" : {
       "comment" : "Close help",
       "localizations" : {

@@ -41,7 +41,7 @@
 		E13919CA2AD3342D00694200 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13919C92AD3342D00694200 /* View+Extensions.swift */; };
 		E1417F942A324A2B00B0A9DA /* Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1417F932A324A2B00B0A9DA /* Nib.swift */; };
 		E1417F962A324E5D00B0A9DA /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1417F952A324E5D00B0A9DA /* Fonts.swift */; };
-		E141AD4425F58B9000C61408 /* BackgroundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141AD4325F58B9000C61408 /* BackgroundShadowView.swift */; };
+		E141AD4425F58B9000C61408 /* MainTextViewBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E141AD4325F58B9000C61408 /* MainTextViewBackgroundView.swift */; };
 		E15B839525CF17CB00C8BFA5 /* LanguagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839325CF17CB00C8BFA5 /* LanguagePickerViewController.swift */; };
 		E15B839625CF17CB00C8BFA5 /* LanguagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E15B839425CF17CB00C8BFA5 /* LanguagePickerViewController.xib */; };
 		E15B839A25CF17DB00C8BFA5 /* LanguagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */; };
@@ -133,7 +133,7 @@
 		E13919C92AD3342D00694200 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		E1417F932A324A2B00B0A9DA /* Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nib.swift; sourceTree = "<group>"; };
 		E1417F952A324E5D00B0A9DA /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		E141AD4325F58B9000C61408 /* BackgroundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundShadowView.swift; sourceTree = "<group>"; };
+		E141AD4325F58B9000C61408 /* MainTextViewBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTextViewBackgroundView.swift; sourceTree = "<group>"; };
 		E15B839325CF17CB00C8BFA5 /* LanguagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewController.swift; sourceTree = "<group>"; };
 		E15B839425CF17CB00C8BFA5 /* LanguagePickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguagePickerViewController.xib; sourceTree = "<group>"; };
 		E15B839925CF17DB00C8BFA5 /* LanguagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagePickerViewModel.swift; sourceTree = "<group>"; };
@@ -409,7 +409,8 @@
 		E141AD4225F58B6700C61408 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E141AD4325F58B9000C61408 /* BackgroundShadowView.swift */,
+				E141AD4325F58B9000C61408 /* MainTextViewBackgroundView.swift */,
+				E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */,
 				E134BBE82A3F527C00109013 /* HeaderView */,
 			);
 			path = Views;
@@ -789,7 +790,7 @@
 				E1771A8D25C21680003FE247 /* SettingsViewController.swift in Sources */,
 				E1A489532E6F267D008CD6A1 /* AppAudioForCallsError.swift in Sources */,
 				E1BF06C22E64DCFE009F653F /* Color+Extensions.swift in Sources */,
-				E141AD4425F58B9000C61408 /* BackgroundShadowView.swift in Sources */,
+				E141AD4425F58B9000C61408 /* MainTextViewBackgroundView.swift in Sources */,
 				E1771A8025C21523003FE247 /* UITextView+Extensions.swift in Sources */,
 				E1BF06C02E64DC59009F653F /* ActionButtonType.swift in Sources */,
 				E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */,
