@@ -80,13 +80,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
-
-// TODO: Move
-
-import SwiftUI
-
-final class OrientationManager: ObservableObject {
-    @Published var type: UIInterfaceOrientationMask = System.defaultOrientation
-
-    static let shared = OrientationManager()
-}

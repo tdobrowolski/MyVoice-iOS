@@ -30,7 +30,8 @@ final class SwitchTableViewCell: UITableViewCell {
     private func setupLayout() {
         contentView.backgroundColor = .clear
         backgroundColor = .whiteCustom
-        
+        selectionStyle = .none
+
         label.font = Fonts.Poppins.medium(15.0).font
         label.textColor = .blackCustom ?? .black
         label.minimumScaleFactor = 0.9

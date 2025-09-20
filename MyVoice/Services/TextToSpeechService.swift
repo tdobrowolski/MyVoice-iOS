@@ -23,9 +23,9 @@ final class TextToSpeechService: NSObject {
     private let speechSynthesizer: AVSpeechSynthesizer
     private let userDefaultsService: UserDefaultsService
 
-    override init() {
+    init(userDefaultsService: UserDefaultsService) {
         speechSynthesizer = AVSpeechSynthesizer()
-        userDefaultsService = UserDefaultsService()
+        self.userDefaultsService = userDefaultsService
 
         super.init()
 
@@ -106,6 +106,8 @@ final class TextToSpeechService: NSObject {
     func setAppAudioForCalls(for isEnabled: Bool) async -> Result<Bool, AppAudioForCallsError> {
         guard isEnabled else {
             setMicrophoneInjection(for: .none)
+            userDefaultsService.setAppAudioForCalls(enabled: false)
+
             return .success(false)
         }
 
@@ -117,6 +119,8 @@ final class TextToSpeechService: NSObject {
         case .undetermined:
             if await AVAudioApplication.requestMicrophoneInjectionPermission() == .granted {
                 setMicrophoneInjection(for: .spokenAudio)
+            } else {
+                return .failure(.permissionDenied)
             }
 
         case .granted:
@@ -129,8 +133,9 @@ final class TextToSpeechService: NSObject {
             assertionFailure("Unknown AVAudioApplication.MicrophoneInjectionPermission case")
         }
 
-
         if (try? isAppAudioForCallsEnabled.value()) == true {
+            userDefaultsService.setAppAudioForCalls(enabled: true)
+
             return .success(true)
         } else {
             return .failure(.unknown)

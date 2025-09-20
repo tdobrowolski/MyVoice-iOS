@@ -8,7 +8,6 @@
 import UIKit
 
 final class MainTextView: UITextView {
-    // TODO: Debug on iPad, when orientation changes
     private lazy var accessoryView: UIInputView = {
         ToolbarInputAccessoryView(
             frame: frame,

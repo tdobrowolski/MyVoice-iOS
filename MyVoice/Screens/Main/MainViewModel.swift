@@ -23,6 +23,7 @@ final class MainViewModel: BaseViewModel, ObservableObject {
 
     let textToSpeechService: TextToSpeechService
     let personalVoiceService: PersonalVoiceService
+    let userDefaultsService = UserDefaultsService()
 
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     let systemVolumeState = BehaviorSubject<SystemVolumeState>(value: .mediumVolume)
@@ -30,7 +31,7 @@ final class MainViewModel: BaseViewModel, ObservableObject {
     let sections = BehaviorSubject<[QuickPhraseSection]>(value: [])
     
     override init() {
-        self.textToSpeechService = TextToSpeechService()
+        self.textToSpeechService = TextToSpeechService(userDefaultsService: userDefaultsService)
         self.phraseDatabaseService = PhraseDatabaseService()
         self.feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         self.notificationFeedbackGenerator = UINotificationFeedbackGenerator()

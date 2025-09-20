@@ -21,7 +21,7 @@ final class UserDefaultsService {
     // MARK: Speech settings
     
     func setSpeechRate(for rate: Float) {
-        defaults.setValue(rate, forKey: Keys.speechRate.rawValue)
+        defaults.set(rate, forKey: Keys.speechRate.rawValue)
     }
     
     func getSpeechRate() -> Float {
@@ -33,7 +33,7 @@ final class UserDefaultsService {
     }
     
     func setSpeechPitch(for pitch: Float) {
-        defaults.setValue(pitch, forKey: Keys.speechPitch.rawValue)
+        defaults.set(pitch, forKey: Keys.speechPitch.rawValue)
     }
     
     func getSpeechPitch() -> Float {
@@ -45,7 +45,7 @@ final class UserDefaultsService {
     }
     
     func setSpeechVoice(for identifier: String) {
-        defaults.setValue(identifier, forKey: Keys.speechLanguage.rawValue)
+        defaults.set(identifier, forKey: Keys.speechLanguage.rawValue)
     }
     
     func getSpeechVoiceIdentifier() -> String? {
@@ -55,7 +55,7 @@ final class UserDefaultsService {
     // MARK: Personal Voice info bottom sheet
     
     func setPersonalVoiceInfoToShown() {
-        defaults.setValue(true, forKey: Keys.personalVoiceInfo.rawValue)
+        defaults.set(true, forKey: Keys.personalVoiceInfo.rawValue)
     }
     
     var didShowPersonalVoiceInfo: Bool {
@@ -65,10 +65,10 @@ final class UserDefaultsService {
     // MARK: App Audio For Calls
 
     func setAppAudioForCalls(enabled: Bool) {
-        defaults.setValue(enabled, forKey: Keys.appAudioForCalls.rawValue)
+        defaults.set(enabled, forKey: Keys.appAudioForCalls.rawValue)
     }
 
     func isAppAudioForCallsEnabled() -> Bool {
-        defaults.bool(forKey: Keys.appAudioForCalls.rawValue)
+        return defaults.bool(forKey: Keys.appAudioForCalls.rawValue)
     }
 }

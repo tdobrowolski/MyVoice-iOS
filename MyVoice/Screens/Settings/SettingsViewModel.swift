@@ -14,17 +14,18 @@ final class SettingsViewModel: BaseViewModel {
     let isAppAudioForCallsEnabled = BehaviorSubject<Bool>(value: false)
 
     let personalVoiceService: PersonalVoiceService
-
-    private let userDefaultsService: UserDefaultsService
+    let userDefaultsService: UserDefaultsService
+    
     private let textToSpeechService: TextToSpeechService
     private let feedbackGenerator: UIImpactFeedbackGenerator
     
     init(
         personalVoiceService: PersonalVoiceService,
+        userDefaultsService: UserDefaultsService,
         textToSpeechService: TextToSpeechService
     ) {
         self.personalVoiceService = personalVoiceService
-        self.userDefaultsService = UserDefaultsService()
+        self.userDefaultsService = userDefaultsService
         self.textToSpeechService = textToSpeechService
         self.feedbackGenerator = UIImpactFeedbackGenerator(style: .light)
 
@@ -53,14 +54,8 @@ final class SettingsViewModel: BaseViewModel {
             .distinctUntilChanged()
             .bind(to: isAppAudioForCallsEnabled)
             .disposed(by: disposeBag)
-
-        textToSpeechService.isAppAudioForCallsEnabled
-            .subscribe { [weak self] isOn in
-                print("textToSpeechService.isAppAudioForCallsEnabled: \(isOn)")
-            }
-            .disposed(by: disposeBag)
     }
-    
+
     private func getAvailableSettings() -> [SettingsSection] {
         // Section 1
         let languageSetting = SettingModel(
@@ -233,7 +228,7 @@ final class SettingsViewModel: BaseViewModel {
                 isAppAudioForCallsEnabled.onNext(isEnabled)
                 
             case .failure(let error):
-                print("Failed to set app audio for calls: \(error.localizedDescription)")
+                logError(with: "Failed to set app audio for calls: \(error.localizedDescription)")
                 isAppAudioForCallsEnabled.onNext(!shouldEnable)
             }
 
@@ -250,7 +245,7 @@ final class SettingsViewModel: BaseViewModel {
         do {
             try await AccessibilitySettings.openSettings(for: setting)
         } catch {
-            print("Failed to open Accessibility Settings: \(error.localizedDescription)")
+            logError(with: "Failed to open Accessibility Settings: \(error.localizedDescription)")
         }
     }
 }

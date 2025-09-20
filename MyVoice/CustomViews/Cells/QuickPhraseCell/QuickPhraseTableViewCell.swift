@@ -20,21 +20,20 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     
     @IBOutlet weak var separatorView: UIView!
     
+    @IBOutlet weak var leadingStackViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topStackViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomStackViewConstraint: NSLayoutConstraint!
+
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     lazy var disposeBag = DisposeBag()
     
-    func setupCell(phrase: String, isFirstCell: Bool, isLastCell: Bool) {
+    func setupCell(phrase: String, isOnlyCell: Bool, isLastCell: Bool) {
         bind()
         setupIcon()
 
         phraseLabel.text = phrase
 
-        if isFirstCell {
-            tipLabel.text = NSLocalizedString("Tip: Select text to say it loud.", comment: "")
-            tipLabel.isHidden = false
-        } else {
-            tipLabel.isHidden = true
-        }
+        setTipVisibility(isHidden: !isOnlyCell)
 
         separatorView.isHidden = isLastCell
     }
@@ -53,6 +52,7 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+
         setupLayout()
     }
     
@@ -75,7 +75,11 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     }
     
     private func setupLayout() {
-        contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 62).isActive = true
+        leadingStackViewConstraint.constant = System.supportsLiquidGlass ? 16.0 : 14.0
+        topStackViewConstraint.constant = System.supportsLiquidGlass ? 14.0 : 12.0
+        bottomStackViewConstraint.constant = System.supportsLiquidGlass ? 14.0 : 12.0
+
+        contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 62.0).isActive = true
         
         phraseLabel.font = Fonts.Poppins.semibold(14.0).font
         tipLabel.font = Fonts.Poppins.medium(14.0).font
