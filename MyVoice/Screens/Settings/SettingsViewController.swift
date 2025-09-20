@@ -174,13 +174,10 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
                 isOn: (try? viewModel.isAppAudioForCallsEnabled.value()) ?? false
             )
 
-            // TODO: Debug if no infinite loop occurs
-            // TODO: Check if initial value is set properly
-
             cell.switch.rx.controlEvent(.valueChanged)
                 .withLatestFrom(cell.switch.rx.value)
                 .subscribe { [weak self] isOn in
-                    print("switch .valueChanged to \(isOn)")
+                    print("[manual] switch .valueChanged to \(isOn)")
                     Task {
                         let result = await self?.viewModel.setAppAudioForCalls(for: isOn)
                         if let error = result?.asError {
@@ -190,14 +187,8 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
                 }
                 .disposed(by: cell.disposeBag)
 
-            cell.switch.rx.isOn
-                .bind(to: viewModel.isAppAudioForCallsEnabled)
-                .disposed(by: cell.disposeBag)
-
             viewModel.isAppAudioForCallsEnabled
-                .subscribe { [weak self] isOn in
-                    print("viewModel.isAppAudioForCallsEnabled .valueChanged to \(isOn)")
-                }
+                .bind(to: cell.switch.rx.isOn)
                 .disposed(by: cell.disposeBag)
 
             return cell
@@ -241,6 +232,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
     private func showLanguagePicker() {
         let languagePickerViewModel = LanguagePickerViewModel(
             personalVoiceService: viewModel.personalVoiceService,
+            userDefaultsService: viewModel.userDefaultsService,
             delegate: self
         )
         let languagePickerViewController = LanguagePickerViewController(

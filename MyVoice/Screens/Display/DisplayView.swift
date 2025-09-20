@@ -18,7 +18,6 @@ class DisplayViewController: UIViewController {
         label.minimumScaleFactor = 0.1
         label.textColor = .blackCustom
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.backgroundColor = .orange
 
         return label
     }()

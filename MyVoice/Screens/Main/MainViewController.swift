@@ -340,6 +340,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
         viewModel.stopSpeaking()
         let settingsViewModel = SettingsViewModel(
             personalVoiceService: viewModel.personalVoiceService,
+            userDefaultsService: viewModel.userDefaultsService,
             textToSpeechService: viewModel.textToSpeechService
         )
         let settingsViewController = SettingsViewController(
@@ -392,7 +393,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     func saveButtonDidTouch() {
         guard let phrase = getCurrentPhrase() else { return }
 
-        if let currentFirstCell = self.quickAccessTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? QuickPhraseTableViewCell {
+        if let currentFirstCell = quickAccessTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? QuickPhraseTableViewCell {
             currentFirstCell.setTipVisibility(isHidden: true)
         }
         
@@ -409,12 +410,16 @@ extension MainViewController: UITableViewDelegate {
         _ tableView: UITableView,
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath
     ) -> UISwipeActionsConfiguration? {
-        let delete = UIContextualAction(style: .destructive, title: NSLocalizedString("Remove", comment: "Remove")) { [weak self] (action, view, completion) in
-            if indexPath.row == 0, let nextFirstCell = self?.quickAccessTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? QuickPhraseTableViewCell {
-                completion(true)
-                nextFirstCell.setTipVisibility(isHidden: false)
-            }
+        let delete = UIContextualAction(
+            style: .destructive,
+            title: NSLocalizedString("Remove", comment: "Remove")
+        ) { [weak self] (_, _, completion) in
+            completion(true)
             self?.viewModel.removeQuickPhraseItem(at: indexPath.row)
+            if self?.quickAccessTableView.numberOfRows(inSection: 0) == 1,
+               let onlyCell = self?.quickAccessTableView.cellForRow(at: .init(row: 0, section: 0)) as? QuickPhraseTableViewCell {
+                onlyCell.setTipVisibility(isHidden: false)
+            }
         }
         delete.backgroundColor = .redMain
         

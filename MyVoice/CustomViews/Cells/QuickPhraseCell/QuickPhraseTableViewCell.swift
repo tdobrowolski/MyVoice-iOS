@@ -33,13 +33,7 @@ final class QuickPhraseTableViewCell: UITableViewCell {
 
         phraseLabel.text = phrase
 
-        // TODO: Maybe show label only if user has one phrase?
-        if isOnlyCell {
-            tipLabel.text = NSLocalizedString("Tip: Select text to say it loud.", comment: "")
-            tipLabel.isHidden = false
-        } else {
-            tipLabel.isHidden = true
-        }
+        setTipVisibility(isHidden: !isOnlyCell)
 
         separatorView.isHidden = isLastCell
     }

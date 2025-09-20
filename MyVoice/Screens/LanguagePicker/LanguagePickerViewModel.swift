@@ -36,10 +36,11 @@ final class LanguagePickerViewModel: BaseViewModel {
     
     init(
         personalVoiceService: PersonalVoiceService,
+        userDefaultsService: UserDefaultsService,
         delegate: VoiceSelectionDelegate?
     ) {
         self.personalVoiceService = personalVoiceService
-        self.userDefaultsService = UserDefaultsService()
+        self.userDefaultsService = userDefaultsService
         self.delegate = delegate
         super.init()
         

@@ -84,6 +84,7 @@
 		E1E6C2CB25B4D24800774B17 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */; };
 		E1E89B1D2A3F558F004DF84F /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E89B1B2A3F558F004DF84F /* HeaderView.swift */; };
 		E1E89B1E2A3F558F004DF84F /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E89B1C2A3F558F004DF84F /* HeaderView.xib */; };
+		E1E9711B2E747C2D00FB2EED /* OrientationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E9711A2E747C2D00FB2EED /* OrientationManager.swift */; };
 		E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */; };
 		E1E98A8325C6C77200F531BD /* SliderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1E98A8125C6C77200F531BD /* SliderTableViewCell.xib */; };
 		E1F246FC25FE82B30077EE4F /* HelpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */; };
@@ -177,6 +178,7 @@
 		E1E6C2CA25B4D24800774B17 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		E1E89B1B2A3F558F004DF84F /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		E1E89B1C2A3F558F004DF84F /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		E1E9711A2E747C2D00FB2EED /* OrientationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrientationManager.swift; sourceTree = "<group>"; };
 		E1E98A8025C6C77200F531BD /* SliderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTableViewCell.swift; sourceTree = "<group>"; };
 		E1E98A8125C6C77200F531BD /* SliderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderTableViewCell.xib; sourceTree = "<group>"; };
 		E1F246FB25FE82B30077EE4F /* HelpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewModel.swift; sourceTree = "<group>"; };
@@ -227,7 +229,6 @@
 		E115573625B4C4290093851B = {
 			isa = PBXGroup;
 			children = (
-				E181A9F72E58B9BC008926AD /* ActionButton.swift */,
 				E115574125B4C4290093851B /* MyVoice */,
 				E115574025B4C4290093851B /* Products */,
 				5DD28FE72419B1A46AD2C89F /* Pods */,
@@ -249,6 +250,7 @@
 				E115575925B4C51A0093851B /* Screens */,
 				E197349725B8D4D600F3A78B /* Models */,
 				E1FFC29225B625DD00E8F1C0 /* Services */,
+				E1E971192E747C2700FB2EED /* Helpers */,
 				E115576C25B4C7810093851B /* CustomViews */,
 				E115576825B4C5AC0093851B /* Extensions */,
 				E115576425B4C5950093851B /* Base */,
@@ -355,7 +357,8 @@
 		E115577C25B4C9E40093851B /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				E18AF60B25F57BC7008CFA5D /* TouchHandlerButton */,
+				E18AF60C25F57BDF008CFA5D /* TouchHandlerButton.swift */,
+				E181A9F72E58B9BC008926AD /* ActionButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -463,14 +466,6 @@
 			path = ScrollViews;
 			sourceTree = "<group>";
 		};
-		E18AF60B25F57BC7008CFA5D /* TouchHandlerButton */ = {
-			isa = PBXGroup;
-			children = (
-				E18AF60C25F57BDF008CFA5D /* TouchHandlerButton.swift */,
-			);
-			path = TouchHandlerButton;
-			sourceTree = "<group>";
-		};
 		E19392AE2A2C0B4300CA6238 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,6 +567,14 @@
 				E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */,
 			);
 			path = TableViews;
+			sourceTree = "<group>";
+		};
+		E1E971192E747C2700FB2EED /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E1E9711A2E747C2D00FB2EED /* OrientationManager.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		E1E98A7F25C6C73B00F531BD /* SliderCell */ = {
@@ -768,6 +771,7 @@
 				E181A9F82E58B9BC008926AD /* ActionButton.swift in Sources */,
 				E18AF60D25F57BDF008CFA5D /* TouchHandlerButton.swift in Sources */,
 				E115574325B4C4290093851B /* AppDelegate.swift in Sources */,
+				E1E9711B2E747C2D00FB2EED /* OrientationManager.swift in Sources */,
 				E1E89B1D2A3F558F004DF84F /* HeaderView.swift in Sources */,
 				E13538172E69C21500C219F6 /* SwitchTableViewCell.swift in Sources */,
 				E1BD3E4D25B6308E00DB87E1 /* BaseViewModel.swift in Sources */,
