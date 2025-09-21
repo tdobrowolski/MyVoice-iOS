@@ -19,13 +19,20 @@ final class ToolbarInputAccessoryView: UIInputView {
 
         // MARK: Pasteboard Button Item
 
+        let pasteboardIcon: UIImage
+
+        if #available(iOS 16.0, *) {
+            pasteboardIcon = UIImage(systemName: "list.clipboard", withConfiguration: UIImage.SymbolConfiguration(weight: .semibold))!
+        } else {
+            pasteboardIcon = UIImage(systemName: "paperclip", withConfiguration: UIImage.SymbolConfiguration(weight: .semibold))!
+        }
+
         let pasteboardItem = UIBarButtonItem(
-            image: UIImage(systemName: "list.clipboard", withConfiguration: UIImage.SymbolConfiguration(weight: .semibold)), // TODO: Debug on < iOS 16.0
+            image: pasteboardIcon,
             primaryAction: .init(handler: { [weak self] _ in self?.pasteboardButtonDidTap() })
         )
         pasteboardItem.tintColor = .orangeMain
         pasteboardItem.accessibilityLabel = NSLocalizedString("Paste from clipboard", comment: "Add button accessibility label.")
-
 
         // MARK: Clear Text Button Item
 
