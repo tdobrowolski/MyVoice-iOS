@@ -44,7 +44,7 @@ final class TextToSpeechService: NSObject {
                 options: [
 //                                        .defaultToSpeaker, // TODO: Check if works with telephone
                     .duckOthers, // TODO: Check if played audio has low volume when speaking
-                    .mixWithOthers // TODO: Check if can talk with music with this optionss and without it too
+                    .mixWithOthers // TODO: Check if can talk with music with this options and without it too
                 ]
             )
 
