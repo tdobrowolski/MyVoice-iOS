@@ -339,7 +339,14 @@
       }
     },
     "Close display screen" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamknij ekran funkcji Wyświetl"
+          }
+        }
+      }
     },
     "Close help" : {
       "comment" : "Close help",

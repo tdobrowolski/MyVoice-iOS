@@ -31,7 +31,6 @@
 		E127353C25C61DEB007993EA /* UserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E127353B25C61DEB007993EA /* UserDefaultsService.swift */; };
 		E134BBE12A3F429700109013 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134BBE02A3F429700109013 /* String+Extensions.swift */; };
 		E134BBE32A3F429F00109013 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134BBE22A3F429F00109013 /* Array+Extensions.swift */; };
-		E13538162E69C21500C219F6 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E13538152E69C21500C219F6 /* SwitchTableViewCell.xib */; };
 		E13538172E69C21500C219F6 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13538142E69C21500C219F6 /* SwitchTableViewCell.swift */; };
 		E137882425D47B0A007E2DD8 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E137882225D47B0A007E2DD8 /* Model.xcdatamodeld */; };
 		E137884C25D47E72007E2DD8 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137884B25D47E72007E2DD8 /* DatabaseService.swift */; };
@@ -61,7 +60,7 @@
 		E197349A25B8D4F400F3A78B /* QuickPhraseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */; };
 		E197349F25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */; };
 		E19734A025B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */; };
-		E198518D2E560133002001DF /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198518C2E560133002001DF /* DisplayView.swift */; };
+		E198518D2E560133002001DF /* DisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E198518C2E560133002001DF /* DisplayViewController.swift */; };
 		E1A489532E6F267D008CD6A1 /* AppAudioForCallsError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A489522E6F267D008CD6A1 /* AppAudioForCallsError.swift */; };
 		E1A489552E6F2D1A008CD6A1 /* AVAudioSession+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1A489542E6F2D1A008CD6A1 /* AVAudioSession+Extensions.swift */; };
 		E1A489572E6F32EC008CD6A1 /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E1A489562E6F32EC008CD6A1 /* InfoPlist.xcstrings */; };
@@ -123,7 +122,6 @@
 		E134BBE02A3F429700109013 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		E134BBE22A3F429F00109013 /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		E13538142E69C21500C219F6 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
-		E13538152E69C21500C219F6 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		E137882325D47B0A007E2DD8 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E137884B25D47E72007E2DD8 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		E137885725D48BC6007E2DD8 /* Phrase+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Phrase+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -154,7 +152,7 @@
 		E197349925B8D4F400F3A78B /* QuickPhraseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseModel.swift; sourceTree = "<group>"; };
 		E197349D25B8DBBD00F3A78B /* QuickPhraseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPhraseTableViewCell.swift; sourceTree = "<group>"; };
 		E197349E25B8DBBD00F3A78B /* QuickPhraseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuickPhraseTableViewCell.xib; sourceTree = "<group>"; };
-		E198518C2E560133002001DF /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		E198518C2E560133002001DF /* DisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayViewController.swift; sourceTree = "<group>"; };
 		E1A489522E6F267D008CD6A1 /* AppAudioForCallsError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAudioForCallsError.swift; sourceTree = "<group>"; };
 		E1A489542E6F2D1A008CD6A1 /* AVAudioSession+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVAudioSession+Extensions.swift"; sourceTree = "<group>"; };
 		E1A489562E6F32EC008CD6A1 /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
@@ -376,7 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				E13538142E69C21500C219F6 /* SwitchTableViewCell.swift */,
-				E13538152E69C21500C219F6 /* SwitchTableViewCell.xib */,
 			);
 			path = SwitchCell;
 			sourceTree = "<group>";
@@ -515,7 +512,7 @@
 		E198518B2E560122002001DF /* Display */ = {
 			isa = PBXGroup;
 			children = (
-				E198518C2E560133002001DF /* DisplayView.swift */,
+				E198518C2E560133002001DF /* DisplayViewController.swift */,
 			);
 			path = Display;
 			sourceTree = "<group>";
@@ -659,7 +656,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E13538162E69C21500C219F6 /* SwitchTableViewCell.xib in Resources */,
 				E115577525B4C93C0093851B /* Poppins-SemiBold.ttf in Resources */,
 				E1C99C1E2E672B5800CACB0D /* Localizable.xcstrings in Resources */,
 				E115577625B4C93C0093851B /* Poppins-Bold.ttf in Resources */,
@@ -763,7 +759,7 @@
 				E13919C32AD2D48E00694200 /* HelpView.swift in Sources */,
 				E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */,
 				E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */,
-				E198518D2E560133002001DF /* DisplayView.swift in Sources */,
+				E198518D2E560133002001DF /* DisplayViewController.swift in Sources */,
 				E1C3EF5325B4E97F00339B9A /* MainTextView.swift in Sources */,
 				E15B839525CF17CB00C8BFA5 /* LanguagePickerViewController.swift in Sources */,
 				E19392AD2A2C0AE400CA6238 /* UIColor+Extensions.swift in Sources */,

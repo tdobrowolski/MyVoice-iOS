@@ -49,8 +49,12 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             UINib(nibName: Nib.sliderTableViewCell.name, bundle: nil),
             forCellReuseIdentifier: Nib.sliderTableViewCell.cellIdentifier
         )
+//        tableView.register(
+//            UINib(nibName: Nib.switchTableViewCell.name, bundle: nil),
+//            forCellReuseIdentifier: Nib.switchTableViewCell.cellIdentifier
+//        )
         tableView.register(
-            UINib(nibName: Nib.switchTableViewCell.name, bundle: nil),
+            SwitchTableViewCell.self,
             forCellReuseIdentifier: Nib.switchTableViewCell.cellIdentifier
         )
         tableView.delaysContentTouches = false
@@ -169,11 +173,8 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
 
         case .accessibility:
             let cell = tableView.dequeueReusableCell(withIdentifier: Nib.switchTableViewCell.cellIdentifier) as! SwitchTableViewCell
-            cell.setupCell(
-                text: sections[indexPath.section].items[indexPath.row].primaryText,
-                isOn: (try? viewModel.isAppAudioForCallsEnabled.value()) ?? false
-            )
-
+            cell.text = sections[indexPath.section].items[indexPath.row].primaryText
+            cell.switch.isOn = (try? viewModel.isAppAudioForCallsEnabled.value()) ?? false
             cell.switch.rx.controlEvent(.valueChanged)
                 .withLatestFrom(cell.switch.rx.value)
                 .subscribe { [weak self] isOn in
