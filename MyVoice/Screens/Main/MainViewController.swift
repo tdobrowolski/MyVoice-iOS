@@ -263,7 +263,12 @@ final class MainViewController: BaseViewController<MainViewModel> {
     }
     
     private func listenForActiveStateChange() {
-        NotificationCenter.default.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(appMovedToBackground),
+            name: UIApplication.willResignActiveNotification,
+            object: nil
+        )
     }
     
     @objc
@@ -381,6 +386,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
         guard let phrase = getCurrentPhrase() else { return }
 
         viewModel.impactUserWithFeedback()
+        viewModel.stopSpeaking()
 
         let displayViewController = DisplayViewController(text: phrase)
         let displayNavigationController = DefaultNavigationController(rootViewController: displayViewController)

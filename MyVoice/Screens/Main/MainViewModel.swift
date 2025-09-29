@@ -15,7 +15,7 @@ final class MainViewModel: BaseViewModel, ObservableObject {
     private var feedbackGenerator: UIImpactFeedbackGenerator
     private var notificationFeedbackGenerator: UINotificationFeedbackGenerator
     
-    var systemValueObserver: NSKeyValueObservation?
+//    var systemValueObserver: NSKeyValueObservation?
 
     // TextToSpeechService & PersonalVoiceService is needed in this ViewModel only to pass to other, child views/modals.
     // This is dictated by wrong architecture pick at the start of the development and should be fixed in the future.
@@ -41,14 +41,16 @@ final class MainViewModel: BaseViewModel, ObservableObject {
 
         bindService()
         getQuickPhrases()
-        observeSystemVolumeChange()
     }
     
     private func bindService() {
         textToSpeechService.isSpeaking.subscribe(self.isSpeaking)
             .disposed(by: disposeBag)
+
+        textToSpeechService.systemVolumeState.bind(to: systemVolumeState)
+            .disposed(by: disposeBag)
     }
-    
+
     func startSpeaking(_ text: String) {
         impactUserWithFeedback()
         textToSpeechService.startSpeaking(text: text)
@@ -97,15 +99,5 @@ final class MainViewModel: BaseViewModel, ObservableObject {
     private func getQuickPhrases() {
         let sections = [QuickPhraseSection(items: self.phraseDatabaseService.fetchAllPhrases())]
         self.sections.onNext(sections)
-    }
-    
-    // MARK: Listen to system volume change
-    
-    private func observeSystemVolumeChange() {
-        systemValueObserver = AVAudioSession.sharedInstance().observe(\.outputVolume) { [weak self] audioSession, observedChange in
-            let currentVolume = Double(audioSession.outputVolume)
-            print("Volume changed observed: \(currentVolume)")
-            self?.systemVolumeState.onNext(SystemVolumeState.getState(from: currentVolume))
-        }
     }
 }

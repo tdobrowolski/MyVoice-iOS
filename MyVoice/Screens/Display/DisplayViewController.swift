@@ -1,5 +1,5 @@
 //
-//  DisplayView.swift
+//  DisplayViewController.swift
 //  MyVoice
 //
 //  Created by Tobiasz Dobrowolski on 20/08/2025.
@@ -77,7 +77,7 @@ class DisplayViewController: UIViewController {
             textLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             textLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16.0),
             textLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16.0),
-            textLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32.0)
+            textLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -32.0)
         ])
     }
 

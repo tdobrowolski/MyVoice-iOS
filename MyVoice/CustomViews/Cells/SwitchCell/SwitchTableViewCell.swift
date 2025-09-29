@@ -9,17 +9,31 @@ import UIKit
 import RxSwift
 
 final class SwitchTableViewCell: UITableViewCell {
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var `switch`: UISwitch!
-
-    @IBOutlet weak var topConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-
+    lazy var `switch` = UISwitch()
     lazy var disposeBag = DisposeBag()
 
-    func setupCell(text: String, isOn: Bool) {
-        label.text = text
-        `switch`.isOn = isOn
+    var text: String? {
+        didSet {
+            var content = defaultContentConfiguration()
+
+            content.textProperties.font = Fonts.Poppins.medium(15.0).font
+            content.textProperties.color = .blackCustom ?? .black
+            content.textProperties.minimumScaleFactor = 0.9
+            content.textProperties.adjustsFontSizeToFitWidth = true
+            content.textProperties.allowsDefaultTighteningForTruncation = true
+            content.text = text
+
+            contentConfiguration = content
+        }
+    }
+
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupLayout()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func awakeFromNib() {
@@ -31,25 +45,12 @@ final class SwitchTableViewCell: UITableViewCell {
         contentView.backgroundColor = .clear
         backgroundColor = .whiteCustom
         selectionStyle = .none
-
-        label.font = Fonts.Poppins.medium(15.0).font
-        label.textColor = .blackCustom ?? .black
-        label.minimumScaleFactor = 0.9
-        label.adjustsFontSizeToFitWidth = true
-        label.allowsDefaultTighteningForTruncation = true
-
-        if #available(iOS 26.0, *) {
-            topConstraint.constant = 12.0
-            bottomConstraint.constant = 12.0
-        } else {
-            topConstraint.constant = 8.0
-            bottomConstraint.constant = 8.0
-        }
+        accessoryView = `switch`
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        label.text = nil
+        text = nil
         `switch`.isOn = false
     }
 }

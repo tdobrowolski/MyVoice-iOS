@@ -17,8 +17,11 @@ final class TextToSpeechService: NSObject {
         }
     }
 
+    var systemValueObserver: NSKeyValueObservation?
+
     let isSpeaking = BehaviorSubject<Bool>(value: false)
     let isAppAudioForCallsEnabled = BehaviorSubject<Bool>(value: false)
+    let systemVolumeState = BehaviorSubject<SystemVolumeState>(value: .mediumVolume)
 
     private let speechSynthesizer: AVSpeechSynthesizer
     private let userDefaultsService: UserDefaultsService
@@ -29,7 +32,14 @@ final class TextToSpeechService: NSObject {
 
         super.init()
 
-        Task { await setupAVAudioSession() }
+        Task {
+            await setupAVAudioSession()
+            if #available(iOS 18.2, *) {
+                await observeMediaServiceResets()
+            }
+        }
+
+        observeSystemVolumeChange()
 
         speechSynthesizer.delegate = self
     }
@@ -41,21 +51,24 @@ final class TextToSpeechService: NSObject {
             try AVAudioSession.sharedInstance().setCategory(
                 .playback,
                 mode: .voicePrompt,
-                options: [
-//                                        .defaultToSpeaker, // TODO: Check if works with telephone
-                    .duckOthers, // TODO: Check if played audio has low volume when speaking
-                    .mixWithOthers // TODO: Check if can talk with music with this options and without it too
-                ]
+                options: [.duckOthers]
             )
 
             if #available(iOS 18.2, *) {
                 let _ = await setAppAudioForCalls(for: userDefaultsService.isAppAudioForCallsEnabled())
-                await observeMediaServiceResets()
             }
 
             try AVAudioSession.sharedInstance().setActive(true)
         } catch {
             print("🔴 AVAudioSession error: \(error.localizedDescription)")
+        }
+    }
+
+    func observeSystemVolumeChange() {
+        systemValueObserver = AVAudioSession.sharedInstance().observe(\.outputVolume) { [weak self] audioSession, observedChange in
+            let currentVolume = Double(audioSession.outputVolume)
+            print("Volume changed observed: \(currentVolume)")
+            self?.systemVolumeState.onNext(SystemVolumeState.getState(from: currentVolume))
         }
     }
 

@@ -13,7 +13,7 @@ final class SliderTableViewCell: UITableViewCell {
     @IBOutlet weak private var centerIndicator: UIView!
     
     lazy var disposeBag = DisposeBag()
-    
+
     func setupSlider(for dataType: SliderDataType) {
         defaultSlider.tintColor = .orangeMain
         defaultSlider.minimumTrackTintColor = .orangeMain
