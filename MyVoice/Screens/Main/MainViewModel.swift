@@ -15,8 +15,6 @@ final class MainViewModel: BaseViewModel, ObservableObject {
     private var feedbackGenerator: UIImpactFeedbackGenerator
     private var notificationFeedbackGenerator: UINotificationFeedbackGenerator
     
-//    var systemValueObserver: NSKeyValueObservation?
-
     // TextToSpeechService & PersonalVoiceService is needed in this ViewModel only to pass to other, child views/modals.
     // This is dictated by wrong architecture pick at the start of the development and should be fixed in the future.
     // CompositionRoot should be used.

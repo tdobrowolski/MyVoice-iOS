@@ -49,10 +49,6 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             UINib(nibName: Nib.sliderTableViewCell.name, bundle: nil),
             forCellReuseIdentifier: Nib.sliderTableViewCell.cellIdentifier
         )
-//        tableView.register(
-//            UINib(nibName: Nib.switchTableViewCell.name, bundle: nil),
-//            forCellReuseIdentifier: Nib.switchTableViewCell.cellIdentifier
-//        )
         tableView.register(
             SwitchTableViewCell.self,
             forCellReuseIdentifier: Nib.switchTableViewCell.cellIdentifier
@@ -143,8 +139,6 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
                     self?.viewModel.setSpeechRate(finalValue)
                 }
                 .disposed(by: cell.disposeBag)
-
-
 
             return cell
             
