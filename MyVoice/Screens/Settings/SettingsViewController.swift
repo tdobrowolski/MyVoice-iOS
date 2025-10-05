@@ -178,7 +178,6 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             cell.switch.rx.controlEvent(.valueChanged)
                 .withLatestFrom(cell.switch.rx.value)
                 .subscribe { [weak self] isOn in
-                    print("[manual] switch .valueChanged to \(isOn)")
                     Task {
                         let result = await self?.viewModel.setAppAudioForCalls(for: isOn)
                         if let error = result?.asError {
