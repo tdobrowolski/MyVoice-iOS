@@ -133,8 +133,16 @@ final class MainViewController: BaseViewController<MainViewModel> {
                     let itemsCount = items?.count ?? 1
                     let itemsEndIndex = items?.endIndex ?? 1
 
-                    cell.setupCell(phrase: item.phrase, isOnlyCell: itemsCount == 1, isLastCell: indexPath.row == itemsEndIndex - 1)
-                    self.viewModel.isSpeaking.subscribe(cell.isSpeaking).disposed(by: cell.disposeBag)
+                    cell.setupCell(
+                        phrase: item.phrase,
+                        isOnlyCell: itemsCount == 1,
+                        isLastCell: indexPath.row == itemsEndIndex - 1
+                    )
+
+                    self.viewModel.isSpeaking
+                        .subscribe(cell.isSpeaking)
+                        .disposed(by: cell.disposeBag)
+
                     cell.tapHandlerButton.rx.tap
                         .subscribe { [weak self] _ in
                             let isSpeaking = try? self?.viewModel.isSpeaking.value()
