@@ -56,7 +56,7 @@ final class PersonalVoiceBottomSheetViewModel: BaseViewModel, ObservableObject {
     ) {
         self.personalVoiceService = personalVoiceService
         self.onClose = onClose
-        self.accessType = .accessNotSpecified // (try? personalVoiceService.authorizationStatus.value())?.toPersonalVoiceBottomSheetType ?? .accessNotSpecified
+        self.accessType = (try? personalVoiceService.authorizationStatus.value())?.toPersonalVoiceBottomSheetType ?? .accessNotSpecified
     }
 
     func didTapActionButtonAccess() async {
