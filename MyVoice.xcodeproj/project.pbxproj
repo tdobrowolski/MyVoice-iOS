@@ -53,6 +53,7 @@
 		E1771A9125C2168F003FE247 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1771A9025C2168F003FE247 /* SettingsViewModel.swift */; };
 		E179E5A52A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E179E5A42A3F98A3001F1BDD /* AVSpeechSynthesisVoice+Extensions.swift */; };
 		E181A9F82E58B9BC008926AD /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E181A9F72E58B9BC008926AD /* ActionButton.swift */; };
+		E18415E72E92C6360051D70E /* ToolbarInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */; };
 		E18AF60825F57A27008CFA5D /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AF60725F57A27008CFA5D /* CustomScrollView.swift */; };
 		E18AF60D25F57BDF008CFA5D /* TouchHandlerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18AF60C25F57BDF008CFA5D /* TouchHandlerButton.swift */; };
 		E19392AB2A2C06DA00CA6238 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19392AA2A2C06DA00CA6238 /* Colors.swift */; };
@@ -76,7 +77,6 @@
 		E1C99C1A2E670F5000CACB0D /* AVSpeechSynthesisVoiceQuality+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C99C192E670F5000CACB0D /* AVSpeechSynthesisVoiceQuality+Extensions.swift */; };
 		E1C99C1C2E670F7700CACB0D /* AVSpeechSynthesisVoiceGender+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C99C1B2E670F7700CACB0D /* AVSpeechSynthesisVoiceGender+Extensions.swift */; };
 		E1C99C1E2E672B5800CACB0D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E1C99C1D2E672B5700CACB0D /* Localizable.xcstrings */; };
-		E1CBF9482E54B70F00791C68 /* ToolbarInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CBF9472E54B70F00791C68 /* ToolbarInputAccessoryView.swift */; };
 		E1D4C3EF2AD0A23A0059DC46 /* PersonalVoiceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1D4C3EE2AD0A23A0059DC46 /* PersonalVoiceService.swift */; };
 		E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1DF158425BCBFAA00810C0D /* ContentSizedTableView.swift */; };
 		E1E5FECA25D9879800FEB6E2 /* PhraseDatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */; };
@@ -757,6 +757,7 @@
 				E134BBE32A3F429F00109013 /* Array+Extensions.swift in Sources */,
 				E1BF06C42E64DD9D009F653F /* System.swift in Sources */,
 				E13919C32AD2D48E00694200 /* HelpView.swift in Sources */,
+				E18415E72E92C6360051D70E /* ToolbarInputAccessoryView.swift in Sources */,
 				E1DF158525BCBFAA00810C0D /* ContentSizedTableView.swift in Sources */,
 				E1E98A8225C6C77200F531BD /* SliderTableViewCell.swift in Sources */,
 				E198518D2E560133002001DF /* DisplayViewController.swift in Sources */,

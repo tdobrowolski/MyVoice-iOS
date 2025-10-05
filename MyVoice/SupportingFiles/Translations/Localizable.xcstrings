@@ -720,6 +720,7 @@
     },
     "Open Help" : {
       "comment" : "Add button accessibility label.",
+      "extractionState" : "stale",
       "localizations" : {
         "pl" : {
           "stringUnit" : {

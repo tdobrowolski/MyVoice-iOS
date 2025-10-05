@@ -128,11 +128,21 @@ final class MainViewController: BaseViewController<MainViewModel> {
             configureCell: { [weak self] (dataSource, tableView, indexPath, item) in
                 guard let self else { return UITableViewCell() }
                 
-                if let cell = tableView.dequeueReusableCell(withIdentifier: Nib.quickPhraseTableViewCell.cellIdentifier) as? QuickPhraseTableViewCell {
+                if let cell = tableView.dequeueReusableCell(
+                    withIdentifier: Nib.quickPhraseTableViewCell.cellIdentifier
+                ) as? QuickPhraseTableViewCell {
                     let itemsEndIndex = (try? self.viewModel.sections.value().first?.items.endIndex) ?? 1
                     
-                    cell.setupCell(phrase: item.phrase, isFirstCell: indexPath.row == 0, isLastCell: indexPath.row == itemsEndIndex - 1)
-                    self.viewModel.isSpeaking.subscribe(cell.isSpeaking).disposed(by: cell.disposeBag)
+                    cell.setupCell(
+                        phrase: item.phrase,
+                        isOnlyCell: indexPath.row == 0,
+                        isLastCell: indexPath.row == itemsEndIndex - 1
+                    )
+
+                    self.viewModel.isSpeaking
+                        .subscribe(cell.isSpeaking)
+                        .disposed(by: cell.disposeBag)
+
                     cell.tapHandlerButton.rx.tap
                         .subscribe { [weak self] _ in
                             let isSpeaking = try? self?.viewModel.isSpeaking.value()
@@ -165,7 +175,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
     
     private func setupPlaceholderLabel() {
         placeholderTextView.text = NSLocalizedString("What do you want to say?", comment: "What do you want to say?")
-        placeholderTextView.textContainerInset = .init(top: 13, left: 14, bottom: 14, right: 13)
+        placeholderTextView.textContainerInset = .init(top: 13.0, left: 14.0, bottom: 14.0, right: 13.0)
         placeholderTextView.textColor = .blueDark
         placeholderTextView.font = Fonts.Poppins.bold(20.0).font
         placeholderTextView.isAccessibilityElement = false
