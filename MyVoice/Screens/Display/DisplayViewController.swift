@@ -19,6 +19,11 @@ class DisplayViewController: UIViewController {
         label.textColor = .blackCustom
         label.translatesAutoresizingMaskIntoConstraints = false
 
+        // Fixes layout size issues for properly breaking phrase when text too long
+        label.adjustsFontForContentSizeCategory = true
+        label.minimumContentSizeCategory = .accessibilityExtraExtraExtraLarge
+        label.maximumContentSizeCategory = .accessibilityExtraExtraExtraLarge
+
         return label
     }()
 

@@ -30,6 +30,6 @@ enum System {
     }
 
     static var displayTextOrientation: UIInterfaceOrientationMask {
-        isPad ? .all : .landscape
+        isPad ? .all : .allButUpsideDown
     }
 }
