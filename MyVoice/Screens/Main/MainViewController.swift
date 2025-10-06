@@ -113,7 +113,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
                 self?.placeholderTextView.isHidden = text?.isEmpty == false
             }
             .disposed(by: disposeBag)
-        
+
         viewModel.systemVolumeState
             .skip(1)
             .subscribe { [weak self] volumeState in
@@ -428,12 +428,8 @@ extension MainViewController: UITableViewDelegate {
             style: .destructive,
             title: NSLocalizedString("Remove", comment: "Remove")
         ) { [weak self] (_, _, completion) in
-            completion(true)
             self?.viewModel.removeQuickPhraseItem(at: indexPath.row)
-            if self?.quickAccessTableView.numberOfRows(inSection: 0) == 1,
-               let onlyCell = self?.quickAccessTableView.cellForRow(at: .init(row: 0, section: 0)) as? QuickPhraseTableViewCell {
-                onlyCell.tipLabel.isHidden = false
-            }
+            completion(true)
         }
         delete.backgroundColor = .redMain
 
