@@ -67,7 +67,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
             UINib(nibName: Nib.quickPhraseTableViewCell.name, bundle: nil),
             forCellReuseIdentifier: Nib.quickPhraseTableViewCell.cellIdentifier
         )
-        
+
         dataSource = getDataSourceForQuickPhrase()
         
         viewModel.sections
@@ -408,7 +408,7 @@ final class MainViewController: BaseViewController<MainViewModel> {
         guard let phrase = getCurrentPhrase() else { return }
 
         if let currentFirstCell = quickAccessTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? QuickPhraseTableViewCell {
-            currentFirstCell.setTipVisibility(isHidden: true)
+            currentFirstCell.tipLabel.isHidden = true
         }
         
         viewModel.impactUserWithFeedback()
@@ -432,11 +432,26 @@ extension MainViewController: UITableViewDelegate {
             self?.viewModel.removeQuickPhraseItem(at: indexPath.row)
             if self?.quickAccessTableView.numberOfRows(inSection: 0) == 1,
                let onlyCell = self?.quickAccessTableView.cellForRow(at: .init(row: 0, section: 0)) as? QuickPhraseTableViewCell {
-                onlyCell.setTipVisibility(isHidden: false)
+                onlyCell.tipLabel.isHidden = false
             }
         }
         delete.backgroundColor = .redMain
-        
-        return UISwipeActionsConfiguration(actions: [delete])
+
+        // TODO: Clean up this
+        let edit = UIContextualAction(
+            style: .normal,
+            title: NSLocalizedString("Edit", comment: "Edit"),
+        ) { [weak self] (_, _, completion) in
+            if let phrase = try? self?.viewModel.sections.value()[0].items[indexPath.row].phrase {
+                self?.placeholderTextView.isHidden = true
+                self?.mainTextView.text = phrase
+                self?.scrollView.setContentOffset(.zero, animated: true)
+                self?.mainTextView.becomeFirstResponder()
+            }
+            completion(true)
+        }
+        edit.backgroundColor = .orangeMain
+
+        return UISwipeActionsConfiguration(actions: [delete, edit])
     }
 }
