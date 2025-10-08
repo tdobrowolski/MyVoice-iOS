@@ -376,6 +376,13 @@ final class MainViewController: BaseViewController<MainViewModel> {
         }
     }
 
+    private func didTapEdit(for phrase: String) {
+        placeholderTextView.isHidden = true
+        mainTextView.text = phrase
+        scrollView.setContentOffset(.zero, animated: true)
+        mainTextView.becomeFirstResponder()
+    }
+
     func speakButtonDidTouch() {
         do {
             if try viewModel.isSpeaking.value() == true {
@@ -433,16 +440,12 @@ extension MainViewController: UITableViewDelegate {
         }
         delete.backgroundColor = .redMain
 
-        // TODO: Clean up this
         let edit = UIContextualAction(
             style: .normal,
             title: NSLocalizedString("Edit", comment: "Edit"),
         ) { [weak self] (_, _, completion) in
             if let phrase = try? self?.viewModel.sections.value()[0].items[indexPath.row].phrase {
-                self?.placeholderTextView.isHidden = true
-                self?.mainTextView.text = phrase
-                self?.scrollView.setContentOffset(.zero, animated: true)
-                self?.mainTextView.becomeFirstResponder()
+                self?.didTapEdit(for: phrase)
             }
             completion(true)
         }
