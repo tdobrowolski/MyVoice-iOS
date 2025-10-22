@@ -18,6 +18,7 @@ final class MainTextView: UITextView {
     }()
 
     private let feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
+    private let notificationFeedbackGenerator = UINotificationFeedbackGenerator()
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -64,8 +65,13 @@ final class MainTextView: UITextView {
     }
 
     private func pasteboardButtonDidTap() {
-        if UIPasteboard.general.hasStrings {
-            text = UIPasteboard.general.string
+        if UIPasteboard.general.hasStrings,
+           let pastedString = UIPasteboard.general.string,
+           pastedString.trimmingCharacters(in: .whitespacesAndNewlines).isNotEmpty {
+            feedbackGenerator.impactOccurred()
+            text = pastedString
+        } else {
+            notificationFeedbackGenerator.notificationOccurred(.error)
         }
     }
 
