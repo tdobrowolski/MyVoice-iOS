@@ -27,10 +27,14 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         
         static var subject: String {
             if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] {
-                return "MyVoice App (\(appVersion)) - Feedback"
+                return "MyVoice App (\(appVersion)) [OS \(osVersion)] - Feedback"
             } else {
-                return "MyVoice App - Feedback"
+                return "MyVoice App [OS \(osVersion)] - Feedback"
             }
+        }
+
+        static var osVersion: String {
+            UIDevice.current.systemVersion
         }
     }
     
