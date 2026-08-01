@@ -84,9 +84,9 @@ final class MainViewModel: BaseViewModel, ObservableObject {
     
     func removeQuickPhraseItem(at row: Int) {
         do {
-            var sections = try self.sections.value()
+            var sections = try sections.value()
             let item = sections[0].items[row]
-            self.phraseDatabaseService.removePhrase(item)
+            phraseDatabaseService.removePhrase(item)
             sections[0].items.remove(at: row)
             self.sections.onNext(sections)
         } catch {
@@ -95,7 +95,7 @@ final class MainViewModel: BaseViewModel, ObservableObject {
     }
     
     private func getQuickPhrases() {
-        let sections = [QuickPhraseSection(items: self.phraseDatabaseService.fetchAllPhrases())]
+        let sections = [QuickPhraseSection(items: phraseDatabaseService.fetchAllPhrases())]
         self.sections.onNext(sections)
     }
 }

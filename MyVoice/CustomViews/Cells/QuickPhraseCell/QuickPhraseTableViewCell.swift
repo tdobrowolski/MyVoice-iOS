@@ -25,6 +25,7 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     @IBOutlet weak var bottomStackViewConstraint: NSLayoutConstraint!
 
     let isSpeaking = BehaviorSubject<Bool>(value: false)
+    
     lazy var disposeBag = DisposeBag()
     
     func setupCell(phrase: String, isOnlyCell: Bool, isLastCell: Bool) {
@@ -33,8 +34,7 @@ final class QuickPhraseTableViewCell: UITableViewCell {
 
         phraseLabel.text = phrase
 
-        setTipVisibility(isHidden: !isOnlyCell)
-
+        tipLabel.isHidden = !isOnlyCell
         separatorView.isHidden = isLastCell
     }
     
@@ -57,7 +57,7 @@ final class QuickPhraseTableViewCell: UITableViewCell {
     }
     
     func setupIcon(isSpeaking: Bool = false) {
-        iconContainerView.layer.cornerRadius = self.iconContainerView.frame.width / 2
+        iconContainerView.layer.cornerRadius = iconContainerView.frame.width / 2
         iconImageView.image = UIImage(systemName: "waveform", withConfiguration: UIImage.SymbolConfiguration(weight: .heavy))
 
         if isSpeaking {
@@ -69,18 +69,15 @@ final class QuickPhraseTableViewCell: UITableViewCell {
         }
     }
     
-    func setTipVisibility(isHidden: Bool) {
-        tipLabel.text = isHidden ? nil : NSLocalizedString("Tip: Select text to say it loud.", comment: "")
-        tipLabel.isHidden = isHidden
-    }
-    
     private func setupLayout() {
         leadingStackViewConstraint.constant = System.supportsLiquidGlass ? 16.0 : 14.0
         topStackViewConstraint.constant = System.supportsLiquidGlass ? 14.0 : 12.0
         bottomStackViewConstraint.constant = System.supportsLiquidGlass ? 14.0 : 12.0
 
         contentView.heightAnchor.constraint(greaterThanOrEqualToConstant: 62.0).isActive = true
-        
+
+        tipLabel.text = NSLocalizedString("Tip: Select text to say it loud.", comment: "")
+
         phraseLabel.font = Fonts.Poppins.semibold(14.0).font
         tipLabel.font = Fonts.Poppins.medium(14.0).font
 
@@ -89,11 +86,18 @@ final class QuickPhraseTableViewCell: UITableViewCell {
 
         backgroundContainerView.clipsToBounds = true
         backgroundContainerView.layer.masksToBounds = true
+
+        if #available(iOS 26.0, *) {
+            backgroundContainerView.backgroundColor = .whiteCustom
+            backgroundContainerView.cornerConfiguration = .corners(
+                radius: .init(floatLiteral: System.cornerRadius)
+            )
+        }
     }
     
     override func prepareForReuse() {
         phraseLabel.text = nil
-        setTipVisibility(isHidden: true)
+        tipLabel.isHidden = true
         disposeBag = DisposeBag()
     }
 }

@@ -19,12 +19,12 @@ final class ToolbarInputAccessoryView: UIInputView {
 
         // MARK: Pasteboard Button Item
 
-        let pasteboardIcon: UIImage
+        let pasteboardIcon: UIImage?
 
         if #available(iOS 16.0, *) {
-            pasteboardIcon = UIImage(systemName: "list.clipboard", withConfiguration: UIImage.SymbolConfiguration(weight: .semibold))!
+            pasteboardIcon = UIImage(systemName: "list.clipboard", withConfiguration: UIImage.SymbolConfiguration(weight: .semibold))
         } else {
-            pasteboardIcon = UIImage(systemName: "paperclip", withConfiguration: UIImage.SymbolConfiguration(weight: .semibold))!
+            pasteboardIcon = UIImage(systemName: "paperclip", withConfiguration: UIImage.SymbolConfiguration(weight: .semibold))
         }
 
         let pasteboardItem = UIBarButtonItem(

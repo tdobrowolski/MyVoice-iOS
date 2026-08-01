@@ -14,6 +14,8 @@ final class SliderTableViewCell: UITableViewCell {
     
     lazy var disposeBag = DisposeBag()
 
+    let sliderValueChanged = PublishSubject<Float>()
+
     func setupSlider(for dataType: SliderDataType) {
         defaultSlider.tintColor = .orangeMain
         defaultSlider.minimumTrackTintColor = .orangeMain
@@ -41,8 +43,16 @@ final class SliderTableViewCell: UITableViewCell {
                                                withConfiguration: UIImage.SymbolConfiguration(pointSize: 15, weight: .bold, scale: .large))
             defaultSlider.value = currentValue
         }
+
+        // Fixes problem with valueChanged. It was not called before, when user reached min or max on the slider.
+        defaultSlider.addTarget(self, action: #selector(didEndSliderInteraction), for: [.touchUpInside, .touchUpOutside])
     }
-    
+
+    @objc
+    func didEndSliderInteraction() {
+        sliderValueChanged.onNext(defaultSlider.value)
+    }
+
     func adjustSlider(for value: Float) { defaultSlider.value = value }
     
     override func prepareForReuse() { disposeBag = DisposeBag() }

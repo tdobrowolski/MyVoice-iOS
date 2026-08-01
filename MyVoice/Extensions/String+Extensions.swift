@@ -12,4 +12,6 @@ extension String {
         NSLocale(localeIdentifier: NSLocale.current.identifier)
             .displayName(forKey: NSLocale.Key.identifier, value: self)
     }
+
+    var isNotEmpty: Bool { !isEmpty }
 }

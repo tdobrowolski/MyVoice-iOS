@@ -27,10 +27,14 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
         
         static var subject: String {
             if let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] {
-                return "MyVoice App (\(appVersion)) - Feedback"
+                return "MyVoice App (\(appVersion)) [OS \(osVersion)] - Feedback"
             } else {
-                return "MyVoice App - Feedback"
+                return "MyVoice App [OS \(osVersion)] - Feedback"
             }
+        }
+
+        static var osVersion: String {
+            UIDevice.current.systemVersion
         }
     }
     
@@ -123,8 +127,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             let cell = tableView.dequeueReusableCell(withIdentifier: Nib.sliderTableViewCell.cellIdentifier) as! SliderTableViewCell
             cell.backgroundColor = .whiteCustom
             cell.setupSlider(for: viewModel.getDataTypeForSpeechRate())
-            cell.defaultSlider.rx.value
-                .skip(1)
+            cell.sliderValueChanged
                 .subscribe { [weak self] value in
                     var finalValue: Float
                     
@@ -135,7 +138,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
                     } else {
                         finalValue = value
                     }
-                    
+
                     self?.viewModel.setSpeechRate(finalValue)
                 }
                 .disposed(by: cell.disposeBag)
@@ -146,8 +149,7 @@ final class SettingsViewController: BaseViewController<SettingsViewModel> {
             let cell = tableView.dequeueReusableCell(withIdentifier: Nib.sliderTableViewCell.cellIdentifier) as! SliderTableViewCell
             cell.backgroundColor = .whiteCustom
             cell.setupSlider(for: viewModel.getDataTypeForSpeechPitch())
-            cell.defaultSlider.rx.value
-                .skip(1)
+            cell.sliderValueChanged
                 .subscribe { [weak self] value in
                     var finalValue: Float
                     
