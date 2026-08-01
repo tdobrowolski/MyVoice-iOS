@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4DEADE7105CE049DAA0CE167 /* MyVoiceControls.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 4485D427530C85A6004DB941 /* MyVoiceControls.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		55BE4175A4FDF77E4774D79B /* OpenAndFocusControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F130F5D87A2CC8E04ED5420A /* OpenAndFocusControl.swift */; };
+		55BE8DCFDD4CEAE29FED9141 /* OpenAndFocusIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62E23383B2AE215A8A74E90 /* OpenAndFocusIntent.swift */; };
 		562CFA2A2AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CFA292AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift */; };
 		562CFA2C2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562CFA2B2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift */; };
 		566666A42AFEF3F3009990EB /* InfoButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566666A32AFEF3F3009990EB /* InfoButtonStyle.swift */; };
 		56AE0CC12AF8297200D16467 /* PersonalVoiceBottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56AE0CC02AF8297200D16467 /* PersonalVoiceBottomSheetView.swift */; };
+		6F84A2C957367A91175D55CE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8B2AF04200EDE6D281ACA6B /* Foundation.framework */; };
+		ACAFEC7D6FEA5F4ED2813D3B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = E1C99C1D2E672B5700CACB0D /* Localizable.xcstrings */; };
+		CF7DDB480894018284683DD3 /* PendingActionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E5F4E45F0958CE9CA5DB7 /* PendingActionService.swift */; };
 		E10F52F52E72216600C376D3 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = E10F52F42E72216600C376D3 /* AppIcon.icon */; };
 		E10F52F82E7221D100C376D3 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E10F52F72E7221D100C376D3 /* Colors.xcassets */; };
 		E115574325B4C4290093851B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E115574225B4C4290093851B /* AppDelegate.swift */; };
@@ -90,17 +96,51 @@
 		E1F4CA6F2A326E1A00ADC747 /* SliderDataType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1F4CA6E2A326E1A00ADC747 /* SliderDataType.swift */; };
 		E1FFC29425B625F300E8F1C0 /* TextToSpeechService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */; };
 		E1FFC29825B628A800E8F1C0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */; };
+		E6B79E587226A4C661E121DD /* PendingActionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC7E5F4E45F0958CE9CA5DB7 /* PendingActionService.swift */; };
 		F0E872B034A3527DFBE12358 /* Pods_MyVoice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61378B4DF55B36302E38E8BA /* Pods_MyVoice.framework */; };
+		F5A47EA957B6AACDCC96B4C7 /* OpenAndFocusIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62E23383B2AE215A8A74E90 /* OpenAndFocusIntent.swift */; };
+		F9AD6429A672D86BA9AD5451 /* MyVoiceControlsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C79CA55987917FE88D51CB8 /* MyVoiceControlsBundle.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F41A207FEAA3678ECD2AC1C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E115573725B4C4290093851B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4EBC956E789909DD4ABD3AC9;
+			remoteInfo = MyVoiceControls;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C150FD80DA54E54D1EDD4DAD /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4DEADE7105CE049DAA0CE167 /* MyVoiceControls.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		00064B458A7017DF2720DD19 /* Pods-MyVoice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVoice.debug.xcconfig"; path = "Target Support Files/Pods-MyVoice/Pods-MyVoice.debug.xcconfig"; sourceTree = "<group>"; };
+		043E5E63F57F9028CA019CF2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4485D427530C85A6004DB941 /* MyVoiceControls.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = MyVoiceControls.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A86AE1510816C7951487315 /* Pods-MyVoice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyVoice.release.xcconfig"; path = "Target Support Files/Pods-MyVoice/Pods-MyVoice.release.xcconfig"; sourceTree = "<group>"; };
 		562CFA292AEFD2D700D622EA /* AVSpeechSynthesizer+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVSpeechSynthesizer+Extensions.swift"; sourceTree = "<group>"; };
 		562CFA2B2AEFD30900D622EA /* PersonalVoiceAuthorizationStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceAuthorizationStatus.swift; sourceTree = "<group>"; };
 		566666A32AFEF3F3009990EB /* InfoButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoButtonStyle.swift; sourceTree = "<group>"; };
 		56AE0CC02AF8297200D16467 /* PersonalVoiceBottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalVoiceBottomSheetView.swift; sourceTree = "<group>"; };
+		56B077F569F8E3203EABF6E9 /* MyVoice.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = MyVoice.entitlements; sourceTree = "<group>"; };
+		5C79CA55987917FE88D51CB8 /* MyVoiceControlsBundle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MyVoiceControlsBundle.swift; sourceTree = "<group>"; };
 		61378B4DF55B36302E38E8BA /* Pods_MyVoice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyVoice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A62E23383B2AE215A8A74E90 /* OpenAndFocusIntent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OpenAndFocusIntent.swift; sourceTree = "<group>"; };
+		B8B2AF04200EDE6D281ACA6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS18.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D3C0C04DE105895FE2DF74ED /* MyVoiceControls.entitlements */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.entitlements; path = MyVoiceControls.entitlements; sourceTree = "<group>"; };
 		E10F52F42E72216600C376D3 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		E10F52F72E7221D100C376D3 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		E115573F25B4C4290093851B /* MyVoice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyVoice.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,9 +223,19 @@
 		E1F4CA6E2A326E1A00ADC747 /* SliderDataType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderDataType.swift; sourceTree = "<group>"; };
 		E1FFC29325B625F300E8F1C0 /* TextToSpeechService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextToSpeechService.swift; sourceTree = "<group>"; };
 		E1FFC29725B628A800E8F1C0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		F130F5D87A2CC8E04ED5420A /* OpenAndFocusControl.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = OpenAndFocusControl.swift; sourceTree = "<group>"; };
+		FC7E5F4E45F0958CE9CA5DB7 /* PendingActionService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = PendingActionService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1C06080D7957AF55B67D2F16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6F84A2C957367A91175D55CE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E115573C25B4C4290093851B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,6 +251,7 @@
 			isa = PBXGroup;
 			children = (
 				61378B4DF55B36302E38E8BA /* Pods_MyVoice.framework */,
+				BB7535775044FE348679DD0B /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -212,6 +263,23 @@
 				4A86AE1510816C7951487315 /* Pods-MyVoice.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		92A579E6BB64F95742A04E05 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				A62E23383B2AE215A8A74E90 /* OpenAndFocusIntent.swift */,
+			);
+			name = Intents;
+			path = Intents;
+			sourceTree = "<group>";
+		};
+		BB7535775044FE348679DD0B /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				B8B2AF04200EDE6D281ACA6B /* Foundation.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		E10F52F62E72217C00C376D3 /* Resources */ = {
@@ -231,6 +299,7 @@
 				E115574025B4C4290093851B /* Products */,
 				5DD28FE72419B1A46AD2C89F /* Pods */,
 				503E9E29B9CB59805C435708 /* Frameworks */,
+				F6E9518985341DC67BB31B54 /* MyVoiceControls */,
 			);
 			sourceTree = "<group>";
 		};
@@ -238,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				E115573F25B4C4290093851B /* MyVoice.app */,
+				4485D427530C85A6004DB941 /* MyVoiceControls.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,6 +328,7 @@
 				E115574225B4C4290093851B /* AppDelegate.swift */,
 				E115574425B4C4290093851B /* SceneDelegate.swift */,
 				E115574D25B4C42B0093851B /* LaunchScreen.storyboard */,
+				92A579E6BB64F95742A04E05 /* Intents */,
 			);
 			path = MyVoice;
 			sourceTree = "<group>";
@@ -337,6 +408,7 @@
 				E1B1489225EC4288003C1401 /* Translations */,
 				E10F52F62E72217C00C376D3 /* Resources */,
 				E115575025B4C42B0093851B /* Info.plist */,
+				56B077F569F8E3203EABF6E9 /* MyVoice.entitlements */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -591,13 +663,42 @@
 				E137884B25D47E72007E2DD8 /* DatabaseService.swift */,
 				E1E5FEC925D9879800FEB6E2 /* PhraseDatabaseService.swift */,
 				E1D4C3EE2AD0A23A0059DC46 /* PersonalVoiceService.swift */,
+				FC7E5F4E45F0958CE9CA5DB7 /* PendingActionService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		F6E9518985341DC67BB31B54 /* MyVoiceControls */ = {
+			isa = PBXGroup;
+			children = (
+				F130F5D87A2CC8E04ED5420A /* OpenAndFocusControl.swift */,
+				5C79CA55987917FE88D51CB8 /* MyVoiceControlsBundle.swift */,
+				043E5E63F57F9028CA019CF2 /* Info.plist */,
+				D3C0C04DE105895FE2DF74ED /* MyVoiceControls.entitlements */,
+			);
+			path = MyVoiceControls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		4EBC956E789909DD4ABD3AC9 /* MyVoiceControls */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD82DAC15F994907BD15215C /* Build configuration list for PBXNativeTarget "MyVoiceControls" */;
+			buildPhases = (
+				90C92FBD084CEEEDB8883E71 /* Sources */,
+				1C06080D7957AF55B67D2F16 /* Frameworks */,
+				24CBA325F4010F16B7D1EC94 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MyVoiceControls;
+			productName = MyVoiceControls;
+			productReference = 4485D427530C85A6004DB941 /* MyVoiceControls.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E115573E25B4C4290093851B /* MyVoice */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E115575325B4C42B0093851B /* Build configuration list for PBXNativeTarget "MyVoice" */;
@@ -606,12 +707,13 @@
 				E115573B25B4C4290093851B /* Sources */,
 				E115573C25B4C4290093851B /* Frameworks */,
 				E115573D25B4C4290093851B /* Resources */,
-				E127353325C60B3E007993EA /* Auto-increment build number */,
 				6A0B6662A90718B42D98B369 /* [CP] Embed Pods Frameworks */,
+				C150FD80DA54E54D1EDD4DAD /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				41130B2366273EE8C74564A0 /* PBXTargetDependency */,
 			);
 			name = MyVoice;
 			productName = MyVoice;
@@ -647,11 +749,20 @@
 			projectRoot = "";
 			targets = (
 				E115573E25B4C4290093851B /* MyVoice */,
+				4EBC956E789909DD4ABD3AC9 /* MyVoiceControls */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		24CBA325F4010F16B7D1EC94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACAFEC7D6FEA5F4ED2813D3B /* Localizable.xcstrings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E115573D25B4C4290093851B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -722,27 +833,20 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E127353325C60B3E007993EA /* Auto-increment build number */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Auto-increment build number";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "PLIST=\"${INFOPLIST_FILE}\"\nPLB=/usr/libexec/PlistBuddy\nLAST_NUMBER=$($PLB -c \"Print CFBundleVersion\" \"$PLIST\")\nNEW_VERSION=$(($LAST_NUMBER + 1))\n$PLB -c \"Set :CFBundleVersion $NEW_VERSION\" \"$PLIST\"\n";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		90C92FBD084CEEEDB8883E71 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				55BE4175A4FDF77E4774D79B /* OpenAndFocusControl.swift in Sources */,
+				F9AD6429A672D86BA9AD5451 /* MyVoiceControlsBundle.swift in Sources */,
+				CF7DDB480894018284683DD3 /* PendingActionService.swift in Sources */,
+				55BE8DCFDD4CEAE29FED9141 /* OpenAndFocusIntent.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E115573B25B4C4290093851B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -813,10 +917,21 @@
 				E1417F962A324E5D00B0A9DA /* Fonts.swift in Sources */,
 				E1A489552E6F2D1A008CD6A1 /* AVAudioSession+Extensions.swift in Sources */,
 				E1F246FC25FE82B30077EE4F /* HelpViewModel.swift in Sources */,
+				E6B79E587226A4C661E121DD /* PendingActionService.swift in Sources */,
+				F5A47EA957B6AACDCC96B4C7 /* OpenAndFocusIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		41130B2366273EE8C74564A0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MyVoiceControls;
+			target = 4EBC956E789909DD4ABD3AC9 /* MyVoiceControls */;
+			targetProxy = F41A207FEAA3678ECD2AC1C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		E115574D25B4C42B0093851B /* LaunchScreen.storyboard */ = {
@@ -831,6 +946,45 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		15BE89E38080A8ABC3261DA8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = MyVoiceControls/MyVoiceControls.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9858W9DAL;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MyVoiceControls/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.infinity.MyVoiceApp.Controls;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ACD1B2F98DD97CAD96673B74 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_ENTITLEMENTS = MyVoiceControls/MyVoiceControls.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9858W9DAL;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = MyVoiceControls/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.infinity.MyVoiceApp.Controls;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
 		E115575125B4C42B0093851B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -866,6 +1020,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1949;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -884,6 +1039,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.4.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -929,6 +1085,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1949;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -941,6 +1098,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.4.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -959,6 +1117,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				ASSETCATALOG_OTHER_FLAGS = "";
+				CODE_SIGN_ENTITLEMENTS = MyVoice/SupportingFiles/MyVoice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V9858W9DAL;
 				INFOPLIST_FILE = "$(SRCROOT)/MyVoice/SupportingFiles/Info.plist";
@@ -985,6 +1144,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				ASSETCATALOG_OTHER_FLAGS = "";
+				CODE_SIGN_ENTITLEMENTS = MyVoice/SupportingFiles/MyVoice.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V9858W9DAL;
 				INFOPLIST_FILE = "$(SRCROOT)/MyVoice/SupportingFiles/Info.plist";
@@ -1006,6 +1166,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		CD82DAC15F994907BD15215C /* Build configuration list for PBXNativeTarget "MyVoiceControls" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				15BE89E38080A8ABC3261DA8 /* Release */,
+				ACD1B2F98DD97CAD96673B74 /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E115573A25B4C4290093851B /* Build configuration list for PBXProject "MyVoice" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

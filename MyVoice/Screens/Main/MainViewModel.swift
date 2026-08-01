@@ -12,9 +12,10 @@ import AVKit
 
 final class MainViewModel: BaseViewModel, ObservableObject {
     private let phraseDatabaseService: PhraseDatabaseService
+    private let pendingActionService: PendingActionService
     private var feedbackGenerator: UIImpactFeedbackGenerator
     private var notificationFeedbackGenerator: UINotificationFeedbackGenerator
-    
+
     // TextToSpeechService & PersonalVoiceService is needed in this ViewModel only to pass to other, child views/modals.
     // This is dictated by wrong architecture pick at the start of the development and should be fixed in the future.
     // CompositionRoot should be used.
@@ -27,10 +28,12 @@ final class MainViewModel: BaseViewModel, ObservableObject {
     let systemVolumeState = BehaviorSubject<SystemVolumeState>(value: .mediumVolume)
 
     let sections = BehaviorSubject<[QuickPhraseSection]>(value: [])
-    
+    let shouldFocusInput = PublishSubject<Void>()
+
     override init() {
         self.textToSpeechService = TextToSpeechService(userDefaultsService: userDefaultsService)
         self.phraseDatabaseService = PhraseDatabaseService()
+        self.pendingActionService = PendingActionService()
         self.feedbackGenerator = UIImpactFeedbackGenerator(style: .medium)
         self.notificationFeedbackGenerator = UINotificationFeedbackGenerator()
         self.personalVoiceService = PersonalVoiceService()
@@ -61,7 +64,16 @@ final class MainViewModel: BaseViewModel, ObservableObject {
     func warnUserWithFeedback() {
         notificationFeedbackGenerator.notificationOccurred(.error)
     }
-    
+
+    func consumePendingActionIfNeeded() {
+        guard let action = pendingActionService.consumePendingAction() else { return }
+
+        switch action {
+        case .focusInput:
+            shouldFocusInput.onNext(())
+        }
+    }
+
     // TODO: Adding / removing items to sections
 
     func addQuickPhraseItem(phrase: String) {

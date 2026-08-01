@@ -60,6 +60,12 @@ final class MainViewController: BaseViewController<MainViewModel> {
         listenForActiveStateChange()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        viewModel.consumePendingActionIfNeeded()
+    }
+
     override func bindViewModel(_ viewModel: MainViewModel) {
         super.bindViewModel(viewModel)
         
@@ -111,6 +117,12 @@ final class MainViewController: BaseViewController<MainViewModel> {
         mainTextView.rx.text
             .subscribe { [weak self] text in
                 self?.placeholderTextView.isHidden = text?.isEmpty == false
+            }
+            .disposed(by: disposeBag)
+
+        viewModel.shouldFocusInput
+            .subscribe { [weak self] _ in
+                self?.mainTextView.becomeFirstResponder()
             }
             .disposed(by: disposeBag)
 

@@ -740,6 +740,17 @@
         }
       }
     },
+    "Opens MyVoice with the keyboard ready." : {
+      "comment" : "Lock Screen Control description",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwiera MyVoice z gotową klawiaturą."
+          }
+        }
+      }
+    },
     "Other" : {
       "comment" : "Other",
       "localizations" : {
@@ -1194,6 +1205,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Aby zmienić głos odpowiedzialny za wypowiadanie fraz, przejdź do widoku Ustawienia. Wybierz Ustawienia mowy. Zobaczysz nowy widok z listą wszystkich dostępnych głosów na twoim urządzeniu. Każdy głos ma swoje właściwości wraz z obsługiwanym językiem. Niektóre głosy mają dostępną rozszerzoną jakość - oznacza to, że frazy będą wypowiadane w sposób bardziej naturalny i z lepszą dykcją."
+          }
+        }
+      }
+    },
+    "Type & Speak" : {
+      "comment" : "Lock Screen Control title",
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pisz i mów"
           }
         }
       }
